@@ -1,0 +1,209 @@
+.me-header
+    display: block
+    width: 100%
+    padding: 11% 0
+    text-align: center
+    background: url(../images/img-my-bg.png) no-repeat center
+    background-size: auto 100%
+
+    .me-header-content
+        height: 0.58rem
+        width: 0.58rem
+        margin: 0 auto
+        padding: 0.03rem
+        background-color: #fff
+        box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.1)
+
+        +border-radius(100%)
+
+        img
+            display: block
+            max-width: 100%
+            max-height: 100%
+
+            +border-radius(100%)
+
+    .me-header-nickname
+        padding-top: 0.06rem
+        font-size: 0.15rem
+        color: #fff
+
+    .me-header-level
+        padding-top: 0.06rem
+        text-align: center
+
+        em
+            display: inline-block
+            padding: 0.03rem 0.07rem
+            line-height: 0.12rem
+            font-size: 0.09rem
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.13)
+            border-radius: 0.5rem
+            color: #cfae71
+            background-color: #fff
+
+    .me-header-desc
+        display: flex
+        padding-top: 0.06rem
+        color: #fff
+
+        .me-header-desc-r
+            position: relative
+            flex: 1
+            padding-left: 0.1rem
+            text-align: left
+
+            &:after
+                content: ""
+                position: absolute
+                left: 0
+                width: 1px
+                height: 100%
+                background-color: rgba(0, 0, 0, 0.1)
+
+        .me-header-desc-l
+            flex: 1
+            padding-right: 0.1rem
+            text-align: right
+
+    span
+        text-align: center
+        display: block
+        font-size: 0.18rem
+        color: #fff
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5)
+
+.me-menu
+    background-color: #fff
+
+.me-menu-items
+    position: relative
+    float: left
+    display: block
+    width: 50%
+    padding: 0.22rem 0
+    text-align: center
+    border-bottom: 1px solid #f5f5f5
+
+    &:nth-child(2n):after
+        content: ""
+        position: absolute
+        left: 0
+        top: 0
+        bottom: 0
+        width: 1px
+        background-color: #f5f5f5
+
+    .me-menu-icon
+        height: 0.58rem
+        background-repeat: no-repeat
+        background-position: center
+        background-size: auto 80%
+
+    .me-menu-icon-group
+        background-image: url(../images/icon-my-group.png)
+
+    .me-menu-icon-coupon
+        background-image: url(../images/icon-my-coupon.png)
+
+    .me-menu-icon-address
+        background-image: url(../images/icon-my-address.png)
+
+    .me-menu-icon-order
+        background-image: url(../images/icon-my-order.png)
+
+    .me-menu-icon-stock
+        background-image: url(../images/icon-my-stock.png)
+
+    .me-menu-icon-profit
+        background-image: url(../images/icon-my-profit.png)
+
+    .me-menu-label
+        font-size: 0.15rem
+        color: rgba(51, 51, 51, 0.8)
+
+.dialog .levelup
+    +border-radius(0.14rem)
+
+.levelup
+    position: relative
+    background-image: linear-gradient(135deg, #e1c48e 0%, rgba(200, 165, 101, 0) 99%)
+    background-image: url(../images/img-alert-bg.png)
+    background-repeat: no-repeat
+    background-position: top left
+    background-size: 100% auto
+
+    .levelup-close
+        position: absolute
+        top: 0
+        right: 0.18rem
+        width: 0.28rem
+        height: 0.3rem
+        line-height: 0.28rem
+        text-align: center
+        color: rgba(255, 255, 255, 0.74)
+        background-color: $primary-color
+
+        +border-radius(0, 0, 0, 0.3rem, 0.3rem)
+
+    .levelup-title
+        position: absolute
+        top: -0.23rem
+        left: 50%
+        width: 56%
+        height: 40px
+        margin-left: -28%
+        background-image: url(../images/img-alert.png)
+        background-repeat: no-repeat
+        background-position: top center
+        background-size: 100% auto
+
+        &.vipup
+            background-image: url(../images/img-alert-vipup.png)
+
+    .levelup-content
+        padding: 0.3rem 0 0.6rem 0
+        text-align: center
+
+        .up1
+            font-size: 15px
+            color: #ccaa6c
+
+        .up2
+            margin: 0.04rem 0
+            font-size: 39px
+            color: #cdab6d
+            text-shadow: 0 0 10px rgba(205, 171, 109, 0.37)
+
+        .up3
+            margin-bottom: 0.29rem
+            opacity: 0.3
+            font-size: 13px
+            color: #cdab6d
+
+        .le1
+            padding: 0.2rem 0.29rem 0.42rem
+            color: #ccaa6c
+
+            em
+                font-weight: bold
+
+    .levelup-button
+        position: absolute
+        bottom: 0.16rem
+        width: 100%
+        text-align: center
+
+        button
+            display: inline-block
+            width: 60%
+            height: 0.44rem
+            line-height: 0.44rem
+            text-align: center
+            font-size: 0.15rem
+            color: #fff
+            background-image: linear-gradient(135deg, #e1c48e 0%, #c8a565 100%)
+            box-shadow: 0 0 10px 0 #d4b379
+            border-radius: 100px
+            border: none
+            outline: none

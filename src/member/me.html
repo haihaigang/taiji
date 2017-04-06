@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>我的</title>
+    <!-- build:css ../content/css/taiji.min.css -->
+    <link rel="stylesheet" href="../content/css/taiji.css" />
+    <!-- endbuild -->
+</head>
+
+<body class="has-footer">
+    <noscript>
+        <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <section class="container me" id="tj-detail" style="display: none;">
+        <div class="me-header">
+            <div class="me-header-content"><img id="me-avatar" src="../content/images/index-avatar.png" alt=""></div>
+            <div class="me-header-nickname">王海港</div>
+            <div class="me-header-level"><em>第一级</em></div>
+        </div>
+        <div class="me-menu clearfix">
+            <a class="me-menu-items" href="teams.html">
+                <div class="me-menu-icon me-menu-icon-group"></div>
+                <div class="me-menu-label">我的团队</div>
+            </a>
+            <a class="me-menu-items" href="incomes.html">
+                <div class="me-menu-icon me-menu-icon-profit"></div>
+                <div class="me-menu-label">我的收益</div>
+            </a>
+            <a class="me-menu-items" href="orders.html">
+                <div class="me-menu-icon me-menu-icon-order"></div>
+                <div class="me-menu-label">我的订单</div>
+            </a>
+            <a class="me-menu-items" href="stocks.html">
+                <div class="me-menu-icon me-menu-icon-stock"></div>
+                <div class="me-menu-label">我的库存</div>
+            </a>
+            <a class="me-menu-items" href="addresses.html">
+                <div class="me-menu-icon me-menu-icon-address"></div>
+                <div class="me-menu-label">我的地址</div>
+            </a>
+            <a class="me-menu-items" href="coupons.html">
+                <div class="me-menu-icon me-menu-icon-coupon"></div>
+                <div class="me-menu-label">优惠券</div>
+            </a>
+        </div>
+    </section>
+    <footer class="main-nav">
+        <a class="footer-item footer-item-1" href="../index.html?isMain=1">
+            <div class="img"></div>
+            <i class="iconfont icon-shouye"></i>
+            <span>首页</span>
+        </a>
+        <a class="footer-item footer-item-2" href="../cart.html">
+            <div class="img"></div>
+            <i class="iconfont icon-gouwuche"></i>
+            <span>购物车</span>
+        </a>
+        <a class="footer-item footer-item-5 active" href="me.html">
+            <div class="img"></div>
+            <i class="iconfont icon-wode"></i>
+            <span>我的</span>
+        </a>
+    </footer>
+
+    <!--自定义提示框开始-->
+    <div class="toast" id="tj-toast"><span>xxx</span></div>
+    <div class="loading" id="tj-loading">
+        <div class="loading-content">
+            <div class="s-1"></div>
+            <div class="s-2">正在加载中</div>
+        </div>
+    </div>
+    <div class="dialog" id="tj-panel">
+        <div class="dialog-content">
+            <div class="panel-content">
+                <div class="panel-cell">
+                    <h3 class="panel-title">xxx</h3>
+                    <div class="panel-text">xxx</div>
+                </div>
+            </div>
+            <div class="panel-buttons">
+                <div class="options">
+                    <a href="javascript:;" class="btn btn-default">取消</a>
+                    <a href="javascript:;" class="btn btn-primary">确定</a>
+                </div>
+                <div class="panel-tips">xxx</div>
+            </div>
+        </div>
+    </div>
+    <!--//自定义提示框结束-->
+    
+    <!--//用户等级提升提示框开始-->
+    <div class="dialog" id="tj-levelup-dialog">
+        <div class="dialog-content levelup">
+            <div class="levelup-title vipup"></div>
+            <div class="levelup-close">x</div>
+            <div class="levelup-content">
+                <p class="up1">恭喜你成为</p>
+                <p class="up2">xx会员</p>
+                <p class="up3">将会享受更多权益哦</p>
+            </div>
+            <div class="levelup-button">
+                <button>我知道了</button>
+            </div>
+        </div>
+    </div>
+    <!--//用户等级提升提示框结束-->
+
+    <!--会员分离提示框开始-->
+    <div class="dialog" id="tj-userleave-dialog">
+        <div class="dialog-content levelup">
+            <div class="levelup-title"></div>
+            <div class="levelup-close">x</div>
+            <div class="levelup-content">
+                <p class="le1">你的下级 <em>“用户名用户名”</em> 会员已脱离您的团队。如有疑问，可联系客服。电话：021-00000000</p>
+            </div>
+            <div class="levelup-button">
+                <button class="btn">我知道了</button>
+            </div>
+        </div>
+    </div>
+    <!--//会员分离提示框结束-->
+
+    <!-- build:js ../content/js/lib/libs.js -->
+    <script src="../content/js/lib/zepto.min.js"></script>
+    <script src="../content/js/lib/fastclick.min.js"></script>
+    <script src="../content/js/lib/template.js"></script>
+    <!-- endbuild -->
+    <script src="../content/js/base/global.js"></script>
+    <script src="../content/js/member/me.js"></script>
+</body>
+
+</html>

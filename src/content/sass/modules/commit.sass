@@ -1,0 +1,729 @@
+.commit
+    padding-bottom: 0.56rem
+
+    .apply
+        .items
+            +box-shadow(none)
+.bind-dialog
+    .panel-title
+        display: block
+    form
+        input[type="text"]
+            margin-bottom: 0.08rem
+            padding: 0.07rem 0.08rem
+            border: 1px solid #f5f5f5
+
+#coupon-page .item .price, #tj-coupon .item .price
+    width: 0.9rem
+    line-height: 0.9rem
+    font-size: 0.25rem
+    color: $primary-color
+    text-align: center
+
+#cp
+    padding-right: 0
+
+#coupon-page .item .time, #tj-coupon .item .time
+    color: $secondary-font-color
+
+#tj-pay-footer
+    background: #FFFFFF
+
+    +box-shadow(0px -2px 4px 0px rgba(0, 0, 0, 0.11))
+
+    .weixin
+        font-size: 0.18rem
+        background-color: #0ABB07
+
+    .ccb
+        font-size: 0.18rem
+        background-color: #0066B3
+        display: none
+
+        i
+            padding-right: 0.08rem
+            font-size: 0.3rem
+            line-height: 0.4rem
+
+#selectAddrType
+    .panel-text
+        text-align: left
+        margin: 0 0.3rem
+
+    .panel-title
+        display: block
+
+    .panel-input
+        margin: 0 0.3rem
+        text-align: left
+        font-size: 0.14rem
+
+        em
+            margin-left: 0.06rem
+            font-size: 0.14rem
+            font-family: Arial, "Microsoft Yahei"
+
+.commit-total
+    font-size: 0.15rem
+
+    .fee-box
+        font-weight: normal
+        text-align: right
+        margin-right: 0.1rem
+        font-size: 13px
+        color: $primary-color
+        border: 1px solid $primary-color
+
+        +border-radius
+
+        padding: 0.01rem 0.03rem
+
+    .list-group-item
+        em
+            color: $primary-color
+            display: block
+
+        .iconfont
+            margin-left: 0.05rem
+            color: #b2b2b2
+
+.warn-box
+    img
+        width: 100%
+
+.cart-check
+    width: 0.24rem
+    padding: 0 0.12rem
+    text-align: center
+    color: #8b8b8b
+    cursor: pointer
+
+    &.checked
+        color: $secondary-color
+
+        .off
+            display: none
+
+        .on
+            display: inline-block
+
+    em
+        font-size: 0.2rem
+
+    .off
+        display: block
+
+    .on
+        display: none
+
+.commit
+    .goods-list
+        margin-left: 0
+        overflow: hidden
+
+        &.active
+            .goods-item
+                display: flex
+
+    .goods-list-order
+        .goods-item
+            display: none
+
+            .thumb, .thumb img
+                width: 0.54rem
+                height: 0.54rem
+
+            .ensure
+                img
+                    width: 0.16rem
+                    height: 0.17rem
+                    margin-right: 0.03rem
+                    vertical-align: middle
+
+                span
+                    font-size: 0.13rem
+                    color: #f65656
+
+            &:nth-of-type(1)
+                display: flex
+
+            &:nth-of-type(2)
+                display: flex
+
+    #show-more
+        background: #FFFFFF
+        height: 0.44rem
+        font-size: 0.15rem
+        color: #4A4A4A
+        line-height: 0.44rem
+        text-align: center
+
+    .warn-box-close
+        display: block
+        width: 0.48rem
+        height: 0.48rem
+        position: absolute
+        top: 0.08rem
+        right: 0
+
+    .warn-box
+        font-size: 0.13rem
+        line-height: 0.2rem
+        color: #fff
+        background: $primary-color
+        position: relative
+
+    .shipping
+        margin-bottom: 0.08rem
+        padding-bottom: 0.12rem
+        background-image: url(../images/bg-colorline.png)
+        background-repeat: no-repeat
+        background-size: 100% auto
+        background-position: bottom center
+        position: relative
+
+        .addr-type
+            width: 0.38rem
+            height: 0.18rem
+            color: $primary-color
+            position: absolute
+            top: 0.08rem
+            right: 0.38rem
+            border: 0.01rem solid $primary-color
+            text-align: center
+            line-height: 0.18rem
+            font-size: 0.12rem
+
+            +border-radius(0.18rem)
+
+            &.empty
+                border: 0.01rem dashed #9b9b9b
+
+    .icon-arrow
+        font-size: 0.25rem
+        color: $primary-color
+
+    .commit-total-bar
+        padding: 0 0.08rem
+        position: relative
+        height: 0.4rem
+        line-height: 0.4rem
+        background: #fff
+
+        .left
+            font-size: 12px
+            color: $secondary-font-color
+            float: left
+
+#coupon-page
+    & > div
+        max-height: 270px
+        overflow-y: auto
+
+    h2
+        height: 0.41rem
+        padding-left: 0.08rem
+        line-height: 0.41rem
+        font-size: 16px
+        color: #525252
+
+        +linear-gradient(#FFFFFF, #F3F3F3)
+
+        button
+            display: block
+            height: 0.41rem
+            padding: 0 0.08rem
+            line-height: 0.41rem
+            float: right
+            border: none
+            color: $primary-color
+            background-color: transparent
+
+    .item
+        border-bottom: $border-default
+
+        .cart-check
+            +box
+
+            +box-align
+
+            padding: 0.1rem
+
+    .empty
+        padding: 0.07rem 0
+        text-align: center
+
+#tj-coupon
+    .item
+        background-color: #fff
+
+.bg-line
+    margin: 0
+    padding: 0
+    width: 100%
+
+#coupon-page .item .content, #tj-coupon .item .content
+    +box-flex
+
+    font-size: 0.13rem
+
+.tax-box
+    width: 100%
+
+#coupon-page .item .title, #tj-coupon .item .title
+    padding: 0.08rem 0
+    color: #525252
+    line-height: 0.13rem
+
+    +ellipsis(2)
+
+    +box
+
+i
+    font-style: normal
+
+.tax-item
+    padding-left: 0.05rem
+    padding-right: 0.05rem
+    color: $secondary-color
+
+    dd
+        text-align: right
+
+    dt
+        text-align: left
+
+    dl
+        height: 20px
+
+    .active
+        color: #b2b2b2
+
+        dt
+            text-indent: 0.1rem
+
+#add-list
+    margin-bottom: 0.08rem
+
+    .val
+        font-size: 0.14rem
+        text-align: right
+        line-height: 0.43rem
+        color: $secondary-color
+
+    .position
+        +ellipsis($line: 1)
+
+        margin-left: 0.37rem
+
+.delivery-time
+    background: #fff
+
+    .tit
+        border-bottom: $border-default
+        line-height: 0.4rem
+        font-size: 0.15rem
+        text-indent: 0.08rem
+        color: #4a4a4a
+
+    .time-rows
+        padding: 0.08rem 0
+        overflow: hidden
+
+        .delivery-time-item
+            text-align: center
+            font-size: 0.12rem
+            float: left
+            width: 25%
+            margin-bottom: 0.04rem
+
+            em
+                color: $primary-color
+                border: 1px solid $primary-color
+                border-radius: 0.52rem
+                display: inline-block
+                line-height: 0.52rem
+                width: 0.52rem
+                margin-bottom: 0.04rem
+
+            span
+                color: #b2b2b2
+                display: block
+
+            &.selected
+                em
+                    background: $primary-color
+                    color: #fff
+
+                span
+                    color: $primary-color
+
+            &.disabled
+                display: none
+
+                em
+                    background: #e9e8e8
+                    color: #b2b2b2
+                    border: 1px solid #b2b2b2
+
+                span
+                    color: #b2b2b2
+
+    .service
+        text-indent: 0.08rem
+        line-height: 0.3rem
+        color: #b2b2b2
+        background: $primary-background-color
+
+        .tel
+            color: $primary-color
+
+.good-payments
+    margin: 0.08rem 0
+    background: #fff
+
+    h3
+        float: left
+        width: 100%
+        line-height: 0.4rem
+        text-indent: 0.08rem
+        font-size: 0.15rem
+        color: #4a4a4a
+
+    a
+        float: left
+        width: 100%
+
+        &.more
+            line-height: 0.44rem
+            float: left
+            width: 100%
+            position: relative
+            text-align: center
+            font-size: 0.15rem
+            color: $secondary-color
+            display: none
+
+            &:after
+                content: ""
+                position: absolute
+                top: 0.19rem
+                right: 50%
+                margin-right: -0.75rem
+                border-top: 5px #000 solid
+                color: #000
+                border-left: 5px transparent solid
+                border-right: 5px transparent solid
+
+        &.hidden
+            display: none
+
+            &.hidden-show
+                display: block
+
+        &.active i.icon-uncheck:before
+            content: ""
+            color: $secondary-color
+
+        i
+            float: left
+            width: 0.5rem
+            height: 0.46rem
+            font-size: 0.28rem
+            text-align: center
+
+            &.good-payments-last
+                float: right
+                line-height: 0.46rem
+                font-size: 0.2rem
+                text-align: center
+                width: 0.34rem
+                color: #d7d7d7
+
+        img
+            float: left
+            width: 0.28rem
+            margin-left: 0.08rem
+            height: 0.28rem
+            margin-right: 0.08rem
+            margin-top: 0.08rem
+
+        span
+            float: left
+            line-height: 0.15rem
+            font-size: 0.1rem
+            font-size: 10px
+            color: $thirdary-font-color
+            text-align: left
+            padding: 0.02rem 0
+            padding-top: 0.08rem
+            height: 0.35rem
+
+        strong
+            font-size: 0.15rem
+            color: #4a4a4a
+
+.commit-cart-total
+    position: fixed
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: #fff
+    -webkit-box-shadow: 0px -1px 2px 0px rgba(178, 178, 178, 0.5)
+    box-shadow: 0px -1px 2px 0px rgba(178, 178, 178, 0.5)
+
+    button:focus
+        outline: none
+
+    .cart-total-button
+        width: 0.92rem
+        height: 0.48rem
+        font-size: 0.18rem
+        color: #fff
+        line-height: 0.25rem
+        text-align: center
+        border: none
+        background-color: $primary-color
+
+        &.disabled
+            background: #e3e3e3
+
+    .cart-total-price
+        padding-left: 0.08rem
+        padding-top: 0.05rem
+        -webkit-box-flex: 1
+        -moz-box-flex: 1
+        -ms-box-flex: 1
+        -o-box-flex: 1
+        box-flex: 1
+        font-size: 0.15rem
+        line-height: 0.4rem
+        color: $primary-color
+
+    .commit-cart-total-content
+        position: relative
+        padding-left: 0.08rem
+        z-index: 0
+        height: 0.48rem
+
+        p
+            font-size: 10px
+            color: $secondary-font-color
+
+        h3
+            color: $secondary-color
+            padding-top: 0.02rem
+            font-weight: bold
+
+            em
+                color: #FF374A
+                font-size: 0.13rem
+
+                &:first-letter
+                    font-size: 0.08rem
+
+                strong
+                    font-size: 0.17rem
+
+    .commit-cart-total-submit
+        position: absolute
+        right: 0
+        top: 0
+        text-align: center
+        color: #FFFFFF
+        width: 1.26rem
+        background: $primary-color
+        z-index: 2
+        height: 0.48rem
+        line-height: 0.48rem
+
+        span
+            display: block
+            line-height: 0.2rem
+            padding: 0.04rem 0
+
+.commit-dialog
+    display: none
+    position: fixed
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    z-index: 90
+    background: rgba(0, 0, 0, 0.4)
+
+    .commit-dialog-content
+        position: fixed
+        z-index: 99
+        top: 50%
+        left: 50%
+        width: 139px
+        margin-top: -75px
+        margin-left: -69.5px
+        background: white
+        -webkit-border-radius: 8px 8px 8px 8px
+        -moz-border-radius: 8px 8px 8px 8px
+        -ms-border-radius: 8px 8px 8px 8px
+        -o-border-radius: 8px 8px 8px 8px
+        border-radius: 8px 8px 8px 8px
+        -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5)
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5)
+        height: 139px
+
+        .loading
+            background: rgba(0, 0, 0, 0)
+            display: block
+
+            .loading-content
+                background: none
+                box-shadow: none
+                -webkit-box-shadow: none
+                top: 44%
+
+        .commit-pay-success
+            font-size: 0.13rem
+            color: $primary-color
+            text-align: center
+            padding-top: 0.6rem
+
+        .commit-panel-text
+            font-size: 0.13rem
+            text-align: center
+            vertical-align: middle
+            color: $secondary-color
+            padding-top: 0.07rem
+
+.freight-panel
+    display: none
+    position: fixed
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    z-index: 90
+    background: rgba(0, 0, 0, 0.4)
+
+    .freight-panel-content
+        position: fixed
+        z-index: 99
+        top: 50%
+        left: 50%
+        width: 270px
+        min-height: 150px
+        margin-top: -153.5px
+        margin-left: -135px
+        background: white
+        -webkit-border-radius: 8px 8px 8px 8px
+        -moz-border-radius: 8px 8px 8px 8px
+        -ms-border-radius: 8px 8px 8px 8px
+        -o-border-radius: 8px 8px 8px 8px
+        border-radius: 8px 8px 8px 8px
+        -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5)
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5)
+
+        h3
+            font-size: 17px
+            color: #030303
+            text-align: center
+            line-height: 0.19rem
+            padding-top: 0.18rem
+            padding-bottom: 0.14rem
+
+        .freight-panel-wrapper
+            position: relative
+            padding: 0 0.14rem
+            margin-bottom: 0.15rem
+            height: 2rem
+
+            //overflow: auto
+            overflow: hidden
+            -webkit-overflow-scrolling: touch
+
+            p
+                font-size: 0.13rem
+                color: #030303
+                line-height: 16px
+                width: 100%
+                float: left
+                margin-bottom: 0.03rem
+
+                .fp-l
+                    float: left
+
+                .fp-r
+                    float: right
+
+            .freight-list
+                width: 100%
+                overflow-y: hidden
+
+                //overflow-x: auto
+                overflow-x: hidden
+                float: left
+                margin-bottom: 0.07rem
+                position: relative
+                height: 0.68rem
+                -webkit-overflow-scrolling: touch
+
+                ul
+                    height: 100%
+
+                    li
+                        float: left
+                        width: 0.67rem
+                        height: 0.67rem
+                        margin-right: 0.06rem
+
+                        &:last-of-type
+                            margin-right: 0
+
+                        img
+                            width: 100%
+                            height: 100%
+                            display: block
+
+                div
+                    display: none
+
+        a.close
+            line-height: 0.44rem
+            border-radius: 0
+            background-color: transparent
+            width: 100%
+            display: block
+            font-size: 0.17rem
+            color: $primary-color
+            text-align: center
+            border-top: $border-default
+
+.commit
+    .widget-item-list
+        padding-top: 0.01rem
+        background: $primary-background-color
+
+        .goods-list-list
+            .goods-item
+                &:nth-child(2n-1)
+                    margin-right: 0.01rem
+                    margin-bottom: 0.01rem
+
+.commit-show-more
+    border-bottom: $border-default
+
+.commit-coupon-bar
+    display: flex
+    height: 0.4rem
+    line-height: 0.4rem
+    padding: 0 0.06rem
+    background-color: #fff
+    border-top: $border-default
+
+    .commit-coupon-bar-content
+        flex: 1
+        text-align: right
+        color: $primary-color
+    .commit-coupon-bar-opt
+        width: 0.25rem
+    &.disabled
+        .icon-arrow
+            display: none

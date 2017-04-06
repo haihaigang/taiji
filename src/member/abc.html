@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>我的</title>
+    <link rel="stylesheet" href="../content/css/taiji.css" />
+    <style type="text/css">
+    .container {
+        padding-top: 100px;
+    }
+    
+    .container div {
+        margin: 7px 0;
+    }
+    
+    .container h3 {
+        padding: 8px;
+        text-align: center;
+        background-color: #f83c75;
+        color: #fff;
+        transition: 200ms;
+    }
+    .container h3:hover {
+        background-color: rgba(248, 60, 117, 0.3)
+    }
+    
+    html {
+        background-color: #fff;
+        background-image: -webkit-radial-gradient(hsla(0, 0%, 87%, 0.31) 9px, transparent 10px), -webkit-repeating-radial-gradient(hsla(0, 0%, 87%, 0.31) 0, hsla(0, 0%, 87%, 0.31) 4px, transparent 5px, transparent 20px, hsla(0, 0%, 87%, 0.31) 21px, hsla(0, 0%, 87%, 0.31) 25px, transparent 26px, transparent 50px);
+        background-size: 30px 30px, 90px 90px;
+        background-position: 0 0;
+    }
+    
+    body {
+        background-color: transparent;
+    }
+    </style>
+</head>
+
+<body class="has-footer">
+    <noscript>
+        <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <section class="container">
+        <div><a href="../index.html" id="h1"><h3>返回首页</h3></a></div>
+        <div><a href="?isdebug=1"><h3>打开调试</h3></a></div>
+        <div><a href="?isdebug=0"><h3>关闭调试</h3></a></div>
+        <div><a href="?abc=3"><h3>模拟登录</h3></a></div>
+        <div><a href="?abc=1"><h3>退出登录</h3></a></div>
+        <div><a href="?abc=2"><h3>清除缓存</h3></a></div>
+        <div><a href="?abc=4"><h3>清除楼宇信息</h3></a></div>
+        <div><a href="meigooo://com.rbyair.app"><h3>测试跳转Native</h3></a></div>
+        <div><a href="https://ibsbjstar.ccb.com.cn/app/ccbMain?MERCHANTID=105290054510965&POSID=818574467&BRANCHID=310000000&ORDERID=16072920498378441840&PAYMENT=759.90&CURCODE=01&TXCODE=520100&REMARK1=&REMARK2=&TYPE=1&GATEWAY=&CLIENTIP=180.168.208.228&REGINFO=meigooo&PROINFO=%u3010%u7f8e%u8d2d%u3011SK%u002dII%u795e%u4ed9%u6c34%u62a4%u80a4%u7cbe%u534e%u9732%u0020215ml%u002f%u74f6%u0020759%u002e%u002e%u002e%u002e&REFERER=rbyair.com&MAC=9ff63c050befa54cdd295607208bec42"><h3>建行支付</h3></a></div>
+    </section>
+    <div id="result"></div>
+    <script src="../content/js/lib/zepto.min.js"></script>
+    <script src="../content/js/lib/template.js"></script>
+    <script src="../content/js/base/global.js"></script>
+    <script type="text/javascript">
+    common.setWechatTitle('我的' + config.VERSION);
+    var result = document.getElementById('result');
+    if (Tools._GET().isdebug == 1) {
+        Cookie.set('DevDebug', 1);
+        result.innerHTML = '打开调试成功';
+    } else if (Tools._GET().isdebug == 0) {
+        Cookie.set('DevDebug', 1, -1);
+        result.innerHTML = '关闭调试成功';
+    } else if (Tools._GET().abc == 1) {
+        Cookie.set("UserSN", "123", -1);
+        Ajax.custom({
+            url: config.HOST_API + '/account/logout'
+        }, function() {
+            result.innerHTML = '退出登陆成功';
+            Cookie.remove('CampainId');
+            Storage.remove('AccessToken');
+            Cookie.remove('IsBind');
+        })
+        Cookie.set("hasLoad", "123", -1);
+    } else if (Tools._GET().abc == 2) {
+        Ajax.custom({
+            url: config.HOST_API + '/prize/delCache'
+        }, function() {
+            result.innerHTML = '清除缓存成功';
+        })
+    } else if (Tools._GET().abc == 3) {
+        Ajax.custom({
+            url: config.HOST_API + '/../account/login',
+            data: {
+                phone: '18790270368',
+                password: '123456'
+            },
+            type: 'POST'
+        }, function(response) {
+            Cookie.set("UserSN", response.body.memberId)
+            Cookie.set("AccessToken", response.message)
+            Storage.set("AccessToken", response.message)
+        })
+        result.innerHTML = '登录成功';
+    } else if (Tools._GET().abc == 4) {
+        Storage.remove('BuildInfo');
+        Storage.remove('buildingInfo');
+    }
+    document.getElementById('h1').href = '../index.html?t=' + new Date().getTime().toString(32);
+    </script>
+</body>
+
+</html>
+<!--

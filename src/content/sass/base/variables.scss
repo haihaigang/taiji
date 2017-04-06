@@ -1,0 +1,64 @@
+//
+// Variables
+// --------------------------------------------------
+$namespace: "mei-" !default;
+
+// Type
+// --------------------------------------------------
+$font-family-default: "PingFang SC-Regular", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif !default;
+$font-size-default: 13px !default;
+$font-weight: 500 !default;
+$font-weight-light: 400 !default;
+$line-height-default: 1.5 !default;
+
+// Colors
+// --------------------------------------------------
+
+$primary-color: #c8a565 !default;
+$secondary-color: #4c3a30 !default;
+$primary-font-color: #000 !default;
+$secondary-font-color: #909090 !default;
+$thirdary-font-color: #c7c7c7 !default;
+$primary-background-color: #f5f5f5 !default;
+$bg-cover-color: rgba(0, 0, 0, 0.47) !default;
+
+// Action colors
+$default-color: #929292 !default;
+$positive-color: #4cd964 !default;
+$negative-color: #dd524d !default;
+$warning-color: #f0ad4e !default;
+$royal-color: #8a6de9 !default;
+$grey-color: #c7c7cc !default;
+
+// Bars
+// --------------------------------------------------
+
+$bar-base-height: 44px !default;
+$bar-tab-height: 48px !default;
+$bar-side-spacing: 8px !default;
+
+//
+$bar-footer-height: 48px !default;
+
+// Buttons
+// --------------------------------------------------
+
+$button-font-size: 14px !default;
+$button-base-height: 44px !default;
+
+// Transitions
+// --------------------------------------------------
+
+$timing-fuction: cubic-bezier(0.1, 0.5, 0.1, 1) !default;
+
+// Borders
+// --------------------------------------------------
+
+$border-default: 0.01rem solid #ebebeb !default;
+$border-default-color: #ebebeb !default;
+$border-default-width: 0.01rem !default;
+$border-radius: 4px !default;
+
+// Shadow
+// --------------------------------------------------
+$shadow-default: 0 2px 4px rgba(0, 0, 0, 0.11) !default;

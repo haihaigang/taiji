@@ -1,0 +1,44 @@
+.list-group
+    background-color: #fff
+
+    .list-group-item
+        +box
+
+        padding: 0 0.08rem
+        line-height: 0.4rem
+        border-bottom: $border-default
+
+        em
+            display: inline-block
+            color: #bfbfbf
+
+        span
+            display: block
+            -webkit-box-flex: 1
+
+        i
+            display: inline-block
+            width: 0.1rem
+            background-repeat: no-repeat
+            background-position: center center
+            background-size: 0.08rem 0.13rem
+
+        &:last-child
+            border-bottom: none
+
+        &.active
+            background-color: #44e0e9
+            color: #fff
+
+        &.disabled
+            background-color: #f4f4f4
+
+    a
+        &.list-group-item
+            &:hover
+                background-color: #f4f4f4
+
+    .options
+        a
+            &:hover
+                background-color: #fff

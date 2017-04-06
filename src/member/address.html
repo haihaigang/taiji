@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>地址管理</title>
+    <!-- build:css ../content/css/taiji.min.css -->
+    <link rel="stylesheet" href="../content/css/taiji.css" />
+    <!-- endbuild -->
+    <link href="../content/mobiscroll/css/mobiscroll.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <noscript>
+        <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <section class="container">
+        <form class="address" id="tj-form">
+            <div class="items">
+                <div class="key">姓名：</div>
+                <div class="val">
+                    <input type="text" name="consigneeName" placeholder="请填写真实姓名">
+                </div>
+            </div>
+            <div class="items">
+                <div class="key">手机号：</div>
+                <div class="val">
+                    <input type="tel" name="consigneeTel" maxlength="11" placeholder="请填写手机号">
+                </div>
+            </div>
+            <div class="items userId-hide">
+                <div class="key">身份证号：</div>
+                <div class="val">
+                    <input type="text" name="consigneeCard" maxlength="18" placeholder="请填写完整正确的身份证号码以备海关核查。">
+                </div>
+            </div>
+            <div class="items">
+                <div class="key">省市区：</div>
+                <div class="val">
+                    <input type="hidden" name="province" value="" />
+                    <input type="hidden" name="city" value="" />
+                    <input type="hidden" name="district" value="" />
+                    <input type="text" id="loc_area_dummy" value="" class="" placeholder="请选择省市区" readonly="">
+                    <div id="loc_area"></div>
+                </div>
+            </div>
+            <div class="items">
+                <div class="key">详细地址：</div>
+                <div class="val">
+                    <input type="text" name="address" maxlength="80" placeholder="请填写详细地址">
+                </div>
+            </div>
+            <div class="items">
+                <div class="key">设为默认</div>
+                <div class="val is-default"><span class="iconfont active" id="set-default"><em class="on">&#xe61e;</em><em class="off">&#xe61f;</em></span></div>
+            </div>
+            <input type="hidden" name="consigneeId" />
+            <input type="hidden" name="isDefault" value="1" />
+            <div class="options">
+                <button class="btn btn-save">保存</button>
+            </div>
+        </form>
+    </section>
+    <!--自定义提示框开始-->
+    <div class="toast" id="tj-toast"><span>xxx</span></div>
+    <div class="loading" id="tj-loading">
+        <div class="loading-content">
+            <div class="s-1"></div>
+            <div class="s-2">正在加载中</div>
+        </div>
+    </div>
+    <div class="dialog" id="tj-panel">
+        <div class="dialog-content">
+            <div class="panel-content">
+                <div class="panel-cell">
+                    <h3 class="panel-title">xxx</h3>
+                    <div class="panel-text">xxx</div>
+                </div>
+            </div>
+            <div class="panel-buttons">
+                <div class="options">
+                    <a href="javascript:;" class="btn btn-default">取消</a>
+                    <a href="javascript:;" class="btn btn-primary">确定</a>
+                </div>
+                <div class="panel-tips">xxx</div>
+            </div>
+        </div>
+    </div>
+    <!--//自定义提示框结束-->
+
+    <script id="tj-area-list-tmpl" type="text/html">
+    <!--[for(i = 0; i < list.length; i++){]-->
+    <li><!--[=list[i].name]--><ul>
+    <!--[for(j = 0; j < list[i].citys.length; j++){]-->
+        <li><!--[= list[i].citys[j].name]--><ul>
+    <!--[for(k = 0; k < list[i].citys[j].districts.length; k++){]-->
+        <li><!--[= list[i].citys[j].districts[k].name]--></li>
+    <!--[}]-->
+        </ul></li>
+    <!--[}]-->
+    </ul></li>
+    <!--[}]-->
+    </script> 
+
+     
+    <!-- build:js ../content/js/lib/libs.js -->
+    <script src="../content/js/lib/zepto.min.js"></script>
+    <script src="../content/js/lib/fastclick.min.js"></script>
+    <script src="../content/js/lib/template.js"></script>
+    <!-- endbuild -->
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <script src="../content/mobiscroll/js/mobiscroll.js"></script>
+
+
+
+    <script src="../content/js/lib/region_data.js"></script>
+    <script src="../content/js/base/global.js"></script>
+    <script src="../content/js/member/address.js"></script>
+    
+    
+</body>
+</html>
+<!--

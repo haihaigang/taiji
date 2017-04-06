@@ -1,0 +1,158 @@
+.group-img #slideBox:after,
+.group-list-img:before
+    content: ""
+    width: 0.46rem
+    height: 0.46rem
+    background: #3e3e3e
+    position: absolute
+    top: 0.02rem
+    left: 0.02rem
+    border-radius: 0.4rem
+
+.group-list
+    position: relative
+    display: block
+    margin: 0 0 0.1rem
+    text-decoration: none
+    background: #fff
+    padding-bottom: 0.08rem
+    /* box-shadow: 0 0.02rem 0.04rem 0 rgba(0, 0, 0, 0.1) */
+
+.group-price
+    min-width: 61%
+    height: 0.32rem
+    float: right
+    background: $secondary-color
+    border-top-left-radius: 0.04rem
+    border-bottom-left-radius: 0.04rem
+    color: $primary-color
+    line-height: 0.32rem
+    position: relative
+
+    &:before
+        content: ""
+        top: -0.05rem
+        left: 0.3rem
+        border-left: 0.05rem solid transparent
+        border-right: 0.05rem solid transparent
+        border-bottom: 0.05rem solid #3c2e25
+        position: absolute
+
+    .joinNums
+        line-height: 1.5
+        font-size: 0.08rem
+        text-align: left
+        padding-top: 0.04rem
+        color: #fff
+
+        div
+            margin-top: 0.02rem
+
+    span
+        padding: 0.02rem 0.06rem
+        background: rgba(255, 255, 255, 0.09)
+        border-radius: 0.04rem
+        position: relative
+
+    .btn
+        background-image: url(../images/home/rectangle.png)
+        background-position: 0 0
+        background-repeat: no-repeat
+        background-size: cover
+        text-align: center
+        width: 0.72rem
+        position: relative
+        color: #fff
+
+        &.sale-out
+            background-image: url(../images/home/rectangleout.png)
+
+.group-price-info
+    margin: 0 0.04rem
+    font-size: 0.24rem
+
+    i
+        font-size: 0.14rem
+        font-style: normal
+
+.group-img
+    position: relative
+    line-height: 1
+
+    .saleout
+        width: 0.9rem
+        height: 0.9rem
+        position: absolute
+
+        img
+            width: 100%
+
+    dl
+        width: 0.42rem
+        height: 0.42rem
+        border: 0.01rem solid #fff
+        background: #fff
+        box-shadow: 0px 0px 0px 1px $primary-color inset
+        position: absolute
+        top: 0.03rem
+        left: 0.03rem
+        border-radius: 0.41rem
+        font-size: 0.1rem
+        color: #3e3e3e
+        line-height: 1.1
+        text-align: center
+
+        dt
+            color: $primary-color
+            margin-top: 0.1rem
+
+    & > img
+        display: block
+        width: 100%
+
+    .not-started
+        position: absolute
+        right: 0
+        bottom: 0.15rem
+        background: rgba(0, 0, 0, 0.5)
+        border-radius: 0.04rem 0 0 0.04rem
+        font-size: 0.13rem
+        color: #FFFFFF
+        text-align: right
+        padding: 0.04rem 0.08rem
+
+.group-info
+    padding: 0.08rem
+
+    .title
+        font-size: 0.16rem
+        color: #000
+        overflow: hidden
+        text-overflow: ellipsis
+        display: -webkit-box
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
+        text-indent: 0.27rem
+        background-image: url(../images/example/appdownloadlogo.png)
+        background-repeat: no-repeat
+        background-position: left -0.03rem
+        background-size: auto 0.27rem
+
+    .desc
+        font-size: 0.12rem
+        color: #808080
+        line-height: 0.19rem
+        margin-top: 0.04rem
+        overflow: hidden
+        text-overflow: ellipsis
+        display: -webkit-box
+        -webkit-line-clamp: 5
+        -webkit-box-orient: vertical
+
+        &.noellipsis
+            -webkit-line-clamp: inherit
+
+    .price
+        color: $primary-color
+        font-size: 0.21rem
+        padding-left: 0.1rem

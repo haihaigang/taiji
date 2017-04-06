@@ -1,0 +1,152 @@
+.coupon
+    height: 100%
+    padding-bottom: 0px
+
+.coupon-box
+    padding: 0.08rem 0.08rem 0 0.08rem
+
+    > ul > li
+        padding: 0
+        margin-bottom: 10px
+
+        a
+            display: flex
+            position: relative
+            padding: 0.08rem 0.08rem 0.2rem 0.16rem
+            background-image: linear-gradient(135deg, #e1c48e 0%, $primary-color 100%)
+
+            +border-radius(0.04rem, 0.04rem, 0.04rem, 0, 0)
+
+            z-index: 9
+
+            .coupon-img
+                img
+                    display: block
+                    width: 0.4rem
+                    height: 0.4rem
+
+                    +border-radius(0.4rem)
+
+                    background-color: #ccc
+
+.coupon-info
+    flex: 1
+    text-align: right
+
+    h4
+        font-size: 0.21rem
+        color: #fff
+
+    p
+        padding-top: 4px
+        line-height: 18px
+        font-size: 11px
+        color: rgba(255, 255, 255, 0.5)
+
+.coupon-bar
+    position: relative
+    height: 0.34rem
+    line-height: 0.34rem
+    padding: 0 0.08rem
+    color: $primary-color
+    text-align: right
+    background-color: #fff
+
+    +border-radius(0.04rem, 0, 0, 0.04rem, 0.04rem)
+
+    &:before
+        content: ""
+        position: absolute
+        z-index: 11
+        top: -5px
+        left: 0
+        right: 0
+        height: 12px
+        line-height: 12px
+        font-size: 0
+        overflow: hidden
+        background-image: -webkit-radial-gradient(#fff 3px, transparent 4px)
+        background-image: -moz-radial-gradient(#fff 3px, transparent 4px)
+        background-image: radial-gradient(#fff 3px, transparent 4px)
+        background-size: 12px 12px
+
+.coupon-header
+    position: relative
+    height: 1.6rem
+    background: $primary-color
+
+    +box-shadow($shadow-default)
+
+    img
+        display: block
+        position: absolute
+        bottom: -0.4rem
+        height: 0.8rem
+        width: 0.8rem
+        left: 50%
+        margin-left: -0.4rem
+        border: 1px solid #fff
+
+        +border-radius(100%)
+
+.coupon .form-box
+    background: #fff
+    margin: 0 5%
+    border: 0
+
+    +box-shadow($shadow-default)
+
+    +border-radius(0.04rem, 0, 0, 0.04rem, 0.04rem)
+
+.coupon-form
+    .ipt-items
+        padding: 0.75rem 0 0.1rem 0
+
+        .val
+            width: 90%
+            margin: 0.15rem auto
+
+            > input
+                text-align: center
+                border-bottom: 1px solid #e6e6e6
+
+    .options
+        width: 82%
+        margin: 0 auto
+
+        .btn
+            &.show-coupon
+                margin-right: 0.37rem
+                color: $primary-color
+                background: #fff
+
+            &.coupon-used
+                margin-right: 0
+
+.cash-success
+    padding-top: 15px
+
+    label
+        display: block
+        font-size: 25px
+        height: 36px
+        color: #000
+        text-align: center
+        padding: 0
+
+    p.succ-tip
+        color: #4a4a4a
+        font-size: 13px
+        text-align: center
+        padding: 10px 0
+
+    .options
+        margin-top: 0.18rem
+
+.nodata.nocoupon-pic
+    display: block
+    padding-top: 1.6rem
+    width: 1.1rem
+    margin: 0.2rem auto
+    background: url(../images/member/icon_youhuiquan.png) no-repeat center center
+    background-size: 100% auto

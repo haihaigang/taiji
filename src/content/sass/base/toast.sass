@@ -1,0 +1,92 @@
+.toast
+    display: none
+    position: fixed
+    z-index: 999
+    left: 50%
+    bottom: 30%
+    text-align: center
+    opacity: 0
+    transform: translateX(-50%)
+    -webkit-transform: translateX(-50%)
+
+    span
+        display: inline-block
+        padding: 5px 14px
+        color: #fff
+        border-radius: 4px
+        background: rgba(0, 0, 0, 0.6)
+        word-wrap: break-word
+        word-break: break-all
+
+    &.show
+        -webkit-animation: toast-moving 4s linear
+        -moz-animation: toast-moving 4s linear
+        -ms-animation: toast-moving 4s linear
+        -o-animation: toast-moving 4s linear
+        animation: toast-moving 4s linear
+        transition-delay: 0s
+
+@keyframes toast-moving
+    0%
+        opacity: 0
+
+    8%
+        opacity: 1
+
+    75%
+        opacity: 1
+
+    100%
+        opacity: 0
+
+@-webkit-keyframes toast-moving
+    0%
+        opacity: 0
+
+    8%
+        opacity: 1
+
+    75%
+        opacity: 1
+
+    100%
+        opacity: 0
+
+@-moz-keyframes toast-moving
+    0%
+        opacity: 0
+
+    8%
+        opacity: 1
+
+    75%
+        opacity: 1
+
+    100%
+        opacity: 0
+
+@-o-keyframes toast-moving
+    0%
+        opacity: 0
+
+    8%
+        opacity: 1
+
+    75%
+        opacity: 1
+
+    100%
+        opacity: 0
+
+@-ms-keyframes toast-moving
+    0%
+        opacity: 0
+
+    8%
+        opacity: 1
+
+    75%
+        opacity: 1
+
+    100%
+        opacity: 0

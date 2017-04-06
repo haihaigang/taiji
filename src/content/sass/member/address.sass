@@ -1,0 +1,170 @@
+.notaddrass
+    display: none
+    width: 200px
+    margin: 0 auto
+    height: 200px
+    text-align: center
+
+    img
+        width: 100px
+        vertical-align: middle
+        margin-bottom: 0.1rem
+
+.container.address-list
+    padding-bottom: 0.45rem
+
+.addresses
+    .address-item
+        display: block
+        position: relative
+        margin-bottom: 10px
+        background-color: #fff
+
+    .address-operate
+        border-top: $border-default
+        padding: 0rem 0.08rem
+        height: 0.37rem
+        line-height: 0.37rem
+
+        .operate-fl
+            float: left
+
+            > span
+                display: inline
+
+        .icon-check
+            display: inline
+            color: $primary-color
+            font-size: 0.2rem
+            vertical-align: middle
+            margin-right: 5px
+
+        .icon-uncheck
+            display: inline
+            font-size: 0.2rem
+            vertical-align: middle
+            margin-right: 5px
+
+        .operate-fr
+            float: right
+
+        .edit-address, .delete-address
+            display: inline-block
+            cursor: pointer
+            width: 48px
+            height: 37px
+
+        .icon-shanchu
+            display: inline
+            margin-left: 4px
+
+    .address-content
+        display: block
+        padding: 0.08rem
+        position: relative
+
+        .info
+            font-size: 1em
+
+            +ellipsis(2)
+
+        em
+            margin-right: 0.08rem
+            font-size: 0.15rem
+            font-weight: bold
+
+        .def
+            color: $primary-color
+
+        .addr-type
+            width: 0.38rem
+            height: 0.18rem
+            color: $primary-color
+            position: absolute
+            top: 0.08rem
+            right: 0.08rem
+            border: 0.01rem solid $primary-color
+            text-align: center
+            line-height: 0.18rem
+            font-size: 0.12rem
+
+            +border-radius(0.18rem)
+
+            &.empty
+                border: 0.01rem dashed #9b9b9b
+
+form.address
+    .items
+        padding: 0.01rem 0.15rem
+        border-radius: 0
+        margin-bottom: 1px
+        border: none
+        background-color: #fff
+
+        .key
+            width: 0.85rem
+            color: #030303
+            font-size: 17px
+
+    .val > input
+        font-size: 15px
+
+    .is-default
+        position: relative
+        text-align: right
+
+        .iconfont
+            position: absolute
+            right: 0.08rem
+            height: 100%
+            font-size: 0.5rem
+            line-height: 0.41rem
+
+    .options
+        position: fixed
+        bottom: 0
+        width: 100%
+
+        .btn
+            +border-radius(0)
+
+    .userId-hide
+        display: none
+
+    .is-default
+        .on
+            color: $primary-color
+            display: none
+
+        .off
+            display: block
+            color: $primary-color
+
+        .active
+            .on
+                display: block
+
+            .off
+                display: none
+
+footer.footer-addresses
+    padding: 0
+
+    .options
+        .btn
+            height: 0.44rem
+            line-height: 0.44rem
+            font-size: 15px
+
+.dwwc
+    +box
+
+    .dwfl
+        &:nth-child(1)
+            max-width: 80px
+
+        &:nth-child(2)
+            +box-flex
+
+        &:nth-child(3)
+            max-width: 100px

@@ -1,0 +1,412 @@
+@charset "utf-8"
+
+//include styles
+.tags
+    font-size: 0.09rem
+    height: 0.14rem
+
+.font-small-gray
+    font-size: 0.13rem
+    color: $secondary-font-color
+
+=tagsSpan($color)
+    color: $color
+    border-color: $color
+
+.new-goods
+    +tagsSpan(#ff6400)
+
+.hot-goods
+    +tagsSpan(#ff5400)
+
+.groups-goods
+    +tagsSpan(#c1854d)
+
+.pin-goods
+    +tagsSpan(#846555)
+
+//common styles
+.goods-item
+    +flex-box
+
+    background-color: #fff
+    margin-bottom: 0.01rem
+
+    .thumb-box
+        +flex-box
+
+        +justify-center
+
+        +align-center
+
+        position: relative
+        width: 100%
+
+        .tag
+            position: absolute
+            left: 0
+            top: 0
+            height: 100%
+            width: 100%
+
+    .thumb, img
+        text-align: center
+        font-size: 0
+        height: 100%
+        width: 100%
+
+    .thumb img
+        display: block
+        height: 100%
+        width: 100%
+
+    .content
+        +flex-box
+
+        +flex-column
+
+        +justify-between
+
+        +box-sizing(border-box)
+
+        h3
+            width: 100%
+            padding-top: 0.08rem
+            height: 0.36rem
+            line-height: 0.18rem
+
+            +ellipsis(2)
+
+    .categood-tags
+        @extend .tags
+
+        +box-sizing(border-box)
+
+        span
+            +box-sizing(border-box)
+
+            +border-radius(0.02rem)
+
+            margin-right: 0.03rem
+            padding: 0.01rem 0.04rem
+            border: solid 1px
+            float: left
+            display: block
+            line-height: 0.1rem
+            margin-left: 0.003rem
+
+    .country-img
+        @extend .tags
+
+        img
+            height: 100%
+
+    .import-price
+        color: #fa3f00
+        font-size: 0.21rem
+        overflow: hidden
+        height: 0.29rem
+
+        &:first-letter
+            font-size: 0.11rem
+
+        .mktprice
+            color: $thirdary-font-color
+            font-size: 0.11rem
+
+    .thumb-empty
+        +border-radius(100%)
+
+        position: absolute
+        top: 50%
+        left: 50%
+        margin: (-0.38rem) 0 0 -0.38rem
+        width: 0.76rem
+        height: 0.76rem
+        background-color: rgba(0, 0, 0, 0.4)
+        color: #fff
+
+        dl
+            width: 100%
+            height: 0.36rem
+            margin-top: 0.2rem
+            text-align: center
+
+        dt
+            font-size: 0.14rem
+            border-bottom: solid 0.01rem #fff
+            display: inline-block
+
+        dd
+            font-size: 0.09rem
+
+.goods-quick-cart
+    position: absolute
+    right: 0
+    bottom: 0
+    width: 0.4rem
+    height: 0.4rem
+
+    span
+        position: absolute
+        right: 0.07rem
+        bottom: 0.07rem
+        background: $primary-color
+        width: 0.26rem
+        height: 0.26rem
+        line-height: 0.28rem
+        border-radius: 50%
+        text-align: center
+        color: #fff
+
+        i
+            font-size: 0.17rem
+
+    &.disabled
+        span
+            background-color: $secondary-font-color
+
+.goods-quick-cart-buttons
+    position: absolute
+    right: 0.07rem
+    bottom: 0
+    height: 0.4rem
+    line-height: 0.4rem
+    display: none
+
+    &.active
+        display: block
+
+    a
+        display: block
+        float: left
+        width: 0.26rem
+        height: 0.26rem
+        background: $primary-color
+        border-radius: 50%
+        margin-top: 0.07rem
+        position: relative
+
+        &.min
+            &:after
+                content: ""
+                height: 0.02rem
+                width: 0.12rem
+                position: absolute
+                top: 50%
+                left: 50%
+                margin-left: -0.06rem
+                background: #fff
+                margin-top: -0.01rem
+
+        &.add
+            &:after
+                content: ""
+                height: 0.02rem
+                width: 0.12rem
+                position: absolute
+                top: 50%
+                left: 50%
+                margin-left: -0.06rem
+                background: #fff
+                margin-top: -0.01rem
+
+            &:before
+                content: ""
+                height: 0.12rem
+                width: 0.02rem
+                position: absolute
+                top: 50%
+                left: 50%
+                margin-top: -0.06rem
+                background: #fff
+                margin-left: -0.01rem
+
+        &.disabled
+            background: #d8d8d8
+
+    span
+        display: block
+        float: left
+        padding: 0 0.07rem
+        font-size: 17px
+        color: $primary-color
+
+.goods-list
+    .bottom-link
+        padding-top: 0.11rem
+        width: 100%
+
+//list style
+.goods-list-list
+    .thumb-box, .thumb
+        height: 100%
+
+    .thumb img
+        height: 100%
+        width: 100%
+
+    .goods-item .content
+        height: 100%
+        -webkit-flex: 1
+        flex: 1
+        padding: 0 0.08rem
+        position: relative
+
+        del
+            display: inline
+            color: $thirdary-font-color
+            font-size: 0.11rem
+
+            i
+                display: inline
+
+        span.rebate
+            display: none
+
+//block style
+.goods-list-block
+    +flex-box
+
+    +justify-between
+
+    -webkit-flex-wrap: wrap
+    flex-wrap: wrap
+
+    .goods-item
+        width: 50%
+
+        +flex-column
+
+        +justify-between
+
+        +align-center
+
+        margin-bottom: 0.01rem
+        border-radius: 0.02rem
+        overflow: hidden
+
+        &:nth-child(2n-1)
+            width: calc(50% - 0.01rem)
+
+        .content
+            width: 100%
+            height: 0.8rem
+            padding: 0 0.08rem
+            position: relative
+
+            .categood-tags
+                display: none
+
+            .import-price
+                width: 100%
+                line-height: 0.3rem
+                overflow-x: hidden
+                padding-top: 0.03rem
+                padding-bottom: 0.05rem
+
+                span.rebate
+                    float: right
+                    font-size: 0.1rem
+                    line-height: 0.15rem
+                    width: 0.32rem
+                    text-align: center
+                    color: #fff
+                    background: $primary-color
+                    border-radius: 0.02rem
+                    margin-top: 0.07rem
+
+                em
+                    font-size: 0.11rem
+
+            .country-img
+                display: none
+
+            .goods-quick-cart
+                display: block
+
+            del
+                display: inline
+                color: $thirdary-font-color
+                font-size: 0.11rem
+
+                i
+                    display: inline
+
+//order style
+.goods-list-order
+    &.goods-list-sp
+        margin: 0
+
+    .goods-item
+        +flex-row
+
+        position: relative
+        padding: 0.08rem
+        border-bottom: $border-default
+
+        &.goods-item-sp
+            padding-bottom: 0.36rem
+            margin-bottom: 0
+
+        .content
+            -webkit-flex: 1
+            flex: 1
+
+        .thumb, .thumb img
+            width: 0.76rem
+            height: 0.76rem
+
+        .thumb
+            padding: 0.08rem 0.08rem 0.08rem 0
+
+        h3
+            height: 0.3rem
+            line-height: 0.15rem
+            font-size: 0.13rem
+
+        p
+            @extend .font-small-gray
+
+        .buy
+            +flex-box
+
+        .price
+            font-size: 0.14rem
+            -webkit-flex: 1
+            flex: 1
+            color: $primary-color
+
+            em
+                color: #4b4b4b
+                font-size: 0.12rem
+
+        .quantity
+            @extend .font-small-gray
+
+        .quantity-sp
+            position: absolute
+            bottom: 0
+            left: 0
+            width: 100%
+            height: 0.36rem
+            line-height: 0.36rem
+            font-size: 13px
+            color: #000000
+
+            span
+                float: right
+                margin-right: 0.08rem
+
+            em
+                float: left
+                margin-left: 0.08rem
+
+//media screen for IOS5
+@media screen and (min-device-width: 362px)
+    .goods-list-block .content
+        height: 1.21rem
+
+    .goods-list-list .content h3, .goods-list-block .content h3
+        padding-top: 0.04rem
+        height: 0.36rem

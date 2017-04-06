@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>我的订单</title>
+    <!-- build:css ../content/css/taiji.min.css -->
+    <link rel="stylesheet" href="../content/css/taiji.css" />
+    <!-- endbuild -->
+</head>
+
+<body class="has-footer">
+    <noscript>
+        <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <section class="container order order-detail" id="tj-detail"></section>
+    <!--自定义提示框开始-->
+    <div class="toast" id="tj-toast"><span>xxx</span></div>
+    <div class="loading" id="tj-loading">
+        <div class="loading-content">
+            <div class="s-1"></div>
+            <div class="s-2">正在加载中</div>
+        </div>
+    </div>
+    <div class="dialog" id="tj-panel">
+        <div class="dialog-content">
+            <div class="panel-content">
+                <div class="panel-cell">
+                    <h3 class="panel-title">xxx</h3>
+                    <div class="panel-text">xxx</div>
+                </div>
+            </div>
+            <div class="panel-buttons">
+                <div class="options">
+                    <a href="javascript:;" class="btn btn-default">取消</a>
+                    <a href="javascript:;" class="btn btn-primary">确定</a>
+                </div>
+                <div class="panel-tips">xxx</div>
+            </div>
+        </div>
+    </div>
+    <!--//自定义提示框结束-->
+    <!--模版开始-->
+    <script id="tj-detail-tmpl" type="text/html">
+    <div class="order-status">
+        <!--[ if(activityUrl && status != 5){]-->
+        <div class="name pin-name">
+            <span id="statusView"><!--[= $getOrderStatus(status,'detail')]--></span>
+            <a href="<!--[= activityUrl]-->">查看团详情</a>
+        </div>
+        <!--[}else{]-->
+        <div class="name">
+            <!--[= $getOrderStatus(status,'detail')]-->
+        </div>
+        <!--[}]-->
+        <div class="iconfont icon-unpay<!--[= $addClassByCondition(status==5,' active')]-->"></div>
+        <div class="iconfont icon-payover daifahuo<!--[= $addClassByCondition(status==2,' active')]-->"></div>
+        <div class="iconfont icon-payover daifahuo<!--[= $addClassByCondition(status==9,' active')]-->"></div>
+        <div class="iconfont icon-daishouhuo daishouhuo<!--[= $addClassByCondition(status==3,' active')]-->"></div>
+        <div class="iconfont icon-ordersuccess yiwancheng<!--[= $addClassByCondition(status==4,' active')]-->"></div>
+        <div class="iconfont icon-jiaoyiguanbi<!--[= $addClassByCondition(status==6,' active')]-->"></div>
+    </div>
+    <div class="delivery-time">
+        <!--[if(subOrders && subOrders.length>0){]--> 
+        <ul class="period-nums clearfix">
+            <!--[for(j = 0; j < subOrders.length; j++){]-->
+            <li class="delivery-time-item<!--[= $addClassByCondition(subOrders[j].isCurrent==1,' selected')]--><!--[= $addClassByCondition(subOrders[j].periodStatus==3,' disabled')]-->"><em><!--[= $getPeriodNums(subOrders[j].id,subOrders[j].periodStatus)]--></em><span><!--[= subOrders[j].periodStatusName]--></span><i><!--[=$formatDate(subOrders[j].periodDate,'MM/dd')]--></i>
+            </li>
+            <!--[}]-->
+        </ul>
+        <!--[}]-->
+        <div id="show-more">查看周期进度</div>
+        <div class="service">如有订单问题,请联系客服: <a href="tel:021-96928978" class="tel">021-96928978</a></div>
+    </div>
+    <!--[ if(status == 3 || (currSubOrder && currSubOrder.status == 3)){]-->
+    <div class="order-no">
+        <div class="name">物流单号</div>
+        <div class="value"><p><!--[= logistic.logisticNo]--></p></div>
+    </div>
+    <!--[}]-->
+    <div class="order-shipping" href="../member/addresses.html">
+        <div class="order-shipping-icon"><span class="iconfont icon-address"></span></div>
+        <div class="order-shipping-content" id="tj-address">
+            <p>姓名：<!--[= consignee.consigneeName]--></p>
+            <p>联系电话：<!--[= consignee.consigneeTel]--></p>
+            <!--[if(consignee.consigneeCard){]-->
+            <p>身份证号码：<!--[= consignee.consigneeCard]--></p>
+            <!--[}]-->
+            <p class="info">送达地址：<!--[= consignee.province.regionName + consignee.city.regionName + consignee.district.regionName + consignee.address]--></p>
+        </div>
+    </div>
+    <div class="order-payment">
+        <div class="name">支付方式</div>
+        <div class="value"><!--[= payment.name]--></div>
+    </div>
+    <div class="order-no">
+        <div class="name">订单编号</div>
+        <div class="value"><!--[= orderId]--></div>
+    </div>
+    <div class="goods-list goods-list-order">
+        <!--[for(j = 0; j < goods.length; j++){]-->
+        <div class="goods-item">
+            <div class="thumb"><img src="<!--[= $absImg(goods[j].thumbnailPic)]-->"></div>
+            <div class="content">
+                <h3><!--[= goods[j].name]--></h3>
+                <p><!--[= goods[j].spec]--></p>
+                <div class="buy">
+                    <div class="price">￥<!--[= $rbyFormatCurrency(goods[j].price)]--></div>
+                    <div class="quantity">数量：<!--[= goods[j].quantity]--></div>
+                </div>
+            </div>
+        </div>
+        <!--[}]-->
+    </div>
+    <ul class="list-group order-info default-ordy">
+        <!--[ if(!isActivityOrder){]-->
+            <li  class="list-group-item"><span>商品价格：</span><em>￥<!--[= $rbyFormatCurrency(total.goodsPrice)]--></em></li>
+            <li  class="list-group-item"><span>关税：</span><em>￥<!--[= $rbyFormatCurrency(total.totalTax)]--></em></li>
+            <li  class="list-group-item"><span>运费：</span><em>￥<!--[= $rbyFormatCurrency(total.totalFee)]--></em></dl>
+            <li  class="list-group-item"><span>运费减免：</span><em>-￥<!--[= $rbyFormatCurrency(total.discountFee || 0)]--></em></li>
+            <!--[if(source != 'period_buy'){]-->
+            <li  class="list-group-item"><span>优惠券优惠：</span><em>-￥<!--[= $rbyFormatCurrency(total.discountCoupon || 0)]--></em></li>
+            <!--[}]-->
+            <li  class="list-group-item"><span>满减金额：</span><em>-￥<!--[= $rbyFormatCurrency(total.discountActivity || 0)]--></em></li>
+            <li  class="list-group-item actualprice"><span>实付款：</span><em>￥<!--[= $rbyFormatCurrency(total.orderPrice)]--></em></li>
+        <!--[} else {]-->
+            <li  class="list-group-item"><span>运费：</span><em>￥<!--[= $rbyFormatCurrency(total.totalFee)]--></em></dl>
+            <li  class="list-group-item"><span>运费减免：</span><em>-￥<!--[= $rbyFormatCurrency(total.discountFee || 0)]--></em></li>
+            <!--[if(total.discountCoupon){]-->
+            <li  class="list-group-item"><span>优惠券优惠：</span><em>-￥<!--[= $rbyFormatCurrency(total.discountCoupon || 0)]--></em></li>
+            <!--[}]-->
+            <li  class="list-group-item actualprice"><span>实付款：</span><em>￥<!--[= $rbyFormatCurrency(total.orderPrice)]--></em></li>
+        <!--[}]-->
+    </ul>
+
+    <ul class="list-group order-info default-second-ordy">
+        <li  class="list-group-item"><span>订单编号：</span><em><!--[= orderId]--></em></li>
+        <li  class="list-group-item"><span>创建时间：</span><em><!--[= $formatDate(addTime,'yyyy-MM-dd hh:mm:ss')]--></em></li>
+        <!--[if(payTime){]-->
+        <li  class="list-group-item"><span>支付时间：</span><em><!--[= $formatDate(payTime,'yyyy-MM-dd hh:mm:ss')]--></em></li>
+        <!--[}]-->
+    </ul>
+
+    <div class="bottom-down pay-success-down-app" style="position: static; margin-top:.08rem;background:#fff;">
+        <a class="bottom-down-link" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.rbyair.app" target="_blank">
+            <img class="icon" src="../content/images/example/appdownloadlogo.png">
+            <dl>
+                <dt>美购-全球精品超市</dt>
+                <dd>APP下单更多优惠<img src="../content/images/example/star.png" height="10" alt=""></dd>
+            </dl>
+            <div class="bottom-down-box">
+                <div class="button">立即下载</div>
+            </div>
+        </a>
+    </div>
+    <!--[if(source == 'period_buy'){]-->
+        <!--[if(currSubOrder && currSubOrder.status == 3){]-->
+        <div class="order-fix-btn">
+            <a href="../member/order_flow.html?orderId=<!--[= currSubOrder.orderId]-->&trackId=<!--[= logistic.logisticNo]-->" class="look-logistics">
+                <p class="imb-btn black">查看物流</p>
+            </a>
+            <a class="btn confirm-btn-primary">
+                <p class="imb-btn">确认收货</p>
+            </a>
+        </div>
+        <!--[}]-->
+    <!--[}else{]-->
+        <!--[ if(status == 3){]-->
+        <div class="order-fix-btn">
+            <a href="../member/order_flow.html?orderId=<!--[= orderId]-->&trackId=<!--[= logistic.logisticNo]-->" class="look-logistics">
+                <p class="imb-btn black">查看物流</p>
+            </a>
+            <a class="btn confirm-btn-primary">
+                <p class="imb-btn">确认收货</p>
+            </a>
+        </div>
+    <!--[}]-->
+    <!--[}]-->
+    <!--[if(status == '6' || status == '4'){]-->
+    <div class="order-fix-btn">
+        <a class="delete-order">
+            <p class="imb-btn black">删除订单</p>
+        </a>
+        <!--[if(isActivityOrder == 0){]-->
+        <a class="again-buy">
+            <p class="imb-btn">再次购买</p>
+        </a>
+        <!--[}else{]-->
+        <a class="hot-activ">
+            <p class="imb-btn">热门活动</p>
+        </a>
+        <!--[}]-->
+    </div>
+    <!--[}else if(status == '5'){]-->
+    <div class="order-fix-btn">
+        <a class="btn-cancel">
+            <p class="imb-btn black">取消订单</p>
+        </a>
+        <a class="order-btn-buy">
+            <p class="imb-btn btn-primary">去支付</p>
+        </a>
+    </div>
+    <!--[}]-->
+    </script>
+    <!--//模版结束-->
+
+    <!-- build:js ../content/js/lib/libs.js -->
+    <script src="../content/js/lib/zepto.min.js"></script>
+    <script src="../content/js/lib/fastclick.min.js"></script>
+    <script src="../content/js/lib/template.js"></script>
+    <!-- endbuild -->
+    <script src="../content/js/base/global.js"></script>
+    <script src="../content/js/member/order.js"></script>
+</body>
+
+</html>
+<!--

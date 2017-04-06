@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>我的</title>
+    <!-- build:css ../content/css/taiji.min.css -->
+    <link rel="stylesheet" href="../content/css/taiji.css" />
+    <!-- endbuild -->
+</head>
+
+<body class="has-footer">
+    <noscript>
+        <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <section class="container stocks" id="tj-detail" style="display: none;">
+        <div class="me-header stocks-header">
+            <div class="me-header-content"><img id="me-avatar" src="../content/images/index-avatar.png" alt=""></div>
+            <div class="me-header-nickname">王海港</div>
+            <div class="me-header-desc">
+                <div class="me-header-desc-l">左青龙</div>
+                <div class="me-header-desc-r">右白虎</div>
+            </div>
+        </div>
+        <div class="stocks-list">
+            <div class="stocks-list-items">
+                <div class="stocks-list-items-content">
+                    <div class="thumb"><img src="http://img01.rbyair.com/53/38/5e/ee09c84495ecf4ec189db888fd35c998043.jpg@.webp" alt=""></div>
+                    <div class="content">
+                        <h3>谷类、麦类、水果类、坚果类、海藻类、花朵类、蔬菜类9种食物，吃出健康，美丽绽放</h3>
+                        <p>库存剩余<em>29</em>件</p>
+                    </div>
+                </div>
+                <div class="stocks-list-items-bar">
+                    <a href=":;" class="btn">补货</a>
+                </div>
+            </div>
+            <div class="stocks-list-items">
+                <div class="stocks-list-items-content">
+                    <div class="thumb"><img src="http://img01.rbyair.com/27/81/5c/292ee8070d95cdb6e5a4b7b0a5e4b41b06d.jpg@.webp" alt=""></div>
+                    <div class="content">
+                        <h3>谷类、麦类、水果类、坚果类、海藻类、花朵类、蔬菜类9种食物，吃出健康，美丽绽放</h3>
+                        <p>库存剩余<em>29</em>件</p>
+                    </div>
+                </div>
+                <div class="stocks-list-items-bar">
+                    <a href=":;" class="btn">补货</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--自定义提示框开始-->
+    <div class="toast" id="tj-toast"><span>xxx</span></div>
+    <div class="loading" id="tj-loading">
+        <div class="loading-content">
+            <div class="s-1"></div>
+            <div class="s-2">正在加载中</div>
+        </div>
+    </div>
+    <div class="dialog" id="tj-panel">
+        <div class="dialog-content">
+            <div class="panel-content">
+                <div class="panel-cell">
+                    <h3 class="panel-title">xxx</h3>
+                    <div class="panel-text">xxx</div>
+                </div>
+            </div>
+            <div class="panel-buttons">
+                <div class="options">
+                    <a href="javascript:;" class="btn btn-default">取消</a>
+                    <a href="javascript:;" class="btn btn-primary">确定</a>
+                </div>
+                <div class="panel-tips">xxx</div>
+            </div>
+        </div>
+    </div>
+    <!--//自定义提示框结束-->
+    <!-- build:js ../content/js/lib/libs.js -->
+    <script src="../content/js/lib/zepto.min.js"></script>
+    <script src="../content/js/lib/fastclick.min.js"></script>
+    <script src="../content/js/lib/template.js"></script>
+    <!-- endbuild -->
+    <script src="../content/js/base/global.js"></script>
+    <script src="../content/js/member/me.js"></script>
+</body>
+
+</html>

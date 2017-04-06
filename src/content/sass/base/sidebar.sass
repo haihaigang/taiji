@@ -1,0 +1,51 @@
+body
+    &.move
+        width: 100%
+        overflow-x: hidden
+
+.sidebar
+    display: none
+    position: fixed
+    z-index: 99
+    width: 100%
+    background-color: #fff
+    overflow-y: auto
+
+    +transition(all 0.2s ease-in)
+
+    &.left
+        top: 0
+        right: 0
+        bottom: 0
+
+        +transform(translateX(100%))
+
+        &.open
+            +transform(translateX(0))
+
+    &.bottom
+        right: 0
+        bottom: 0px
+
+        +transform(translateY(100%))
+
+        &.open
+            +transform(translateY(0px))
+
+    .sidebar-container
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 1.76rem
+        padding: 0 0.56rem
+        overflow-y: auto
+
+#sidebar-bg
+    display: none
+
+    +bg-cover
+
+    z-index: 89
+    height: auto
+    background-color: rgba(0, 0, 0, 0.4)

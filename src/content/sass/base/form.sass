@@ -1,0 +1,122 @@
+.options .btn:disabled,
+.options .btn.disabled
+    background-color: rgba(0, 0, 0, 0.5)
+
+form input[type="text"],
+form input[type="password"],
+form input[type="tel"]
+    width: 100%
+    border: 0
+    padding: 0.1rem 0.08rem
+    line-height: 1.5
+
+    +box-sizing(border-box)
+
+    background-color: #fff
+
+.options
+    +box
+
+    .btn
+        display: block
+        color: #fff
+        border: 0
+        height: 0.48rem
+        line-height: 0.48rem
+        font-size: 1.25em
+
+        +border-radius(5px)
+
+        background-color: $primary-color
+        background-size: 100% 100%
+        text-align: center
+
+        +box-flex
+
+        -webkit-user-select: none
+        -moz-user-select: none
+        -ms-user-select: none
+        -o-user-select: none
+        vertical-align: middle
+        outline: none
+
+        &.btn-default
+            color: #929292
+            border: 1px solid #cacaca
+            background-color: #eeeeee
+
+        span
+            display: inline-block
+            background-repeat: no-repeat
+            background-size: 0.08rem auto
+
+form
+    a
+        &.items
+            &:hover
+                background-color: #f4f4f4
+
+    .single
+        display: block
+
+        .val
+            width: 100%
+
+            +box-flex
+
+        .key
+            width: 100%
+
+    .items
+        +box
+
+        border: 1px solid #eee
+
+        +border-radius(7px)
+
+        .val
+            +box-flex
+
+        .cornor
+            display: block
+            display: inline-block
+            width: 0.09rem
+            height: 0.13rem
+            margin-top: 0.15rem
+            background-image: url(../images/icon_arrow.png)
+            background-repeat: no-repeat
+            background-position: center center
+            background-size: 100% 100%
+            -webkit-box-flex: 1
+            -moz-box-flex: 1
+            -o-box-flex: 1
+            -ms-box-flex: 1
+            box-flex: 1
+            -webkit-box-align: center
+
+        .txt
+            display: inline-block
+            line-height: 0.41rem
+
+        .key
+            display: inline-block
+            width: 4.25em
+            line-height: 0.41rem
+
+    select
+        width: 100%
+        height: 0.43rem
+        line-height: 0.33rem
+        border: 0
+        padding: 0.05rem
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
+        -ms-box-sizing: border-box
+        -o-box-sizing: border-box
+        box-sizing: border-box
+        -webkit-appearance: none
+        -moz-appearance: none
+        -o-appearance: none
+        -ms-appearance: none
+        appearance: none
+        background-color: #fff

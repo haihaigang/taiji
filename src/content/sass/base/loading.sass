@@ -1,0 +1,52 @@
+.loading
+    display: none
+
+    +bg-cover
+
+    z-index: 99
+    background: rgba(0, 0, 0, 0.1)
+
+    .loading-content
+        background: #FFFFFF
+        border-radius: 100px
+
+        +abscenter(32px, 32px)
+
+        +box-shadow(0px 0px 6px 0px rgba(0, 0, 0, 0.2))
+
+        .s-2
+            display: none
+
+        & > div
+            position: absolute
+            top: 0
+            left: 0
+            display: block
+            background-repeat: no-repeat
+            background-position: center center
+            background-size: cover
+
+        .s-1
+            top: 6px
+            left: 6px
+            width: 20px
+            height: 20px
+            background-image: url(../images/common/loading.svg)
+
+.cover-bg
+    display: none
+
+    +bg-cover
+
+    z-index: 90
+    background: rgba(0, 0, 0, 0.4)
+
+    &.dark
+        background: rgba(0, 0, 0, 0.65)
+
+.cover
+    display: none
+    position: fixed
+    z-index: 91
+    top: 50%
+    width: 100%

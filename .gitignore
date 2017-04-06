@@ -1,0 +1,10 @@
+.DS_Store
+node_modules
+.sass-cache
+**/sftp-config.json
+src/content/css/*
+src/content/js/base/*
+npm-debug.log
+dist
+.idea
+src/api/

@@ -1,0 +1,91 @@
+.dialog
+    display: none
+
+    +bg-cover
+
+    z-index: 90
+    background: rgba(0, 0, 0, 0.4)
+
+    .panel-tips
+        display: none
+        padding-top: 10px
+        color: #7a7a7a
+        text-align: center
+
+    .panel-title
+        display: none
+        font-size: 1.25em
+        padding-bottom: 10px
+
+    .panel-text
+        font-size: 14px
+        overflow: auto
+
+        img
+            margin: 0 auto
+
+    .options
+        .btn-default
+            border: none
+            border-right: 1px solid #d3d3d3
+            color: $secondary-font-color
+
+        .btn-primary
+            color: $primary-color
+
+        .btn
+            height: 0.44rem
+            line-height: 0.44rem
+
+            +box-flex
+
+            border-radius: 0
+            background-color: transparent
+            width: 50%
+
+            &:hover
+                text-decoration: none
+
+            &.disabled
+                color: #4b4b4b
+                cursor: not-allowed
+
+    .panel-content
+        display: table
+        width: 100%
+        height: 105px
+        border-bottom: 1px solid #d3d3d3
+        color: #000
+        text-align: center
+
+    .dialog-content
+        position: fixed
+        z-index: 99
+        top: 50%
+        left: 50%
+        width: 270px
+        min-height: 150px
+        margin-top: -75px
+        margin-left: -135px
+        background-color: rgba(255, 255, 255, 1)
+
+        +border-radius(8px)
+
+        +box-shadow(0px 2px 4px 0px rgba(0, 0, 0, 0.5))
+
+    .panel-cell
+        display: table-cell
+        vertical-align: middle
+        padding: 0.08rem
+
+    .panel-close
+        position: absolute
+        top: -15px
+        right: -15px
+        display: block
+        width: 35px
+        height: 35px
+        background: url(../images/icons/icon-close.png) no-repeat center center
+
+    .panel-show
+        display: block

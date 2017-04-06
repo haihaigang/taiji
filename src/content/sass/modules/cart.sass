@@ -1,0 +1,713 @@
+.cart-subtotal
+    .cart-subshow-box
+        display: block
+        top: 0
+        right: 0.01rem
+
+        em
+            float: right
+            padding: 0.12rem 0
+
+#coupon-page .item .content,
+#tj-coupon .item .content
+    +box-flex
+
+    font-size: 0.13rem
+
+.cart-coupon
+    .coupon-info-price
+        margin-left: 0.12rem
+
+        strong
+            color: $primary-color
+            font-size: 0.16rem
+            font-weight: normal
+
+    .coupon-info
+        background: #fff
+        margin-bottom: 0.08rem
+        height: 0.44rem
+        line-height: 0.44rem
+        font-size: 0.14rem
+        color: #4a4a4a
+        padding: 0
+
+        .coupon-btn
+            background: $primary-color
+            font-size: 0.13rem
+            color: #fff
+            margin: 0.09rem 0.08rem 0.09rem 0
+            height: 0.26rem
+            line-height: 0.26rem
+            text-align: center
+
+            +border-radius(0.02rem, 0.02rem, 0.02rem, 0.02rem)
+
+            width: 0.65rem
+            display: block
+            border: none
+
+            &.disabled
+                background: #c7c7cd
+
+        .coupon-tax
+            font-size: 0.11rem
+            margin-right: 0.05rem
+
+.cart-check
+    width: 0.24rem
+    padding-left: 0.12rem
+    text-align: center
+    color: #8b8b8b
+    cursor: pointer
+
+    &.checked
+        color: $secondary-color
+
+        .off
+            display: none
+
+        .on
+            display: inline-block
+
+    em
+        font-size: 0.2rem
+
+    .off
+        display: block
+
+    .on
+        display: none
+
+#coupon-page
+    & > div
+        max-height: 270px
+        overflow-y: auto
+
+    h2
+        height: 0.41rem
+        padding-left: 0.08rem
+        line-height: 0.41rem
+        font-size: 16px
+        color: #525252
+
+        +linear-gradient(#FFFFFF, #F3F3F3)
+
+        button
+            display: block
+            height: 0.41rem
+            padding: 0 0.08rem
+            line-height: 0.41rem
+            float: right
+            border: none
+            color: $primary-color
+            background-color: inherit
+
+    .item
+        border-bottom: $border-default
+
+        .cart-check
+            +box
+
+            +box-align
+
+            padding: 0.1rem
+
+            em
+                font-size: 0.24rem
+
+    .empty
+        padding: 0.07rem 0
+        text-align: center
+
+.cart
+    .cart-goods-group
+        .cart-goods-group-count
+            border-top: 0.01rem solid #f5f5f5
+            position: relative
+            padding-right: 0.08rem
+            line-height: 0.4rem
+            font-size: 0.17rem
+            text-align: right
+            color: $primary-color
+
+            em
+                font-size: 0.08rem
+
+            span
+                font-size: 0.15rem
+
+            &:after
+                content: ""
+                position: absolute
+                left: 0
+                top: -0.02rem
+                height: 0.1rem
+                background: #fff
+                width: 0.32rem
+
+    .cart-name-1
+        +box-flex
+
+        color: $secondary-color
+        font-size: 0.12rem
+
+    .cart-name
+        margin: 0 0.05rem 0 0
+        font-size: 0.11rem
+        color: $primary-color
+        height: 0.16rem
+        line-height: 0.16rem
+        padding: 0 0.03rem
+        border: 1px solid $primary-color
+        display: inline-block
+
+        +border-radius(0.01rem)
+
+        position: relative
+        top: -0.01rem
+
+    .cart-subtotal-rule
+        height: 0.22rem
+        padding: 0 0.05rem
+        line-height: 0.22rem
+        border: 1px solid $primary-color
+
+        +border-radius($border-radius)
+
+        font-size: 0.8em
+
+    .cart-total-button
+        width: 0.92rem
+        height: 0.48rem
+        font-size: 0.16rem
+        color: #fff
+        line-height: 0.25rem
+        text-align: center
+        border: none
+        background-color: $primary-color
+
+    .cart-rule-content
+        line-height: 0.18rem
+        font-size: 0.13rem
+        color: $primary-color
+
+    .cart-total
+        position: fixed
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: #fff
+
+        +box-shadow(0px -1px 2px 0px rgba(178, 178, 178, 0.5))
+
+        .cart-check
+            line-height: 0.48rem
+            height: 0.48rem
+            color: $secondary-color
+            overflow: hidden
+            padding-right: 0.05rem
+            padding-left: 0.08rem
+
+            em
+                font-size: 0.24rem
+
+        .cart-check-title
+            +box
+
+            line-height: 0.48rem
+            font-size: 0.11rem
+            color: $secondary-color
+
+        button
+            &:focus
+                outline: none
+
+    .cart-goods-item
+        +box-align
+
+        +box-pack
+
+        +box
+
+        .cart-check
+            +box
+
+            +box-align
+
+            padding: 0 0.08rem
+
+            em
+                font-size: 0.24rem
+
+        .cart-zp
+            +box
+
+            +box-align
+
+            font-size: 0.11rem
+            padding: 0 0.03rem
+            margin-left: 0.17rem
+            color: $primary-color
+            border: 1px solid $primary-color
+
+            +border-radius($border-radius)
+
+        .is-fail
+            background: #b2b2b2
+            font-size: 0.11rem
+            color: #fff
+            padding: 0.01rem 0.02rem
+            margin: 0 0.04rem 0 0.08rem
+
+            +border-radius(0.02rem)
+
+    .cart-rule-text
+        padding: 0 0.05rem
+
+        +box-flex
+
+    .icon-arrow
+        font-size: 0.2rem
+
+    .cart-ware
+        height: 0.44rem
+        line-height: 0.44rem
+        border-bottom: $border-default
+
+        +box-align
+
+        .cart-check
+            padding: 0 0.08rem
+
+            em
+                font-size: 0.24rem
+
+        .cart-subshow-box
+            +box-flex
+
+            +box-align
+
+        .cart-type-name
+            +box-flex
+
+            +box-align
+
+            font-size: 0.15rem
+            color: $secondary-color
+            padding: 0 0.08rem 0 0.32rem
+            position: relative
+            border-bottom: 0.01rem solid #f5f5f5
+
+            &:after
+                content: ""
+                position: absolute
+                left: 0
+                bottom: -0.02rem
+                height: 0.1rem
+                background: #fff
+                width: 0.32rem
+
+            img
+                width: 0.3rem
+                margin-right: 0.08rem
+                vertical-align: middle
+
+            i
+                float: right
+                font-size: 0.13rem
+                color: $secondary-color
+
+                span
+                    color: $secondary-font-color
+
+                a
+                    color: #ffaf00
+                    display: inline-block
+                    padding-right: 0.08rem
+
+    .cart-goods-type
+        line-height: 0.44rem
+        padding-left: 0.08rem
+
+        .cart-rule-1
+            display: block
+
+            +box-flex
+
+            +ellipsis
+
+            font-size: 0.13rem
+            color: $secondary-color
+
+        .cart-rule-2
+            display: block
+
+            +box-flex
+
+            +ellipsis
+
+            text-align: right
+            font-size: 0.16rem
+
+            em
+                vertical-align: middle
+                color: $secondary-color
+
+        a
+            box-sizing: border-box
+            width: 99%
+
+    .goods-qty
+        bottom: 0
+        right: 0
+        position: absolute
+
+        .goods-qty-item
+            &.active
+                display: block
+
+        .num-ipt
+            width: 0.36rem
+            height: 0.24rem
+            line-height: 0.24rem
+            border-top: 1px solid #E3E3E3
+            border-bottom: 1px solid #E3E3E3
+            color: $secondary-color
+            font-size: 0.16rem
+
+        .btn
+            padding: 0.08rem
+
+            span
+                border: 1px solid #e3e3e3
+                color: $secondary-color
+
+                +border-radius(0, 0.03rem, 0, 0, 0.03rem)
+
+                +box-shadow(none)
+
+                font-size: 0.15rem
+                line-height: 0.26rem
+                width: 0.24rem
+                height: 0.24rem
+                display: block
+                text-align: center
+
+            &.minus
+                padding-right: 0
+
+                &.active
+                    display: block
+
+            &.plus
+                padding-left: 0
+
+                span
+                    +border-radius(0, 0, 0.03rem, 0.03rem, 0)
+
+            &.disabled
+                span
+                    color: #e3e3e3
+
+    .cart-total-coupon
+        position: relative
+        width: 0.41rem
+        padding: 0 0.18rem
+        color: $primary-color
+        cursor: pointer
+
+        i
+            display: none
+            position: absolute
+            top: 0.08rem
+            right: 0.18rem
+            width: 0.06rem
+            height: 0.06rem
+
+            +border-radius(100%)
+
+            background-color: $primary-color
+
+        &.disabled
+            color: #9b9b9b
+
+        em
+            display: block
+            margin-top: -0.05rem
+            font-size: 0.3rem
+
+        &.checked
+            i
+                display: block
+
+    .cart-rule-type
+        em
+            padding: 0.02rem 0.05rem
+
+            +border-radius(0.02rem)
+
+            font-size: 0.8em
+            color: #fff
+            background-color: $primary-color
+
+    .cart-subtotal
+        border-bottom: 0.04rem solid $border-default-color
+
+        a
+            color: $default-color
+            height: 0.4rem
+            display: block
+
+            .cart-yh
+                color: $primary-color
+
+                +border-radius($border-radius)
+
+                border: 1px solid $primary-color
+                font-size: 0.12rem
+                padding: 0.02rem 0.03rem
+
+        .single
+            padding: 0rem 0.08rem 0rem 0.12rem
+            line-height: 0.4rem
+
+            .icon-arrow
+                width: 0.2rem
+                color: #4b4b4b
+                height: 0.4rem
+                display: block
+                overflow: hidden
+
+    .cart-rule
+        padding: 0.08rem 0.08rem 0.08rem 0.12rem
+        border-bottom: $border-default
+
+    .cart-box
+        margin-bottom: 0.08rem
+        background-color: #fff
+
+    .cart-total-price
+        padding-left: 0.08rem
+
+        +box-flex
+
+        div
+            font-size: 0.11rem
+            margin-right: 0.07rem
+            color: #4a4a4a
+
+        em
+            color: #9b9b9b
+
+    .all-Price
+        color: $primary-color
+        font-weight: bold
+        line-height: 0.48rem
+
+        span
+            font-size: 0.11rem
+            color: #9b9b9b
+            margin-left: 0.04rem
+            font-weight: normal
+
+    .cart-rule-cornor
+        +box
+
+        width: 0.16rem
+
+        +box-align
+
+        i
+            display: block
+            margin-top: -0.05rem
+
+    .cart-rule-button
+        padding-top: 0.1rem
+        text-align: right
+
+        button
+            width: 96px
+            height: 0.29rem
+            line-height: 0.29rem
+            border: 1px solid #8F8F8F
+
+            +border-radius(0.03rem)
+
+            letter-spacing: 0.16px
+            color: #8F8F8F
+            background-color: #fff
+
+    .goods-qty-item
+        padding: 0.08rem 0
+
+    .cart-subtotal-oldprice
+        font-size: 13px
+        color: #9B9B9B
+        line-height: 18px
+
+        span
+            margin-right: 0.07rem
+
+    .goods-item
+        position: relative
+        margin-bottom: 0
+        padding: 0.08rem 0.08rem 0.08rem 0
+
+        +box-shadow(none)
+
+        border-bottom: none
+
+        +box-flex
+
+        .thumb
+            width: 0.76rem
+            height: 0.76rem
+            padding: 0 0.08rem 0 0
+
+            img
+                +border-radius(0.02rem)
+
+                width: 100%
+                height: 100%
+
+        .content
+            height: 0.8rem
+            padding: 0
+            font-size: 0.13rem
+
+            .price1
+                font-size: 0.18rem
+                color: $secondary-color
+
+                &:first-letter
+                    font-size: 0.08rem
+
+            h3
+                height: 0.3rem
+                line-height: 0.15rem
+                margin-bottom: 0
+                font-size: 0.13rem
+                padding: 0
+
+                +ellipsis(2)
+
+                +box
+
+            .spec
+                color: #b2b2b2
+                line-height: 0.15rem
+
+    .cart-subtotal-price
+        font-size: 0.16rem
+        line-height: 0.4rem
+
+        +box-flex
+
+.cart-subshow
+    display: inline-block
+    font-size: 0.12rem
+
+    em
+        color: #9B9B9B
+
+#coupon-page .item .title,
+#tj-coupon .item .title
+    padding: 0.08rem 0
+    color: #525252
+    line-height: 0.13rem
+
+    +ellipsis(2)
+
+    +box
+
+#coupon-page .item .price,
+#tj-coupon .item .price
+    width: 0.9rem
+    line-height: 0.9rem
+    font-size: 0.25rem
+    color: $primary-color
+    text-align: center
+
+#tj-coupon
+    .item
+        background-color: #fff
+
+.has-main-nav
+    .cart
+        .cart-total
+            bottom: 0.49rem
+
+    .container
+        padding-bottom: 0.98rem
+
+#exchange-goods-page
+    .price
+        color: $primary-color
+        line-height: 0.2rem
+
+    h2
+        height: 0.44rem
+        line-height: 0.44rem
+        border-bottom: $border-default
+        background-color: #fff
+        text-align: center
+
+    .cart-check
+        position: absolute
+        top: -0.1rem
+        right: -0.1rem
+        padding: 0.1rem
+
+    .item
+        float: left
+        width: 33.33%
+        margin: 0.1rem 0
+
+    .thumb
+        position: relative
+        width: 0.9rem
+        height: 0.9rem
+        border: $border-default
+
+        img
+            display: block
+            max-width: 100%
+            max-height: 100%
+            margin: 0 auto
+
+    .content
+        // padding: .1rem 4.3% 0
+        width: 0.9rem
+        margin: 0 auto
+
+    .title
+        padding-top: 0.06rem
+        line-height: 17px
+        font-size: 0.8em
+
+        +ellipsis(2)
+
+        +box
+
+    .button
+        height: 0.48rem
+        line-height: 0.48rem
+        color: #fff
+        text-align: center
+
+        button
+            display: block
+            width: 1.3rem
+            height: 0.48rem
+            border: none
+            background-color: $primary-color
+
+        .info
+            +box-flex
+
+            background-color: #48374C
+
+#coupon-page .item .time,
+#tj-coupon .item .time
+    color: $secondary-font-color

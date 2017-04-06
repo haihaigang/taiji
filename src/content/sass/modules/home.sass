@@ -1,0 +1,120 @@
+.home-banner
+    text-align: center
+
+    img
+        display: block
+        width: 100%
+
+.home-menu
+    display: flex
+    height: 0.44rem
+    background-color: #fff
+
+    +box-shadow(0 0 4px 0 rgba(0, 0, 0, 0.1))
+
+    .home-menu-logo
+        position: relative
+        z-index: 2
+        width: 0.76rem
+
+        img
+            position: absolute
+            left: 0.08rem
+            bottom: 0.12rem
+            width: 0.6rem
+            height: 0.6rem
+            background-image: linear-gradient(-136deg, #E1C591 0%, #C8A565 100%)
+            border: 1px solid #fff
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)
+            border-radius: 4px
+
+    .home-menu-menu
+        flex: 1
+        display: flex
+        justify-content: space-around
+
+        a
+            position: relative
+            display: inline-block
+            padding: 0 0.1rem
+            line-height: 0.44rem
+            opacity: 0.7
+            font-size: 13px
+            color: rgba(200, 164, 101, 0.83)
+
+            &.active
+                opacity: 1
+                color: #c8a565
+
+                &:after
+                    content: ""
+                    position: absolute
+                    left: 0
+                    bottom: 0
+                    width: 90%
+                    height: 1px
+                    line-height: 1px
+                    background-color: #c8a565
+
+    .home-menu-qrcode
+        position: relative
+        width: 0.54rem
+
+        &:after
+            content: ""
+            position: absolute
+            top: 0.11rem
+            bottom: 0.11rem
+            width: 1px
+            background-color: rgba(0, 0, 0, 0.05)
+
+        img
+            display: block
+            width: 0.22rem
+            height: 0.22rem
+            margin: 0.11rem auto
+
+.home-list
+    padding: 0.16rem
+
+    .home-list-item
+        display: block
+        margin-bottom: 0.16rem
+        background-color: #fff
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14)
+        border-radius: 4px
+
+        .home-list-thumb
+            display: block
+            width: 100%
+
+        .home-list-content
+            padding: 0.08rem
+
+        .home-list-title
+            font-size: 0.12rem
+
+            +ellipsis(2)
+
+        .home-list-opt
+            display: flex
+            margin-top: 0.08rem
+
+        .home-list-price
+            flex: 1
+            font-size: 0.17rem
+            color: #c8a565
+
+            em
+                font-size: 0.12rem
+
+        .home-list-buy
+            width: 1rem
+            height: 0.25rem
+            line-height: 0.25rem
+            color: #f1e0c1
+            font-size: 0.12rem
+            text-align: center
+            background-image: linear-gradient(145deg, #ebc98c 0%, #c8a565 100%)
+            box-shadow: 0 0 4px 0 rgba(200, 165, 101, 0.45)
+            border-radius: 0.25rem

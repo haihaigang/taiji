@@ -1,0 +1,266 @@
+.box
+    border-top: 1px solid #f4f4f4
+    background-color: #fff
+
+    +border-radius(5px)
+
+    +box-shadow($shadow-default)
+
+header
+    position: relative
+    overflow: hidden
+    height: 0.44rem
+    line-height: 0.44rem
+    padding: 0 0.5rem
+    background: #fff
+    border-bottom: 1px solid #c8c7cc
+
+    .icon
+        position: absolute
+        right: 0
+        top: 0
+        display: inline-block
+        width: 0.5rem
+        height: 100%
+        background-position: center center
+        background-repeat: no-repeat
+        background-size: auto 0.25rem
+        text-align: center
+        color: #0072bc
+
+    .header_title
+        h3
+            display: inline-block
+            width: auto
+            font-size: 1.5em
+            font-weight: normal
+            color: #333
+            text-align: left
+
+        span
+            padding-left: 0.15rem
+            color: #333
+
+    h1
+        display: inline-block
+        width: 100%
+        font-size: 1.5em
+        font-weight: normal
+        color: #333
+        text-align: center
+
+.app
+    footer
+        &.main-nav
+            display: none
+
+footer
+    position: fixed
+    z-index: 50
+    left: 0
+    right: 0
+    bottom: 0
+
+    +box
+
+    padding: 0.08rem
+    text-align: center
+    color: #666
+    background-color: rgba(0, 0, 0, 0.25)
+
+    a
+        display: block
+
+    &.main-nav
+        height: 0.49rem
+        padding: 0
+        background: rgba(255, 255, 255, 1)
+        box-shadow: 0px -1px 2px 0px rgba(178, 178, 178, 0.5)
+
+        .iconfont
+            font-size: 0.23rem
+            line-height: 0.25rem
+
+            &.icon-bast-goods
+                position: relative
+
+                &:after
+                    background: url(../images/category/hot.png) no-repeat
+                    content: ""
+                    background-size: 18px
+                    position: absolute
+                    right: 50%
+                    width: 18px
+                    height: 20px
+                    margin-right: -35px
+                    top: 0
+
+        span
+            font-size: 0.8em
+            position: relative
+            display: block
+            line-height: 0.2rem
+
+    .options
+        width: 100%
+
+        +box-flex
+
+        .btn
+            +box-shadow($shadow-default)
+
+            font-size: 1em
+
+    .footer-item
+        display: block
+        width: 20%
+        padding-top: 0.06rem
+
+        +box-flex
+
+        color: $secondary-color
+
+        i
+            height: 0.25rem
+            margin: 0 auto
+
+        .img
+            display: none
+            height: 0.23rem
+            width: 0.3rem
+            margin: 0 auto
+
+        img
+            width: 0.18rem
+            margin-left: 0.02rem
+            position: absolute
+
+        em
+            display: none
+            width: 0.16rem
+            height: 0.16rem
+            line-height: 0.16rem
+            background: $primary-color
+            border-radius: 0.09rem
+            position: absolute
+            top: -0.27rem
+            right: 50%
+            margin-right: -0.25rem
+            color: #fff
+            border: 0.01rem solid #fff
+            font-size: 0.1rem
+
+        &.footer-item-1
+            .img
+                background-position: 2px 0
+
+        &.footer-item-2
+            .img
+                background-position: (-160px) 0
+
+        &.footer-item-3
+            .img
+                background-position: (-79px) 0px
+
+        &.footer-item-4
+            .img
+                background-position: (-243px) 0
+
+        &.footer-item-5
+            .img
+                background-position: (-322px) 0
+
+        &.active
+            color: $primary-color
+
+            &.footer-item-1
+                .img
+                    background-position: (-405px) 0
+
+            &.footer-item-2
+                .img
+                    background-position: (-568px) 0
+
+            &.footer-item-3
+                .img
+                    background-position: (-486px) 0px
+
+            &.footer-item-4
+                .img
+                    background-position: (-650px) 0
+
+            &.footer-item-5
+                .img
+                    background-position: (-729px) 0
+
+    .footer-buttons
+        .btn-2
+            color: #fff
+            background-color: rgba(0, 0, 0, 0.47)
+
+        .btn
+            position: relative
+            width: 0.48rem
+            height: 0.48rem
+            border-radius: 0.05rem
+            margin-right: 0.08rem
+            text-align: center
+            font-size: 30px
+            color: $primary-color
+            background-color: rgba(255, 255, 255, 1)
+            cursor: pointer
+
+            +box-shadow($shadow-default)
+
+            i
+                position: absolute
+                top: -0.05rem
+                width: 0.16rem
+                height: 0.16rem
+                line-height: 0.16rem
+                font-size: 10px
+                font-style: normal
+                text-align: center
+                border-radius: 50%
+                color: #fff
+                background-color: $primary-color
+
+    .footer-share
+        .btn
+            background-image: url(../images/common/color_share@2x.png)
+            background-size: 70% auto
+            background-position: center
+            background-repeat: no-repeat
+
+    .link-buttons
+        background-color: #574235
+        color: #fff
+        line-height: 0.48rem
+        border-radius: 0.04rem
+        margin-right: 0.08rem
+        padding: 0 0.08rem
+
+.has-footer
+    &.app
+        .container
+            padding-bottom: 0
+
+        footer
+            .main-nav
+                display: none
+
+    .container
+        padding-bottom: 0.5rem
+
+.no-footer
+    .container
+        padding-bottom: 0
+
+.container
+    padding-bottom: 0.64rem
+
+    +transition(transform 500ms)
+
+.clear-padding-bottom
+    .container
+        padding-bottom: 0

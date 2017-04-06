@@ -1,0 +1,102 @@
+html
+    font-size: 100px
+    background: $primary-background-color
+
+body
+    font:
+        size: $font-size-default
+        family: $font-family-default
+    line-height: $line-height-default
+    min-width: 320px
+    max-width: 480px
+    margin: 0 auto
+    background-color: $primary-background-color
+    overflow-x: hidden
+
+    +transition(transform 500ms)
+
+a
+    text-decoration: none
+    color: inherit
+
+p, ul, li, dl, dd, h1, h2, h3, h4, h5, h6
+    margin: 0
+    padding: 0
+
+h1, h2, h3, h4, h5, h6
+    font-weight: normal
+    font-size: inherit
+
+i, em
+    font-style: normal
+
+ul, li
+    list-style: none
+
+#noscript
+    width: 100%
+    margin-top: 100px
+    padding: 10px 0px
+    border-top: 1px solid #cf5702
+    color: #fff
+    text-align: center
+    background: #EA6201
+
+.dbox
+    +box
+
+.bflex
+    +box-flex
+
+.hide
+    display: none
+
+.extra
+    position: relative
+
+.hidden
+    overflow: hidden
+
+.clearfix
+    +clearfix
+
+.footer-height
+    height: 0.64rem
+
+.header-height
+    height: 0.48rem
+
+.ellipsis
+    +ellipsis(1)
+
+.empty-page-tip
+    padding-top: 50%
+    color: #cbcbcb
+    line-height: 21px
+    text-align: center
+    background-image: url(../images/common/fill.png)
+    background-repeat: no-repeat
+    background-position: center 80%
+    background-size: auto 60px
+    margin: 0 auto
+
+.shadow
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11)
+
+.text-c
+    text-align: center
+
+.text-j
+    text-align: justify
+
+.text-l
+    text-align: left
+
+.text-r
+    text-align: right
+
+.ios-tip
+    color: #fff
+    text-align: center
+    display: block
+    font-size: 20px

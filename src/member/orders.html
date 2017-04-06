@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>订单列表</title>
+    <!-- build:css ../content/css/taiji.min.css -->
+    <link rel="stylesheet" href="../content/css/taiji.css" />
+    <!-- endbuild -->
+</head>
+
+<body>
+    <noscript>
+        <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
+    </noscript>
+    <section class="container order orders">
+		<div class="order-box" id="tj-list"></div>
+        <div id="tj-empty" class="list-empty-data icon-order-empty">
+            <p class="ckout-title">您还没有待收货订单</p>
+            <span class="ckout-info">要是宝贝到手了，那就赶紧享用吧</span>
+            <a id="btn-home" href="../index.html">去逛逛</a>
+        </div>
+    </section>
+
+    <!--自定义提示框开始-->
+    <div class="toast" id="tj-toast"><span>xxx</span></div>
+    <div class="loading" id="tj-loading">
+        <div class="loading-content">
+            <div class="s-1"></div>
+            <div class="s-2">正在加载中</div>
+        </div>
+    </div>
+    <div class="dialog" id="tj-panel">
+        <div class="dialog-content">
+            <div class="panel-content">
+                <div class="panel-cell">
+                    <h3 class="panel-title">xxx</h3>
+                    <div class="panel-text">xxx</div>
+                </div>
+            </div>
+            <div class="panel-buttons">
+                <div class="options">
+                    <a href="javascript:;" class="btn btn-default">取消</a>
+                    <a href="javascript:;" class="btn btn-primary">确定</a>
+                </div>
+                <div class="panel-tips">xxx</div>
+            </div>
+        </div>
+    </div>
+    <!--//自定义提示框结束-->
+    <!--模版开始-->
+    <script id="tj-list-tmpl" type="text/html">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <!--[ if(list[i].orders.length>0){]-->
+        <!--[for(j = 0; j < list[i].orders.length; j++){]-->
+        <div class="navgate-order-item" data-oid="<!--[=list[i].orders[j].orderId]-->">
+            <div class="sub-tab">
+                <div class="icon-sub-tab clearfix">
+                    <label><!--[= list[i].orders[j].addTime]--></label>
+                    <!--[if(list[i].orders[j].source == 'period_buy'){]-->
+                    <!--[if(list[i].orders[j].status == 2 || list[i].orders[j].status == 3){]-->
+                    <span>订单进行中</span>
+                    <!--[}else{]-->
+                    <span><!--[= $getOrderStatus(list[i].orders[j].status,'detail')]--></span>
+                    <!--[}]-->
+                    <!--[}else{]-->
+                    <span><!--[= $getOrderStatus(list[i].orders[j].status,'detail')]--></span>
+                    <!--[}]-->
+                </div>
+            </div>
+            <div class="order-list">
+                <!--[for(k = 0; k < list[i].orders[j].goods.length; k++){]-->                        
+                <a class="item-bder item-col-box" href="order.html?orderId=<!--[= list[i].orders[j].orderId]-->&source=<!--[= list[i].orders[j].source]-->">
+                    <div class="item-img">
+                        <img src="<!--[= $absImg(list[i].orders[j].goods[k].thumbnailPic)]-->">
+                    </div>
+                    <div class="item-col-flex">
+                        <div class="item-info">
+                            <h3 class="title"><!--[= list[i].orders[j].goods[k].name]--></h3>
+                        </div>
+                        <div class="item-pay clearfix">
+                            <p>￥<!--[= $rbyFormatCurrency(list[i].orders[j].goods[k].price)]--><b>x<!--[= list[i].orders[j].goods[k].quantity]--></b></p>
+                        </div>		
+                    </div>				
+                </a>
+                <!--[}]-->
+                 <div class="mb dbox">
+                    <!--[if($rbyFormatCurrency(list[i].orders[j].subDiscount) >0){]-->
+                    <div class="time-tabs-item">
+                        <div class="favorable-box">
+                            <p class="total-price">总价:￥<!--[= $rbyFormatCurrency(list[i].orders[j].goodsPrice)]--></p>
+                            <p class="favorable-total-price">小计:￥<!--[= $rbyFormatCurrency(list[i].orders[j].totalPrice)]--> <span class="favoable-price">已减:￥<!--[= $rbyFormatCurrency(list[i].orders[j].subDiscount)]--></span></p>
+                        </div>
+                    </div>
+                    <!--[}else{]-->
+                        <div class="time-tabs-item">
+                            <span class="true-payed">小计:</span><span class="imb-num">￥<b><!--[= $rbyFormatCurrency(list[i].orders[j].totalPrice)]--></b></span> 
+                        </div>
+                    <!--[}]-->
+                    <div class="imb-btn-box">
+                        <a class="imb-btn btn-pay" data-oid="<!--[= list[i].orders[j].orderId]-->" href="order.html?orderId=<!--[= list[i].orders[j].orderId]-->&source=<!--[= list[i].orders[j].source]-->"><!--[= $getOrderStatus(list[i].orders[j].status,'neworder')]--></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--[}}}]-->
+    </script>
+    <!--//模版结束-->
+
+    <!-- build:js ../content/js/lib/libs.js -->
+    <script src="../content/js/lib/zepto.min.js"></script>
+    <script src="../content/js/lib/fastclick.min.js"></script>
+    <script src="../content/js/lib/template.js"></script>
+    <!-- endbuild -->
+    <script src="../content/js/base/global.js"></script>
+    <script src="../content/js/member/orders.js"></script>
+</body>
+
+</html>

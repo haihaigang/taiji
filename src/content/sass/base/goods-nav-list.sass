@@ -1,0 +1,231 @@
+@charset "utf-8"
+
+.cate-banner
+    display: none
+    padding-top: 0.04rem
+    margin-bottom: 0.04rem
+    img
+        display: block
+        width: 100%
+        border-radius: 0.02rem
+
+.sidebar
+    .btn-cart
+        position: absolute
+        left: 0.08rem
+        top: -0.65rem
+        width: 0.48rem
+        height: 0.48rem
+        border-radius: 0.05rem
+        margin-right: 0.08rem
+        text-align: center
+        font-size: 30px
+        color: #fff
+        background-color: rgba(0, 0, 0, 0.47)
+
+        i
+            position: absolute
+            top: -0.05rem
+            width: 0.16rem
+            height: 0.16rem
+            line-height: 0.16rem
+            font-size: 10px
+            font-style: normal
+            text-align: center
+            border-radius: 50%
+            background-color: $primary-color
+
+.cate-hot
+    background: url(../images/category/classification_hot.png) 0 0 no-repeat
+    background-size: 0.29rem 0.32rem
+
+.goods-content
+    display: -webkit-box
+    display: -moz-box
+    display: -o-box
+    display: -ms-box
+    display: box
+
+.goods-qty
+    display: -webkit-box
+    display: -moz-box
+    display: -o-box
+    display: -ms-box
+    display: box
+    position: absolute
+    bottom: 0.04rem
+    right: 0.04rem
+
+    &.hide
+        display: none
+
+    .num-ipt
+        width: 0.23rem
+        height: 0.36rem
+        line-height: 0.4rem
+        overflow: hidden
+        text-align: center
+        font-size: 0.12rem
+        color: $secondary-color
+
+
+.goods-cart-btn
+    display: block
+    padding: 0.1rem 0.08rem
+    cursor: pointer
+
+    span
+        display: block
+        width: 0.21rem
+        height: 0.21rem
+        line-height: 0.21rem
+        font-size: 0.14rem
+        text-align: center
+        color: $primary-color
+        border-radius: 50%
+
+    &.minus
+        span
+            background: url(../images/activity/icon_cart_minus.png) no-repeat 0 0
+            background-size: 100% auto
+            
+        &.active
+            display: block
+
+    &.plus span
+        background: url(../images/activity/icon_cart_add.png) no-repeat 0 0
+        background-size: 100% auto
+
+    &.disabled span
+        background: #9c9c9c
+
+    &.disabled 
+        .minus span
+            background: url(../images/activity/icon_cart_minus_gray.png) no-repeat 0 0
+            background-size: 100% auto
+        .plus span
+            background: url(../images/activity/icon_cart_add_gray.png) no-repeat 0 0
+            background-size: 100% auto
+
+.goods-nav
+    position: fixed
+    top: 0
+    bottom: 0.64rem
+    width: 0.8rem
+    background-color: #f1f1f1
+    overflow-y: auto
+
+    &.single
+        display: none
+
+    a
+        display: block
+        height: 0.54rem
+        line-height: 0.54rem
+        text-align: center
+        overflow: hidden
+        border-bottom: 1px solid #ccc
+        cursor: pointer
+
+        &.active
+            color: $primary-color
+            background-color: #fff
+            border-bottom: 1px solid $primary-color
+
+
+
+
+
+.mini-cart-goods-item
+    display: -webkit-box
+    display: -moz-box
+    display: -o-box
+    display: -ms-box
+    display: box
+    height: 0.4rem
+    line-height: 0.4rem
+    margin-bottom: 1px
+    background-color: #fff
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11)
+
+    .goods-qty
+        position: inherit
+
+    .goods-qty
+        .btn
+            span
+                margin-top: 0.04rem
+
+    .name
+        padding-left: 0.1rem
+        -webkit-box-flex: 1
+        -moz-box-flex: 1
+        -o-box-flex: 1
+        -ms-box-flex: 1
+        box-flex: 1
+        text-overflow: ellipsis
+        overflow: hidden
+        white-space: nowrap
+
+        em
+            color: $primary-color
+
+        &:before
+            content: "•"
+            color: $primary-color
+            padding-right: 0.08rem
+
+    .price
+        color: $primary-color
+
+.cate-goods-r
+    margin-left: 0.8rem
+    -webkit-box-flex: 1
+    -moz-box-flex: 1
+    -o-box-flex: 1
+    -ms-box-flex: 1
+    box-flex: 1
+    box-shadow: none
+    padding-left: 0.04rem
+    padding-right:  0.04rem
+
+.mini-cart-goods
+    max-height: 225px
+    padding-bottom: 0.4rem
+    overflow-y: auto
+    color: #959595
+    background-color: #fff
+
+    &:before
+        content: ""
+        position: absolute
+        top: -0.08rem
+        left: 0.24rem
+        border-bottom: 0.08rem solid #fff
+        border-left: 0.08rem solid transparent
+        border-right: 0.08rem solid transparent
+
+.mini-cart-count
+    display: -webkit-box
+    display: -moz-box
+    display: -o-box
+    display: -ms-box
+    display: box
+    margin-bottom: 1px
+    padding: 0 0.08rem
+    line-height: 0.4rem
+    font-size: 1.1em
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.11)
+
+    .value
+        -webkit-box-flex: 1
+        -moz-box-flex: 1
+        -o-box-flex: 1
+        -ms-box-flex: 1
+        box-flex: 1
+        text-align: right
+        color: $secondary-font-color
+
+#mini-cart-page
+    background-color: transparent
+    overflow-y: initial

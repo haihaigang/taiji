@@ -1,0 +1,37 @@
+{
+    "name": "taiji",
+    "description": "这是一个电商项目",
+    "main": "index.js",
+    "dependencies": {
+        "grunt": "~0.4.5"
+    },
+    "devDependencies": {
+        "grunt-contrib-clean": "~0.6.0",
+        "grunt-contrib-concat": "~0.4.0",
+        "grunt-contrib-copy": "~0.8.1",
+        "grunt-contrib-jshint": "~0.10.0",
+        "grunt-contrib-uglify": "~0.4.1",
+        "grunt-concat-css": "^0.3.1",
+        "grunt-connect-proxy": "^0.2.0",
+        "grunt-contrib-connect": "^0.11.2",
+        "grunt-contrib-cssmin": "^0.14.0",
+        "grunt-contrib-livereload": "^0.1.2",
+        "grunt-contrib-sass": "^1.0.0",
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-filerev": "^2.3.1",
+        "grunt-filerev-replace": "^0.1.4",
+        "grunt-html-build": "^0.5.2",
+        "grunt-usemin": "^3.1.1",
+        "serve-static": "^1.11.1"
+    },
+    "scripts": {
+        "dev2": "grunt server",
+        "deploy": "grunt deploy && cp -R dist/* ../taiji-pro/"
+    },
+    "repository": {
+        "url": "http://github.com/haihaigang/taiji.git"
+    },
+    "author": "hgwang",
+    "license": "MIT",
+    "version": "0.0.1"
+}

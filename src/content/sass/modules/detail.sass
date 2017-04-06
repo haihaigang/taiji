@@ -1,0 +1,197 @@
+.detail-content
+    margin-bottom: 0.44rem
+
+    .widget-title
+        margin-top: 0.08rem
+
+.detail-product
+    position: relative
+    background-color: #fff
+
+    .detail-product-img
+        img
+            width: 100%
+            vertical-align: middle
+
+    .detail-product-msg
+        padding: 0.08rem
+
+        h2
+            width: 100%
+            color: #3c2e25
+            margin-bottom: 2px
+
+            +ellipsis(1)
+
+        h4
+            width: 100%
+            color: #b2b2b2
+
+            +ellipsis(2)
+
+        .pricebar
+            margin-top: 0.09rem
+
+        .price
+            display: inline-block
+            font-size: 0.17rem
+            color: #c8a565
+
+            &::first-letter
+                font-size: 0.07rem
+
+        .mktprice
+            display: inline-block
+            color: #b2b2b2
+
+            &::first-letter
+                font-size: 0.07rem
+
+.detail-intro
+    margin-top: 0.08rem
+
+    .detail-intro-title
+        font-size: 0.15rem
+        line-height: 0.41rem
+        background-color: #fff
+        text-align: center
+
+    img
+        display: inline-block
+        width: 100%
+        vertical-align: middle
+
+.detail-price
+    .price-l
+        font-weight: bold
+        font-size: 0.17rem
+
+        &::first-letter
+            font-size: 0.07rem
+
+    .price-r
+        font-weight: bold
+        font-size: 0.13rem
+
+    > del
+        font-size: 0.09rem
+
+.detail-bot
+    height: 0.3rem
+    line-height: 0.3rem
+
+.group-detail-product
+    +flex-box
+
+    +align-center
+
+    background-color: #fff
+    position: relative
+    height: 1.14rem
+
+.group-detail-img
+    padding: 0.08rem
+    width: 0.98rem
+    height: 0.98rem
+    display: inline-block
+
+.group-detail-msg
+    position: relative
+    -webkit-flex: 1
+    flex: 1
+    height: 0.98rem
+    padding: 0.08rem 0.08rem 0.08rem 0
+
+    h2
+        +ellipsis(2)
+
+        font-size: 0.15rem
+
+    .detail-price
+        position: absolute
+        bottom: 0.18rem
+        left: 0
+
+.bottom-btns
+    +flex-box
+
+    +align-center
+
+    height: 0.48rem
+    background: #ffffff
+    padding: 0
+    box-shadow: 0px -1px 2px 0px rgba(178, 178, 178, 0.5)
+
+    .home-button
+        +flex-box
+
+        +align-center
+
+        +justify-center
+
+        -webkit-flex-wrap: wrap
+        flex-wrap: wrap
+        width: 0.5rem
+        color: $primary-color
+
+        i
+            font-size: 0.24rem
+            line-height: 1
+
+        span
+            display: block
+            line-height: 1
+            margin-top: -0.02rem
+
+    .detail-btns
+        +flex-box
+
+        +align-center
+
+        +justify-center
+
+        -webkit-flex: 1
+        flex: 1
+        -webkit-flex-wrap: wrap
+        flex-wrap: wrap
+        height: 100%
+
+        li
+            +box-sizing(border-box)
+
+            +flex-box
+
+            +align-center
+
+            +justify-center
+
+            -webkit-flex: 1
+            flex: 1
+            height: 100%
+            font-size: 0.14rem
+            color: #fff
+
+            &.btn-countdown
+                background-color: #ffce00
+
+            &.btn-open
+                background: $primary-color
+
+            &.btn-buy
+                background: #574235
+
+            &.disabled
+                background-color: #d4d4d4
+
+            span
+                display: block
+                line-height: 1
+
+            em
+                font-size: 0.16rem
+                line-height: 1.5
+
+                b
+                    display: inline
+                    font-weight: normal
+                    font-size: 0.08rem

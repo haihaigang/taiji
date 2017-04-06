@@ -1,0 +1,84 @@
+.join-result-content
+    padding: 0.08rem
+
+.join-result-list
+    height: 2.31rem
+    overflow: auto
+
+.join-result
+    width: 98%
+    left: 1%
+    border-radius: 6px
+    background-color: #fff
+
+    .join-other
+        +box
+
+        height: 0.18rem
+        line-height: 0.18rem
+        font-size: 0.8em
+
+    .join-other-content
+        +box-flex
+
+        color: $secondary-font-color
+
+        em
+            font-size: 0.18rem
+            color: $primary-color
+
+    .goods-item
+        padding: 0
+        box-shadow: none
+
+        &:last-child
+            .content
+                border-bottom: none
+
+    .goods-list
+        box-shadow: none
+
+        .thumb
+            width: 1.03rem
+            height: 0.69rem
+            padding: 0.04rem 0.08rem 0.04rem 0
+
+            img
+                border-radius: 2px
+
+        .content
+            padding: 0.04rem 0
+            border-bottom: 1px solid rgba(0, 0, 0, 0.11)
+
+            h3
+                height: 0.3rem
+                margin-bottom: 0.2rem
+                line-height: 0.15rem
+                font-size: 0.8em
+                color: #686868
+
+    .join-other-more
+        padding-top: 2px
+        color: $primary-color
+
+.join-close
+    position: absolute
+    top: -0.4rem
+    right: 0
+    color: #fff
+
+    +border-radius(0.32rem)
+
+    font-size: 0.15rem
+    background: rgba(225, 225, 225, 0.69)
+    width: 0.32rem
+    height: 0.32rem
+    text-align: center
+    line-height: 0.32rem
+
+.join-result-title
+    padding: 0.15rem 0 0.1rem
+    line-height: 0.32rem
+    font-size: 1.64em
+    color: $primary-color
+    text-align: center

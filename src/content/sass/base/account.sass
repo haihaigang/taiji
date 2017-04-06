@@ -1,0 +1,163 @@
+.account dl dd input,
+.account dl div button
+    height: 0.43rem
+    line-height: 0.43rem
+    width: 100%
+    font-size: 0.15rem
+    color: #5c5c5c
+    border: none
+    outline: none
+    background: none
+    padding-left: 0.05rem
+
+#login-form
+    display: none
+
+.account
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    margin: auto
+    background: #fff
+    z-index: 91
+    max-width: 2.64rem
+    padding: 0.16rem 0.18rem 0.16rem
+    border-radius: 0.06rem
+    animation: account 0.5s ease-out
+    -webkit-animation: account 0.5s ease-out
+    -moz-animation: account 0.5s ease-out
+    -ms-animation: account 0.5s ease-out
+    -o-animation: account 0.5s ease-out
+
+    & > span
+        position: absolute
+        display: block
+        line-height: 1
+        top: 0.08rem
+        right: 0.08rem
+        color: #e3e3e3
+        font-size: 0.3rem
+
+    .backlogin
+        color: $primary-color
+        font-size: 0.15rem
+        top: 0.18rem
+        left: 0.18rem
+
+    dl
+        background: $primary-background-color
+        border-radius: 0.04rem
+        width: 2.6rem
+        height: 0.44rem
+        display: -webkit-box
+        display: -moz-box
+        display: -o-box
+        display: -ms-box
+        display: box
+        margin-bottom: 0.16rem
+
+        input
+            &::input-placeholder
+                color: #e3e3e3
+
+            &::-webkit-input-placeholder
+                color: #e3e3e3
+
+            &::-moz-input-placeholder
+                color: #e3e3e3
+
+        dt
+            width: 0.5rem
+            height: 0.22rem
+            line-height: 0.2rem
+            margin: 0.11rem 0
+            font-size: 0.2rem
+            text-align: center
+            border-right: 1px solid #e3e3e3
+            color: #E8C073
+
+        dd
+            -webkit-box-flex: 1
+            -moz-box-flex: 1
+            -o-box-flex: 1
+            -ms-box-flex: 1
+            box-flex: 1
+
+        div
+            background: #fff
+
+            button
+                width: 1rem
+                background: #BFA28B
+                border-radius: 0.04rem
+                padding-left: 0rem
+                margin-left: 0.05rem
+                font-size: 0.13rem
+                color: #fff
+
+                span
+                    font-size: 0.13rem
+
+    .login
+        background: $primary-color
+
+    .password
+        color: #BFA28B
+
+    & > div
+        display: -webkit-box
+        display: -moz-box
+        display: -o-box
+        display: -ms-box
+        display: box
+
+    img
+        line-height: 1
+        margin: 0.1rem 0
+
+    .register
+        background: #5C5C5C
+        margin-right: 0.08rem
+
+    h3
+        text-align: center
+        color: $primary-color
+        font-size: 0.2rem
+
+        p
+            line-height: 1
+            margin: 0 auto 0.16rem
+
+    .code
+        color: #5C5C5C
+
+    .btn
+        &.disabled
+            background: #C6C6C6
+
+#register-form
+    display: none
+
+.account div span,
+.account div input
+    -webkit-box-flex: 1
+    -moz-box-flex: 1
+    -o-box-flex: 1
+    -ms-box-flex: 1
+    box-flex: 1
+    display: block
+    font-size: 0.18rem
+    color: #fff
+    border-radius: 0.02rem
+    height: 0.44rem
+    line-height: 0.44rem
+    text-align: center
+    border: none
+    padding: 0
+
+.account div span
+    margin-right: 0.05rem
+
+.account div input
+    margin-left: 0.05rem
