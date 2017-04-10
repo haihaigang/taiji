@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" style="width: 100%;height: 100%;">
+<html lang="zh-CN">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,11 +13,11 @@
     <!-- endbuild -->
 </head>
 
-<body class="has-footer" style="width: 100%;height: 100%;">
+<body class="has-footer">
     <noscript>
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
-    <div class="container">
+    <div class="container" id="tj-detail" style="display: none;">
         <div class="detail-product">
             <div class="swiper-container detail-product-img">
                 <div class="swiper-wrapper">
@@ -79,6 +79,59 @@
         </div>
     </div>
     <!--//自定义提示框结束-->
+
+    <!--用户绑定弹框开始-->
+    <div id="sidebar-bg"></div>
+    <div class="dialog bind-dialog" id="tj-bind-dialog">
+        <div class="dialog-content">
+            <div class="panel-content">
+                <div class="panel-cell">
+                    <h3 class="panel-title">会员登记</h3>
+                    <form class="panel-input">
+                        <input type="text" name="realname" placeholder="请输入姓名">
+                        <input type="text" name="phone" placeholder="请输入联系方式">
+                    </form>
+                </div>
+            </div>
+            <div class="panel-buttons">
+                <div class="options">
+                    <a href="javascript:;" class="btn btn-primary">确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//用户绑定弹框结束-->
+
+    <!--模版开始-->
+    <script id="tj-detail-tmpl" type="text/html">
+        <div class="detail-product">
+            <div class="swiper-container detail-product-img">
+                <div class="swiper-wrapper">
+                    <!--[for(var i in images){]-->
+                    <div class="swiper-slide"><img src="<!--[= $absImg(images[i])]-->" alt=""></div>
+                    <!--[}]-->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="detail-product-msg">
+                <h2><!--[= title]--></h2>
+                <h4><!--[= subTitle]--></h4>
+                <div class="pricebar">
+                    <span class="price">￥<!--[= $formatCurrency(price)]--></span>
+                    <del class="mktprice font-gray">￥<!--[= $formatCurrency(marketPrice)]--></del>
+                    <i class="unit"><!--[= unit]--></i>
+                </div>
+            </div>
+        </div>
+        <div class="detail-intro">
+            <div class="detail-intro-title">图文详情</div>
+            <div class="detail-intro-content">
+                <img src="http://img01.rbyair.com/20170327/745de981-302b-4b88-a40d-f9d26fc89ad1.jpg@.webp" data-src="http://img01.rbyair.com/20170327/745de981-302b-4b88-a40d-f9d26fc89ad1.jpg@.webp" alt="" class="loaded">
+            </div>
+        </div>
+    </script>
+    <!--//模版结束-->
+
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <!-- build:js content/js/lib/libs.js -->
     <script src="content/js/lib/zepto.min.js"></script>

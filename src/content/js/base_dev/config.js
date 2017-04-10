@@ -14,7 +14,7 @@
         SHARE_HOST: location.protocol + '//' + location.host, //分享链接前缀，完整地址
         DEF_IMG_URL: '../content/images/common/default.png', //默认图片
         OAUTHURL: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE&connect_redirect=1#wechat_redirect", //微信授权跳转地址
-        APPID: "wxc6e2d0540bf45180", //微信appId，正式（皇家空港）
+        APPID: "wx9c0b5913dd495352", //微信appId，正式（皇家空港）
         RATIO_OF_MAINPIC: 640 / 480, //商品图片的宽高比
         RATIO_OF_ADPIC: 2 / 1, //广告图片的宽高比
         RATIO_OF_MAINBANNER: 2 / 1, //首页图片的宽高比
@@ -62,7 +62,7 @@
         config.IS_DEBUG = IS_DEBUG;
     }
 
-    if ('VERSION' in window){
+    if ('VERSION' in window) {
         config.VERSION = VERSION;
     }
 
@@ -81,7 +81,7 @@
 
     if (config.IS_DEBUG) {
         //配置测试相关信息，只有开启调试模式或者是通过wx.rbyair.com域名访问使用该配置
-        config.APPID = "wx457594644bbb9ac8"; //微信appId，测试（美购皇家空港跨境购）
+        config.APPID = "wx9c0b5913dd495352"; //微信appId，测试（美购皇家空港跨境购）
         config.SHARE_HOSTS = ['http://wx.rbyair.com'];
         config.BAIDU_ID = 'b9a810f993975be7beb26c5482351888'; //百度统计，测试
         config.IOS_VERSION = '9.9.9'; //设置不存在的版本号，忽略隐藏
@@ -143,359 +143,16 @@
         '7': '转单'
     };
 
-    // 用户角色userRole，非团员0、团长1、团员2
-    // 活动状态actStatus，未开始0、已开始1、已结束2、已售罄3
-    // 开团状态groupStatus，未开团0、组团中（开团成功、参团成功）1、组团成功2、组团失败3
-    config.PIN_STATUS = {
-        1: {
-            0: {
-                title: '快来加入一起买',
-                desc: '就差你了',
-                btn: '我也要参团'
-            },
-            1: {
-                title: '开团成功',
-                desc: '快去邀请好友加入吧',
-                btn: '还差{PERSONS}人，点击分享'
-            },
-            2: {
-                title: '参团成功',
-                desc: '快去邀请好友加入吧',
-                btn: '还差{PERSONS}人，点击分享'
-            }
-        },
-        2: {
-            0: {
-                title: '来晚一步，该团已被挤爆',
-                desc: '求人不如求己，自己当团长吧！',
-                btn: '我要开团'
-            },
-            1: {
-                title: '一起买成功',
-                desc: '敬请期待快递小哥送货上门！',
-                btn: '再次开团'
-            },
-            2: {
-                title: '一起买成功',
-                desc: '敬请期待快递小哥送货上门！',
-                btn: '我要开团'
-            }
-        },
-        3: {
-            0: {
-                title: '来晚一步',
-                desc: '',
-                btn: '我要开团'
-            },
-            1: {
-                title: '只差一点点',
-                desc: '一起买失败',
-                btn: '再次开团'
-            },
-            2: {
-                title: '只差一点点',
-                desc: '一起买失败',
-                btn: '我要开团'
-            }
-        },
-        open: {
-            title: '开团成功',
-            desc: '快去邀请好友加入吧',
-            btn: '还差{PERSONS}人一起买成功'
-        },
-        join: {
-            title: '参团成功',
-            desc: '快去邀请好友加入吧',
-            btn: '还差{PERSONS}人一起买成功'
-        },
-        beforeJoin: {
-            title: '快来加入一起买',
-            desc: '就差你了',
-            btn: '我也要参团'
-        },
-        success: {
-            title: '一起买成功',
-            desc: '敬请期待快递小哥送货上门！',
-            btn: '再次开团'
-        },
-        fail: {
-            title: '只差一点点',
-            desc: '一起买失败',
-            btn: '我要开团'
-        },
-        fail: {
-            title: '只差一点点',
-            desc: '一起买失败',
-            btn: '我也开个团'
-        },
-        winner: {
-            title: '开奖成功',
-            desc: '',
-            btn: '已开奖，去首页看看'
-        },
-        end: {
-            title: '来晚一步',
-            desc: '该活动已结束',
-            btn: ''
-        }
-    };
-
-    // 用户角色userRole，非团员0、团长1、团员2
-    // 活动状态actStatus，未开始0、已开始1、已结束2、已售罄3
-    // 开团状态groupStatus，未开团0、组团中（开团成功、参团成功）1、组团成功2、组团失败3
-    config.GROUP_STATUS = {
-        1: {
-            0: {
-                title: '快来加入专题团',
-                desc: '就差你了',
-                btn: '我也要参团'
-            },
-            1: {
-                title: '开团成功',
-                desc: '快去邀请好友加入吧',
-                btn: '邀请好友'
-            },
-            2: {
-                title: '参团成功',
-                desc: '快去邀请好友加入吧',
-                btn: '邀请好友'
-            }
-        },
-        2: {
-            0: {
-                title: '来晚一步，该团已被挤爆',
-                desc: '求人不如求己，自己当团长吧！',
-                btn: '我要开团'
-            },
-            1: {
-                title: '专题团成功',
-                desc: '敬请期待快递小哥送货上门！',
-                btn: '再次开团'
-            },
-            2: {
-                title: '专题团成功',
-                desc: '敬请期待快递小哥送货上门！',
-                btn: '我要开团'
-            }
-        },
-        3: {
-            0: {
-                title: '来晚一步',
-                desc: '',
-                btn: '我要开团'
-            },
-            1: {
-                title: '只差一点点',
-                desc: '专题团失败',
-                btn: '再次开团'
-            },
-            2: {
-                title: '只差一点点',
-                desc: '专题团失败',
-                btn: '我要开团'
-            }
-        },
-        open: {
-            title: '开团成功',
-            desc: '快去邀请好友加入吧',
-            btn: '还差{PERSONS}人专题团成功'
-        },
-        join: {
-            title: '参团成功',
-            desc: '快去邀请好友加入吧',
-            btn: '还差{PERSONS}人专题团成功'
-        },
-        beforeJoin: {
-            title: '快来加入专题团',
-            desc: '就差你了',
-            btn: '我也要参团'
-        },
-        success: {
-            title: '专题团成功',
-            desc: '敬请期待快递小哥送货上门！',
-            btn: '再次开团'
-        },
-        fail: {
-            title: '只差一点点',
-            desc: '专题团失败',
-            btn: '我要开团'
-        },
-        fail: {
-            title: '只差一点点',
-            desc: '专题团失败',
-            btn: '我也开个团'
-        },
-        winner: {
-            title: '开奖成功',
-            desc: '',
-            btn: '已开奖，去首页看看'
-        },
-        end: {
-            title: '来晚一步',
-            desc: '该活动已结束',
-            btn: ''
-        }
-    };
-
-    //抽奖前的状态
-    config.CHOU_STATUS = {
-        1: {
-            0: {
-                title: '快来加入拼团吧',
-                desc: '就差你了',
-                statusMsg: '还差<em>{PERSONS}</em>人，拼团成功',
-                btn: '我也要参团'
-            },
-            1: {
-                title: '开团成功',
-                desc: '赶快招募好友加入吧',
-                statusMsg: '还差<em>{PERSONS}</em>人，拼团成功',
-                btn: '还差{PERSONS}人，点击分享'
-            },
-            2: {
-                title: '参团成功',
-                desc: '赶快招募好友加入吧',
-                statusMsg: '还差<em>{PERSONS}</em>人，拼团成功',
-                btn: '还差{PERSONS}人拼团成功'
-            }
-        },
-        2: {
-            0: {
-                title: '来晚一步，该团已被挤爆',
-                desc: '求人不如求己，自己当团长吧！',
-                statusMsg: '对于诸位大侠相助，团长感激涕零',
-                btn: '我要开团'
-            },
-            1: {
-                title: '拼团成功',
-                desc: '期待大家抽中大奖',
-                statusMsg: '对于诸位大侠相助，团长感激涕零',
-                btn: '再次开团'
-            },
-            2: {
-                title: '拼团成功',
-                desc: '期待大家抽中大奖',
-                statusMsg: '对于诸位大侠相助，团长感激涕零',
-                btn: '再次开团'
-            }
-        },
-        3: {
-            0: {
-                title: '来晚一步',
-                desc: 'APP优惠券已发放，下次努力哦~',
-                statusMsg: '拼团失败，支付款项将自动退回<br />一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '我要开团'
-            },
-            1: {
-                title: '只差一点点',
-                desc: 'APP优惠券已发放，下次努力哦~',
-                statusMsg: '拼团失败，支付款项将自动退回<br />一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '再次开团'
-            },
-            2: {
-                title: '只差一点点',
-                desc: 'APP优惠券已发放，下次努力哦~',
-                statusMsg: '拼团失败，支付款项将自动退回<br />一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '再次开团'
-            }
-        },
-        groupWinner: {
-            title: '恭喜团友中奖',
-            desc: '下次就是您哦～',
-            statusMsg: '',
-            btn: '查看中奖名单'
-        },
-        selfWinner: {
-            title: '恭喜您中奖啦!',
-            desc: '',
-            statusMsg: '',
-            btn: '查看中奖名单'
-        },
-        end: {
-            title: '来晚一步',
-            desc: '该活动已结束',
-            statusMsg: '',
-            btn: ''
-        },
-        drawNoGroup: {
-            title: '来晚一步',
-            desc: '该拼团活动已于{DATE}开出大奖~',
-            statusMsg: '',
-            btn: ''
-        }
-
-    };
-
-
-    //抽奖后的状态
-    config.CHOU_END_STATUS = {
-        1: {},
-        2: {
-            0: {
-                title: 'APP优惠券已发放',
-                desc: '下次努力哦~',
-                statusMsg: '本次拼团已开奖，您的支付款项将自动退回<br /> 一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '查看中奖名单'
-            },
-            1: {
-                title: '只差一点点',
-                desc: 'APP优惠券已发放，下次努力哦~',
-                statusMsg: '本次拼团已开奖，您的支付款项将自动退回<br /> 一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '查看中奖名单'
-            },
-            2: {
-                title: 'APP优惠券已发放',
-                desc: '下次努力哦~',
-                statusMsg: '本次拼团已开奖，您的支付款项将自动退回<br /> 一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '查看中奖名单'
-            }
-        },
-        3: {
-            0: {
-                title: '来晚一步',
-                desc: 'APP优惠券已发放，下次努力哦~',
-                statusMsg: '拼团失败，支付款项将自动退回<br /> 一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '查看中奖名单'
-            },
-            1: {
-                title: '只差一点点',
-                desc: 'APP优惠券已发放，下次努力哦~',
-                statusMsg: '拼团失败，支付款项将自动退回<br /> 一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '查看中奖名单'
-            },
-            2: {
-                title: 'APP优惠券已发放',
-                desc: '下次努力哦~',
-                statusMsg: '拼团失败，支付款项将自动退回<br /> 一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '查看中奖名单'
-            }
-        },
-        4: {
-            0: {
-                title: '恭喜团友中奖',
-                desc: '下次就是您哦～',
-                statusMsg: '恭喜团友中奖！您的支付款项将自动退回<br /> 一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '查看中奖名单'
-            },
-            1: {
-                title: '恭喜团友中奖',
-                desc: '下次就是您哦～',
-                statusMsg: '恭喜团友中奖！您的支付款项将自动退回<br /> 一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '查看中奖名单'
-            },
-            2: {
-                title: '恭喜团友中奖',
-                desc: '下次就是您哦～',
-                statusMsg: '恭喜团友中奖！您的支付款项将自动退回<br /> 一大波鼓励优惠券已发送至您的APP账户中',
-                btn: '查看中奖名单'
-            }
-        }
-
+    config.LEVEL = { //用户等级
+        USER: '用户',
+        MEMBER: '会员',
+        AGENT: '代理',
+        GENERAL_AGENT: '总代理'
     };
 
     //npage Id
     config.npageId = {
-        'index' : 200003,
+        'index': 200003,
         'group': 200020,
         'secondKill': 200030
     };

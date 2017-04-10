@@ -18,7 +18,7 @@
     </noscript>
     <section class="container cart">
         <div class="cart-content" id="tj-list">
-            <div class="cart-box">
+            <!-- <div class="cart-box">
                 <div class="dbox cart-ware">
                     <div class="cart-type-name">商家直发</div>
                 </div>
@@ -75,10 +75,10 @@
                         <em>￥</em>59
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="cart-total" id="tj-cart-total">
-            <div class="dbox">
+            <!-- <div class="dbox">
                 <div class="cart-check carall  checked">
                     <em class="iconfont icon-uncheck off"></em><em class="iconfont icon-check on"></em>
                 </div>
@@ -89,7 +89,7 @@
                     <p class="all-Price">合计:￥311</p>
                 </div>
                 <button class="cart-total-button"><a href="commit.html">去结算</a></button>
-            </div>
+            </div> -->
         </div>
         <div id="tj-empty" class="list-empty-data icon-cart-empty">
             <p class="ckout-title">您的购物车还是空的</p>
@@ -145,88 +145,49 @@
     <!--//自定义提示框结束-->
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
-        <!--[for(i = 0; i < list.length; i++){]-->
         <div class="cart-box">
-            <!--[if(list[i].name!=""){]-->
             <div class="dbox cart-ware">
-                <div class="cart-type-name">
-                    <!--[=list[i].name]-->
-                </div>
+                <div class="cart-type-name">太吉之源</div>
             </div>
-            <!--[}]-->
-            <!--[for(k = 0; k < list[i].data.length; k++){]-->
             <div class="cart-goods-group">
-                <!--[for(j = 0; j < list[i].data[k].goods.length; j++){]-->
+                <!--[for(i = 0; i < list.length; i++){]-->
                 <div class="cart-goods">
                     <div class="dbox cart-goods-item goods-list-list">
-                        <!--[if(list[i].data[k].goods[j].cartGoodsType == 0 || list[i].data[k].goods[j].cartGoodsType == 2){]-->
-                        <div class="cart-check<!--[= $addClassByCondition(list[i].data[k].goods[j].checked=='1',' checked')]-->" data-objident="<!--[= list[i].data[k].goods[j].objIdent]-->"><em class="iconfont icon-uncheck off"></em><em class="iconfont icon-check on"></em></div>
-                        <!--[}else if(list[i].data[k].goods[j].cartGoodsType == 1){]-->
-                        <div class="cart-zp">赠品</div>
-                        <!--[}]-->
-                        <a class="goods-item" href="../goods/goods-detail.html?productId=<!--[= list[i].data[k].goods[j].productId]-->">
-                            <div class="thumb"><img src="<!--[= $absImg(list[i].data[k].goods[j].thumbnailPic)]-->" alt=""></div>
+                        <div class="cart-check<!--[= $addClassByCondition(list[i].checked=='1',' checked')]-->" data-objident="<!--[= list[i].productId]-->"><em class="iconfont icon-uncheck off"></em><em class="iconfont icon-check on"></em></div>
+                        <a class="goods-item" href="./detail.html?id=<!--[= list[i].productId]-->">
+                            <div class="thumb"><img src="<!--[= $absImg(list[i].thumbnail)]-->" alt=""></div>
                             <div class="content">
-                                <h3><!--[= list[i].data[k].goods[j].name]--></h3>
-                                <div class="price1">￥<!--[= $rbyFormatCurrency(list[i].data[k].goods[j].price)]-->
+                                <h3><!--[= list[i].name]--></h3>
+                                <div class="price1">￥<!--[= $rbyFormatCurrency(list[i].price)]-->
                                 </div>
                             </div>
-                            <!--[if(list[i].data[k].goods[j].cartGoodsType != 1){]-->
-                            <div class="goods-qty" data-limit="<!--[= list[i].data[k].goods[j].limitNum]-->" data-objident="<!--[= list[i].data[k].goods[j].objIdent]-->">
+                            <div class="goods-qty" data-limit="99" data-objident="<!--[= list[i].productId]-->">
                                 <div class="btn minus"><span class="iconfont icon-minus"></span></div>
                                 <div class="goods-qty-item">
                                     <div class="num-ipt">
-                                        <!--[= list[i].data[k].goods[j].quantity]-->
+                                        <!--[= list[i].quantity]-->
                                     </div>
                                 </div>
-                                <div class="btn plus<!--[= $addClassByCondition(list[i].data[k].goods[j].isSaleout,' disabled')]-->"><span class="iconfont icon-plus"></span></div>
+                                <div class="btn plus<!--[= $addClassByCondition(list[i].isSaleout,' disabled')]-->"><span class="iconfont icon-plus"></span></div>
                             </div>
-                            <!--[}]-->
                         </a>
                     </div>
                 </div>
-                <!--[}]-->
                 <div class="cart-goods-group-count">
-                    <!--[if(list[i].data[k].subDiscount == 0){]-->
-                    <em>￥</em>
-                    <!--[= $rbyFormatCurrency(list[i].data[k].subTotal)]-->
-                    <!--[}else{]-->
-                    <!--[= list[i].data[k].subTotal]--><span>-</span>
-                    <!--[= list[i].data[k].subDiscount]--><span>=</span> <em>￥</em>
-                    <!--[= (list[i].data[k].subTotal - list[i].data[k].subDiscount)>0?  $rbyFormatCurrency(list[i].data[k].subTotal - list[i].data[k].subDiscount) : 0]-->
-                    <!--[}]-->
+                    <em>￥</em><!--[= $rbyFormatCurrency(list[i].subtotal)]-->
                 </div>
-            </div>
-            <!--[}]-->
-        </div>
-        <!--[}]-->
-    </script>
-    <script id="tj-exchange-goods-list-tmpl" type="text/html">
-        <!--[for(i = 0; i < list.length; i++){]-->
-        <div class="item">
-            <div class="content">
-                <div class="thumb">
-                    <img src="<!--[= $absImg(list[i].thumbnailPic)]-->" alt="" />
-                    <div class="cart-check"><em class="iconfont icon-uncheck off"></em><em class="iconfont icon-check on"></em></div>
-                </div>
-                <div class="title">
-                    <!--[= list[i].title]-->
-                </div>
-                <div class="price">￥
-                    <!--[= list[i].price]-->
-                </div>
+                <!--[}]-->
             </div>
         </div>
-        <!--[}]-->
     </script>
     <script id="tj-cart-total-tmpl" type="text/html">
         <div class="dbox">
-            <div class="cart-check carall  <!--[=totalChecked? 'checked':'']-->">
+            <div class="cart-check carall <!--[=totalChecked? 'checked':'']-->">
                 <em class="iconfont icon-uncheck off"></em><em class="iconfont icon-check on"></em>
             </div>
             <div class="cart-check-title">全选</div>
             <div class="cart-total-price">
-                <p class="all-Price">合计:￥<!--[= $rbyFormatCurrency(totalPrice)]--></p>
+                <p class="all-Price">合计:￥<!--[= $rbyFormatCurrency(subtotal)]--></p>
             </div>
             <button class="cart-total-button">去结算</button>
         </div>
@@ -240,6 +201,7 @@
     <script src="content/swiper/swiper.min.js"></script>
     <!-- endbuild -->
     <script src="content/js/base/global.js"></script>
+    <script src="content/js/modules/cart.js"></script>
 </body>
 
 </html>

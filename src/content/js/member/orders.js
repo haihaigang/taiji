@@ -13,7 +13,7 @@
             tempStatus = 10;
         }
         Ajax.paging({
-            url: config.HOST_API_APP + '/member/order/getUnpaidList',
+            url: '/members/orders',
             data: {
                 status: tempStatus || 0,
                 page: config.page,

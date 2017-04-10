@@ -72,15 +72,13 @@
                 pagingDom: '.pagination',
                 pagingMode: 'next',
                 timeKey: 'createAt',
-                key: 'body',
+                key: '-1',
                 showLoading: true,
                 logtype: 'paging',
                 emptyEle: '#tj-empty'
             };
 
         extend(options, opt);
-
-
 
         that.ajaxSend(options, function(response, textStatus, jqXHR) {
             var body = getDataWithKey(response, options.key);
@@ -295,7 +293,7 @@
         extend(options, opt);
 
         that.ajaxSend(options, function(response) {
-            if (!response.body || response.body.length == 0) {
+            if (!response || response.length == 0) {
                 if (options.showEmpty && $(options.emptyEle).length > 0) {
                     $(options.emptyEle).show();
                 }
@@ -324,6 +322,7 @@
         if (config.IS_MOCK_ON || options.isMockOn) {
             options.url = '/api' + options.url + '.json';
         }
+        options.url = '/api' + options.url;
 
         //追加坑位统计参数
         var position = Cookie.get('MeiPosition');
@@ -374,12 +373,15 @@
         }
 
         if (typeof options.contentType == undefined) {
-            options.contentType = 'application/json'
+            // options.contentType = 'application/json'
         }
         if (typeof options.processData == undefined) {
             options.processData = true;
         }
 
+        if(options.contentType == 'application/json'){
+            options.data = JSON.stringify(options.data);
+        }
 
         $.ajax({
             url: options.url,
@@ -396,42 +398,15 @@
                 that.isLoading = false;
                 delete(that.queue[queueKey]);
 
-                if (!response || (typeof response.code != 'undefined' && response.code != 0) || (response.status && response.status != 200 && response.status != 204)) {
-                    logged(options.logtype, response.message || response, options.url);
-
-                    if ((response.code && response.code == -30) || (response.status && response.status == 401)) {
-                        //若接口提示未登录，自动登录
-                        common.login();
-                        return;
-
-                    }
-                    if (typeof callbackError == 'function') {
-                        callbackError('Malformed', response);
-                    }
-                    return;
-                }
-
                 if (typeof callback == 'function') {
+                    if(!response){
+                        response = {};
+                    }
+                    response.accessToken = jqXHR.getResponseHeader('x-auth-token');
                     callback(response);
                 }
                 if (isEmpty(that.queue) && typeof that.onEnd == 'function') {
                     that.onEnd.call(this);
-                }
-
-                //在添加购物车成功之后，清除统计的记录信息
-                if (options.url.indexOf('orders/pintuans') >= 0 || options.url.indexOf('shopping/cart/commit') >= 0) {
-                    //坑位一次有效
-                    Cookie.remove('MeiPosition');
-                    Storage.remove('Rudder');
-                    // Storage.remove('AppHeader');
-                }
-                if (options.url.indexOf('shopping/cart/add') >= 0 || options.url.indexOf('carts/pintuans/') >= 0 ) {
-                    //坑位一次有效
-                    Cookie.remove('RudderPageId')
-                }
-
-                if ('MeiStat' in window) {
-                    MeiStat.tempData.push(response.body);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -440,8 +415,15 @@
                 delete(that.queue[queueKey]);
 
                 logged(options.logtype, textStatus, options.url);
+
+                if (jqXHR.status == 401) {
+                    //若接口提示未登录，自动登录
+                    common.login();
+                    return;
+                }
+
                 if (typeof callbackError == 'function') {
-                    callbackError(textStatus, {});
+                    callbackError(textStatus, JSON.parse(jqXHR.response));
                 }
 
                 if (isEmpty(that.queue) && typeof that.onEnd == 'function') {
@@ -617,6 +599,9 @@
      * @param keyStr 字符串，eg: data.body.list
      */
     function getDataWithKey(data, keyStr) {
+        if(!keyStr){
+            return data;
+        }
         if (keyStr.indexOf('.') == -1 && keyStr.indexOf('[') == -1) {
             return data[keyStr];
         }

@@ -12,14 +12,17 @@
         a
             display: flex
             position: relative
+            z-index: 9
             padding: 0.08rem 0.08rem 0.2rem 0.16rem
             background-image: linear-gradient(135deg, #e1c48e 0%, $primary-color 100%)
 
             +border-radius(0.04rem, 0.04rem, 0.04rem, 0, 0)
 
-            z-index: 9
-
             .coupon-img
+                +box
+
+                +box-align
+
                 img
                     display: block
                     width: 0.4rem
@@ -69,6 +72,13 @@
         background-image: -moz-radial-gradient(#fff 3px, transparent 4px)
         background-image: radial-gradient(#fff 3px, transparent 4px)
         background-size: 12px 12px
+
+.cover-share
+    top: 0
+    text-align: right
+
+    img
+        width: 90%
 
 .coupon-header
     position: relative

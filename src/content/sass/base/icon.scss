@@ -12,6 +12,14 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-shanchu:before {
+    content: "\e616";
+}
+
+.icon-bianji:before {
+    content: "\e615";
+}
+
 .icon-plus:before {
     content: "\e610";
 }
@@ -22,6 +30,14 @@
 
 .icon-address:before {
     content: "\e614";
+}
+
+.icon-on:before {
+    content: "\e61e";
+}
+
+.icon-off:before {
+    content: "\e61f";
 }
 
 .icon-minus:before {

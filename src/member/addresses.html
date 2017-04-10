@@ -62,21 +62,21 @@
     <script id="tj-list-tmpl" type="text/html">
     <!--[for(i = 0; i < list.length; i++){]-->
         <div class="address-item">
-            <a class="address-content" href="address.html?addressId=<!--[= list[i].consigneeId]-->" data-id="<!--[= list[i].consigneeId]-->">
-                <p><em><!--[= list[i].consigneeName]--></em><!--[= list[i].consigneeTel]--></p>
-                <p class="info"><!--[= list[i].province.regionName + list[i].city.regionName + list[i].district.regionName + list[i].address]--></p>
+            <a class="address-content" href="address.html?addressId=<!--[= list[i].id]-->" data-id="<!--[= list[i].id]-->">
+                <p><em><!--[= list[i].name]--></em><!--[= list[i].phone]--></p>
+                <p class="info"><!--[= list[i].region + list[i].address]--></p>
             </a>
             <div class="address-operate clearfix">
-                <div class="operate-fl" data-id="<!--[= list[i].consigneeId]-->" data-isdefault='<!--[= list[i].isDefault]-->'>
-                <!--[ if(list[i].isDefault == '1'){]-->
+                <div class="operate-fl" data-id="<!--[= list[i].id]-->" data-isdefault='<!--[= list[i].prior?1:0]-->'>
+                <!--[ if(list[i].prior){]-->
                     <em class="iconfont icon-check"></em><span>默认地址</span>
                 <!--[} else {]-->
                     <em class="iconfont icon-uncheck"></em><span>设为默认</span>
                 <!--[}]-->
                 </div>
                 <div class="operate-fr">
-                    <a class="edit-address" href="address.html?addressId=<!--[= list[i].consigneeId]-->" data-id="<!--[= list[i].consigneeId]-->"><em class="iconfont icon-bianji"></em><span>编辑</span></a>
-                    <div class="delete-address" data-id="<!--[= list[i].consigneeId]-->"><em class="iconfont icon-shanchu"></em><span>删除</span></div>
+                    <a class="edit-address" href="address.html?addressId=<!--[= list[i].id]-->" data-id="<!--[= list[i].id]-->"><em class="iconfont icon-bianji"></em><span>编辑</span></a>
+                    <div class="delete-address" data-id="<!--[= list[i].id]-->"><em class="iconfont icon-shanchu"></em><span>删除</span></div>
                 </div>
             </div>
         </div>

@@ -21,7 +21,7 @@
         <div class="coupon-box" id="tj-list">            
         </div>
         <div id="tj-empty" class="list-empty-data icon-coupon-empty">
-            <p class="ckout-title">您还没有待收货订单</p>
+            <p class="ckout-title">您还没有任何优惠券</p>
             <span class="ckout-info">要是宝贝到手了，那就赶紧享用吧</span>
             <a id="btn-home" href="../index.html">去逛逛</a>
         </div>	
@@ -53,28 +53,35 @@
         </div>
     </div>
     <!--//自定义提示框结束-->
+
+    <!--分享提示框开始-->
+    <div class="cover-bg" id="tj-cover-bg"></div>
+    <div class="cover cover-share" id="tj-cover-share">
+        <img src="../content/images/img-share-tips.png" alt="分享图片">
+    </div>
+    <!--//分享提示框结束-->
+
      <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
         <ul>
         <!--[for(i = 0; i < list.length; i++){]-->
-            <li>
+            <li data-id="<!--[= list[i].id]-->">
                 <a>
-                    <div class="coupon-img"><img src="../content/images/blank.png" alt="" /></div>
+                    <div class="coupon-img"><img src="../content/images/img-coupon.png" alt="" /></div>
                     <div class="coupon-info clearfix">
                         <h4><!--[= list[i].name]--></h4>
                         <p>有效期：<!--[= $formatDate(list[i].endTime)]--></p>
                     </div>
                 </a>
                 <div class="coupon-bar expire">
-                    <!--[for(var j=0;j<list[i].rule.length;j++){]-->
-                        <p><!--[= list[i].rule[j]]--></p>
-                    <!--[}]-->
+                    <p>优惠与好友共享</p>
                 </div>
             </li>
         <!--[}]-->
         </ul>
     </script>
 
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <!-- build:js ../content/js/lib/libs.js -->
     <script src="../content/js/lib/zepto.min.js"></script>
     <script src="../content/js/lib/fastclick.min.js"></script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" style="width: 100%;height: 100%;">
+<html lang="zh-CN">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,86 +19,7 @@
     </noscript>
     <section class="container commit">
         <div id="tj-detail">
-            <a class="dbox shipping" href="../member/addresses.html?type=&amp;targetId=-1&amp;from=http%3A%2F%2Flocalhost%3A8085%2Fshopping%2Fcommit.html&amp;groupId=">
-                <div class="shipping-icon address"><span class="iconfont icon-address"></span></div>
-                <div class="shipping-content" id="tj-address">
-                    <p><em>海港</em> 13641762190</p>
-                    <p class="info">上海上海市黄浦区耸人听闻
-                    </p>
-                </div>
-                <div class="shipping-content" id="tj-address-empty" style="display: none;line-height:30px;">收获地址为空</div>
-                <div class="shipping-icon"><span class="iconfont icon-arrow"></span></div>
-            </a>
-            <div class="goods-list goods-list-order" style="height: auto; margin-bottom: 8px;">
-                <div class="goods-item">
-                    <div class="thumb"><img src="../content/images/common/default.png"></div>
-                    <div class="content">
-                        <h3>【鲜果新宠，红心蜜宝】海南红心火龙果4个（单果约重280-400g）</h3>
-                        <div class="buy">
-                            <div class="price">￥ 39.90
-                            </div>
-                            <div class="quantity">数量： 1
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="goods-item">
-                    <div class="thumb"><img src="../content/images/common/default.png"></div>
-                    <div class="content">
-                        <h3>米奇拉苹果 5 斤装</h3>
-                        <div class="buy">
-                            <div class="price">￥ 54.90
-                            </div>
-                            <div class="quantity">数量： 1
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="show-more" style="display: none;">查看更多</div>
-            <div class="good-list good-payments clearfix">
-                <h3>
-            选择支付方式
-        </h3>
-                <a href="#" data-payment="wxpayjsapi" class="active ">
-                    <img src=" http://m.meigooo.com/content/resources/payment/wxpayjsapi.png">
-                    <span>
-                <strong>
-                     微信支付
-                </strong>
-                <br>
-                亿万用户的选择，更快更安全
-            </span>
-                    <i class="iconfont icon-uncheck good-payments-last"></i>
-                </a>
-                <a href="#" data-payment="ccb" class=" hidden">
-                    <img src=" http://m.meigooo.com/content/resources/payment/ccb.png">
-                    <span>
-                <strong>
-                     建行支付
-                </strong>
-                <br>
-                建设银行支付
-            </span>
-                    <i class="iconfont icon-uncheck good-payments-last"></i>
-                </a>
-            </div>
-            <ul class="list-group commit-total" id="tj-cart-total">
-                <li class="list-group-item" id="freight">
-                    <span>运费：<i class="iconfont icon-info"></i> </span>
-                    <em>￥6</em>
-                </li>
-                <li class="list-group-item"><span>小计：</span><em>￥100.80</em></li>
-            </ul>
-            <div class="commit-cart-total" id="tj-cart-footer">
-                <div class="dbox">
-                    <div class="cart-total-price">
-                        合计：￥100.80
-                    </div>
-                    <button class="cart-total-button"><a href="success.html">支付</a></button>
-                </div>
-            </div>
-            <!-- //底部导航结束 -->
+            
         </div>
         <div id="tj-empty" class="list-empty-data icon-cart-empty">
             <p class="ckout-title">您的购物车还是空的</p>
@@ -185,18 +106,67 @@
         </div>
     </div>
     <!--//支付跳转提示框结束-->
-    <!--优惠券弹框开始-->
-    <div id="sidebar-bg"></div>
-    <div class="sidebar bottom" id="coupon-page">
-        <h2>选择优惠券<button>确定</button></h2>
-        <div class="clearfix" id="tj-coupon-list">
-            <div class="empty">数据加载中……</div>
-        </div>
-    </div>
-    <!--//优惠券弹框结束-->
+    
     <!--模版开始-->
-    <script src="//hm.baidu.com/hm.js?b9a810f993975be7beb26c5482351888"></script>
     <script id="tj-detail-tmpl" type="text/html">
+        <a class="dbox shipping" href="#">
+                <div class="shipping-icon address"><span class="iconfont icon-address"></span></div>
+                <div class="shipping-content" id="tj-address">
+                    <p><em><!--[= address.name]--></em><!--[= address.phone]--></p>
+                    <p class="info"><!--[= address.region + address.address]--></p>
+                </div>
+                <div class="shipping-content" id="tj-address-empty" style="display: none;line-height:30px;">收获地址为空</div>
+                <div class="shipping-icon"><span class="iconfont icon-arrow"></span></div>
+            </a>
+            <div class="goods-list goods-list-order" style="height: auto;">
+                <!--[for(var i in items){]-->
+                <div class="goods-item">
+                    <div class="thumb"><img src="<!--[= $absImg(items[i].thumbnail)]-->"></div>
+                    <div class="content">
+                        <h3><!--[= items[i].name]--></h3>
+                        <div class="buy">
+                            <div class="price">￥<!--[= $formatCurrency(items[i].price)]--></div>
+                            <div class="quantity">数量：<!--[= items[i].quantity]--></div>
+                        </div>
+                    </div>
+                </div>
+                <!--[}]-->
+            </div>
+            <div id="show-more" style="display: none;">查看更多</div>
+            <div class="good-payments">
+                <h3>选择支付方式</h3>
+                <a class="clearfix active" href="javascript:;" data-payment="wxpayjsapi">
+                    <img src="./content/resources/payment/wxpayjsapi.png">
+                    <span><strong>微信支付</strong><br>亿万用户的选择，更快更安全</span>
+                    <i class="iconfont icon-uncheck good-payments-last"></i>
+                </a>
+            </div>
+            <div class="good-payments goods-deliverys">
+                <h3>选择配送方式</h3>
+                <a class="clearfix" href="javascript:;" data-delivery="EXPRESS">
+                    <span><strong>快递送货上门</strong><br/>快递小哥会尽快将健康送到府上</span>
+                    <i class="iconfont icon-uncheck good-payments-last"></i>
+                </a>
+                <a class="clearfix" href="javascript:;" data-delivery="INVENTORY">
+                    <span><strong>存入我的仓库</strong><br/>存入到我在公司的私人仓库，不占地方便</span>
+                    <i class="iconfont icon-uncheck good-payments-last"></i>
+                </a>
+            </div>
+            <ul class="list-group commit-total" id="tj-cart-total">
+                <li class="list-group-item" id="freight">
+                    <span>运费：<i class="iconfont icon-info"></i> </span>
+                    <em>￥<!--[= shippingFee]--></em>
+                </li>
+                <li class="list-group-item"><span>小计：</span><em>￥<!--[= subtotal]--></em></li>
+            </ul>
+            <div class="commit-cart-total" id="tj-cart-footer">
+                <div class="dbox">
+                    <div class="cart-total-price">
+                        合计：￥<!--[= total]-->
+                    </div>
+                    <button class="cart-total-button"><a href="success.html">支付</a></button>
+                </div>
+            </div>
     </script>
     <script type="text/html" id="tj-cart-total-tmpl">
         <!--[if(isRateShow == 1){]-->
@@ -228,41 +198,7 @@
         </li>
         <li class="list-group-item"><span>合计：</span><em>￥<!--[= $rbyFormatCurrency(total)]--></em></li>
     </script>
-    <script id="tj-coupon-list-tmpl" type="text/html">
-        <!--[for(i = 0; i < list.length; i++){]-->
-        <div class="dbox item">
-            <div class="price">￥
-                <!--[= $rbyFormatCurrency(list[i].price)]-->
-            </div>
-            <div class="content">
-                <div class="title">
-                    <!--[= list[i].name]-->
-                </div>
-                <div class="time">过期时间：
-                    <!--[= $formatDate(list[i].endTime,'yyyy-MM-dd')]-->
-                </div>
-            </div>
-            <div class="cart-check<!--[= $addClassByCondition(list[i].isChecked==1,' checked')]-->" data-id="<!--[= list[i].couponId]-->">
-                <em class="iconfont icon-uncheck off"></em><em class="iconfont icon-check on"></em>
-            </div>
-        </div>
-        <!--[}]-->
-    </script>
-    <script id="tj-coupon-tmpl" type="text/html">
-        <div class="dbox item">
-            <div class="price">￥
-                <!--[= $rbyFormatCurrency(price)]-->
-            </div>
-            <div class="content">
-                <div class="title">
-                    <!--[= name]-->
-                </div>
-                <div class="time">过期时间：
-                    <!--[= $formatDate(endTime,'yyyy-MM-dd')]-->
-                </div>
-            </div>
-        </div>
-    </script>
+    
     <script id="tj-cartfooter-tmpl" type="text/html">
         <div class="dbox">
             <div class="cart-total-price">
@@ -279,6 +215,7 @@
     <script src="../content/js/lib/template.js"></script>
     <!-- endbuild -->
     <script src="../content/js/base/global.js"></script>
+    <script src="../content/js/modules/commit.js"></script>
 </body>
 
 </html>

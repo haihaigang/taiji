@@ -102,7 +102,7 @@
  */
 (function() {
     var common = {},
-        $body=$("body");
+        $body = $("body");
 
 
     //获取登录的id
@@ -123,23 +123,6 @@
             code = Tools.getQueryValue('code'),
             loginForm = $('#login-form');
 
-        if (Tools.isRbyAppBrowser()) { //APP内嵌
-            Jiao.noticeIsLogout();
-            common.resetBtn && common.resetBtn();
-            return;
-        }
-
-        if (!Tools.isWeChatBrowser() && !Tools.isRbyAppBrowser() && loginForm.length > 0) { //非微信 且 非APP 且 团购详情页面
-            $('#tj-cover-bg').show();
-            loginForm.show();
-            showAccount();
-            $('.btn-add-cart').removeClass('disabled').text('我要开团');
-            return;
-        } else if (!Tools.isWeChatBrowser() && !Tools.isRbyAppBrowser()) {
-            Tools.alert('测试');
-            return;
-        }
-
         if (common.isLogining) return; //过滤多次的登录请求
 
         common.isLogining = true;
@@ -157,27 +140,25 @@
         } else {
             Cookie.set('hasLoad', '', -1); //若有登录，需清空弹出窗口的记录标志
             Ajax.custom({
-                url: config.HOST_API + '/account/autoLogin',
+                url: '/members/signin/wechat',
                 data: {
                     code: code
-                }
+                },
+                type: 'POST',
+                contentType: 'application/json'
             }, function(response) {
                 common.isLogining = false;
-                if (response.code != 0) {
-                    Tools.alert(response.message);
-                    return;
-                }
-                var o = response.body;
-                Cookie.set("AccessToken", o.accessToken, null);
-                Cookie.set("OpenId", o.openId, null);
-                Cookie.set("UserSN", o.userId, 0);
+
+                var o = response;
+                Cookie.set("UserSN", o.memberId, 0);
                 Cookie.set("IsBind", o.isBind, null);
                 Tools.alert("UserSN: " + Cookie.get("UserSN"));
                 // 存储登陆信息
-                Storage.set("AccessToken", o.ssid);
-                Storage.set('UserSN', o.openId);
+                Storage.set("AccessToken", o.accessToken);
+                Storage.set('UserSN', o.memberId);
                 location.href = Tools.removeParamFromUrl(["code"]);
-            }, function() {
+            }, function(textStatus, data) {
+                Tools.alert(data.message);
                 common.isLogining = false;
             })
         }
@@ -195,32 +176,10 @@
             } else {
                 common.login();
             }
-        } else if (Tools.isRbyAppBrowser()) {
-            //从app过来，默认设置key作为登陆识别，默认当作app的用户都是已绑定账号
-            var key = Tools._GET().key,
-                token = Tools._GET().token,
-                userToken = Tools._GET().UserToken;
-            if (key) {
-                Cookie.set('UserSN', key);
-                Storage.set('UserSN', key);
-            }
-            if (token) {
-                log('set token ' + token);
-                Cookie.set('RBYAIRID', token);
-                Storage.set('AccessToken', token);
-            } else if (userToken) {
-                Storage.set('AccessToken', userToken);
-            }
-            Cookie.set('IsBind', 1);
-            $('body').addClass('app'); //添加全局标识样式，用于区分不同环境定义不同内容
-
-            fn && fn();
         } else {
             Tools.alert('非微信浏览器');
             fn && fn();
         }
-        // 避免每次都请求,在这里全局调用
-        common.getCartNumber();
     }
 
     /**
@@ -297,12 +256,11 @@
      * @param  {[type]} sel 图片选择器  ele 滚动容器选择器 (必须有内层子元素)
      * @return {[type]}
      */
-    common.lazyloadforWindow = function(sel,ele) {
+    common.lazyloadforWindow = function(sel, ele) {
         var wh = $(window).height(), //窗口的高度
             st = 0,
-            ele_obj= $(ele),
-            ele_son_obj=ele_obj.children()
-            ; //滚动的高度
+            ele_obj = $(ele),
+            ele_son_obj = ele_obj.children(); //滚动的高度
         ele_obj.scroll(function() {
             st = ele_obj.scrollTop();
             init();
@@ -318,7 +276,7 @@
                  obj.attr("data-load",diff_time)
 
                  }*/
-                var d = obj.offset().top-ele_son_obj.offset().top,
+                var d = obj.offset().top - ele_son_obj.offset().top,
                     h = obj.height() + 8;
                 if ((d + h) >= st && d < (st + wh * 2)) {
                     obj.attr('src', obj.attr('data-src')).addClass('loaded');
@@ -358,7 +316,7 @@
     //关闭参与活动界面
     function closeResult() {
         $('#tj-cover-bg').hide();
-        $('#tj-join').hide();
+        $('.cover').hide();
     }
 
     $('.join-close').click(function(e) {
@@ -449,18 +407,18 @@
         }
     };
     //记录上次的浏览位置
-    common.historyScorll =function(){
-        var scrollTop
-        window.onscroll = function(){
-            scrollTop=$body.scrollTop();
-            Storage.set(location.pathname,scrollTop)
+    common.historyScorll = function() {
+            var scrollTop
+            window.onscroll = function() {
+                scrollTop = $body.scrollTop();
+                Storage.set(location.pathname, scrollTop)
+            }
+            return scrollTop
         }
-        return scrollTop
-    }
-    //滚动到上次的浏览位置
-    common.getHistoryScorll =function(){
-        var scroll=Storage.get(location.pathname);
-        if(!scroll) return;
+        //滚动到上次的浏览位置
+    common.getHistoryScorll = function() {
+        var scroll = Storage.get(location.pathname);
+        if (!scroll) return;
         $body.scrollTop(scroll)
         Storage.remove(location.pathname)
     }
@@ -565,12 +523,12 @@
         $window = $(window),
         btnAnimate = null, //按钮动画
         scrollAnimate = null, //滚动条滑动
-        mainContainer=null,
+        mainContainer = null,
         w_h = $window.height();
 
 
     btn.click(function(e) {
-        var obj=mainContainer?mainContainer:$window;
+        var obj = mainContainer ? mainContainer : $window;
         e.preventDefault();
         var scrollTop = obj.scrollTop(),
             temp = scrollTop;
@@ -614,8 +572,8 @@
             location.href = src;
         }
     })
-    window.setSideMain=function(obj){
-        mainContainer=obj
+    window.setSideMain = function(obj) {
+        mainContainer = obj
         obj.on("scroll", function() {
             clearTimeout(btnAnimate)
             if (obj.scrollTop() > w_h) {
@@ -630,5 +588,31 @@
                 }, 300)
             }
         })
+    }
+})();
+
+/**
+ * 绑定上级用户，只要用户从上级用户分享的链接进入都会发送请求
+ * @return
+ */
+(function() {
+    var pid = Tools._GET().referId;
+    if (pid) {
+        sendData(pid);
+    }
+
+    /**
+     * 发送请求
+     * @param pid 上级用户ID
+     * @return
+     */
+    function sendData(pid) {
+        Ajax.custom({
+            url: '/members/parent',
+            data: {
+                parentId: pid
+            },
+            type: 'POST'
+        });
     }
 })();

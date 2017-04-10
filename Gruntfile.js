@@ -297,15 +297,16 @@ module.exports = function(grunt) {
                     }
                 },
                 proxies: [{
-                    context: '/',
-                    host: 'wx.rbyair.com',
-                    host: 'm.meigooo.com',
-                    port: 80,
+                    context: '/api',
+                    host: '106.14.239.198',
+                    port: 8080,
                     https: false,
                     changeOrigin: true,
                     headers: {
-                        host: 'wx.rbyair.com',
-                        host: 'm.meigooo.com',
+                        // host: 'm.meigooo.com'
+                    },
+                    rewrite: {
+                        '^/api': '',
                     }
                 }]
             },
@@ -342,7 +343,7 @@ module.exports = function(grunt) {
     grunt.registerTask('deploy', '打包发布', function(param) {
         param = param || 'pro';
         var tasks = ['concat:allBaseInOnePro'];
-        if(param == 'dev'){
+        if (param == 'dev') {
             tasks = ['concat:allBaseInOne'];
         }
         tasks = tasks.concat([

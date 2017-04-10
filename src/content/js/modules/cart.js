@@ -1,0 +1,178 @@
+(function() {
+    var container = $('.container')
+
+    function getCart() {
+        Ajax.custom({
+            url: '/carts/items'
+        }, function(response) {
+            var data = response;
+            initCart(data);
+        })
+    }
+
+    //点击更改数量按钮
+    container.on('click', '.goods-qty .btn', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var par = $(this).parent(),
+            that = $(this),
+            numDom = par.find('.num-ipt'),
+            num = parseInt(numDom.text()),
+            objIdent = par.attr('data-objident'),
+            limitNum = par.attr('data-limit'),
+            up = "up",
+            down = "down";
+
+        curItem = par;
+        btnDom = that;
+
+        if ($(this).hasClass('plus') && limitNum <= num) {
+            Tools.showToast('该商品已达到限购数量');
+            return;
+        }
+        if ($(this).hasClass('disabled')) {
+            return;
+        }
+        $(this).addClass('disabled');
+
+        if ($(this).hasClass('plus')) {
+            num++;
+            quickChangeCart(objIdent, num, up);
+        } else if ($(this).hasClass('minus')) {
+            if (num == 1) {
+                num--;
+                Tools.showConfirm({
+                    message: '您确定将该商品移出购物车吗？',
+                    cancelText: '点错了',
+                    yesCallback: function() {
+                        removeCart(objIdent);
+                    },
+                    noCallback: resetBtn
+                });
+            } else {
+                num--;
+                quickChangeCart(objIdent, num, down);
+            }
+        }
+
+        //这里返回false取消冒泡事件
+        return false;
+
+    });
+
+    //点击结算，如果没绑定跳绑定页,否则直接进入结算页
+    container.on('click', '.cart-total-button', function() {
+
+        var goodIds = [], // 商品id
+            goodsCounts = [], // 商品数量
+            goodsPrices = [], // 商品价格
+            totalPrice = undefined, // 商品总价
+            hasChecked = true; //购物车中是否有选中的商品
+
+        if(!hasChecked){
+            Tools.showToast('请选择一个商品');
+            return;
+        }
+
+        
+        location.href = 'commit.html';
+    });
+
+    /**
+     * 修改购物车数量
+     * @param objIdent 购物车中商品的唯一标识符
+     * @param num 变更后的数量
+     * @param direction 更改方向 up增加、down减少
+     */
+    function quickChangeCart(objIdent, num, direction) {
+        Ajax.custom({
+            url: '/carts/items',
+            data: {
+                productId: objIdent,
+                quantity: num,
+                direction: direction,
+            },
+            type: 'POST',
+            contentType: 'application/json'
+        }, function(response) {
+            tempData = response;
+            initCart(response);
+        }, function(textStatus, data) {
+            Tools.showToast(data.message || '服务器异常');
+            resetBtn();
+        })
+    }
+
+    /**
+     * 删除购物车条目
+     * @param objIdent 购物车中商品的唯一标识符
+     */
+    function removeCart(objIdent) {
+        Ajax.custom({
+            url: '/carts/items/remove',
+            data: {
+                productId: objIdent
+            },
+            type: 'POST',
+            contentType: 'application/json'
+        }, function(response) {
+            var data = response;
+
+            initCart(data);
+            tempData = data;
+
+            if (data.items.length == 0) {
+                //当购车数据为0时
+                $('#rby-empty').show();
+                showContent(false);
+            }
+        }, function(textStatus, data) {
+            Tools.showToast(data.message || '服务器异常');
+            resetBtn();
+        })
+    }
+
+    function initCart(data) {
+        if(data.items && data.items.length == 0){
+            $('#tj-empty').show();
+            return;
+        }
+        Ajax.render('#tj-list', 'tj-list-tmpl', data.items);
+        Ajax.render('#tj-cart-total', 'tj-cart-total-tmpl', data);
+    }
+
+    /**
+     * 重置按钮，btnDom为点击更改数量时的dom
+     */
+    function resetBtn() {
+        btnDom.removeClass('disabled');
+    }
+
+    /**
+     * 是否已禁用按钮
+     */
+    function isDisabledBtn(that) {
+        return that.hasClass('disabled');
+    }
+
+    /**
+     * 是否显示购物车内容
+     * @param show 是否显示
+     */
+    function showContent(show) {
+        if (show) {
+            $('#tj-cart-coupon').show();
+            $('#tj-list').show();
+            $('#tj-cart-total').show();
+        } else {
+            $('#tj-cart-coupon').hide();
+            $('#tj-list').hide();
+            $('#tj-cart-total').hide();
+        }
+    }
+
+    common.checkLoginStatus(function() { //入口
+        getCart()
+    });
+})()

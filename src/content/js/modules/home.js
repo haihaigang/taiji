@@ -1,5 +1,21 @@
-(function(){
-	var AD_RATIO = 750 / 354;
+(function() {
+    var container = $('.container'),
+        AD_RATIO = 750 / 354; //轮播图的比例
 
-	$('.home-banner img').css('height', parseInt($('body').width() / AD_RATIO));
+    function getList() {
+        Ajax.custom({
+            url: '/products'
+        }, function(response) {
+            var data = response.content;
+
+            Ajax.render('#tj-list', 'tj-list-tmpl', data);
+            $('.home-banner,.home-banner img').css('height', parseInt($('body').width() / AD_RATIO));
+
+            $('.container').show();
+        });
+    }
+
+    common.checkLoginStatus(function() { //入口
+        getList();
+    });
 })()

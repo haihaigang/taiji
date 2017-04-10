@@ -23,27 +23,21 @@
             <div class="items">
                 <div class="key">姓名：</div>
                 <div class="val">
-                    <input type="text" name="consigneeName" placeholder="请填写真实姓名">
+                    <input type="text" name="name" placeholder="请填写真实姓名">
                 </div>
             </div>
             <div class="items">
                 <div class="key">手机号：</div>
                 <div class="val">
-                    <input type="tel" name="consigneeTel" maxlength="11" placeholder="请填写手机号">
-                </div>
-            </div>
-            <div class="items userId-hide">
-                <div class="key">身份证号：</div>
-                <div class="val">
-                    <input type="text" name="consigneeCard" maxlength="18" placeholder="请填写完整正确的身份证号码以备海关核查。">
+                    <input type="tel" name="phone" maxlength="11" placeholder="请填写手机号">
                 </div>
             </div>
             <div class="items">
                 <div class="key">省市区：</div>
                 <div class="val">
-                    <input type="hidden" name="province" value="" />
-                    <input type="hidden" name="city" value="" />
-                    <input type="hidden" name="district" value="" />
+                    <input type="hidden" name="provinceId" value="" />
+                    <input type="hidden" name="cityId" value="" />
+                    <input type="hidden" name="districtId" value="" />
                     <input type="text" id="loc_area_dummy" value="" class="" placeholder="请选择省市区" readonly="">
                     <div id="loc_area"></div>
                 </div>
@@ -58,8 +52,8 @@
                 <div class="key">设为默认</div>
                 <div class="val is-default"><span class="iconfont active" id="set-default"><em class="on">&#xe61e;</em><em class="off">&#xe61f;</em></span></div>
             </div>
-            <input type="hidden" name="consigneeId" />
-            <input type="hidden" name="isDefault" value="1" />
+            <input type="hidden" name="id" />
+            <input type="hidden" name="prior" value="true" />
             <div class="options">
                 <button class="btn btn-save">保存</button>
             </div>

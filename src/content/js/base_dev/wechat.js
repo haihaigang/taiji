@@ -31,18 +31,13 @@
             }
 
             Ajax.custom({
-                url: config.HOST_API + '/shopping/getWechatParameters',
+                url: '/wechat/pay/parameters',
                 data: {
-                    orderId: orderId
+                    orderNumber: orderId
                 },
                 showLoading: true
             }, function(response) {
-                var r = response.body;
-                //团失效弹框
-                if (r.status == '0' || r.status == '2') {
-                    checkFn && checkFn(r.status);
-                    return;
-                }
+                var r = response;
                 if (typeof WeixinJSBridge == 'undefined') {
                     Tools.alert('WeixinJSBridge is undefined');
                     return;
@@ -57,9 +52,8 @@
                 }, function(o) {
                     Tools.alert(JSON.stringify(o));
                     if ("get_brand_wcpay_request:ok" == o.err_msg) {
-                        Storage.set('BAIDUFLAG', orderId); //设置百度统计的标志，每次支付成功后设置一个标志，以便追加统计，在跳转页面中清除该标志
                         var stopTime = r.stopTime ? parseInt(r.stopTime) * 1000 : 2000;
-                        _getOrderPayStatus();
+                        // _getOrderPayStatus();
                         $('#tj-commit-panel').show();
                         setTimeout(function() {
                             $('#tj-commit-panel').hide();
@@ -69,61 +63,6 @@
                                 location.href = '../member/success.html?noPayNums=' + r.noPayNums + '&groupOrderId=' + r.groupOrderId;
                                 return;
                             }
-                            susFn && susFn(r);
-                        }, stopTime);
-                    } else if ("get_brand_wcpay_request:cancel" == o.err_msg) {
-                        errorFn && errorFn();
-                    } else {
-                        errorFn && errorFn();
-                    }
-                })
-            }, function(textStatus, data) {
-                errorFn && errorFn();
-                Tools.showAlert(data.message || '服务器异常');
-            })
-        },
-
-
-        /**
-         * 微信支付，抽奖用
-         * @param orderId 订单编号
-         * @param susFn   支付成功的回调
-         * @param errorFn 支付失败的回调
-         */
-        weixinPayOrderForChou: function(orderId, susFn, errorFn) {
-            if (Tools.isRbyAppBrowser()) {
-                Jiao.toPay(orderId);
-                return;
-            }
-
-            Ajax.custom({
-                url: config.HOST_API + '/prize/getWechatParameters',
-                data: {
-                    orderId: orderId
-                },
-                showLoading: true
-            }, function(response) {
-                var r = response.body;
-                if (typeof WeixinJSBridge == 'undefined') {
-                    Tools.alert('WeixinJSBridge is undefined');
-                    return;
-                }
-                WeixinJSBridge.invoke("getBrandWCPayRequest", {
-                    appId: r.appId,
-                    timeStamp: r.timeStamp,
-                    nonceStr: r.nonceStr,
-                    "package": r.package,
-                    signType: r.signType,
-                    paySign: r.paySign
-                }, function(o) {
-                    Tools.alert(JSON.stringify(o));
-                    if ("get_brand_wcpay_request:ok" == o.err_msg) {
-                        var stopTime = r.stopTime ? parseInt(r.stopTime) * 1000 : 2000;
-                        _getOrderPayStatus();
-                        $('#tj-commit-panel').show();
-                        var delay = 0;
-                        delay = setTimeout(function() {
-                            $('#tj-commit-panel').hide();
                             susFn && susFn(r);
                         }, stopTime);
                     } else if ("get_brand_wcpay_request:cancel" == o.err_msg) {
@@ -213,11 +152,11 @@
                 if (data.joinable) {
                     url = config.PIN_GROUP_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //一起买组团详情的链接  
                 } else {
-                    if(data.isLarge){
-                        if(data.groupId){
+                    if (data.isLarge) {
+                        if (data.groupId) {
                             url = config.PIN_GROUP_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //一起买大型团详情的链接
                         }
-                    }else{
+                    } else {
                         url = config.PIN_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId || ''); //一起买活动详情的链接
                     }
                 }
@@ -247,9 +186,9 @@
                 if (data.joinable) {
                     url = config.SECONDKILL_GROUP_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //秒杀团组团详情的链接  
                 } else {
-                    if(data.isLarge){
+                    if (data.isLarge) {
                         url = config.SECONDKILL_GROUP_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //秒杀团团详情的链接
-                    }else{
+                    } else {
                         url = config.SECONDKILL_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //秒杀团活动详情的链接
                     }
                 }
@@ -339,31 +278,25 @@
      * 微信配置
      */
     function _wechatShareConfig() {
-        var appId = config.APPID,
-            noncestr = "734618974",
-            timestamp = Math.floor(Date.now() / 1000); //签名需要10位的时间戳
-
         Ajax.custom({
-            url: config.HOST_API + "/account/getJsApiSign",
+            url: "/wechat/mp/signature",
             data: {
-                noncestr: noncestr,
-                timestamp: timestamp,
                 url: document.URL //签名需要是未编码的地址，如果接口没有解析直接传值
             }
         }, function(response) {
-            if (response.code != 0) {
-                Tools.showAlert('获取微信签名错误');
-                return;
-            }
+            var data = response;
+
             //在调用wx.ready之前必先调用wx.config
             wx.config({
                 debug: !1,
-                appId: appId,
-                timestamp: timestamp,
-                nonceStr: noncestr,
-                signature: response.body.signature,
+                appId: data.appId,
+                timestamp: data.timestamp,
+                nonceStr: data.noncestr,
+                signature: data.signature,
                 jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage", "getLocation"]
             }), wx.error(function() {})
+        }, function(textStatus, data) {
+            Tools.showAlert('获取微信签名错误');
         })
     }
 
@@ -466,7 +399,7 @@
      */
     function _wechatShareOverride(data, url) {
         //未加载微信资源库或从app内嵌过来不初始化分享内容
-        if (typeof wx == 'undefined' || Tools.isRbyAppBrowser()) {
+        if (typeof wx == 'undefined') {
             return;
         }
 
@@ -480,7 +413,6 @@
                 success: function() {
                     _wechatAfterShare();
                     _shareTargetStat(data, 2);
-                    _baiduShareStat(data, 2);
                 },
                 cancel: function() {}
             }), wx.onMenuShareAppMessage({ //分享给朋友
@@ -492,7 +424,6 @@
                 success: function() {
                     _wechatAfterShare();
                     _shareTargetStat(data, 1);
-                    _baiduShareStat(data, 1);
                 },
                 cancel: function() {}
             })
@@ -521,51 +452,9 @@
         if (!s_data) {
             return;
         }
-        var userId = '';
-        if (s_data.groupStatus == 1) {
-            userId = Cookie.get('UserSN');
-            if (s_data.userRole == 0) {
-                userId = Tools._GET().memberId;
-            }
-        }
-        if (s_data.isFromMember) {
-            MeiStat.to('0523', {
-                'pinid': s_data.pintuanId,
-                'groupid': s_data.groupId,
-                'sharetarget': s_target
-            });
-        } else if (s_data.shareType == 'pin') {
-            MeiStat.to('0109', {
-                'pinid': s_data.pintuanId,
-                'groupid': s_data.groupId,
-                'userid': userId,
-                'sharetarget': s_target
-            });
-        } else if (s_data.shareType == "group") {
-            MeiStat.to('0207', {
-                'pinid': s_data.pintuanId,
-                'groupid': s_data.groupId,
-                'userid': userId,
-                'sharetarget': s_target
-            });
-        }
-    }
 
-    /**
-     * 分享统计，使用百度
-     * @param data 分享的数据
-     * @param target 分享目标（1、好友，2、朋友圈）
-     * @return null
-     */
-    function _baiduShareStat(data, target) {
-        if (typeof baiduTJ == 'undefined') {
-            return;
-        }
-
-        baiduTJ.trackEvent(data.shareData.title, target == 1 ? '好友' : '朋友圈', '老用户', 1);
     }
 
     wechatCommon.share = share;
-    window.wechatCommon = wechatCommon;
     window.WechatCommon = wechatCommon;
 })();

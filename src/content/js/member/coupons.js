@@ -4,12 +4,10 @@
         rbyListDom = $('#tj-list'),
         tempData = undefined;
 
-    initTabWithStatus();
-
     //获取优惠券列表
     function getList() {
         Ajax.paging({
-            url: config.HOST_API_APP + '/member/coupon/getList',
+            url: '/members/coupons',
             data: {
                 status: status || 0,
                 page: config.page,
@@ -18,93 +16,47 @@
             showLoading: true,
             showEmpty: true
         }, function(response) {
-            tempData = response.body;
-            initTabWithStatus();
+            tempData = response;
             container.show();
-            
-            if (tempData && tempData.length == 0) {
-                var ckoutEmptyTitle = '您还没有任何优惠券';
-                if (status == 0) {
-                    ckoutEmptyTitle = '您还没有未使用的优惠券';
-                } else if (status == 1) {
-                    ckoutEmptyTitle = '您还没有已使用的优惠券';
-                } else if (status == 2) {
-                    ckoutEmptyTitle = '您还没有已过期的优惠券';
-                }
-                $('.ckout-title').text(ckoutEmptyTitle);
-            }
         }, function(textStatus, data) {
             rbyListDom.html('<div class="list-empty-data icon-coupon-empty">' + ((data && data.message) || '服务器异常。' + textStatus) + '</div>')
         });
     }
+
+    // 点击优惠券弹出分享提示框
+    container.on('click', '.coupon-box li', function(e) {
+        e.preventDefault();
+
+        //打开分享提示框
+        $('#tj-cover-bg').show();
+        $('#tj-cover-share').show();
+
+        var cid = $(this).data('id');
+
+        Ajax.custom({
+            url: '/members/coupons/' + cid
+        }, function(response) {
+            var data = response;
+
+            WechatCommon.share.commonShare({
+                shareTitle: data.shareTitle,
+                shareDesc: data.shareDesc,
+                sharePic: data.shareImg
+            });
+        });
+    });
+
+    // 点击分享框，直接关闭
+    $('#tj-cover-share').click(function(e) {
+        e.preventDefault();
+        $('#tj-cover-bg').hide();
+        $('#tj-cover-share').hide();
+    })
 
     common.getList = getList;
 
     common.checkLoginStatus(function() { //入口
         getList();
     });
-
-    //切换tab
-    $('.tab-link').click(function(e) {
-        e.preventDefault();
-        status = $(this).attr('data-v');
-        $('.tab-link').removeClass('active');
-        $(this).addClass('active');
-        config.page = 1;
-        getList();
-        if ('pushState' in history) {
-            history.replaceState({
-                status: status
-            }, null, "?status=" + status);
-        }
-    });
-
-    window.addEventListener("popstate", function() {
-        var currentState = history.state;
-        if (currentState && currentState.status) {
-            status = currentState.status;
-            config.page = 1;
-            getList();
-        }
-    });
-
-    //根据优惠券状态初始化tab状态
-    function initTabWithStatus() {
-        $('.tab-link').each(function() {
-            if ($(this).attr('data-v') == status) {
-                $(this).addClass('active');
-                var objs = rbyListDom.find('ul>li');
-                objs.each(function() {
-                    var currentObj = objs.find('a');
-                    var currentObjDate = objs.find('.expiry-date');
-                    if (status == '0') {
-                        if (currentObj.hasClass('used')) {
-                            currentObj.removeClass('used');
-                        } else if (currentObj.hasClass('expire')) {
-                            currentObj.removeClass('expire');
-                        }
-                        currentObjDate.removeClass('used');
-                        currentObjDate.removeClass('expire');
-                    } else if (status == '1') {
-                        if (currentObj.hasClass('expire')) {
-                            currentObj.removeClass('expire');
-                        }
-                        currentObjDate.removeClass('expire');
-                        currentObj.addClass('used');
-                        currentObjDate.addClass('used');
-                    } else if (status == '2') {
-                        if (currentObj.hasClass('used')) {
-                            currentObj.removeClass('used');
-                        }
-                        currentObjDate.removeClass('used');
-                        currentObj.addClass('expire');
-                        currentObjDate.addClass('expire');
-                    }
-                })
-            } else {
-                $(this).removeClass('active');
-            }
-        })
-    }
 
 })()
