@@ -109,7 +109,7 @@
 
                 if (next.length == 0) {
                     $(options.renderEle).after(nextStr);
-                    next = $("[data-id='np-"+np+"']");
+                    next = $("[data-id='np-" + np + "']");
                 }
                 next.html('正在加载中...').addClass('disabled');
 
@@ -331,7 +331,7 @@
         }
 
         //追加活动页页面ID统计
-        var RudderPageId=Cookie.get('RudderPageId')|| undefined;
+        var RudderPageId = Cookie.get('RudderPageId') || undefined;
 
         //追加统计的头信息，优先获取native传递的头信息
         var header = {
@@ -339,7 +339,7 @@
             'RudderMarket': 'WEB',
             'RudderVersion': config.VERSION,
         };
-        if(RudderPageId) header.RudderPageId=RudderPageId;
+        if (RudderPageId) header.RudderPageId = RudderPageId;
 
         var appHeader = Storage.get('AppHeader');
         if (appHeader) {
@@ -379,7 +379,7 @@
             options.processData = true;
         }
 
-        if(options.contentType == 'application/json'){
+        if (options.contentType == 'application/json') {
             options.data = JSON.stringify(options.data);
         }
 
@@ -399,10 +399,13 @@
                 delete(that.queue[queueKey]);
 
                 if (typeof callback == 'function') {
-                    if(!response){
-                        response = {};
+                    if (options.url.indexOf('/members/signin/wechat') != -1) {
+                        // 自动登录的追加token到response上
+                        if (!response) {
+                            response = {};
+                        }
+                        response.accessToken = jqXHR.getResponseHeader('x-auth-token');
                     }
-                    response.accessToken = jqXHR.getResponseHeader('x-auth-token');
                     callback(response);
                 }
                 if (isEmpty(that.queue) && typeof that.onEnd == 'function') {
@@ -435,7 +438,7 @@
                 if (loadingCount == 0) {
                     setTimeout(function() {
                         loadingDom.hide();
-                    }, 100) 
+                    }, 100)
                 }
                 $(options.renderEle).show();
             }
@@ -599,7 +602,7 @@
      * @param keyStr 字符串，eg: data.body.list
      */
     function getDataWithKey(data, keyStr) {
-        if(!keyStr){
+        if (!keyStr) {
             return data;
         }
         if (keyStr.indexOf('.') == -1 && keyStr.indexOf('[') == -1) {

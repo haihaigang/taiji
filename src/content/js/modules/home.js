@@ -17,5 +17,8 @@
 
     common.checkLoginStatus(function() { //入口
         getList();
+
+        //添加默认分享功能
+        WechatCommon.share.commonShare();
     });
 })()

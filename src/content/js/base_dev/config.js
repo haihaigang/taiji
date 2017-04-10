@@ -94,8 +94,8 @@
 
     config.DETAIL_SHARE_LINK = config.SHARE_HOST + '/detail.html?id=ID&cid=CID'; //商品详情的分享链接
     config.COUPON_SHARE_LINK = config.SHARE_HOST + '/detail.html?cid=CID'; //优惠券详情的分享链接
-    config.SHARE_TITLE = '美购微官网';
-    config.SHARE_TEXT = '全球精品超市，尽在美购微官网！组团、拼美货、助力团，各种活动任亲挑选！';
+    config.SHARE_TITLE = '90+营养代餐健康购';
+    config.SHARE_TEXT = '含有12大类，90多种食材，198元/盒，更多惊喜请点击';
     config.DEF_AVATAR = config.HOST_IMAGE + 'content/images/logo.png'; //默认头像
 
     config.ORDER_STATUS = { //订单状态
@@ -137,6 +137,12 @@
         MEMBER: '会员',
         AGENT: '代理',
         GENERAL_AGENT: '总代理'
+    };
+
+    config.COUPON_SHARE_DATA = { //优惠券的分享数据
+        SHARE_TITLE: '90+营养代餐免费领',
+        SHARE_DESC: '一份分享，一份爱心，收获一份健康，点击免费领取',
+        SHARE_PIC: config.SHARE_HOST + '/content/images/share-coupon.jpg'
     };
 
     window.config = config;

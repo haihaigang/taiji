@@ -1,7 +1,7 @@
 (function() {
     var addressId = Tools._GET().addressId, //地址编号
         tempAddress = undefined,
-        areaData = [],//省市区数据
+        areaData = [], //省市区数据
         container = $('#tj-list'),
         consigneeIdDom = $('input[name="id"]'),
         consigneeNameDom = $('input[name="name"]'),
@@ -14,18 +14,20 @@
         isDefaultDom = $('input[name="prior"]');
 
     common.checkLoginStatus(function() { //入口
-        if (addressId) {
-            //获取地址列表
-            Ajax.custom({
-                url: '/members/addresses/' + addressId,
-                showLoading: true
-            }, function(response) {
-                setData(response);
-                initAreaFixed(response);
-            }, function(textStatus, data) {
-                container.html('<div class="nodata">' + ((data && data.message) || '服务器异常。' + textStatus) + '</div>')
-            });
-        }
+        setAreaData(function() {
+            if (addressId) {
+                //获取地址列表
+                Ajax.custom({
+                    url: '/members/addresses/' + addressId,
+                    showLoading: true
+                }, function(response) {
+                    setData(response);
+                    initAreaFixed(response);
+                }, function(textStatus, data) {
+                    container.html('<div class="nodata">' + ((data && data.message) || '服务器异常。' + textStatus) + '</div>')
+                });
+            }
+        });
     });
 
     //设置默认地址
@@ -97,51 +99,6 @@
         })
     });
 
-    Ajax.custom({
-        url: '/regions',
-        data:{
-            parentId: 0
-        }
-    }, function(response){
-
-    })
-
-    setAreaData();
-
-    //渲染模版    
-    Ajax.render('#loc_area', 'tj-area-list-tmpl', areaData);
-
-    // 初始化级联选择框
-    $('#loc_area').mobiscroll().treelist({
-        theme: "android-holo-light", // 主题风格
-        mode: 'scroller', // 模式 
-        display: 'bottom', // 显示位置，底部 
-        lang: 'zh', // 语言
-        labels: ['Region', 'Country', 'City'],
-        buttons: [
-            'cancel',
-            'set'
-        ],
-        onInit: function() {
-            $('#loc_area_dummy').attr('placeholder', '请选择省市区');
-        },
-        // 设置区域值
-        onSelect: function(valueText, inst) {
-            if (areaData) {
-                var d = [];
-                d = valueText.split(' ');
-                var selectedDate = areaData[d[0]].name + ' ' + areaData[d[0]].citys[d[1]].name + ' ' + areaData[d[0]].citys[d[1]].districts[d[2]].name;
-                var provinceDate = areaData[d[0]].areaNum;
-                var cityData = areaData[d[0]].citys[d[1]].areaNum;
-                var districtData = areaData[d[0]].citys[d[1]].districts[d[2]].areaNum;
-                provinceDom.val(provinceDate);
-                cityDom.val(cityData);
-                districtDom.val(districtData);
-                $('#loc_area_dummy').val(selectedDate);
-            }
-        }
-    });
-
     //显示值
     function setData(data) {
         if (!data) return;
@@ -168,15 +125,86 @@
     }
 
     // 获取省市区数据
-    function setAreaData() {
-        areaData = convertToObj(region_Data[0]);
-
-        $.each(areaData, function(k, v) {
-            v.citys = convertToObj(region_Data[1][v.next]);
-            for (var i in v.citys) {
-                v.citys[i].districts = convertToObj(region_Data[2][v.citys[i].next]);
+    function setAreaData(fn) {
+        Ajax.custom({
+            url: '/regions',
+            data: {
+                parentId: 0
             }
+        }, function(response) {
+            var data = response;
+
+            var dataArr = [];
+
+            for (var k in data) {
+                if (!data[k].children) {
+                    continue;
+                }
+
+                data[k].citys = data[k].children;
+                for (var i in data[k].citys) {
+                    if (!data[k].citys[i].children) {
+                        delete data[k].citys[i];
+                        continue;
+                    }
+                    data[k].citys[i].districts = data[k].citys[i].children;
+                }
+                dataArr.push(data[k]);
+            }
+
+            areaData = dataArr;
+
+            for (var i in areaData) {
+                if (!areaData[i].citys) {
+                    console.log(i + ' ' + areaData[i].id)
+                }
+            }
+
+            //渲染模版
+            Ajax.render('#loc_area', 'tj-area-list-tmpl', areaData);
+
+            // 初始化级联选择框
+            $('#loc_area').mobiscroll().treelist({
+                theme: "android-holo-light", // 主题风格
+                mode: 'scroller', // 模式 
+                display: 'bottom', // 显示位置，底部 
+                lang: 'zh', // 语言
+                labels: ['Region', 'Country', 'City'],
+                buttons: [
+                    'cancel',
+                    'set'
+                ],
+                onInit: function() {
+                    $('#loc_area_dummy').attr('placeholder', '请选择省市区');
+                },
+                // 设置区域值
+                onSelect: function(valueText, inst) {
+                    if (areaData) {
+                        var d = [];
+                        d = valueText.split(' ');
+                        var selectedDate = areaData[d[0]].name + ' ' + areaData[d[0]].citys[d[1]].name + ' ' + areaData[d[0]].citys[d[1]].districts[d[2]].name;
+                        var provinceDate = areaData[d[0]].id;
+                        var cityData = areaData[d[0]].citys[d[1]].id;
+                        var districtData = areaData[d[0]].citys[d[1]].districts[d[2]].id;
+                        provinceDom.val(provinceDate);
+                        cityDom.val(cityData);
+                        districtDom.val(districtData);
+                        $('#loc_area_dummy').val(selectedDate);
+                    }
+                }
+            });
+
+            fn && fn();
         })
+
+        // areaData = convertToObj(region_Data[0]);
+
+        // $.each(areaData, function(k, v) {
+        //     v.citys = convertToObj(region_Data[1][v.next]);
+        //     for (var i in v.citys) {
+        //         v.citys[i].districts = convertToObj(region_Data[2][v.citys[i].next]);
+        //     }
+        // })
     }
 
     // 转换省市区字符串成对象

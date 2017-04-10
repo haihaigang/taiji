@@ -39,9 +39,9 @@
             var data = response;
 
             WechatCommon.share.commonShare({
-                shareTitle: data.shareTitle,
-                shareDesc: data.shareDesc,
-                sharePic: data.shareImg,
+                shareTitle: config.COUPON_SHARE_DATA.SHARE_TITLE,
+                shareDesc: config.COUPON_SHARE_DATA.SHARE_DESC,
+                sharePic: config.COUPON_SHARE_DATA.SHARE_PIC,
                 couponId: cid
             }, 'coupon');
         });

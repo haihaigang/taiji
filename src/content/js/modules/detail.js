@@ -26,7 +26,9 @@
                 couponId: cid
             }
         }, function(response) {
-            var data = response;
+            var data = response,
+                sharePic = '';
+
             Ajax.render('#tj-detail', 'tj-detail-tmpl', data);
 
             //固定图片的高度
@@ -41,6 +43,8 @@
                     autoplay: 3000,
                     autoplayDisableOnInteraction: false
                 });
+
+                sharePic = data.images[0];
             }
 
             if (data.used) {
@@ -55,9 +59,9 @@
 
             // 初始化分享数据
             WechatCommon.share.commonShare({
-                shareTitle: data.shareTitle,
-                shareDesc: data.shareDesc,
-                sharePic: data.shareImg,
+                shareTitle: config.SHARE_TITLE,
+                shareDesc: config.SHARE_TEXT,
+                sharePic: sharePic,
                 couponId: cid,
                 id: id
             }, 'detail');

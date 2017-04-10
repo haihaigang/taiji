@@ -25,7 +25,6 @@ module.exports = function(grunt) {
                     'src/content/js/base_dev/go.js',
                     'src/content/js/base_dev/common.js',
                     'src/content/js/base_dev/wechat.js',
-                    'src/content/js/base_dev/shopping.js',
                     'src/content/js/base_dev/html.js'
                 ],
                 dest: 'src/content/js/base/global.js'
@@ -48,7 +47,6 @@ module.exports = function(grunt) {
                     'src/content/js/base_dev/go.js',
                     'src/content/js/base_dev/common.js',
                     'src/content/js/base_dev/wechat.js',
-                    'src/content/js/base_dev/shopping.js',
                     'src/content/js/base_dev/html.js'
                 ],
                 dest: 'src/content/js/base/global.js'
