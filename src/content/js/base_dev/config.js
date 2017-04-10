@@ -92,22 +92,11 @@
         config.TH_HOST = 'http://th-test.meigooo.com/_?'; //统计信息的路由，测试
     }
 
-    config.GROUP_SHARE_LINK = config.SHARE_HOST + '/group/detail.html?pinId=PINID&groupId=GROUPID'; //专题团组团分享的链接
-    config.GROUP_ACTIVITY_SHARE_LINK = config.SHARE_HOST + '/group/activity-detail.html?pinId=PINID'; //专题团分享的链接
-    //config.__CUT_SHARE_LINK = config.SHARE_HOST + '/bargain/bargain-detail.html?bargainId=BARGAINID&joinId=JOINID'; //砍价分享的链接
-    config.PIN_SHARE_LINK = config.SHARE_HOST + '/pin/group-detail.html?pinId=PINID&groupId=GROUPID'; //一起买详情分享的链接
-    config.PIN_GROUP_SHARE_LINK = config.SHARE_HOST + '/pin/detail.html?pinId=PINID&groupId=GROUPID'; //一起买组团分享的链接
-    config.SECONDKILL_SHARE_LINK = config.SHARE_HOST + '/pin/group-detail.html?pinId=PINID'; //秒杀详情分享的链接
-    config.SECONDKILL_GROUP_SHARE_LINK = config.SHARE_HOST + '/secondkill/detail.html?pinId=PINID&groupId=GROUPID'; //秒杀团分享的链接
-    config.GROUP_DETAIL_SHARE_LINK = config.SHARE_HOST + '/group/askForGroup.html?pinId=PINID&groupId=GROUPID&memberId=MEMBERID'; //专题团分享的链接
-    config.CHOU_SHARE_LINK = config.SHARE_HOST + '/chou/detail.html?activityId=ACTIVITYID&groupId=GROUPID'; //抽奖分享的链接
+    config.DETAIL_SHARE_LINK = config.SHARE_HOST + '/detail.html?id=ID&cid=CID'; //商品详情的分享链接
+    config.COUPON_SHARE_LINK = config.SHARE_HOST + '/detail.html?cid=CID'; //优惠券详情的分享链接
     config.SHARE_TITLE = '美购微官网';
     config.SHARE_TEXT = '全球精品超市，尽在美购微官网！组团、拼美货、助力团，各种活动任亲挑选！';
-    config.DEF_AVATAR = config.HOST_IMAGE + 'content/images/common/logo.png'; //默认头像
-
-    // config.__TIPS_GROUP_NOLOWPRICE = '还差{PERSONS}人即可享受最低价，是否确定现在下单？';
-    // config.__TIPS_GROUP_HAVEJOIN = '您已参加{NAME}的团购活动，是否退出之前活动参与当前团购？';
-    // config.__TIPS_BARGAIN_NOLOWPRICE = '还差{PERSONS}元即可享受最低价，是否确定现在下单？';
+    config.DEF_AVATAR = config.HOST_IMAGE + 'content/images/logo.png'; //默认头像
 
     config.ORDER_STATUS = { //订单状态
         '1': '未支付',
@@ -148,30 +137,6 @@
         MEMBER: '会员',
         AGENT: '代理',
         GENERAL_AGENT: '总代理'
-    };
-
-    //npage Id
-    config.npageId = {
-        'index': 200003,
-        'group': 200020,
-        'secondKill': 200030
-    };
-
-    //widget height_radio
-    //widget图片高度设置
-    var $body = $("body"),
-        windowWidth = $body.width()
-    config.heightRatio = {
-        title: "height:" + 44 / 375 * windowWidth + "px", //title
-        old_pic: "height:" + ((50 / 100 * windowWidth) - 6) + "px", //old_pic旧版图片
-        type_11: "height:" + 150 / 375 * windowWidth + "px", //banner
-        type_12: "height:" + 170 / 375 * windowWidth + "px", //广告图
-        type_14: "height:" + ((windowWidth - 39) / 2) + "px", //商品block
-        type_14_sp_w: "width:" + 136 / 375 * windowWidth + "px;", //商品list宽度
-        type_14_sp_h: "height:" + 136 / 375 * windowWidth + "px;", //商品list高度
-        type_17: "height:" + 52 / 77 * ((windowWidth - 66) / 4) + "px", //快速功能区
-        type_24: "height:" + 230 / 375 * windowWidth + "px", //一起买
-        type_25: "height:" + ((windowWidth - 36) / 3) + "px" //猜你喜欢
     };
 
     window.config = config;

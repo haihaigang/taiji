@@ -43,8 +43,8 @@
                 });
             }
 
-            // 如果优惠券已经使用，显示提示信息
             if (data.used) {
+                // 如果优惠券已经使用，显示提示信息
                 $('.btn-addcart').addClass('disabled');
                 Tools.showAlert({
                     showTitle: true,
@@ -52,6 +52,15 @@
                     message: '您来晚了一步，优惠券被抢完了购买商品，自己成为会员吧'
                 });
             }
+
+            // 初始化分享数据
+            WechatCommon.share.commonShare({
+                shareTitle: data.shareTitle,
+                shareDesc: data.shareDesc,
+                sharePic: data.shareImg,
+                couponId: cid,
+                id: id
+            }, 'detail');
 
             container.show();
         })

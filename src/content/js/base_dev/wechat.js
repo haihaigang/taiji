@@ -97,19 +97,17 @@
     var share = {
         /**
          * 当需要和app交互时，设置app分享需要的数据，
-         * 只要微官网中有分享行为就设置改数据以便app能获取数据
+         * 只要微官网中有分享行为就设置该数据以便app能获取数据
          * @param data 分享数据，{title:'', desc: '', imgUrl: ''}
          * @param url 分享链接
          */
         condition: function(data, url) {
-            if (typeof Jiao != 'undefined') {
-                Jiao.shareData = {
-                    shareTitle: data.title,
-                    shareDesc: data.desc,
-                    sharePic: data.imgUrl,
-                    shareLink: _getShareIdUrl(url)
-                };
-            }
+            this.shareData = {
+                shareTitle: data.title,
+                shareDesc: data.desc,
+                sharePic: data.imgUrl,
+                shareLink: _getShareIdUrl(url)
+            };
         },
 
         /**
@@ -131,7 +129,7 @@
         /**
          * 根据数据初始化分享数据，如果没有使用默认分享数据，同时需要保留各活动特殊的标题＋链接
          * @param data 活动基础数据，包含分享基本信息（shareTitle、shareDesc、sharePic）+其它可能需要的字段
-         * @param type 活动类型，pin一起买、chou抽奖、group专题团、secondkill秒杀
+         * @param type 活动类型
          */
         commonShare: function(data, type) {
             if (!data || !data.sharePic) {
@@ -140,73 +138,21 @@
                 return;
             }
 
-            var title = data.shareTitle || '',
-                url = url || document.URL;
+            var url = document.URL;
 
-            if (type == "pin") {
-                //获取分享的标题，添加"我买了"提示，只有组团中显示其余不显示
-                if (data.joinable) {
-                    title = '我买了“' + title + '”';
-                }
-                // 如果joinable分享一起买组团详情，否则一起买详情
-                if (data.joinable) {
-                    url = config.PIN_GROUP_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //一起买组团详情的链接  
-                } else {
-                    if (data.isLarge) {
-                        if (data.groupId) {
-                            url = config.PIN_GROUP_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //一起买大型团详情的链接
-                        }
-                    } else {
-                        url = config.PIN_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId || ''); //一起买活动详情的链接
-                    }
-                }
-            } else if (type == "chou") {
-                // 获取分享的标题，添加剩余人数，只有组团中显示其余不显示
-                if (data.groupStatus == 1) {
-                    title = '还剩' + (data.missingNum) + '人' + title;
-                }
-                url = config.CHOU_SHARE_LINK.replace('ACTIVITYID', data.relativeId).replace('GROUPID', data.groupId);
-            } else if (type == 'group') {
-                if (data.groupStatus == 1) {
-                    title = '我买了“' + title + '”';
-                }
-
-                if (data.groupStatus) {
-                    url = config.GROUP_SHARE_LINK;
-                    url = url.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //专题团的链接
-                } else {
-                    url = config.GROUP_ACTIVITY_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //专题团详情的链接
-                }
-            } else if (type == 'secondkill') {
-                if (data.joinable) {
-                    title = '我买了“' + title + '”';
-                }
-
-
-                if (data.joinable) {
-                    url = config.SECONDKILL_GROUP_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //秒杀团组团详情的链接  
-                } else {
-                    if (data.isLarge) {
-                        url = config.SECONDKILL_GROUP_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //秒杀团团详情的链接
-                    } else {
-                        url = config.SECONDKILL_SHARE_LINK.replace('PINID', data.pintuanId).replace('GROUPID', data.groupId); //秒杀团活动详情的链接
-                    }
-                }
+            // 如果joinable分享一起买组团详情，否则一起买详情
+            if (type == 'detail') {
+                url = config.DETAIL_SHARE_LINK.replace('ID', data.id).replace('CID', data.couponId);
+            } else if (type == 'coupon') {
+                url = config.COUPON_SHARE_LINK.replace('ID', data.id).replace('CID', data.couponId);
             }
 
+
             var shareData = { //分享的数据
-                title: title,
+                title: data.shareTitle,
                 desc: data.shareDesc,
                 imgUrl: data.sharePic
             };
-
-            if (!data.sharePic && Tools.isRbyAppBrowser()) {
-                if (typeof data.mainPic == 'object' && data.mainPic.length > 0) {
-                    shareData.imgUrl = data.mainPic[0];
-                } else {
-                    shareData.imgUrl = data.mainPic;
-                }
-            }
 
             data.shareData = shareData;
             data.shareType = type
@@ -222,33 +168,13 @@
      */
     function _getShareIdUrl(url) {
         var userSn = Cookie.get("UserSN"),
-            appHeader = Storage.get("AppHeader"),
-            rudder = Storage.get('Rudder'),
             campainId = Cookie.get('CampainId') || '';
 
-        // campainId = MeiStat.getSource();
-
-        //分享在url后追加rudder_channel、rudder_route、rudder_position、rudder_uid四个参数
+        //分享在url后追加上级用户ID
         var addParams = {
-            rudder_channel: 'WEB',
-            rudder_route: 'WEB',
-            rudder_position: '',
-            rudder_uid: userSn,
+            referId: userSn,
             _ch: campainId
         };
-        if (rudder) {
-            if (rudder.rudder_channel) {
-                addParams.rudder_channel = rudder.rudder_channel;
-            }
-            if (rudder.rudder_route) {
-                addParams.rudder_route = rudder.rudder_route;
-            }
-        }
-
-        //优先使用native中传递参数market
-        if (appHeader && appHeader.rudder_market) {
-            addParams.rudder_channel = appHeader.rudder_market;
-        }
 
         var paramArr = [];
         for (var i in addParams) {
@@ -260,7 +186,7 @@
         }
 
         //这里替换域名为随机的一个分享域名，防止被微信屏蔽
-        url = url.replace(config.SHARE_HOST, config.SHARE_HOSTS[Math.floor(Math.random() * config.SHARE_HOSTS.length)]);
+        // url = url.replace(config.SHARE_HOST, config.SHARE_HOSTS[Math.floor(Math.random() * config.SHARE_HOSTS.length)]);
         return url;
     }
 

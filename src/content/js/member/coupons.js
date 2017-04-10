@@ -41,8 +41,9 @@
             WechatCommon.share.commonShare({
                 shareTitle: data.shareTitle,
                 shareDesc: data.shareDesc,
-                sharePic: data.shareImg
-            });
+                sharePic: data.shareImg,
+                couponId: cid
+            }, 'coupon');
         });
     });
 

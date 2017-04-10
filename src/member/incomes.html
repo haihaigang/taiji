@@ -18,13 +18,13 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <section class="container incomes" id="tj-detail" style="display: none;">
-        <div class="incomes-header">
+        <div class="incomes-header" id="tj-info">
         	<div class="incomes-header-content">
 	            <div class="title">我的收益（元）</div>
 	            <div class="total">2299.5</div>
         	</div>
         </div>
-        <div class="incomes-list">
+        <div class="incomes-list" id="tj-list">
             <div class="incomes-list-title">收益明细</div>
             <div class="incomes-list-items">
             	<div class="incomes-list-items-content">
@@ -76,13 +76,35 @@
         </div>
     </div>
     <!--//自定义提示框结束-->
+
+    <!--模版开始-->
+    <script id="tj-list-tmpl" type="text/html">
+        <div class="incomes-list-title">收益明细</div>
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <div class="incomes-list-items">
+            <div class="incomes-list-items-content">
+                <h3>一级分离</h3>
+                <p>2017.02.19 12:23:22</p>
+            </div>
+            <div class="incomes-list-items-price">+99</div>
+        </div>
+        <!--[}]-->
+    </script>
+    <script id="tj-info-tmpl" type="text/html">
+        <div class="incomes-header-content">
+            <div class="title">我的收益（元）</div>
+            <div class="total">2299.5</div>
+        </div>
+    </script>
+    <!--//模版结束-->
+
     <!-- build:js ../content/js/lib/libs.js -->
     <script src="../content/js/lib/zepto.min.js"></script>
     <script src="../content/js/lib/fastclick.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
     <!-- endbuild -->
     <script src="../content/js/base/global.js"></script>
-    <script src="../content/js/member/me.js"></script>
+    <script src="../content/js/member/incomes.js"></script>
 </body>
 
 </html>
