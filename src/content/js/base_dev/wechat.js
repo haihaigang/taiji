@@ -185,8 +185,6 @@
             url = url + (url.indexOf('?') == -1 ? '?' : '&') + paramArr.join('&');
         }
 
-        //这里替换域名为随机的一个分享域名，防止被微信屏蔽
-        // url = url.replace(config.SHARE_HOST, config.SHARE_HOSTS[Math.floor(Math.random() * config.SHARE_HOSTS.length)]);
         return url;
     }
 
