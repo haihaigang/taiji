@@ -98,17 +98,7 @@
 
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
-        <a class="home-list-item" href="detail.html?id=1">
-            <img class="home-list-thumb" src="http://img01.rbyair.com/27/81/5c/292ee8070d95cdb6e5a4b7b0a5e4b41b06d.jpg@.webp" alt="">
-            <div class="home-list-content">
-                <div class="home-list-title">今天刚学了css3的弹性盒模型,这是一个可以让你告别浮动、完美实现垂直水平居中的新特性属性 CSS 参考手册 实例 让所有弹性盒模型对象的子元素都有相同的长度,忽略它们内部的内容</div>
-                <div class="home-list-opt">
-                    <div class="home-list-price"><em>¥</em>12.10</div>
-                    <div class="home-list-buy">现在购买</div>
-                </div>
-            </div>
-        </a>
-    <!--[for(i = 0; i < list.length; i++){]-->
+        <!--[for(i = 0; i < list.length; i++){]-->
         <a class="home-list-item" href="detail.html?id=<!--[= list[i].id]-->">
                 <img class="home-list-thumb" src="<!--[= $absImg(list[i].thumbnail)]-->" alt="">
                 <div class="home-list-content">
@@ -119,7 +109,7 @@
                     </div>
                 </div>
             </a>
-    <!--[}]-->
+        <!--[}]-->
     </script>
     <!--//模版结束-->
 

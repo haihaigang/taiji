@@ -1,256 +1,156 @@
-.notaddrass
-    display: none
-    width: 200px
-    margin: 0.2rem auto
-    height: 200px
-    text-align: center
-
-    img
-        width: 100px
-        vertical-align: middle
-        margin-bottom: 0.1rem
-
 .order
-    padding-bottom: 0.5rem
-
-    &.orders
-        padding-bottom: 0
-
-    .goods-list
-        margin-left: 0
-
-        .thumb
-            padding: 0.05rem 0.08rem 0.05rem 0
-
-    .delivery-time
-        display: none
-
-    .period-nums
-        padding: 0.16rem 0
-        overflow: hidden
-
-        .delivery-time-item
-            text-align: center
-            font-size: 0.12rem
-            float: left
-            width: 25%
-            margin-bottom: 0.04rem
-
-            em
-                color: $primary-color
-                border: 1px solid $primary-color
-                border-radius: 0.48rem
-                display: inline-block
-                line-height: 0.48rem
-                width: 0.48rem
-                margin-bottom: 0.04rem
-
-            span, i
-                color: #b2b2b2
-                display: block
-
-            &.selected
-                em
-                    background: $primary-color
-                    color: #fff
-
-                span, i
-                    color: $primary-color
-
-            &.disabled
-                em
-                    background: #e9e8e8
-                    color: #b2b2b2
-                    border: 1px solid #b2b2b2
-
-                span, i
-                    color: #b2b2b2
-
-    #show-more
-        background: #FFFFFF
-        height: 0.44rem
+    .sub-tab
+        display: block
+        height: 0.4rem
+        padding: 0 0.08rem
+        line-height: 0.4rem
         font-size: 0.15rem
-        color: #4A4A4A
-        line-height: 0.44rem
-        text-align: center
-        border-top: $border-default
-
-    .order-status
-        +box
-
-        +box-align
-
-        height: 1rem
-        padding-left: 0.3rem
-        padding-right: 0.37rem
-        color: #fff
-        background-image: -webkit-linear-gradient(0deg, #ffc466 0%, $primary-color 100%)
-        background-image: linear-gradient(90deg, #ffc466 0%, $primary-color 100%)
-        background-position: center
-        background-size: 100% auto
-
-        .iconfont
-            display: none
-            font-size: 0.48rem
-            color: #fff
-
-            &.active
-                display: block
-
-        .name
-            -webkit-box-flex: 1
-            font-size: 1.8em
-            line-height: 1rem
-
-            &.pin-name
-                margin-top: 0.16rem
-                line-height: normal
-                color: #fff
-
-            a
-                display: block
-                color: #fff
-
-                +border-radius
-
-                border: 0.01rem solid #fff
-                width: 0.89rem
-                height: 0.25rem
-                color: $primary-color
-                background: #fff
-                text-align: center
-                line-height: 0.25rem
-                font-size: 0.13rem
-                margin-top: 0.06rem
-
-    .order-shipping
-        +box
-
-        +box-align
-
-        margin-bottom: 1px
-        padding: 0.08rem
+        overflow: hidden
         background-color: #fff
 
-        +box-shadow($shadow-default)
-
-    .order-shipping-content
-        +box-flex
-
-        .info
-            font-size: 0.8em
-
-    .order-shipping-icon
-        width: 0.2rem
-        margin-right: 0.08rem
-        text-align: center
-        color: #846555
-
-        .iconfont
-            font-size: 20px
-
-    .order-payment
-        +box
-
-        margin-bottom: 0.08rem
-        padding: 0 0.08rem
-        line-height: 0.4rem
-        background-color: #fff
-
-        +box-shadow($shadow-default)
-
-        .name
-            color: #525252
-
-        .value
-            -webkit-box-flex: 1
-            color: #b2b2b2
-            text-align: right
-            font-size: 0.92em
-
-    .order-no
-        +box
-
-        padding: 0 0.08rem
-        line-height: 0.4rem
-        margin-bottom: 1px
-        background-color: #fff
-
-        +box-shadow($shadow-default)
-
-    &.order-detail
-        .order-no, .order-shipping, .order-payment
-            -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.11)
-            box-shadow: 0 0 0 rgba(0, 0, 0, 0.11)
-
-        .value
-            -webkit-box-flex: 1
-            color: #b2b2b2
-            text-align: right
-            font-size: 0.92em
-
-        .order-fix-btn a
-            &.confirm-btn-primary
-                margin-left: 0
-
-                &.gray
-                    background: #e3e3e3
-                    border: 1px solid #e3e3e3
-
-    .order-button
-        +box
-
-        background-color: #fff
-
-    .order-button-content
-        -webkit-box-flex: 1
-
-        .btn-cancel
-            color: $secondary-font-color
-            border: 0
-            background: none
-            outline: none
-
-            span
-                display: block
-                height: 0.28rem
-                line-height: 0.28rem
-                padding: 0.08rem
-
-    .order-button
-        .options
-            width: 0.62rem
-            padding: 0.08rem
-
-        .btn
-            height: 0.28rem
-            line-height: 0.25rem
-            font-size: 1em
-
-    .order-tabs-item
-        -webkit-box-flex: 1
-        text-align: center
+        label
+            display: block
+            float: left
+            font-weight: bold
+            color: #000
 
         span
-            display: inline-block
-            line-height: 0.46rem
-            border-bottom: 2px solid #fff
+            display: block
+            float: right
+            color: #c7c7c7
 
-.order .order-tabs-item.active
-    color: $primary-color
-
-    span
-        border-bottom: 2px solid $primary-color
-
-.orders .order-no
-    background-color: transparent
-
-.order
-    .order-list
-        display: block
-        margin-top: 0
+    .navgate-order-item
         margin-bottom: 0.08rem
+
+    .item-bder
+        position: relative
+        border-bottom: 1px solid #eee
+        padding: 0.08rem
+        background-color: #f9f9f9
+
+        .item-img
+            display: block
+            width: 76px
+            height: 76px
+            margin-right: 0.08rem
+            overflow: hidden
+
+            +box-pack(center)
+
+            +box-align
+
+            background: #fff
+
+            img
+                display: block
+                max-width: 100%
+                border: 0
+                width: 0.76rem
+                height: 0.76rem
+
+        .title
+            display: -webkit-box
+            height: 0.4rem
+            line-height: 20px
+            color: #4a4a4a
+
+            +ellipsis(2)
+
+            -webkit-box-pack: center
+            -moz-box-pack: center
+            -ms-flex-align: center
+            -webkit-align-items: center
+            -moz-align-items: center
+            align-items: center
+
+        .item-pay
+            text-align: right
+
+            p:first-letter
+                font-size: 0.7em
+
+            b
+                color: #c7c7c7
+                font-size: 0.12rem
+                font-weight: normal
+
+        &:last-child
+            border-bottom: none
+
+        &.flow
+            background: #fff
+            margin-bottom: 8px
+
+            .item-img
+                border: 1px solid #f9f9f9
+
+    .mb
+        padding: 0px 8px
+        height: 45px
+        border-bottom: 1px solid #f6f6f6
         background-color: #fff
+
+    .time-tabs-item
+        +box-flex
+
+        li.order-item div.mb:last-child
+            border-bottom: none
+
+        .true-payed
+            display: block
+            float: left
+            color: #000
+            font-size: 0.15rem
+            line-height: 0.45rem
+
+        .imb-num
+            float: right
+            color: #ff374a
+            height: 0.45rem
+            line-height: 0.45rem
+
+            &:first-letter
+                font-size: 0.7em
+
+            > b
+                font-size: 16px
+                font-weight: normal
+
+    .imb-btn-box
+        +flex-box
+
+        +align-center
+
+        +justify-right
+
+        .imb-btn
+            display: inline-block
+            color: #fff
+            background: $primary-color
+
+            +border-radius(0.02rem)
+
+            border: 0.01rem solid $primary-color
+            max-width: 0.7rem
+            text-align: center
+            padding: 0 0.08rem
+            height: 0.25rem
+            line-height: 0.25rem
+            font-size: 0.14rem
+
+            &.gray
+                border: 1px solid #e3e3e3
+                background: #e3e3e3
+
+            &.white
+                background: #fff
+                color: $primary-color
+                border: 1px solid #e98630
+
+            &.black
+                background: #fff
+                color: $secondary-color
+                border: 1px solid #3c2e25
 
 .orders .item-col-box, .order-flow .item-col-box
     +box
@@ -260,195 +160,8 @@
 
     overflow: hidden
 
-.list-group.order-info
-    margin: 0.08rem 0
-    padding: 0.08rem 0
-    font-size: 0.8em
-
-    &.default-ordy
-        margin: 0 0 0.08rem 0
-
-    &.default-second-ordy
-        .list-group-item span
-            display: inline
-            -webkit-box-flex: 0
-            color: #b2b2b2
-            font-size: 0.11rem
-
-        .list-group-item em
-            font-size: 0.12rem
-            color: #b2b2b2
-
-    &.default-third-ordy
-        +clearfix
-
-        padding: 0.08rem
-
-        li
-            float: right
-
-    .list-group-item
-        line-height: 0.18rem
-        border-bottom: none
-
-        span
-            color: #4a4a4a
-            font-size: 0.11rem
-
-        &.actualprice
-            padding-top: 4px
-
-        &.actualprice span
-            font-size: 14px
-
-        em
-            color: #4a4a4a
-
-        &.actualprice em
-            font-size: 14px
-            color: $primary-color
-
-.tabs-fixed
-    position: fixed
-    z-index: 9
-    width: 100%
-    left: 0
-
-    +box
-
-    height: 0.48rem
-    background-color: #fff
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.11)
-
-    .tab-link
-        color: $secondary-font-color
-        font-size: 16px
-        width: 100%
-        height: 0.48rem
-        line-height: 0.48rem
-
-        +box-flex
-
-        border: 0
-        border-bottom: 2px solid transparent
-
-        +border-radius(0)
-
-        &.active
-            color: $primary-color
-            border-color: $primary-color
-            z-index: 100
-
-        text-align: center
-        display: block
-        box-sizing: border-box
-        -webkit-appearance: none
-        -moz-appearance: none
-        -ms-appearance: none
-        appearance: none
-        background: none
-        padding: 0
-        margin: 0
-        white-space: nowrap
-        position: relative
-        text-overflow: ellipsis
-        font-family: inherit
-        cursor: pointer
-
-.time-tabs-item
-    display: block
-
-    &:last-child .order-list .order-item:last-child
-        border-bottom: 2px solid #efefef
-
-.sub-tab
-    display: block
-    height: 0.44rem
-    line-height: 0.44rem
-    overflow: hidden
-    background-color: #fff
-    padding-right: 0.08rem
-    font-size: 15px
-
-.icon-sub-tab
-    padding-left: 0.14rem
-    border-left: 6px solid $primary-color
-
-.orders .sub-tab
-    label
-        display: block
-        float: left
-        color: $thirdary-font-color
-
-    span
-        display: block
-        float: right
-        color: $primary-color
-
-.item-img
-    display: block
-    width: 76px
-    height: 76px
-    margin-right: 0.08rem
-    overflow: hidden
-
-    +box-pack(center)
-
-    +box-align
-
-    background: #fff
-
-    img
-        display: block
-        max-width: 100%
-        border: 0
-        width: 0.76rem
-        height: 0.76rem
-
-.item-bder
-    position: relative
-    border-bottom: 1px solid #eee
-    padding: 0.12rem 0.08rem 0.11rem 0.08rem
-    background-color: #f6f6f6
-
-    &:last-child
-        border-bottom: none
-
-    &.flow
-        background: #fff
-        margin-bottom: 8px
-
-        .item-img
-            border: 1px solid #f6f6f6
-
-.item-pay
-    text-align: right
-
-    b
-        color: #c7c7c7
-        font-size: 0.12rem
-        font-weight: normal
-
 .orders .item-info, .order-flow .item-info
     display: block
-
-    .title
-        font-size: 13px
-        color: #4a4a4a
-        height: 0.4rem
-        line-height: 20px
-        overflow: hidden
-        word-wrap: break-word
-        text-overflow: ellipsis
-        display: -webkit-box
-        -webkit-line-clamp: 2
-        -webkit-box-orient: vertical
-        -webkit-box-pack: center
-        -moz-box-pack: center
-        -ms-flex-align: center
-        -webkit-align-items: center
-        -moz-align-items: center
-        align-items: center
 
     .sign-txt
         font-size: 13px
@@ -467,141 +180,3 @@
             span
                 display: inline
                 color: #00b716
-
-.order-box
-    .mb
-        font-size: 0.13rem
-        padding: 0px 8px
-        height: 46px
-        border-bottom: 1px solid #f6f6f6
-        overflow: hidden
-
-        .time-tabs-item
-            display: block
-
-            +box-flex
-
-    li.order-item div.mb:last-child
-        border-bottom: none
-
-.flow-package
-    .show-flow-btn .icon-arrow
-        display: block
-        color: $primary-color
-        font-size: 0.26rem
-        padding-top: 4px
-        width: 18px
-
-    span
-        display: inline
-        font-size: 15px
-        line-height: 46px
-        height: 46px
-
-    .package-name
-        display: block
-        float: left
-        color: #4a4a4a
-
-    .show-flow-btn
-        float: right
-        color: $primary-color
-
-.true-payed
-    display: block
-    float: left
-    color: $primary-color
-    font-size: 16px
-    line-height: 46px
-
-.favorable-box
-    display: block
-    padding-top: 6px
-
-    p
-        &.total-price
-            height: 17px
-            line-height: 17px
-            color: #4a4a4a
-            font-size: 12px
-            white-space: nowrap
-
-            > b
-                display: inline
-                border: 1px solid $primary-color
-                color: $primary-color
-                padding: 2px 5px
-                margin-left: 4px
-                font-weight: normal
-
-                +border-radius
-
-        &.favorable-total-price
-            font-size: 15px
-            color: $primary-color
-            height: 21px
-            line-height: 21px
-            white-space: nowrap
-            position: relative
-            z-index: 3
-
-            span
-                display: inline
-                margin-left: 5px
-                font-size: 12px
-                color: #4a4a4a
-                height: 17px
-                line-height: 17px
-
-.imb-num
-    font-size: 13px
-    display: block
-    float: left
-    color: $primary-color
-    margin-left: 6px
-    line-height: 45px
-
-    > b
-        font-size: 16px
-        padding-left: 2px
-        font-weight: normal
-
-.imb-btn-box
-    color: #f15353
-    height: 100%
-
-    +flex-box
-
-    +align-center
-
-    +justify-right
-
-.imb-btn
-    display: inline-block
-    color: #fff
-    background: $primary-color
-
-    +border-radius(0.02rem)
-
-    border: 0.01rem solid $primary-color
-    margin-left: 0.03rem
-    max-width: 0.7rem
-    text-align: center
-    padding: 0 0.08rem
-    height: 0.25rem
-    line-height: 0.25rem
-    font-size: 0.14rem
-
-    &.gray
-        border: 1px solid #e3e3e3
-        background: #e3e3e3
-
-    &.white
-        background: #fff
-        color: $primary-color
-        border: 1px solid #e98630
-
-    &.black
-        background: #fff
-        color: $secondary-color
-        border: 1px solid #3c2e25

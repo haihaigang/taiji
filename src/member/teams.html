@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-touch-fullscreen" content="yes" />
-    <title>我的</title>
+    <title>我的团队</title>
     <!-- build:css ../content/css/taiji.min.css -->
     <link rel="stylesheet" href="../content/css/taiji.css" />
     <!-- endbuild -->
@@ -99,35 +99,39 @@
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
         <!--[for(i = 0; i < list.length; i++){]-->
-            <tr>
-                <td>1907</td>
-                <td>独立空间</td>
-                <td>一级</td>
-                <td>10人</td>
-            </tr>
+        <tr>
+            <td><img src="<!--[= $absImg(list[i].avatar)]-->" alt=""/></td>
+            <td><!--[= list[i].nickname]--></td>
+            <td><!--[= $getLevelName(list[i].level)]--></td>
+            <td><!--[= list[i].numOfLower]-->人</td>
+        </tr>
+        <!--[}]-->
+        <!--[if(list.length == 0){]-->
+        <tr>
+            <td colspan="4">暂无数据</td>
+        </tr>
         <!--[}]-->
     </script>
     <script id="tj-info-tmpl" type="text/html">
-        <div class="me-header-content"><img id="me-avatar" src="../content/images/index-avatar.png" alt=""></div>
-        <div class="me-header-nickname">王海港</div>
-        <div class="me-header-level"><em>第一级</em></div>
+        <div class="me-header-content"><img id="me-avatar" src="<!--[= $absImg(avatar)]-->" alt=""></div>
+        <div class="me-header-nickname"><!--[= nickname]--></div>
         <div class="me-header-desc">
-            <div class="me-header-desc-l">左青龙</div>
-            <div class="me-header-desc-r">右白虎</div>
+            <div class="me-header-desc-l">我的等级是<!--[= $getLevelName(level)]--></div>
+            <div class="me-header-desc-r">我的团队有<!--[= total]-->人</div>
         </div>
         <div class="teams-bar clearfix">
-            <a class="teams-bar-tiem tab-item" href="../member/orders.html?status=0">
-                <div class="iconfont icon-order-detail"></div>
-                <div class="tab-label">全部订单</div>
-            </a>
-            <a class="teams-bar-tiem tab-item" href="../member/orders.html?status=5">
-                <div class="iconfont icon-waitpay"></div>
-                <div class="tab-label">待支付</div>
-            </a>
-            <a class="teams-bar-tiem tab-item" href="../member/orders.html?status=2">
-                <div class="iconfont icon-waitdelivergoods"></div>
-                <div class="tab-label">待发货</div>
-            </a>
+            <div class="teams-bar-tiem tab-item">
+                <div class="iconfont icon-gold"></div>
+                <div class="tab-label">金卡会员<!--[= members]-->人</div>
+            </div>
+            <div class="teams-bar-tiem tab-item">
+                <div class="iconfont icon-zuanshi"></div>
+                <div class="tab-label">钻石会员<!--[= agents]-->人</div>
+            </div>
+            <div class="teams-bar-tiem tab-item">
+                <div class="iconfont icon-user"></div>
+                <div class="tab-label">总代会员<!--[= generalAgents]-->人</div>
+            </div>
         </div>
     </script>
     <!--//模版结束-->

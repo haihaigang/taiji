@@ -99,9 +99,13 @@
     config.DEF_AVATAR = config.HOST_IMAGE + 'content/images/logo.png'; //默认头像
 
     config.ORDER_STATUS = { //订单状态
-        '1': '未支付',
-        '2': '未支付',
-        '3': '已支付'
+        PENDING: '未支付',
+        PROCESSING: '已支付待发货',
+        IN_TRANSIT: '已发货',
+        DELIVERED: '已完成',
+        PAYMENT_DUE: '支付超时',
+        CANCELLED: '已取消',
+        RETURNED: '已退货'
     };
 
     config.NEW_ORDER_STATUS = { //订单状态

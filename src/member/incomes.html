@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-touch-fullscreen" content="yes" />
-    <title>我的</title>
+    <title>我的收益</title>
     <!-- build:css ../content/css/taiji.min.css -->
     <link rel="stylesheet" href="../content/css/taiji.css" />
     <!-- endbuild -->
@@ -83,17 +83,24 @@
         <!--[for(i = 0; i < list.length; i++){]-->
         <div class="incomes-list-items">
             <div class="incomes-list-items-content">
-                <h3>一级分离</h3>
-                <p>2017.02.19 12:23:22</p>
+                <h3><!--[= list[i].type]--></h3>
+                <p><!--[= list[i].createdAt]--></p>
             </div>
-            <div class="incomes-list-items-price">+99</div>
+            <div class="incomes-list-items-price">+<!--[= list[i].amount]--></div>
+        </div>
+        <!--[}]-->
+        <!--[if(list.length == 0){]-->
+        <div class="incomes-list-items">
+            <div class="incomes-list-items-content">
+                <h3>暂无数据</h3>
+            </div>
         </div>
         <!--[}]-->
     </script>
     <script id="tj-info-tmpl" type="text/html">
         <div class="incomes-header-content">
             <div class="title">我的收益（元）</div>
-            <div class="total">2299.5</div>
+            <div class="total"><!--[= $formatCurrency(total)]--></div>
         </div>
     </script>
     <!--//模版结束-->

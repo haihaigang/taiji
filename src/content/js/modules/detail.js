@@ -11,6 +11,13 @@
         addCart($(this));
     });
 
+    // 点击确定提交绑定数据
+    $('#tj-bind-dialog .btn-primary').click(function(e){
+        e.preventDefault();
+
+        bindUser();
+    });
+
     // 获取详情数据
     function getDetail() {
         if (cid) {
@@ -72,7 +79,7 @@
 
     // 调用接口添加购物车
     function addCart(btnDom) {
-        if (btnDom.hasClass('disbled')) {
+        if (btnDom && btnDom.hasClass('disbled')) {
             return;
         }
 
@@ -87,14 +94,19 @@
         }, function(response) {
             location.href = 'cart.html';
         }, function(textStatus, data) {
+            if(data.exception.indexOf('NotSignupPhoneException') != -1){
+                // 用户未绑定手机号，提示
+                $('#tj-bind-dialog').show();
+                return;
+            }
             Tools.showToast(data.message)
         });
     }
 
     // 绑定用户，没有绑定过手机的新用户在点击加入购物车的时候提示
     function bindUser() {
-        var phone = $('#tj-bind-dialog input[name="phone"]'),
-            realname = $('#tj-bind-dialog input[name="realname"]');
+        var phone = $('#tj-bind-dialog input[name="phone"]').val(),
+            realname = $('#tj-bind-dialog input[name="realname"]').val();
 
         if (realname.isEmpty()) {
             Tools.showToast('请填写姓名');
@@ -104,7 +116,7 @@
             Tools.showToast('请填写联系方式');
             return;
         }
-        if (/^1\d{10}$/.test(phone)) {
+        if (!/^1\d{10}$/.test(phone)) {
             Tools.showToast('格式错误，请填写正确手机号');
             return;
         }

@@ -55,59 +55,40 @@
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
         <!--[for(i = 0; i < list.length; i++){]-->
-        <!--[ if(list[i].orders.length>0){]-->
-        <!--[for(j = 0; j < list[i].orders.length; j++){]-->
-        <div class="navgate-order-item" data-oid="<!--[=list[i].orders[j].orderId]-->">
+        <div class="navgate-order-item" data-oid="<!--[=list[i].orderId]-->">
             <div class="sub-tab">
                 <div class="icon-sub-tab clearfix">
-                    <label><!--[= list[i].orders[j].addTime]--></label>
-                    <!--[if(list[i].orders[j].source == 'period_buy'){]-->
-                    <!--[if(list[i].orders[j].status == 2 || list[i].orders[j].status == 3){]-->
-                    <span>订单进行中</span>
-                    <!--[}else{]-->
-                    <span><!--[= $getOrderStatus(list[i].orders[j].status,'detail')]--></span>
-                    <!--[}]-->
-                    <!--[}else{]-->
-                    <span><!--[= $getOrderStatus(list[i].orders[j].status,'detail')]--></span>
-                    <!--[}]-->
+                    <label><!--[= $getOrderStatus(list[i].status,'detail')]--></label>
+                    <span><!--[= $formatDate(list[i].createdAt, 'yyyy-MM-dd hh:mm:ss')]--></span>
                 </div>
             </div>
-            <div class="order-list">
-                <!--[for(k = 0; k < list[i].orders[j].goods.length; k++){]-->                        
-                <a class="item-bder item-col-box" href="order.html?orderId=<!--[= list[i].orders[j].orderId]-->&source=<!--[= list[i].orders[j].source]-->">
+            <div class="goods-list">
+                <!--[for(k = 0; k < list[i].items.length; k++){]-->                        
+                <a class="item-bder item-col-box" href="javascript:;">
                     <div class="item-img">
-                        <img src="<!--[= $absImg(list[i].orders[j].goods[k].thumbnailPic)]-->">
+                        <img src="<!--[= $absImg(list[i].items[k].thumbnail)]-->">
                     </div>
                     <div class="item-col-flex">
                         <div class="item-info">
-                            <h3 class="title"><!--[= list[i].orders[j].goods[k].name]--></h3>
+                            <h3 class="title"><!--[= list[i].items[k].name]--></h3>
                         </div>
                         <div class="item-pay clearfix">
-                            <p>￥<!--[= $rbyFormatCurrency(list[i].orders[j].goods[k].price)]--><b>x<!--[= list[i].orders[j].goods[k].quantity]--></b></p>
+                            <p>￥<!--[= $rbyFormatCurrency(list[i].items[k].price)]--><b>x<!--[= list[i].items[k].quantity]--></b></p>
                         </div>		
                     </div>				
                 </a>
                 <!--[}]-->
-                 <div class="mb dbox">
-                    <!--[if($rbyFormatCurrency(list[i].orders[j].subDiscount) >0){]-->
-                    <div class="time-tabs-item">
-                        <div class="favorable-box">
-                            <p class="total-price">总价:￥<!--[= $rbyFormatCurrency(list[i].orders[j].goodsPrice)]--></p>
-                            <p class="favorable-total-price">小计:￥<!--[= $rbyFormatCurrency(list[i].orders[j].totalPrice)]--> <span class="favoable-price">已减:￥<!--[= $rbyFormatCurrency(list[i].orders[j].subDiscount)]--></span></p>
-                        </div>
-                    </div>
-                    <!--[}else{]-->
-                        <div class="time-tabs-item">
-                            <span class="true-payed">小计:</span><span class="imb-num">￥<b><!--[= $rbyFormatCurrency(list[i].orders[j].totalPrice)]--></b></span> 
-                        </div>
-                    <!--[}]-->
-                    <div class="imb-btn-box">
-                        <a class="imb-btn btn-pay" data-oid="<!--[= list[i].orders[j].orderId]-->" href="order.html?orderId=<!--[= list[i].orders[j].orderId]-->&source=<!--[= list[i].orders[j].source]-->"><!--[= $getOrderStatus(list[i].orders[j].status,'neworder')]--></a>
-                    </div>
-                </div>
             </div>
+            <div class="mb time-tabs-item clearfix">
+                <span class="true-payed">合计:</span><span class="imb-num">￥<b><!--[= $rbyFormatCurrency(list[i].total)]--></b></span> 
+            </div>
+            <!--[if(list[i].status == 'PENDING'){]-->
+            <div class="mb imb-btn-box">
+                <a class="imb-btn btn-pay" data-oid="<!--[= list[i].orderNumber]-->" href="javascript:;">立即支付</a>
+            </div>
+            <!--[}]-->
         </div>
-        <!--[}}}]-->
+        <!--[}]-->
     </script>
     <!--//模版结束-->
 

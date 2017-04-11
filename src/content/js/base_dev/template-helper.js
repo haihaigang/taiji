@@ -92,13 +92,12 @@
 
     //模板帮助方法，获取订单状态值
     template.helper('$getOrderStatus', function(content, type) {
-        if (type == 'detail') {
-            return config.ORDER_DETAIL_STATUS[content] || '--';
-        } else if (type == 'neworder') {
-            return config.NEW_ORDER_STATUS[content] || '--';
-        } else {
-            return config.ORDER_STATUS[content] || '--';
-        }
+        return config.ORDER_STATUS[content] || '--';
+    });
+
+    //模板帮助方法，获取用户等级名称
+    template.helper('$getLevelName', function(content) {
+        return config.LEVEL[content] || '--';
     });
 
     //模板帮助方法，获取订单物流状态值
@@ -165,89 +164,6 @@
             arr[arr.length - 1] = '96';
         }
         return arr.join('/');
-    });
-
-    // 模板帮助方法，获取广告链接（附加坑位值）
-    // p所属页面，c所属分类, i排序
-    template.helper('$__getAdRudderPosition', function(i, data, page, category) {
-        var url = '',
-            prefix = '';
-        if (!data) return "javascript:void(0)";
-
-        if (data.type == 'h5link' && !data.h5link) return "javascript:void(0)";
-
-        switch (data.type) {
-            case 'h5link':
-                {
-                    prefix = '';
-                    url = data.h5link;
-                    break;
-                }
-            case 'pin':
-                {
-                    prefix = 'home';
-                    url = '/pin/group-detail.html?pinId=' + data.targetId;
-                    break;
-                }
-            case 'mpin':
-                {
-                    prefix = 'group';
-                    url = '/group/activity-detail.html?pinId=' + data.targetId;
-                    break;
-                }
-            case 'goods':
-                {
-                    prefix = 'goods';
-                    url = '/goods/goods-detail.html?productId=' + data.targetId;
-                    break;
-                }
-            case 'group':
-                {
-                    prefix = 'group';
-                    url = '/group/group-detail.html?groupId=' + data.targetId;
-                    break;
-                }
-            case 'chou':
-                {
-                    prefix = 'home';
-                    url = '/chou/detail.html?activityId=' + data.targetId;
-                    break;
-                }
-            case 'cat':
-                {
-                    prefix = 'category';
-                    url = '/category/goods.html?categoryId=' + data.targetId;
-                    break;
-                }
-            default:
-                { //默认类型为：cat分类
-                    url = '';
-                    break;
-                }
-        }
-
-        url = url.indexOf('http://') == 0 ? url : config.SHARE_HOST + url;
-        if (Tools.isRbyAppBrowser()) {
-            prefix = prefix ? (prefix + ':') : '';
-            if (data.type == 'goods') {
-                url = prefix + data.targetId;
-                return url;
-            } else {
-                url = prefix + url;
-            }
-        } else {
-            url = url;
-        }
-
-        if (url == "" || (url.indexOf('http://') != 0 && !Tools.isRbyAppBrowser())) {
-            return "javascript:void(0)";
-        }
-        if (Tools.isRbyAppBrowser() && config.REPLACE_HOST && config.REPLACE_HOST.length == 2) {
-            //从app过来的替换域名
-            url = url.replace(config.REPLACE_HOST[0], config.REPLACE_HOST[1]);
-        }
-
-        return url;
     });
 
     // 模版帮助方法，获取URL某个参数的值
