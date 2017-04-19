@@ -17,80 +17,8 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <section class="container cart">
-        <div class="cart-content" id="tj-list">
-            <!-- <div class="cart-box">
-                <div class="dbox cart-ware">
-                    <div class="cart-type-name">商家直发</div>
-                </div>
-                <div class="cart-goods-group">
-                    <div class="cart-goods">
-                        <div class="dbox cart-goods-item goods-list-list">
-                            <div class="cart-check checked" data-objident="goods_8110_17462"><em class="iconfont icon-uncheck off"></em><em class="iconfont icon-check on"></em></div>
-                            <a class="goods-item" href="detail.html?productId=17462">
-                                <div class="thumb"><img src="http://img01.rbyair.com/34/23/bc/781df5eeb35c0ae2b59916d0f7eeb636ab4.jpg@.webp" alt=""></div>
-                                <div class="content">
-                                    <h3>Aptamil 德国爱他美 婴儿奶粉2+段600g*2盒 2周岁以上</h3>
-                                    <div class="price1">￥252</div>
-                                </div>
-                                <div class="goods-qty" data-limit="15" data-objident="goods_8110_17462">
-                                    <div class="btn minus"><span class="iconfont icon-minus"></span></div>
-                                    <div class="goods-qty-item">
-                                        <div class="num-ipt">1</div>
-                                    </div>
-                                    <div class="btn plus"><span class="iconfont icon-plus"></span></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="cart-goods-group-count">
-                        <em>￥</em>252
-                    </div>
-                </div>
-            </div>
-            <div class="cart-box">
-                <div class="dbox cart-ware">
-                    <div class="cart-type-name">Meigo 超市</div>
-                </div>
-                <div class="cart-goods-group">
-                    <div class="cart-goods">
-                        <div class="dbox cart-goods-item goods-list-list">
-                            <div class="cart-check checked" data-objident="goods_4444_7205"><em class="iconfont icon-uncheck off"></em><em class="iconfont icon-check on"></em></div>
-                            <a class="goods-item" href="detail.html?productId=7205">
-                                <div class="thumb"><img src="http://img01.rbyair.com/44/a1/a2/e5551cb201e482c30d1d8742d80a24f0f14.jpg@.webp" alt=""></div>
-                                <div class="content">
-                                    <h3>娜丽丝 保湿防水防晒喷雾90g SPF50+PA++++ </h3>
-                                    <div class="price1">￥59</div>
-                                </div>
-                                <div class="goods-qty" data-limit="34" data-objident="goods_4444_7205">
-                                    <div class="btn minus"><span class="iconfont icon-minus"></span></div>
-                                    <div class="goods-qty-item">
-                                        <div class="num-ipt">1</div>
-                                    </div>
-                                    <div class="btn plus"><span class="iconfont icon-plus"></span></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="cart-goods-group-count">
-                        <em>￥</em>59
-                    </div>
-                </div>
-            </div> -->
-        </div>
-        <div class="cart-total" id="tj-cart-total">
-            <!-- <div class="dbox">
-                <div class="cart-check carall  checked">
-                    <em class="iconfont icon-uncheck off"></em><em class="iconfont icon-check on"></em>
-                </div>
-                <div class="cart-check-title">
-                    全选
-                </div>
-                <div class="cart-total-price">
-                    <p class="all-Price">合计:￥311</p>
-                </div>
-                <button class="cart-total-button"><a href="commit.html">去结算</a></button>
-            </div> -->
-        </div>
+        <div class="cart-content" id="tj-list"></div>
+        <div class="cart-total" id="tj-cart-total"></div>
         <div id="tj-empty" class="list-empty-data icon-cart-empty">
             <p class="ckout-title">您的购物车还是空的</p>
             <span class="ckout-info">要是宝贝到手了，那就赶紧享用吧</span>
@@ -161,18 +89,25 @@
                                 <div class="price1">￥<!--[= $rbyFormatCurrency(list[i].price)]-->
                                 </div>
                             </div>
-                            <div class="goods-qty" data-limit="99" data-objident="<!--[= list[i].productId]-->">
+                            <div class="goods-qty" data-limit="99999" data-objident="<!--[= list[i].productId]-->" data-type="<!--[= list[i].type]-->">
+                                <!--[if(list[i].isRegular){]-->
+                                <div class="goods-qty-label">10*</div>
+                                <!--[}]-->
                                 <div class="btn minus"><span class="iconfont icon-minus"></span></div>
                                 <div class="goods-qty-item">
-                                    <div class="num-ipt">
-                                        <!--[= list[i].quantity]-->
-                                    </div>
+                                    <div class="num-ipt"><!--[= list[i].quantity]--></div>
                                 </div>
                                 <div class="btn plus<!--[= $addClassByCondition(list[i].isSaleout,' disabled')]-->"><span class="iconfont icon-plus"></span></div>
                             </div>
                         </a>
                     </div>
                 </div>
+                <!--[if(list[i].isRegular){]-->
+                <div class="cart-buttons">
+                    <button class="btn btn-daili" data-objident="<!--[= list[i].productId]-->">升级代理套餐</button>
+                    <button class="btn btn-zongdai" data-objident="<!--[= list[i].productId]-->">升级总代套餐</button>
+                </div>
+                <!--[}]-->
                 <div class="cart-goods-group-count">
                     <em>￥</em><!--[= $rbyFormatCurrency(list[i].subtotal)]-->
                 </div>
@@ -194,6 +129,7 @@
     </script>
     <!--//模版结束-->
 
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <!-- build:js content/js/lib/libs.js -->
     <script src="content/js/lib/zepto.min.js"></script>
     <script src="content/js/lib/fastclick.min.js"></script>

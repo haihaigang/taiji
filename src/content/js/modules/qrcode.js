@@ -12,7 +12,11 @@
                 $('.qrcode-avatar').attr('src', data.avatar.replace('/0', '/96'));
             }
             $('.qrcode-title1').text(data.nickname || '--');
-            // $('.qrcode-img').attr('src','');
+
+            var qr = qrcode(10, 'M');
+            qr.addData(config.SHARE_HOST + '/index.html?referId=' + data.memberId);
+            qr.make();
+            $('.qrcode-img').html(qr.createImgTag(3));
 
             container.show();
         }, function(textStatus, data) {
@@ -22,5 +26,7 @@
 
     common.checkLoginStatus(function() { //入口
         getDetail();
+        //添加默认分享功能
+        WechatCommon.Share.commonShare();
     });
 })();

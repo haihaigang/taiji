@@ -355,21 +355,11 @@
             }
         }
 
-        userToken = Storage.get('AccessToken');
+        userToken = Cookie.get('AccessToken');
 
-        if (options.url.indexOf(config.JAVA_HOST_URL) != -1) {
-            //java接口所需的常规参数
-            header['X-App-Id'] = Tools.getAppid();
-            header['X-Mid'] = Tools.getMid();
-            header['X-App-Ver'] = config.VERSION;
-            if (userToken) {
-                header['X-Auth-Token'] = userToken;
-            }
-        } else {
-            if (userToken) {
-                header['UserToken'] = userToken;
-            }
-            // header['Access-Control-Allow-Headers'] = '*';
+
+        if (userToken) {
+            header['x-auth-token'] = userToken;
         }
 
         if (typeof options.contentType == undefined) {
@@ -421,7 +411,7 @@
 
                 if (jqXHR.status == 401) {
                     //若接口提示未登录，自动登录
-                    common.login();
+                    WechatCommon.Login.login();
                     return;
                 }
 

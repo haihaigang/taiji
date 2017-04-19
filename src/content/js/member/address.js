@@ -28,6 +28,8 @@
                 });
             }
         });
+        //添加默认分享功能
+        WechatCommon.Share.commonShare();
     });
 
     //设置默认地址
@@ -88,7 +90,7 @@
         }, function(response) {
             if (Tools._GET().from) {
                 var url = decodeURIComponent(Tools._GET().from);
-                url = Tools.changeURLArg(url, 'addressId', response.body.consigneeId || '');
+                url = Tools.changeURLArg(url, 'addressId', response.id || '');
                 location.href = url;
                 return;
             }

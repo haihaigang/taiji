@@ -53,9 +53,6 @@
         <div><a href="?abc=3"><h3>模拟登录</h3></a></div>
         <div><a href="?abc=1"><h3>退出登录</h3></a></div>
         <div><a href="?abc=2"><h3>清除缓存</h3></a></div>
-        <div><a href="?abc=4"><h3>清除楼宇信息</h3></a></div>
-        <div><a href="meigooo://com.rbyair.app"><h3>测试跳转Native</h3></a></div>
-        <div><a href="https://ibsbjstar.ccb.com.cn/app/ccbMain?MERCHANTID=105290054510965&POSID=818574467&BRANCHID=310000000&ORDERID=16072920498378441840&PAYMENT=759.90&CURCODE=01&TXCODE=520100&REMARK1=&REMARK2=&TYPE=1&GATEWAY=&CLIENTIP=180.168.208.228&REGINFO=meigooo&PROINFO=%u3010%u7f8e%u8d2d%u3011SK%u002dII%u795e%u4ed9%u6c34%u62a4%u80a4%u7cbe%u534e%u9732%u0020215ml%u002f%u74f6%u0020759%u002e%u002e%u002e%u002e&REFERER=rbyair.com&MAC=9ff63c050befa54cdd295607208bec42"><h3>建行支付</h3></a></div>
     </section>
     <div id="result"></div>
     <script src="../content/js/lib/zepto.min.js"></script>
@@ -72,12 +69,14 @@
         result.innerHTML = '关闭调试成功';
     } else if (Tools._GET().abc == 1) {
         Cookie.set("UserSN", "123", -1);
+        Cookie.set('AccessToken', '', -1);
         Ajax.custom({
             url: config.HOST_API + '/account/logout'
         }, function() {
             result.innerHTML = '退出登陆成功';
             Cookie.remove('CampainId');
             Storage.remove('AccessToken');
+            Cookie.remove('UserSN');
             Cookie.remove('IsBind');
         })
         Cookie.set("hasLoad", "123", -1);
@@ -101,9 +100,6 @@
             Storage.set("AccessToken", response.message)
         })
         result.innerHTML = '登录成功';
-    } else if (Tools._GET().abc == 4) {
-        Storage.remove('BuildInfo');
-        Storage.remove('buildingInfo');
     }
     document.getElementById('h1').href = '../index.html?t=' + new Date().getTime().toString(32);
     </script>

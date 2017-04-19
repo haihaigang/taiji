@@ -5,15 +5,11 @@
 (function() {
     var config = {
         PAGE_SIZE: 10, //默认分页大小
-        page: 1, //当前第几页，从1开始
         PAGE: 1, //当前第几页，从1开始
         HOST_API: '/wechat', //相对地址
-        HOST_API_APP: '', //相对地址
-        JAVA_HOST_URL: '/api', //相对地址
         HOST_IMAGE: location.protocol + '//' + location.host + '/', //图片地址的前缀，完整地址
         SHARE_HOST: location.protocol + '//' + location.host, //分享链接前缀，完整地址
         DEF_IMG_URL: '../content/images/default.png', //默认图片
-        OAUTHURL: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE&connect_redirect=1#wechat_redirect", //微信授权跳转地址
         APPID: "wx9c0b5913dd495352", //微信appId，正式
         WHITELISTS: [ //静态资源的白名单
             'rbyair.com',
@@ -26,7 +22,7 @@
         OSS_HOST: 'http://img01.rbyair.com', //oss的域名
         IS_WEBP_ON: true, //是否开启webp功能
         IS_MOCK_ON: false, //是否开启mock接口
-        VERSION: '2.4.4' //版本号
+        VERSION: '0.0.1' //版本号
     };
 
     if ('IS_DEBUG' in window) {
@@ -42,11 +38,8 @@
         config.APPID = "wx9c0b5913dd495352"; //微信appId，测试
     }
 
-    config.DETAIL_SHARE_LINK = config.SHARE_HOST + '/detail.html?id=ID&cid=CID'; //商品详情的分享链接
-    config.COUPON_SHARE_LINK = config.SHARE_HOST + '/detail.html?cid=CID'; //优惠券详情的分享链接
-    config.SHARE_TITLE = '90+营养代餐健康购';
-    config.SHARE_TEXT = '含有12大类，90多种食材，198元/盒，更多惊喜请点击';
-    config.DEF_AVATAR = config.HOST_IMAGE + 'content/images/logo.png'; //默认头像
+    config.DETAIL_SHARE_LINK = config.SHARE_HOST + '/detail.html?id={ID}&cid={CID}'; //商品详情的分享链接
+    config.COUPON_SHARE_LINK = config.SHARE_HOST + '/detail.html?cid={CID}'; //优惠券详情的分享链接
 
     config.ORDER_STATUS = { //订单状态
         PENDING: '未支付',
@@ -63,6 +56,12 @@
         MEMBER: '会员',
         AGENT: '代理',
         GENERAL_AGENT: '总代理'
+    };
+
+    config.DEFAULT_SHARE_DATA = { //默认分享数据
+        SHARE_TITLE: '90+营养代餐健康购',
+        SHARE_TEXT: '含有12大类，90多种食材，198元/盒，更多惊喜请点击',
+        SHARE_PIC: config.SHARE_HOST + '/content/images/logo.png' //默认头像
     };
 
     config.COUPON_SHARE_DATA = { //优惠券的分享数据

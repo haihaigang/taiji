@@ -12,7 +12,10 @@ module.exports = function(grunt) {
                     'src/content/js/base_dev/error.js',
                     'src/content/js/base_dev/config-dev.js',
                     'src/content/js/base_dev/config.js',
+                    'src/content/js/base_dev/filter.js',
+                    'src/content/js/base_dev/webp.js',
                     'src/content/js/base_dev/ajax.js',
+                    'src/content/js/base_dev/dialog.js',
                     'src/content/js/base_dev/cookie.js',
                     'src/content/js/base_dev/log.js',
                     'src/content/js/base_dev/guid.js',
@@ -23,8 +26,11 @@ module.exports = function(grunt) {
                     'src/content/js/base_dev/template-helper.js',
                     'src/content/js/base_dev/tools.js',
                     'src/content/js/base_dev/go.js',
-                    'src/content/js/base_dev/common.js',
                     'src/content/js/base_dev/wechat.js',
+                    'src/content/js/base_dev/wechat-login.js',
+                    'src/content/js/base_dev/wechat-share.js',
+                    'src/content/js/base_dev/wechat-pay.js',
+                    'src/content/js/base_dev/common.js',
                     'src/content/js/base_dev/html.js'
                 ],
                 dest: 'src/content/js/base/global.js'
@@ -34,7 +40,10 @@ module.exports = function(grunt) {
                     'src/content/js/base_dev/error.js',
                     'src/content/js/base_dev/config-pro.js',
                     'src/content/js/base_dev/config.js',
+                    'src/content/js/base_dev/filter.js',
+                    'src/content/js/base_dev/webp.js',
                     'src/content/js/base_dev/ajax.js',
+                    'src/content/js/base_dev/dialog.js',
                     'src/content/js/base_dev/cookie.js',
                     'src/content/js/base_dev/pay.js',
                     'src/content/js/base_dev/log.js',
@@ -45,8 +54,11 @@ module.exports = function(grunt) {
                     'src/content/js/base_dev/template-helper.js',
                     'src/content/js/base_dev/tools.js',
                     'src/content/js/base_dev/go.js',
-                    'src/content/js/base_dev/common.js',
                     'src/content/js/base_dev/wechat.js',
+                    'src/content/js/base_dev/wechat-login.js',
+                    'src/content/js/base_dev/wechat-share.js',
+                    'src/content/js/base_dev/wechat-pay.js',
+                    'src/content/js/base_dev/common.js',
                     'src/content/js/base_dev/html.js'
                 ],
                 dest: 'src/content/js/base/global.js'
@@ -56,6 +68,7 @@ module.exports = function(grunt) {
                     'dist/content/js/lib/zepto.min.js',
                     'dist/content/js/lib/fastclick.min.js',
                     'dist/content/js/lib/template.js',
+                    'dist/content/js/lib/qrcode.js',
                     'dist/content/swiper/swiper.min.js'
                 ],
                 dest: 'dist/content/js/lib/libs.js'
@@ -278,7 +291,7 @@ module.exports = function(grunt) {
 
         connect: {
             options: {
-                port: 8082,
+                port: 9091,
                 open: true,
                 livereload_bk: 35729,
                 hostname: '*'
@@ -353,7 +366,7 @@ module.exports = function(grunt) {
             'clean:removeDev',
             'clean:removeJs',
             'clean:removeSass',
-            'concat:allCssInOne',
+            // 'concat:allCssInOne',
             'clean:removeCss',
             'cssmin:deploy',
             'uglify:deploy',

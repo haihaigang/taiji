@@ -19,6 +19,6 @@
         getList();
 
         //添加默认分享功能
-        WechatCommon.share.commonShare();
+        WechatCommon.Share.commonShare();
     });
 })()

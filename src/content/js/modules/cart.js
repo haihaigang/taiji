@@ -1,6 +1,7 @@
 (function() {
     var container = $('.container')
 
+    // 获取购物车数量
     function getCart() {
         Ajax.custom({
             url: '/carts/items'
@@ -20,6 +21,7 @@
             numDom = par.find('.num-ipt'),
             num = parseInt(numDom.text()),
             objIdent = par.attr('data-objident'),
+            type = par.attr('data-type'),
             limitNum = par.attr('data-limit'),
             up = "up",
             down = "down";
@@ -38,7 +40,7 @@
 
         if ($(this).hasClass('plus')) {
             num++;
-            quickChangeCart(objIdent, num, up);
+            quickChangeCart(objIdent, num, type);
         } else if ($(this).hasClass('minus')) {
             if (num == 1) {
                 num--;
@@ -52,13 +54,12 @@
                 });
             } else {
                 num--;
-                quickChangeCart(objIdent, num, down);
+                quickChangeCart(objIdent, num, type);
             }
         }
 
         //这里返回false取消冒泡事件
         return false;
-
     });
 
     //点击结算，如果没绑定跳绑定页,否则直接进入结算页
@@ -70,28 +71,47 @@
             totalPrice = undefined, // 商品总价
             hasChecked = true; //购物车中是否有选中的商品
 
-        if(!hasChecked){
+        if (!hasChecked) {
             Tools.showToast('请选择一个商品');
             return;
         }
 
-        
         location.href = 'commit.html';
+    });
+
+    // 点击升级按钮，更改购物车数量
+    container.on('click', '.cart-buttons .btn', function() {
+        var objIdent = $(this).data('objident'),
+            num = 0;
+
+        if ($(this).hasClass('btn-daili')) {
+            num = 24;
+        } else if ($(this).hasClass('btn-zongdai')) {
+            num = 600
+        } else {
+            return;
+        }
+
+        quickChangeCart(objIdent, num);
     });
 
     /**
      * 修改购物车数量
      * @param objIdent 购物车中商品的唯一标识符
      * @param num 变更后的数量
-     * @param direction 更改方向 up增加、down减少
+     * @param type 商品的类型，REGULAR、普通商品, COUPON、优惠券商品
      */
-    function quickChangeCart(objIdent, num, direction) {
+    function quickChangeCart(objIdent, num, type) {
+
+        if (type == 'REGULAR') {
+            num *= 10; //普通商品默认要10盒一起购买，优惠券1盒购买
+        }
+
         Ajax.custom({
             url: '/carts/items',
             data: {
                 productId: objIdent,
-                quantity: num,
-                direction: direction,
+                quantity: num
             },
             type: 'POST',
             contentType: 'application/json'
@@ -134,10 +154,20 @@
     }
 
     function initCart(data) {
-        if(data.items && data.items.length == 0){
+        if (data.items && data.items.length == 0) {
             $('#tj-empty').show();
             return;
         }
+
+        for(var i = 0; i < data.items.length; i++){
+            var d = data.items[i];
+            if(d.type == 'REGULAR'){
+                // 因为普通商品的10盒一起购买，而购物车数量显示／10
+                d.quantity /= 10;
+                d.isRegular = true;
+            }
+        }
+
         Ajax.render('#tj-list', 'tj-list-tmpl', data.items);
         Ajax.render('#tj-cart-total', 'tj-cart-total-tmpl', data);
     }
@@ -174,5 +204,7 @@
 
     common.checkLoginStatus(function() { //入口
         getCart()
+            //添加默认分享功能
+        WechatCommon.Share.commonShare();
     });
 })()

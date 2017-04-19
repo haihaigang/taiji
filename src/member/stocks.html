@@ -18,40 +18,8 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <section class="container stocks" id="tj-detail" style="display: none;">
-        <div class="me-header stocks-header" id="tj-info">
-            <div class="me-header-content"><img id="me-avatar" src="../content/images/index-avatar.png" alt=""></div>
-            <div class="me-header-nickname">王海港</div>
-            <div class="me-header-desc">
-                <div class="me-header-desc-l">左青龙</div>
-                <div class="me-header-desc-r">右白虎</div>
-            </div>
-        </div>
-        <div class="stocks-list" id="tj-list">
-            <div class="stocks-list-items">
-                <div class="stocks-list-items-content">
-                    <div class="thumb"><img src="http://img01.rbyair.com/53/38/5e/ee09c84495ecf4ec189db888fd35c998043.jpg@.webp" alt=""></div>
-                    <div class="content">
-                        <h3>谷类、麦类、水果类、坚果类、海藻类、花朵类、蔬菜类9种食物，吃出健康，美丽绽放</h3>
-                        <p>库存剩余<em>29</em>件</p>
-                    </div>
-                </div>
-                <div class="stocks-list-items-bar">
-                    <a href=":;" class="btn">补货</a>
-                </div>
-            </div>
-            <div class="stocks-list-items">
-                <div class="stocks-list-items-content">
-                    <div class="thumb"><img src="http://img01.rbyair.com/27/81/5c/292ee8070d95cdb6e5a4b7b0a5e4b41b06d.jpg@.webp" alt=""></div>
-                    <div class="content">
-                        <h3>谷类、麦类、水果类、坚果类、海藻类、花朵类、蔬菜类9种食物，吃出健康，美丽绽放</h3>
-                        <p>库存剩余<em>29</em>件</p>
-                    </div>
-                </div>
-                <div class="stocks-list-items-bar">
-                    <a href=":;" class="btn">补货</a>
-                </div>
-            </div>
-        </div>
+        <div class="me-header stocks-header" id="tj-info"></div>
+        <div class="stocks-list" id="tj-list"></div>
     </section>
     
     <!--自定义提示框开始-->
@@ -81,6 +49,28 @@
     </div>
     <!--//自定义提示框结束-->
 
+    <!-- 规格选择窗口开始 -->
+    <div id="sidebar-bg"></div>
+    <div class="sidebar bottom" id="pickup-page">
+        <div class="iconfont icon-close" id="sku-quit"></div>
+        <div class="pickup">
+            <div class="pickup-title">
+                <div class="pickup-title-title">提货</div>
+                <div class="pickup-title-desc">最大提货数量不能超过库存</div>
+            </div>
+            <div class="pickup-content">
+                <div class="pickup-content-label">数量</div>
+                <div class="pickup-content-num" data-stock="10">
+                    <a class="minus"></a>
+                    <span id="pickup-num">1</span>
+                    <a class="plus"></a>
+                </div>
+            </div>
+            <div class="pickup-buttons"><button class="btn btn-pick-sure">提货</button></div>
+        </div>
+    </div>
+    <!-- //规格选择窗口结束 -->
+
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
         <!--[for(i = 0; i < list.length; i++){]-->
@@ -93,7 +83,7 @@
                 </div>
             </div>
             <div class="stocks-list-items-bar">
-                <a href=":;" class="btn">补货</a>
+                <a href=":;" class="btn btn-pick-open" data-stock="<!--[= list[i].stockQuantity]-->" data-id="<!--[= list[i].id]-->">提货</a>
             </div>
         </div>
         <!--[}]-->
@@ -115,6 +105,7 @@
     </script>
     <!--//模版结束-->
 
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <!-- build:js ../content/js/lib/libs.js -->
     <script src="../content/js/lib/zepto.min.js"></script>
     <script src="../content/js/lib/fastclick.min.js"></script>

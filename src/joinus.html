@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-touch-fullscreen" content="yes" />
     <title>加盟我们</title>
-    <!-- build:css ../content/css/taiji.min.css -->
+    <!-- build:css content/css/taiji.min.css -->
     <link rel="stylesheet" href="../content/css/taiji.css" />
     <!-- endbuild -->
 </head>
@@ -48,12 +48,19 @@
     </div>
     <!--//自定义提示框结束-->
 
-    <!-- build:js ../content/js/lib/libs.js -->
-    <script src="../content/js/lib/zepto.min.js"></script>
-    <script src="../content/js/lib/fastclick.min.js"></script>
-    <script src="../content/js/lib/template.js"></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <!-- build:js content/js/lib/libs.js -->
+    <script src="content/js/lib/zepto.min.js"></script>
+    <script src="content/js/lib/fastclick.min.js"></script>
+    <script src="content/js/lib/template.js"></script>
     <!-- endbuild -->
-    <script src="../content/js/base/global.js"></script>
+    <script src="content/js/base/global.js"></script>
+    <script type="text/javascript">
+        common.checkLoginStatus(function() { //入口
+        //添加默认分享功能
+        WechatCommon.Share.commonShare();
+    });
+    </script>
 </body>
 
 </html>

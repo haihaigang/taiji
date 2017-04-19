@@ -13,21 +13,26 @@
     container.on('click', '.goods-deliverys a', function(e) {
         e.preventDefault();
 
-        $('.goods-deliverys a').removeClass('active');
-        $(this).addClass('active');
+        getData($(this).data('delivery'));
     });
 
     // 获取展示的购物车数据
-    function getData() {
+    function getData(deliveryMethod) {
+        deliveryMethod = deliveryMethod || 'EXPRESS';
+
         Ajax.custom({
             url: '/carts/checkout',
             data: {
-                addressId: addressId
+                addressId: addressId,
+                deliveryMethod: deliveryMethod
             },
             type: 'POST',
             contentType: 'application/json'
         }, function(response) {
+            response.deliveryMethod = deliveryMethod;
             renderCart(response);
+        }, function(textStatus, data) {
+            Tools.showToast(data.message);
         });
     }
 
@@ -155,11 +160,13 @@
 
     // 发起支付
     function pay(orderId) {
-        WechatCommon.weixinPayOrder(orderId, payCallback, errorCallback);
+        WechatCommon.Pay.weixinPayOrder(orderId, payCallback, errorCallback);
     }
 
     common.checkLoginStatus(function() { //入口
         getData()
+            //添加默认分享功能
+        WechatCommon.Share.commonShare();
     });
 
 })();

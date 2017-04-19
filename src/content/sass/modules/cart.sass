@@ -79,47 +79,6 @@
     .on
         display: none
 
-#coupon-page
-    & > div
-        max-height: 270px
-        overflow-y: auto
-
-    h2
-        height: 0.41rem
-        padding-left: 0.08rem
-        line-height: 0.41rem
-        font-size: 16px
-        color: #525252
-
-        +linear-gradient(#FFFFFF, #F3F3F3)
-
-        button
-            display: block
-            height: 0.41rem
-            padding: 0 0.08rem
-            line-height: 0.41rem
-            float: right
-            border: none
-            color: $primary-color
-            background-color: inherit
-
-    .item
-        border-bottom: $border-default
-
-        .cart-check
-            +box
-
-            +box-align
-
-            padding: 0.1rem
-
-            em
-                font-size: 0.24rem
-
-    .empty
-        padding: 0.07rem 0
-        text-align: center
-
 .cart
     .cart-goods-group
         .cart-goods-group-count
@@ -146,82 +105,19 @@
                 background: #fff
                 width: 0.08rem
 
-    .cart-name-1
-        +box-flex
-
-        color: $secondary-color
-        font-size: 0.12rem
-
-    .cart-name
-        margin: 0 0.05rem 0 0
-        font-size: 0.11rem
-        color: $primary-color
-        height: 0.16rem
-        line-height: 0.16rem
-        padding: 0 0.03rem
-        border: 1px solid $primary-color
-        display: inline-block
-
-        +border-radius(0.01rem)
-
-        position: relative
-        top: -0.01rem
-
-    .cart-subtotal-rule
-        height: 0.22rem
-        padding: 0 0.05rem
-        line-height: 0.22rem
-        border: 1px solid $primary-color
-
-        +border-radius($border-radius)
-
-        font-size: 0.8em
-
-    .cart-total-button
-        width: 0.92rem
-        height: 0.48rem
-        font-size: 0.16rem
-        color: #fff
-        line-height: 0.25rem
-        text-align: center
-        border: none
-        background-color: $primary-color
-
-    .cart-rule-content
-        line-height: 0.18rem
-        font-size: 0.13rem
-        color: $primary-color
-
-    .cart-total
-        position: fixed
-        left: 0
-        right: 0
-        bottom: 0
-        background-color: #fff
-
-        +box-shadow(0px -1px 2px 0px rgba(178, 178, 178, 0.5))
-
-        .cart-check
-            display: none
-            line-height: 0.48rem
-            height: 0.48rem
-            color: $secondary-color
-            overflow: hidden
-            padding-right: 0.05rem
-            padding-left: 0.08rem
-
-            em
-                font-size: 0.24rem
-
-        .cart-check-title
-            display: none
-            line-height: 0.48rem
-            font-size: 0.11rem
-            color: $secondary-color
+    .cart-buttons
+        padding: 0.08rem
 
         button
-            &:focus
-                outline: none
+            margin-right: 0.07rem
+            padding: 0.07rem 0.1rem
+            text-align: center
+            color: $primary-color
+            border: 1px solid $primary-color
+            background-color: #fff
+            outline: none
+
+            +border-radius(0.04rem)
 
     .cart-goods-item
         +box-align
@@ -262,10 +158,59 @@
 
             +border-radius(0.02rem)
 
-    .cart-rule-text
-        padding: 0 0.05rem
+    .cart-total
+        position: fixed
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: #fff
 
-        +box-flex
+        +box-shadow(0px -1px 2px 0px rgba(178, 178, 178, 0.5))
+
+        .cart-check
+            display: none
+            line-height: 0.48rem
+            height: 0.48rem
+            color: $secondary-color
+            overflow: hidden
+            padding-right: 0.05rem
+            padding-left: 0.08rem
+
+            em
+                font-size: 0.24rem
+
+        .cart-check-title
+            display: none
+            line-height: 0.48rem
+            font-size: 0.11rem
+            color: $secondary-color
+
+        button
+            &:focus
+                outline: none
+
+        .cart-total-price
+            padding-left: 0.08rem
+
+            +box-flex
+
+            div
+                font-size: 0.11rem
+                margin-right: 0.07rem
+                color: #4a4a4a
+
+            em
+                color: #9b9b9b
+
+        .cart-total-button
+            width: 0.92rem
+            height: 0.48rem
+            font-size: 0.16rem
+            color: #fff
+            line-height: 0.25rem
+            text-align: center
+            border: none
+            background-color: $primary-color
 
     .icon-arrow
         font-size: 0.2rem
@@ -487,19 +432,6 @@
         margin-bottom: 0.08rem
         background-color: #fff
 
-    .cart-total-price
-        padding-left: 0.08rem
-
-        +box-flex
-
-        div
-            font-size: 0.11rem
-            margin-right: 0.07rem
-            color: #4a4a4a
-
-        em
-            color: #9b9b9b
-
     .all-Price
         color: $primary-color
         font-weight: bold
@@ -539,6 +471,11 @@
             background-color: #fff
 
     .goods-qty-item
+        padding: 0.08rem 0
+
+    .goods-qty-label
+        height: 0.26rem
+        line-height: 0.26rem
         padding: 0.08rem 0
 
     .cart-subtotal-oldprice

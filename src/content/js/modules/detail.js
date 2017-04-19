@@ -12,7 +12,7 @@
     });
 
     // 点击确定提交绑定数据
-    $('#tj-bind-dialog .btn-primary').click(function(e){
+    $('#tj-bind-dialog .btn-primary').click(function(e) {
         e.preventDefault();
 
         bindUser();
@@ -21,7 +21,7 @@
     // 获取详情数据
     function getDetail() {
         if (cid) {
-            url = '/products/coupon/' + cid
+            url = '/products/coupon'
         } else {
             url = '/products/' + id;
         }
@@ -36,13 +36,15 @@
             var data = response,
                 sharePic = '';
 
+            id = data.id;
+
             Ajax.render('#tj-detail', 'tj-detail-tmpl', data);
 
             //固定图片的高度
             $('.detail-product-img img').css('height', parseInt($('body').width() / DETAIL_RATIO));
 
             // 初始化轮播图
-            if (data.images && data.images.length > 0) {
+            if (data.images && data.images.length > 1) {
                 var swiper = new Swiper('.swiper-container', {
                     pagination: '.swiper-pagination',
                     paginationClickable: true,
@@ -51,6 +53,8 @@
                     autoplayDisableOnInteraction: false
                 });
 
+            }
+            if (data.images && data.images.length > 0) {
                 sharePic = data.images[0];
             }
 
@@ -60,18 +64,21 @@
                 Tools.showAlert({
                     showTitle: true,
                     titleText: '温馨提示',
-                    message: '您来晚了一步，优惠券被抢完了购买商品，自己成为会员吧'
+                    message: '您来晚了一步，优惠券被抢完了<br/>购买商品，自己成为会员吧'
                 });
             }
 
             // 初始化分享数据
-            WechatCommon.share.commonShare({
-                shareTitle: config.SHARE_TITLE,
-                shareDesc: config.SHARE_TEXT,
+            WechatCommon.Share.commonShare({
+                shareTitle: config.DEFAULT_SHARE_DATA.SHARE_TITLE,
+                shareDesc: config.DEFAULT_SHARE_DATA.SHARE_TEXT,
                 sharePic: sharePic,
-                couponId: cid,
-                id: id
-            }, 'detail');
+                shareLink: common.getShareLink({
+                    type: 'detail',
+                    id: id,
+                    couponId: cid
+                })
+            });
 
             container.show();
         })
@@ -83,18 +90,25 @@
             return;
         }
 
+        var qty = 1;
+        if(!cid && id){
+            //普通商品默认要10盒一起购买，优惠券1盒购买
+            qty = 10;
+        }
+
         Ajax.custom({
             url: '/carts/items',
             data: {
                 productId: id,
-                quantity: 1
+                couponId: cid || '',
+                quantity: qty
             },
             type: 'POST',
             contentType: 'application/json'
         }, function(response) {
             location.href = 'cart.html';
         }, function(textStatus, data) {
-            if(data.exception.indexOf('NotSignupPhoneException') != -1){
+            if (data.exception.indexOf('NotSignupPhoneException') != -1) {
                 // 用户未绑定手机号，提示
                 $('#tj-bind-dialog').show();
                 return;

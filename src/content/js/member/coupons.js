@@ -10,11 +10,12 @@
             url: '/members/coupons',
             data: {
                 status: status || 0,
-                page: config.page,
+                page: config.PAGE,
                 pageSize: config.PAGE_SIZE
             },
             showLoading: true,
-            showEmpty: true
+            showEmpty: true,
+            key: 'content'
         }, function(response) {
             tempData = response;
             container.show();
@@ -38,12 +39,15 @@
         }, function(response) {
             var data = response;
 
-            WechatCommon.share.commonShare({
+            WechatCommon.Share.commonShare({
                 shareTitle: config.COUPON_SHARE_DATA.SHARE_TITLE,
                 shareDesc: config.COUPON_SHARE_DATA.SHARE_DESC,
                 sharePic: config.COUPON_SHARE_DATA.SHARE_PIC,
-                couponId: cid
-            }, 'coupon');
+                shareLink: common.getShareLink({
+                    type: 'coupon',
+                    couponId: cid
+                })
+            });
         });
     });
 

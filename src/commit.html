@@ -18,9 +18,7 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <section class="container commit">
-        <div id="tj-detail">
-            
-        </div>
+        <div id="tj-detail"></div>
         <div id="tj-empty" class="list-empty-data icon-cart-empty">
             <p class="ckout-title">您的购物车还是空的</p>
             <span class="ckout-info">要是宝贝到手了，那就赶紧享用吧</span>
@@ -143,21 +141,19 @@
             </div>
             <div class="good-payments goods-deliverys">
                 <h3>选择配送方式</h3>
-                <a class="clearfix" href="javascript:;" data-delivery="EXPRESS">
+                <a class="clearfix<!--[= $addClassByCondition(deliveryMethod=='EXPRESS',' active')]-->" href="javascript:;" data-delivery="EXPRESS">
                     <span><strong>快递送货上门</strong><br/>快递小哥会尽快将健康送到府上</span>
                     <i class="iconfont icon-uncheck good-payments-last"></i>
                 </a>
-                <a class="clearfix" href="javascript:;" data-delivery="INVENTORY">
+                <a class="clearfix<!--[= $addClassByCondition(deliveryMethod=='INVENTORY',' active')]-->" href="javascript:;" data-delivery="INVENTORY">
                     <span><strong>存入我的仓库</strong><br/>存入到我在公司的私人仓库，不占地方便</span>
                     <i class="iconfont icon-uncheck good-payments-last"></i>
                 </a>
             </div>
             <ul class="list-group commit-total" id="tj-cart-total">
-                <li class="list-group-item" id="freight">
-                    <span>运费：<i class="iconfont icon-info"></i> </span>
-                    <em>￥<!--[= shippingFee]--></em>
-                </li>
                 <li class="list-group-item"><span>小计：</span><em>￥<!--[= subtotal]--></em></li>
+                <li class="list-group-item"><span>减免：</span><em>-￥<!--[= discount]--></em></li>
+                <li class="list-group-item"><span>运费：</span><em>￥<!--[= shippingFee]--></em></li>
             </ul>
             <div class="commit-cart-total" id="tj-cart-footer">
                 <div class="dbox">
@@ -209,13 +205,15 @@
             <button class="cart-total-button">支付</button>
         </div>
     </script>
-    <!-- build:js ../content/js/lib/libs.js -->
-    <script src="../content/js/lib/zepto.min.js"></script>
-    <script src="../content/js/lib/fastclick.min.js"></script>
-    <script src="../content/js/lib/template.js"></script>
+
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <!-- build:js content/js/lib/libs.js -->
+    <script src="content/js/lib/zepto.min.js"></script>
+    <script src="content/js/lib/fastclick.min.js"></script>
+    <script src="content/js/lib/template.js"></script>
     <!-- endbuild -->
-    <script src="../content/js/base/global.js"></script>
-    <script src="../content/js/modules/commit.js"></script>
+    <script src="content/js/base/global.js"></script>
+    <script src="content/js/modules/commit.js"></script>
 </body>
 
 </html>

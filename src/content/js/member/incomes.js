@@ -19,5 +19,7 @@
 
     common.checkLoginStatus(function() { //入口
         getData();
+        //添加默认分享功能
+        WechatCommon.Share.commonShare();
     });
 })()

@@ -51,7 +51,7 @@
 
     // 发起支付
     function pay(orderId) {
-        WechatCommon.weixinPayOrder(orderId, payCallback, errorCallback);
+        WechatCommon.Pay.weixinPayOrder(orderId, payCallback, errorCallback);
     }
 
     //获取订单列表
@@ -60,11 +60,12 @@
         Ajax.paging({
             url: '/members/orders',
             data: {
-                page: config.page,
+                page: config.PAGE,
                 pageSize: config.PAGE_SIZE
             },
             showLoading: true,
-            showEmpty: true
+            showEmpty: true,
+            key: 'content'
         }, function(response) {
             tempData = response;
 
@@ -78,6 +79,8 @@
 
     common.checkLoginStatus(function() { //入口
         getList();
+        //添加默认分享功能
+        WechatCommon.Share.commonShare();
     });
 
 })()

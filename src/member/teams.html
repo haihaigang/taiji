@@ -18,29 +18,7 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <section class="container teams" id="tj-detail" style="display: none;">
-        <div class="me-header teams-header" id="tj-info">
-            <div class="me-header-content"><img id="me-avatar" src="../content/images/index-avatar.png" alt=""></div>
-            <div class="me-header-nickname">王海港</div>
-            <div class="me-header-level"><em>第一级</em></div>
-            <div class="me-header-desc">
-                <div class="me-header-desc-l">左青龙</div>
-                <div class="me-header-desc-r">右白虎</div>
-            </div>
-	        <div class="teams-bar clearfix">
-	            <a class="teams-bar-tiem tab-item" href="../member/orders.html?status=0">
-	                <div class="iconfont icon-order-detail"></div>
-	                <div class="tab-label">全部订单</div>
-	            </a>
-	            <a class="teams-bar-tiem tab-item" href="../member/orders.html?status=5">
-	                <div class="iconfont icon-waitpay"></div>
-	                <div class="tab-label">待支付</div>
-	            </a>
-	            <a class="teams-bar-tiem tab-item" href="../member/orders.html?status=2">
-	                <div class="iconfont icon-waitdelivergoods"></div>
-	                <div class="tab-label">待发货</div>
-	            </a>
-	        </div>
-        </div>
+        <div class="me-header teams-header" id="tj-info"></div>
         <div class="teams-list">
             <table class="table table-hover">
                 <thead>
@@ -51,20 +29,7 @@
                         <th>下级人数</th>
                     </tr>
                 </thead>
-                <tbody id="tj-list">
-                    <tr>
-                        <td>1907</td>
-                        <td>独立空间</td>
-                        <td>一级</td>
-                        <td>10人</td>
-                    </tr>
-                    <tr>
-                        <td>1906</td>
-                        <td>哟拍摄的</td>
-                        <td>二级</td>
-                        <td>90人</td>
-                    </tr>
-                </tbody>
+                <tbody id="tj-list"></tbody>
             </table>
         </div>
     </section>
@@ -100,7 +65,7 @@
     <script id="tj-list-tmpl" type="text/html">
         <!--[for(i = 0; i < list.length; i++){]-->
         <tr>
-            <td><img src="<!--[= $absImg(list[i].avatar)]-->" alt=""/></td>
+            <td><img class="avatar" src="<!--[= $absImg(list[i].avatar)]-->" alt=""/></td>
             <td><!--[= list[i].nickname]--></td>
             <td><!--[= $getLevelName(list[i].level)]--></td>
             <td><!--[= list[i].numOfLower]-->人</td>
@@ -136,6 +101,7 @@
     </script>
     <!--//模版结束-->
 
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <!-- build:js ../content/js/lib/libs.js -->
     <script src="../content/js/lib/zepto.min.js"></script>
     <script src="../content/js/lib/fastclick.min.js"></script>

@@ -1,84 +1,163 @@
 /**
  * 本地cookie读写
+ * 读方法
+ * Cookie.get();
+ * Cookie.get('ABC');
+ * 写方法
+ * Cookie.set('ABC', 123);
+ * Cookie.set('ABC', 123, 5000);
+ * Cookie.set('ABC', 123, {});
+ * 扩展属性包括
+ * expires
+ * path
+ * domain
+ * secure
  */
 (function() {
     var Cookie = {
-        get: function(sname) {
-            var sre = "(?:;)?" + sname + "=([^;]*);?";
-            var ore = new RegExp(sre);
-            if (ore.test(document.cookie)) {
+        /**
+         * 获取某个cookie的值，如果key不则获取当前所有的cookie
+         * @param key 键值
+         * @return
+         */
+        get: function(key) {
+            var result;
+
+            if (!key) {
+                result = {};
+            }
+
+            var cookies = document.cookie ? document.cookie.split('; ') : [];
+            var rdecode = /(%[0-9A-Z]{2})+/g;
+            var i = 0;
+
+            for (; i < cookies.length; i++) {
+                var parts = cookies[i].split('=');
+                var cookie = parts.slice(1).join('=');
+
+                if (cookie.charAt(0) === '"') {
+                    cookie = cookie.slice(1, -1);
+                }
+
+                // cookie = unescape(cookie);
+                cookie = cookie.replace(rdecode, decodeURIComponent);
                 try {
-                    return unescape(RegExp["$1"]); // decodeURIComponent(RegExp["$1"]);
-                } catch (e) {
-                    return null;
+                    cookie = JSON.parse(cookie);
+                } catch (e) {}
+
+                var name = parts[0];
+
+                if (key === name) {
+                    result = cookie;
+                    break;
                 }
-            } else {
-                return null;
+
+                if (!key) {
+                    result[name] = cookie;
+                }
             }
+
+            return result
         },
 
         /**
-         * 设置Cookie
-         * @param {[String]}
-         * @param {[String]} 
-         * @param {[Number]} 天数
-         * @param {[Number]} 小时数
-         * @param {[Number]} 分钟数
-         * @param {[Number]} 秒数
+         * 设置cookie
+         * @param key 键
+         * @param value 值     
+         * @param attributes 扩展属性或过期的秒数
          */
-        _set: function(c_name, value, days, hours, minutes, seconds ) {
-            var expires = null;
-            var domain =  location.host.indexOf("meigooo.com")>=0 ? "domain= meigooo.com":"";
-            if (typeof days == 'number' && typeof hours == 'number' && typeof minutes == 'number' && typeof seconds == 'number') {
-                if (days == 0 && hours == 0 && minutes == 0 && seconds == 0) {
-                    expires = null;
+        set: function(key, value, attributes) {
+            if (typeof attributes == 'number') {
+                var expires = attributes;
+                attributes = {
+                    expires: expires
+                };
+            }
+
+            attributes = extend({
+                path: '/'
+            }, attributes);
+
+            attributes.expires = this._getExpires(attributes.expires);
+
+            value = encodeURIComponent(String(value))
+                        .replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+            try {
+                value = JSON.stringify(value);
+            } catch (e) {}
+
+            value = escape(value);
+
+            key = encodeURIComponent(String(key));
+            key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+            key = key.replace(/[\(\)]/g, escape);
+
+            var stringifiedAttributes = '';
+
+            for (var attributeName in attributes) {
+                if (!attributes[attributeName]) {
+                    continue;
+                }
+                stringifiedAttributes += '; ' + attributeName;
+                if (attributes[attributeName] === true) {
+                    continue;
+                }
+                stringifiedAttributes += '=' + attributes[attributeName];
+            }
+
+            return (document.cookie = key + '=' + value + stringifiedAttributes);
+        },
+
+        /**
+         * 移除cookie
+         * @param key 键
+         * @param attributes 扩展属性
+         */
+        remove: function(key, attributes) {
+            this.set(key, '', extend(attributes, {
+                expires: -1
+            }));
+        },
+
+        /**
+         * 获取失效时间
+         * @param expires
+         */
+        _getExpires: function(expires) {
+            var date = new Date();
+
+            if (typeof expires === 'number') {
+                date.setMilliseconds(date.getMilliseconds() + expires * 1e+3);
+            } else if (typeof expires === 'object') {
+                var d = expires.days || 0,
+                    h = expires.hours || 0,
+                    m = expires.minutes || 0,
+                    s = expires.seconds || 0;
+
+                if (typeof d != 'number' || typeof h != 'number' || typeof m != 'number' || typeof s != 'number') {
+                    date = undefined;
                 } else {
-                    expires = this.getExpDate(days, hours, minutes, seconds);
+                    date.setDate(date.getDate() + parseInt(d)), date.setHours(date.getHours() + parseInt(h)), date.setMinutes(date.getMinutes() + parseInt(m)), date.setSeconds(date.getSeconds() + parseInt(s));
                 }
             } else {
-                expires = days || this.getExpDate(7, 0, 0, 0);
+                date = undefined;
             }
 
-            document.cookie = c_name + "=" + escape(value) + ((expires == null) ? "" : ";expires=" + expires) + "; path=/ ;"+domain;
-        },
-
-        /**
-         * 设置Cookie
-         * @param {[type]} name
-         * @param {[type]} value
-         * @param {[type]} 天数，默认7天、0不设置、-1移除
-         * @param {[type]} 小時，默認0
-         */
-        set: function(c_name, value, days, hours ,minites) {
-            if(!hours) hours = 0;
-            if(!minites) minites = 0;
-            this._set(c_name, value, days, hours, minites, 0 );
-        },
-
-        remove: function(key) {
-            this.set(key, '', -1);
-        },
-
-        delTest:function(key) {//删除已提交的测试环境下的重复cookie值，只保留线上主域名cookie值
-            var exp = new Date(); 
-            exp.setTime(exp.getTime() - 1); 
-            var domain = "domain= rbyair.com";
-            document.cookie = key + "=;expires=" + exp.toGMTString() + "; path=/ ; "+domain;  
-        },
-
-        del:function(key) {//删除不同域名下的重复cookie，只保留线上主域名cookie值
-            var exp = new Date(); 
-            exp.setTime(exp.getTime() - 1); 
-            document.cookie = key + "=;expires=" + exp.toGMTString() + "; path=/ ; ";  
-        },
-        //获取过期时间，d天数、h小时、m分钟、s秒
-        getExpDate: function(d, h, m, s) {
-            var r = new Date;
-            if (typeof d == "number" && typeof h == "number" && typeof m == "number" && typeof s == 'number')
-                return r.setDate(r.getDate() + parseInt(d)), r.setHours(r
-                        .getHours() + parseInt(h)), r.setMinutes(r.getMinutes() + parseInt(m)), r.setSeconds(r.getSeconds() + parseInt(s)),
-                    r.toGMTString()
+            return date ? date.toUTCString() : '';
         }
     };
+
+    function extend() {
+        var i = 0;
+        var result = {};
+        for (; i < arguments.length; i++) {
+            var attributes = arguments[i];
+            for (var key in attributes) {
+                result[key] = attributes[key];
+            }
+        }
+        return result;
+    }
+
     window.Cookie = Cookie;
 })()
