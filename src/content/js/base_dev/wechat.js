@@ -2,11 +2,11 @@
  * 微信jsapi相关的基础配置
  * 获取签名
  **/
-(function(config, Ajax) {
+(function(Config, Ajax) {
 
     var Base = function() {
         this._isDebug = false; //是否开启微信jsapi接口的调试模式
-        this._appId = config.APPID; //应用ID
+        this._appId = Config.APPID; //应用ID
         this._signUrl = '/wechat/mp/signature'; //获取签名的接口地址
         this._jsApiList = []; //需要操作的微信api列表
     }
@@ -32,7 +32,7 @@
             }, function(response) {
                 var data = response;
 
-                //在调用wx.ready之前必先调用wx.config
+                //在调用wx.ready之前必先调用wx.Config
                 wx.config({
                     debug: that._isDebug,
                     appId: data.appId,
@@ -61,4 +61,4 @@
     var WechatCommon = {};
     WechatCommon.Base = Base;
     window.WechatCommon = WechatCommon;
-})(config, Ajax);
+})(Config, Ajax);

@@ -88,6 +88,12 @@
             e.preventDefault();
             that.hide();
         });
+
+        if (that.panel.length > 0) {
+            that.panel[0].addEventListener('touchmove', function(e){
+                e.preventDefault();
+            }, true);
+        }
     };
 
     Dialog.prototype = {

@@ -3,7 +3,7 @@
  * 把配置信息分为基础配置、提示信息
  */
 (function() {
-    var config = {
+    var Config = {
         PAGE_SIZE: 10, //默认分页大小
         PAGE: 1, //当前第几页，从1开始
         HOST_API: '/wechat', //相对地址
@@ -26,22 +26,22 @@
     };
 
     if ('IS_DEBUG' in window) {
-        config.IS_DEBUG = IS_DEBUG;
+        Config.IS_DEBUG = IS_DEBUG;
     }
 
     if ('VERSION' in window) {
-        config.VERSION = VERSION;
+        Config.VERSION = VERSION;
     }
 
-    if (config.IS_DEBUG) {
+    if (Config.IS_DEBUG) {
         //配置测试相关信息
-        config.APPID = "wx9c0b5913dd495352"; //微信appId，测试
+        Config.APPID = "wx9c0b5913dd495352"; //微信appId，测试
     }
 
-    config.DETAIL_SHARE_LINK = config.SHARE_HOST + '/detail.html?id={ID}&cid={CID}'; //商品详情的分享链接
-    config.COUPON_SHARE_LINK = config.SHARE_HOST + '/detail.html?cid={CID}'; //优惠券详情的分享链接
+    Config.DETAIL_SHARE_LINK = Config.SHARE_HOST + '/detail.html?id={ID}&cid={CID}'; //商品详情的分享链接
+    Config.COUPON_SHARE_LINK = Config.SHARE_HOST + '/detail.html?cid={CID}'; //优惠券详情的分享链接
 
-    config.ORDER_STATUS = { //订单状态
+    Config.ORDER_STATUS = { //订单状态
         PENDING: '未支付',
         PROCESSING: '已支付待发货',
         IN_TRANSIT: '已发货',
@@ -51,24 +51,34 @@
         RETURNED: '已退货'
     };
 
-    config.LEVEL = { //用户等级
+    Config.LEVEL = { //用户等级
         USER: '用户',
         MEMBER: '会员',
         AGENT: '代理',
         GENERAL_AGENT: '总代理'
     };
 
-    config.DEFAULT_SHARE_DATA = { //默认分享数据
+    Config.DEFAULT_SHARE_DATA = { //默认分享数据
         SHARE_TITLE: '90+营养代餐健康购',
         SHARE_TEXT: '含有12大类，90多种食材，198元/盒，更多惊喜请点击',
-        SHARE_PIC: config.SHARE_HOST + '/content/images/logo.png' //默认头像
+        SHARE_PIC: Config.SHARE_HOST + '/content/images/logo.png' //默认头像
     };
 
-    config.COUPON_SHARE_DATA = { //优惠券的分享数据
+    Config.COUPON_SHARE_DATA = { //优惠券的分享数据
         SHARE_TITLE: '90+营养代餐免费领',
         SHARE_DESC: '一份分享，一份爱心，收获一份健康，点击免费领取',
-        SHARE_PIC: config.SHARE_HOST + '/content/images/share-coupon.jpg'
+        SHARE_PIC: Config.SHARE_HOST + '/content/images/share-coupon.jpg'
     };
 
-    window.config = config;
+    Config.INCOMES_TYPE = {//收益类型
+        'PROFIT1': '一级分利',
+        'PROFIT2': '二级分利',
+        'SALES': '差额收益',
+        'REWARD': '差额收益',
+        'WITHDRAWAL': '提现',
+        'WITHDRAWAL_RETURN': '提现退还'
+        , 
+    };
+
+    window.Config = Config;
 })();

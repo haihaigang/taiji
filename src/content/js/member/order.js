@@ -18,7 +18,7 @@
 
     //获取订单
     function getDetail() {
-        var url = config.HOST_API_APP + source == 'period_buy' ? '/member/order/getPeriodOrderDetail' : '/member/order/get';
+        var url = Config.HOST_API_APP + source == 'period_buy' ? '/member/order/getPeriodOrderDetail' : '/member/order/get';
         Ajax.detail({
             url: url,
             data: {
@@ -69,7 +69,7 @@
     }
 
 
-    common.checkLoginStatus(function() { //入口
+    Common.checkLoginStatus(function() { //入口
         getDetail();
     });
 
@@ -135,7 +135,7 @@
 
         Tools.showConfirm('你确定要删除订单吗？', function() {
             Ajax.custom({
-                url: config.HOST_API + '/member/deleteOrder',
+                url: Config.HOST_API + '/member/deleteOrder',
                 data: {
                     orderId: tempData.orderId
                 },
@@ -160,7 +160,7 @@
         }
 
         Ajax.custom({
-            url: config.HOST_API_APP + '/member/order/againBuy',
+            url: Config.HOST_API_APP + '/member/order/againBuy',
             data: {
                 orderId: tempData.orderId
             },
@@ -270,7 +270,7 @@
 
         Tools.showConfirm('是否确认已收货？', function() {
             Ajax.custom({
-                url: config.HOST_API_APP + '/member/order/confirmReceive',
+                url: Config.HOST_API_APP + '/member/order/confirmReceive',
                 data: {
                     orderId: id
                 },
@@ -327,7 +327,7 @@
     //发起取消订单请求
     function cancelOrder() {
         Ajax.custom({
-            url: config.HOST_API + '/member/cancelOrder',
+            url: Config.HOST_API + '/member/cancelOrder',
             data: {
                 orderId: tempData.orderId
             },

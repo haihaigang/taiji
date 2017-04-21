@@ -319,7 +319,7 @@
             loadingDom.show();
         }
 
-        if (config.IS_MOCK_ON || options.isMockOn) {
+        if (Config.IS_MOCK_ON || options.isMockOn) {
             options.url = '/api' + options.url + '.json';
         }
         options.url = '/api' + options.url;
@@ -337,7 +337,7 @@
         var header = {
             'RudderAppType': 'WEB',
             'RudderMarket': 'WEB',
-            'RudderVersion': config.VERSION,
+            'RudderVersion': Config.VERSION,
         };
         if (RudderPageId) header.RudderPageId = RudderPageId;
 

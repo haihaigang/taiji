@@ -67,7 +67,7 @@
 
     .pickup-content
         display: flex
-        padding: 0.08rem 0.08rem 0.5rem
+        padding: 0.08rem 0.08rem
 
         .pickup-content-label
             font-size: 0.14rem
@@ -77,6 +77,16 @@
 
         .pickup-content-num
             position: relative
+
+            em
+                display: block
+                padding: 0 0.1rem
+                height: 0.26rem
+                float: left
+                border-radius: 2px
+                font-size: 12px
+                line-height: 0.26rem
+                color: #000000
 
             span
                 display: block
@@ -138,6 +148,57 @@
             a.disabled:before
                 background: #d8d8d8
 
+    .pickup-address
+        padding-bottom: 0.08rem
+
+        .pickup-address-label
+            padding: 0.08rem
+            font-size: 0.14rem
+            color: #000
+
+        .pickup-address-content
+            max-height: 1.34rem
+            overflow-y: auto
+
+        .pickup-address-item
+            display: flex
+            border: 1px solid #efefef
+            margin-bottom: 0.08rem
+            padding: 0.08rem
+
+            +border-radius(0.04rem)
+
+            .pickup-address-item-content
+                flex: 1
+                color: #3c2e25
+
+            p
+                em
+                    margin-right: 0.08rem
+                    font-size: 0.15rem
+                    font-weight: 700
+                    color: #000
+
+            .info
+                font-size: 1em
+
+            .pickup-address-item-icon
+                font-size: 0.14rem
+                color: #3c2e25
+
+            .icon-check
+                display: none
+
+            .icon-uncheck
+                display: block
+
+            &.active
+                .icon-check
+                    display: block
+
+                .icon-uncheck
+                    display: none
+
     .pickup-buttons
         margin-left: -0.08rem
         margin-right: -0.08rem
@@ -151,3 +212,7 @@
             color: #fff
             border: none
             background-color: #c8a565
+            outline: none
+
+        &.disabled
+            background-color: #ada596

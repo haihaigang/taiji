@@ -12,7 +12,7 @@
     function _wechatGetLocation2(fn, errorFn) {
         //设置5秒定位不到结果给用户提示信息
         locationInte = setTimeout(function() {
-            common.locationError && common.locationError();
+            Common.locationError && Common.locationError();
         }, 5000);
 
         // 百度地图API功能
@@ -29,7 +29,7 @@
                 var longitude = r.point.lng; // 经度，浮点数，范围为180 ~ -180。
                 //获取定位
                 Ajax.custom({
-                    url: config.HOST_API_APP + '/building',
+                    url: Config.HOST_API_APP + '/building',
                     type: 'GET',
                     data: {
                         latitude: latitude,
@@ -75,7 +75,7 @@
                     var accuracy = res.accuracy; // 位置精度
                     //获取定位
                     Ajax.custom({
-                        url: config.HOST_API_APP + '/building',
+                        url: Config.HOST_API_APP + '/building',
                         type: 'GET',
                         data: {
                             latitude: latitude,

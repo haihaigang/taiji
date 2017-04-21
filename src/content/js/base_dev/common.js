@@ -2,24 +2,24 @@
  * TODO 根据具体业务逻辑修改
  */
 (function() {
-    var common = {},
+    var Common = {},
         $body = $("body");
 
     //获取登录的id
-    common.getId = function() {
+    Common.getId = function() {
         var auth = Cookie.get(Storage.AUTH);
         return auth;
     };
 
 
     //是否从APP跳转过来
-    common.isFromApp = function() {
+    Common.isFromApp = function() {
         return "app" == Tools._GET().source;
     }
 
     //检查当前登录状态
-    common.checkLoginStatus = function(fn) {
-        common.init = fn;
+    Common.checkLoginStatus = function(fn) {
+        Common.init = fn;
         var userSn = Cookie.get("AccessToken");
         if (Tools.isWeChatBrowser() && !this.isFromApp()) {
             if (userSn) {
@@ -49,7 +49,7 @@
      * 自定义倒计时
      * @return {[type]} [description]
      */
-    common.initCountDown = function(serverTime, sel) {
+    Common.initCountDown = function(serverTime, sel) {
         if (onlyFirst) {
             return;
         }
@@ -71,7 +71,7 @@
      * @param  {[type]} sel 图片选择器
      * @return {[type]}
      */
-    common.lazyload = function(sel) {
+    Common.lazyload = function(sel) {
         var dh = $(document).height(), //内容的高度
             wh = $(window).height(), //窗口的高度
             st = 0; //滚动的高度
@@ -101,7 +101,7 @@
      * @param  {[type]} sel 图片选择器  ele 滚动容器选择器 (必须有内层子元素)
      * @return {[type]}
      */
-    common.lazyloadforWindow = function(sel, ele) {
+    Common.lazyloadforWindow = function(sel, ele) {
         var wh = $(window).height(), //窗口的高度
             st = 0,
             ele_obj = $(ele),
@@ -128,8 +128,8 @@
     //点击加载下一页
     $(document).on('click', '.nextpage', function(response) {
         if ($(this).hasClass('disabled')) return;
-        config.PAGE++;
-        common.getList && common.getList();
+        Config.PAGE++;
+        Common.getList && Common.getList();
     })
 
     //滚动到底自动加载下一页
@@ -138,7 +138,7 @@
         var currentHttpUrl = location.href;
         var goodsListPage = $('#goodsPage');
         if (goodsListPage && currentHttpUrl.indexOf('goods/goods-detail.html') > 0 && goodsListPage.css('display') == 'none') {
-            config.PAGE = config.PAGE;
+            Config.PAGE = Config.PAGE;
         } else {
             var st = $(window).scrollTop(),
                 wh = $(window).height(), //窗口的高度
@@ -146,8 +146,8 @@
 
 
             if (d.top < (st + wh * 3 / 2)) {
-                config.PAGE++;
-                common.getList && common.getList();
+                Config.PAGE++;
+                Common.getList && Common.getList();
                 $('.nextpage').addClass("disabled")
             }
         }
@@ -192,7 +192,7 @@
     })
 
     //记录上次的浏览位置
-    common.historyScorll = function() {
+    Common.historyScorll = function() {
         var scrollTop
         window.onscroll = function() {
             scrollTop = $body.scrollTop();
@@ -202,20 +202,18 @@
     }
 
     //滚动到上次的浏览位置
-    common.getHistoryScorll = function() {
+    Common.getHistoryScorll = function() {
         var scroll = Storage.get(location.pathname);
         if (!scroll) return;
         $body.scrollTop(scroll)
         Storage.remove(location.pathname)
     }
 
-    window.common = common;
-
     if ('FastClick' in window)
         FastClick.attach(document.body);
 
     //微信中设置title属性
-    common.setWechatTitle = function(title) {
+    Common.setWechatTitle = function(title) {
         var $body = $('body');
         document.title = title ? title : '';
         var $iframe = $('<iframe src="/favicon.ico" style="display:none;"></iframe>');
@@ -227,19 +225,20 @@
     };
 
     // 获取分享链接
-    common.getShareLink = function(data) {
+    Common.getShareLink = function(data) {
         var url = document.URL;
 
         // 分享商品详情还是优惠券
         if (data.type == 'detail') {
-            url = config.DETAIL_SHARE_LINK.replace('{ID}', data.id || '').replace('{CID}', data.couponId || '');
+            url = Config.DETAIL_SHARE_LINK.replace('{ID}', data.id || '').replace('{CID}', data.couponId || '');
         } else if (data.type == 'coupon') {
-            url = config.COUPON_SHARE_LINK.replace('{ID}', data.id || '').replace('{CID}', data.couponId || '');
+            url = Config.COUPON_SHARE_LINK.replace('{ID}', data.id || '').replace('{CID}', data.couponId || '');
         }
 
         return url;
     }
 
+    window.Common = Common;
 })();
 
 /**

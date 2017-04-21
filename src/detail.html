@@ -17,11 +17,19 @@
     <noscript>
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
-    <div class="container" id="tj-detail" style="display: none;"></div>
+    <div class="container">
+        <div id="tj-detail"></div>
+        <div id="tj-empty" class="list-empty-data">
+            <p class="ckout-title">商品不存在</p>
+            <span class="ckout-info">要是宝贝到手了，那就赶紧享用吧</span>
+            <a href="../index.html" id="btn-home">去逛逛</a>
+        </div>
+        <a class="back-to-home" href="index.html"><span class="iconfont icon-shouye"></span></a>
+    </div>
     <!--底部按钮-->
-    <footer class="bottom-btns">
+    <footer class="bottom-btns" style="display: none;">
         <ul class="detail-btns">
-            <li class="btn-open btn-addcart">
+            <li class="btn-open btn-addcart disabled">
                 <p><span>加入购物车</span></p>
             </li>
         </ul>
@@ -63,7 +71,7 @@
                     <h3 class="panel-title">会员登记</h3>
                     <form class="panel-input">
                         <input type="text" name="realname" placeholder="请输入姓名">
-                        <input type="text" name="phone" placeholder="请输入联系方式" maxlength="11">
+                        <input type="tel" name="phone" placeholder="请输入联系方式" maxlength="11">
                     </form>
                 </div>
             </div>

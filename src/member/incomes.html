@@ -21,6 +21,12 @@
         <div class="incomes-header" id="tj-info"></div>
         <div class="incomes-list" id="tj-list"></div>
     </section>
+
+    <footer class="incomes-footer">
+        <div class="options">
+            <a class="btn disabled" id="btn-pickup-money-open">提现</a>
+        </div>
+    </footer>
     
     <!--自定义提示框开始-->
     <div class="toast" id="tj-toast"><span>xxx</span></div>
@@ -49,16 +55,43 @@
     </div>
     <!--//自定义提示框结束-->
 
+    <!-- 提现窗口开始 -->
+    <div id="sidebar-bg"></div>
+    <div class="sidebar bottom" id="pickup-money-page">
+        <div class="pickup-money">
+            <div class="pickup-money-title">
+                <div class="pickup-money-title-title">提现</div>
+                <div class="pickup-money-title-desc">当前最大提现金额：¥<em id="pickup-money-total">0</em></div>
+            </div>
+            <div class="pickup-money-content">
+                <div class="pickup-money-content-item">
+                    <input type="text" placeholder="开户行" id="bank-name">
+                </div>
+                <div class="pickup-money-content-item">
+                    <input type="text" placeholder="卡号" id="bank-no">
+                </div>
+                <div class="pickup-money-content-item">
+                    <input type="text" placeholder="用户名" id="bank-user">
+                </div>
+                <div class="pickup-money-content-item">
+                    <input type="text" placeholder="提现金额，最多¥987" id="bank-money">
+                </div>
+            </div>
+            <div class="pickup-money-buttons"><button class="btn btn-pickup-money-sure">提现</button></div>
+        </div>
+    </div>
+    <!-- //提现窗口结束 -->
+
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
         <div class="incomes-list-title">收益明细</div>
         <!--[for(i = 0; i < list.length; i++){]-->
         <div class="incomes-list-items">
             <div class="incomes-list-items-content">
-                <h3><!--[= list[i].type]--></h3>
-                <p><!--[= list[i].createdAt]--></p>
+                <h3><!--[= $getIncomesType(list[i].type)]--></h3>
+                <p><!--[= $formatDate(list[i].createdAt)]--></p>
             </div>
-            <div class="incomes-list-items-price">+<!--[= list[i].amount]--></div>
+            <div class="incomes-list-items-price"><!--[= $getIncomesFlag(list[i].type)+list[i].amount]--></div>
         </div>
         <!--[}]-->
         <!--[if(list.length == 0){]-->

@@ -59,7 +59,7 @@
     <script src="../content/js/lib/template.js"></script>
     <script src="../content/js/base/global.js"></script>
     <script type="text/javascript">
-    common.setWechatTitle('我的' + config.VERSION);
+    Common.setWechatTitle('我的' + Config.VERSION);
     var result = document.getElementById('result');
     if (Tools._GET().isdebug == 1) {
         Cookie.set('DevDebug', 1);
@@ -71,7 +71,7 @@
         Cookie.set("UserSN", "123", -1);
         Cookie.set('AccessToken', '', -1);
         Ajax.custom({
-            url: config.HOST_API + '/account/logout'
+            url: Config.HOST_API + '/account/logout'
         }, function() {
             result.innerHTML = '退出登陆成功';
             Cookie.remove('CampainId');
@@ -82,13 +82,13 @@
         Cookie.set("hasLoad", "123", -1);
     } else if (Tools._GET().abc == 2) {
         Ajax.custom({
-            url: config.HOST_API + '/prize/delCache'
+            url: Config.HOST_API + '/prize/delCache'
         }, function() {
             result.innerHTML = '清除缓存成功';
         })
     } else if (Tools._GET().abc == 3) {
         Ajax.custom({
-            url: config.HOST_API + '/../account/login',
+            url: Config.HOST_API + '/../account/login',
             data: {
                 phone: '18790270368',
                 password: '123456'
@@ -100,6 +100,8 @@
             Storage.set("AccessToken", response.message)
         })
         result.innerHTML = '登录成功';
+    } else if(Tools._GET().token) {
+        Cookie.set('AccessToken', Tools._GET().token)
     }
     document.getElementById('h1').href = '../index.html?t=' + new Date().getTime().toString(32);
     </script>

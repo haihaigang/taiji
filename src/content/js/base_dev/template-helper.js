@@ -75,12 +75,7 @@
     template.helper('$rbyFormatCurrency', function(content) {
         return Tools.rbyFormatCurrency(content);
     });
-
-    // 模版帮助方法，转换价格成数组
-    template.helper('$rbySpecialCurrency', function(content) {
-        return Tools.rbySpecialCurrency(content)
-    });
-
+    
     //模板帮助方法，根据条件添加样式
     template.helper('$addClassByCondition', function(condition, className, className2) {
         if (condition) {
@@ -92,57 +87,12 @@
 
     //模板帮助方法，获取订单状态值
     template.helper('$getOrderStatus', function(content, type) {
-        return config.ORDER_STATUS[content] || '--';
+        return Config.ORDER_STATUS[content] || '--';
     });
 
     //模板帮助方法，获取用户等级名称
     template.helper('$getLevelName', function(content) {
-        return config.LEVEL[content] || '--';
-    });
-
-    //模板帮助方法，获取订单物流状态值
-    template.helper('$getOrderFlowStatus', function(content) {
-        return config.ORDERFLOW_STATUS[content] || content;
-    });
-
-    //模板帮助方法，转换数字
-    template.helper('$number', function(content) {
-        return Number(content);
-    });
-
-    //模板帮助方法，获取订单物流电话号码
-    template.helper('$getOrderFlowTel', function(content) {
-        var pattern = /\d{11}/;
-        var contentTel = content.match(pattern);
-        if (contentTel) {
-            if (contentTel.length > 0) {
-                return content.replace(pattern, '<a href="tel:' + contentTel[0] + '">' + contentTel[0] + '</a>');
-            } else {
-                return content;
-            }
-        } else {
-            return content;
-        }
-
-    });
-
-    //模板帮助方法，
-    template.helper('$addClassForGoods', function(data, className, className2) {
-        if (!data || isNaN(data.limitNum) || isNaN(data.store) || isNaN(data.quantity)) return '';
-        data.limitNum = parseInt(data.limitNum);
-        data.store = parseInt(data.store);
-        data.quantity = parseInt(data.quantity);
-        // isDeals 1:特惠商品 0:普通商品
-        if (data.isDeals == 1) {
-            return className || '';
-        } else {
-            return className2 || '';
-        }
-        if (data.quantity >= Math.min(data.limitNum, data.store)) {
-            return className || '';
-        } else {
-            return className2 || '';
-        }
+        return Config.LEVEL[content] || '--';
     });
 
     // 模板帮助方法，格式化倒计时
@@ -164,36 +114,6 @@
             arr[arr.length - 1] = '96';
         }
         return arr.join('/');
-    });
-
-    // 模版帮助方法，获取URL某个参数的值
-    template.helper('$getQueryValue', function(name) {
-        return Tools.getQueryValue(name);
-    });
-
-    // 模版帮助方法，判断是否APP中打开
-    template.helper('$isRbyAppBrowser', function() {
-        return Tools.isRbyAppBrowser()
-    });
-
-    // 模版帮助方法，获取国家图标地址
-    template.helper('$getCountryImg', function(content) {
-        if (!content) return content;
-        if (content.indexOf('http://') == 0) {
-            return content;
-        } else {
-            return '/content/resources/flag/' + content + '.png';
-        }
-    });
-
-    // 模版帮助方法，替换富文本中的域名
-    template.helper('$replaceHost', function(content) {
-        if (!content || !config.REPLACE_HOST || config.REPLACE_HOST.length != 2 || !Tools.isRbyAppBrowser()) {
-            return content;
-        }
-
-        var reg = new RegExp(config.REPLACE_HOST[0], 'g');
-        return content.replace(reg, config.REPLACE_HOST[1]);
     });
 
     /*
@@ -302,16 +222,16 @@
 
         if (url.indexOf('http://') != 0) {
             // 不以http开头则追加上当前页面的域名
-            url = config.SHARE_HOST + url;
+            url = Config.SHARE_HOST + url;
         }
 
         if (Tools.isRbyAppBrowser()) {
             prefix = prefix ? (prefix + ':') : '';
 
             url = prefix + url;
-            if (config.REPLACE_HOST && config.REPLACE_HOST.length == 2) {
+            if (Config.REPLACE_HOST && Config.REPLACE_HOST.length == 2) {
                 //从app过来的替换域名
-                return url.replace(config.REPLACE_HOST[0], config.REPLACE_HOST[1]);
+                return url.replace(Config.REPLACE_HOST[0], Config.REPLACE_HOST[1]);
             } else {
                 return url;
             }
@@ -321,11 +241,12 @@
 
     });
 
-
     // 模版帮助方法，获取最小值
-    template.helper('$min', function(a, b) {
-        return Math.min(a, b);
+    template.helper('$getIncomesType', function(content) {
+        return Config.INCOMES_TYPE[content];
     });
+
+
 
 
 })(window.template);

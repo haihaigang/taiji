@@ -36,7 +36,7 @@
         })
     }
 
-    common.checkLoginStatus(function() { //入口
+    Common.checkLoginStatus(function() { //入口
         //添加默认分享功能
         WechatCommon.Share.commonShare();
     });

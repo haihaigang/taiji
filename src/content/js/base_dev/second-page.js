@@ -19,7 +19,18 @@
         that.coverDom.click(function(e) {
             e.preventDefault();
             that.closeSidebar();
-        })
+        });
+
+        if (that.coverDom.length > 0) {
+            that.coverDom[0].addEventListener('touchmove', prevent, true);
+        }
+
+        if (that.targetPage.length > 0) {
+            that.targetPage[0].addEventListener('touchmove', function(e){
+                // e.stopPropagation();
+                // e.preventDefault();
+            }, false);
+        }
     }
 
     SecondPage.prototype = {
@@ -33,16 +44,19 @@
                 h = container.height(),
                 clientH = this.targetPage.height(),
                 that = this;
+
             that.coverDom.show();
             that.targetPage.show()
                 .css({
-                    'width': w
-                 // 'height': h
+                    // 'width': w
+                        // 'height': h
                 });
+
             setTimeout(function() {
                 that.targetPage.addClass('open');
             }, 100)
             tempPage++;
+
             if (!$('body').hasClass('move')) {
                 $('body').addClass('move')
                     .css({
@@ -51,6 +65,7 @@
                         'overflow': 'hidden'
                     });
             }
+
             fn && fn();
             that.beforeOpen && that.beforeOpen();
         },
@@ -75,6 +90,11 @@
                 that.afterClose && that.afterClose();
             }, 220);
         }
+    }
+
+
+    function prevent(e) {
+        e.preventDefault();
     }
 
     window.SecondPage = SecondPage;

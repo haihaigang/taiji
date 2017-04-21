@@ -1,6 +1,7 @@
 (function() {
     var container = $('.container'),
-        addressId = Tools._GET().addressId
+        addressId = Tools._GET().addressId,
+        inteBtn//还原按钮的计时器
 
     // 提交订单
     container.on('click', '.cart-total-button', function(e) {
@@ -65,6 +66,15 @@
         } else {
             addressId = d.id;
             responseData.address = d;
+        }
+
+        for(var i = 0; i < responseData.items.length; i++){
+            var d = responseData.items[i];
+            if(d.type == 'REGULAR'){
+                // 因为普通商品的10盒一起购买，而数量显示／10
+                d.quantity /= 10;
+                d.isRegular = true;
+            }
         }
 
         Ajax.render('#tj-detail', 'tj-detail-tmpl', responseData);
@@ -163,7 +173,7 @@
         WechatCommon.Pay.weixinPayOrder(orderId, payCallback, errorCallback);
     }
 
-    common.checkLoginStatus(function() { //入口
+    Common.checkLoginStatus(function() { //入口
         getData()
             //添加默认分享功能
         WechatCommon.Share.commonShare();

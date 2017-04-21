@@ -16,13 +16,13 @@
             var data = response;
 
             // 添加昵称到标题
-            // common.setWechatTitle(data.nickname);
+            // Common.setWechatTitle(data.nickname);
 
             if (data.avatar) {
                 $('#me-avatar').attr('src', data.avatar);
             }
             $('#me-name').text(data.nickname || '--');
-            $('#me-level').text(config.LEVEL[data.level]);
+            $('#me-level').text(Config.LEVEL[data.level]);
 
             container.show();
 
@@ -43,7 +43,7 @@
             for (var i = 0; i < data.length; i++) {
                 if (data[i].type == 'UPGRADE') {
                     $('#tj-levelup-dialog').show();
-                    $('#level-name').text(config.LEVEL[data[i].extendedValue]);
+                    $('#level-name').text(Config.LEVEL[data[i].extendedValue]);
                 }
                 if (data[i].type == 'QUIT') {
                     $('#tj-userleave-dialog').show();
@@ -53,7 +53,7 @@
         })
     }
 
-    common.checkLoginStatus(function() { //入口
+    Common.checkLoginStatus(function() { //入口
         getDetail();
         //添加默认分享功能
         WechatCommon.Share.commonShare();

@@ -2,12 +2,19 @@
     var container = $('.container'),
         DETAIL_RATIO = 1, //轮播图的尺寸比例
         id = Tools._GET().id, //商品ID
-        cid = Tools._GET().cid; //优惠券ID
+        cid = Tools._GET().cid, //优惠券ID
+        hasUsed = false; //优惠券是否已被使用
 
     // 点击按钮，添加购物车
     $('.btn-addcart').click(function(e) {
         e.preventDefault();
 
+        if ($(this).hasClass('disabled')) {
+            if (hasUsed) {
+                showUsedTip();
+            }
+            return;
+        }
         addCart($(this));
     });
 
@@ -24,6 +31,11 @@
             url = '/products/coupon'
         } else {
             url = '/products/' + id;
+        }
+
+        if (!cid && !id) {
+            showEmpty();
+            return;
         }
 
         Ajax.detail({
@@ -52,28 +64,28 @@
                     autoplay: 3000,
                     autoplayDisableOnInteraction: false
                 });
-
             }
+
             if (data.images && data.images.length > 0) {
+                // 分享图默认使用第一张图片
                 sharePic = data.images[0];
             }
+
+            $('.btn-addcart').removeClass('disabled');
 
             if (data.used) {
                 // 如果优惠券已经使用，显示提示信息
                 $('.btn-addcart').addClass('disabled');
-                Tools.showAlert({
-                    showTitle: true,
-                    titleText: '温馨提示',
-                    message: '您来晚了一步，优惠券被抢完了<br/>购买商品，自己成为会员吧'
-                });
+                showUsedTip();
+                hasUsed = true;
             }
 
             // 初始化分享数据
             WechatCommon.Share.commonShare({
-                shareTitle: config.DEFAULT_SHARE_DATA.SHARE_TITLE,
-                shareDesc: config.DEFAULT_SHARE_DATA.SHARE_TEXT,
+                shareTitle: Config.DEFAULT_SHARE_DATA.SHARE_TITLE,
+                shareDesc: Config.DEFAULT_SHARE_DATA.SHARE_TEXT,
                 sharePic: sharePic,
-                shareLink: common.getShareLink({
+                shareLink: Common.getShareLink({
                     type: 'detail',
                     id: id,
                     couponId: cid
@@ -81,7 +93,10 @@
             });
 
             container.show();
-        })
+            $('.bottom-btns').show();
+        }, function(textStatus, data){
+            showEmpty();
+        });
     }
 
     // 调用接口添加购物车
@@ -91,7 +106,7 @@
         }
 
         var qty = 1;
-        if(!cid && id){
+        if (!cid && id) {
             //普通商品默认要10盒一起购买，优惠券1盒购买
             qty = 10;
         }
@@ -150,7 +165,21 @@
         });
     }
 
-    common.checkLoginStatus(function() { //入口
+    // 显示已使用提示
+    function showUsedTip() {
+        Tools.showAlert({
+            showTitle: true,
+            titleText: '温馨提示',
+            message: '您来晚了一步，优惠券被抢完了<br/>购买商品，自己成为会员吧'
+        });
+    }
+
+    // 显示空数据，同时隐藏底部按钮
+    function showEmpty() {
+        $('#tj-empty').show();
+    }
+
+    Common.checkLoginStatus(function() { //入口
         getDetail()
     });
 })()

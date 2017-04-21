@@ -17,7 +17,7 @@
             } else {
                 url = '/group/activity.html';
             }
-            url = config.SHARE_HOST + url;
+            url = Config.SHARE_HOST + url;
 
             if (Tools.isRbyAppBrowser()) {
                 Jiao.toGroup(pageId ? url : '');
@@ -56,7 +56,7 @@
             } else {
                 url = '/category/goods.html';
             }
-            url = config.SHARE_HOST + url;
+            url = Config.SHARE_HOST + url;
 
             if (Tools.isRbyAppBrowser()) {
                 Jiao.toCategory(categoryId ? url : '');

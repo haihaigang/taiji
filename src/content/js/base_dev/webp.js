@@ -1,7 +1,7 @@
 /**
- * webp相关，依赖config
+ * webp相关，依赖Config
  */
-(function(config, window) {
+(function(Config, window) {
     var Webp = {
         _isDetecting: true, //是否正在检测
         _isSupport: false, //是否支持
@@ -10,7 +10,7 @@
          * @return boolean
          */
         getSupport: function() {
-            if (!config.IS_WEBP_ON || this._isDetecting) {
+            if (!Config.IS_WEBP_ON || this._isDetecting) {
                 return false;
             }
             return this._isSupport;
@@ -37,4 +37,4 @@
     Webp._detect(); //这里需要尽可能早地检测兼容性，以便能尽可能早地使用
 
     window.Webp = Webp;
-})(config, window);
+})(Config, window);

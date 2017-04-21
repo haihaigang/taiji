@@ -15,7 +15,7 @@
         });
     }
 
-    common.checkLoginStatus(function() { //入口
+    Common.checkLoginStatus(function() { //入口
         getList();
 
         //添加默认分享功能

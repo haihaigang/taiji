@@ -41,7 +41,7 @@
         // location.href = 'success.html';
         // TODO 变更当前订单状态
         $('.imb-btn-box').hide();
-        $('.icon-sub-tab label').text(config.ORDER_STATUS['PROCESSING']);
+        $('.icon-sub-tab label').text(Config.ORDER_STATUS['PROCESSING']);
     }
 
     //取消支付回调
@@ -60,8 +60,8 @@
         Ajax.paging({
             url: '/members/orders',
             data: {
-                page: config.PAGE,
-                pageSize: config.PAGE_SIZE
+                page: Config.PAGE,
+                pageSize: Config.PAGE_SIZE
             },
             showLoading: true,
             showEmpty: true,
@@ -75,9 +75,9 @@
         });
     }
 
-    common.getList = getList;
+    Common.getList = getList;
 
-    common.checkLoginStatus(function() { //入口
+    Common.checkLoginStatus(function() { //入口
         getList();
         //添加默认分享功能
         WechatCommon.Share.commonShare();

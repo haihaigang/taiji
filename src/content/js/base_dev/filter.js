@@ -1,8 +1,9 @@
 /**
  * 过滤http拦截，这里需要尽可能在自定义的代码之前
+ * 解决页面被劫持问题，通过配置白名单策略
  */
 (function() {
-    if (!config.IS_FILTER_ON || !('MutationObserver' in window)) {
+    if (!Config.IS_FILTER_ON || !('MutationObserver' in window)) {
         return;
     }
 
@@ -24,11 +25,11 @@
     });
 
     function _isWhite(url) {
-        if (!config.WHITELISTS) {
+        if (!Config.WHITELISTS) {
             return true;
         }
         //添加当前域名
-        config.WHITELISTS.push(location.hostname);
+        Config.WHITELISTS.push(location.hostname);
 
         if (!url) {
             return true;
@@ -41,8 +42,8 @@
         var obj = obj.split('/');
 
         var flag = false;
-        for (var i in config.WHITELISTS) {
-            if (obj[0].indexOf(config.WHITELISTS[i]) != -1) {
+        for (var i in Config.WHITELISTS) {
+            if (obj[0].indexOf(Config.WHITELISTS[i]) != -1) {
                 flag = true;
                 break;
             }

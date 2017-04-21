@@ -14,6 +14,7 @@
 
 .incomes-list
     margin-top: 0.08rem
+    margin-bottom: 0.08rem
     padding: 0 0.08rem
     background-color: #fff
 
@@ -46,3 +47,67 @@
             &::first-letter
                 padding-right: 0.03rem
                 font-size: 0.13rem
+
+.incomes-footer
+    padding: 0
+
+    .options
+        .btn
+            +border-radius(0)
+
+.pickup-money
+    padding: 0.08rem 0.08rem 0
+
+    .pickup-money-title
+        padding: 0 0.08rem 0.08rem
+        border-bottom: 1px solid #efefef
+
+        .pickup-money-title-title
+            font-size: 0.22rem
+            color: #c8a565
+
+        .pickup-money-title-desc
+            font-size: 0.12rem
+            color: #d6d6d6
+
+    .pickup-money-content
+        padding: 0.08rem 0.08rem
+
+        .pickup-money-content-item
+            margin-bottom: 0.08rem
+
+            input
+                width: 100%
+                padding: 0.08rem
+                box-sizing: border-box
+                border: 1px solid #efefef
+
+                &[readonly]
+                    color: #a9a9a9
+
+        .pickup-money-content-label
+            font-size: 0.14rem
+            color: #000
+            flex: 1
+            line-height: 0.26rem
+
+        .pickup-money-content-num
+            position: relative
+
+    .pickup-money-buttons
+        margin-left: -0.08rem
+        margin-right: -0.08rem
+
+        .btn
+            width: 100%
+            height: 0.46rem
+            padding: 0
+            line-height: 0.46rem
+            font-size: 0.17rem
+            color: #fff
+            border: none
+            background-color: #c8a565
+            outline: none
+
+        &.disabled
+            background-color: #ada596

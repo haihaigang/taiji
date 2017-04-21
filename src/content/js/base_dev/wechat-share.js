@@ -3,7 +3,7 @@
  * defaultShare 默认分享
  * commonShare 自定义分享数据
  **/
-(function(config, WechatCommon) {
+(function(Config, WechatCommon) {
 
     // 分享
     var Share = function() {
@@ -29,10 +29,10 @@
          * 默认分享，使用默认的图片、标题、描述、链接
          */
         defaultShare: function() {
-            this._title = config.DEFAULT_SHARE_DATA.SHARE_TITLE;
-            this._desc = config.DEFAULT_SHARE_DATA.SHARE_TEXT;
-            this._imgUrl = config.DEFAULT_SHARE_DATA.SHARE_PIC;
-            this._url = config.SHARE_HOST;
+            this._title = Config.DEFAULT_SHARE_DATA.SHARE_TITLE;
+            this._desc = Config.DEFAULT_SHARE_DATA.SHARE_TEXT;
+            this._imgUrl = Config.DEFAULT_SHARE_DATA.SHARE_PIC;
+            this._url = Config.SHARE_HOST;
 
             this._initShare();
         },
@@ -174,4 +174,4 @@
     }
 
     WechatCommon.Share = new Share();
-})(config, WechatCommon);
+})(Config, WechatCommon);

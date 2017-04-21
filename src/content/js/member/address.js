@@ -13,7 +13,7 @@
         addressDom = $('input[name="address"]'),
         isDefaultDom = $('input[name="prior"]');
 
-    common.checkLoginStatus(function() { //入口
+    Common.checkLoginStatus(function() { //入口
         setAreaData(function() {
             if (addressId) {
                 //获取地址列表

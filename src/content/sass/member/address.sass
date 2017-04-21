@@ -21,38 +21,36 @@
         background-color: #fff
 
     .address-operate
-        border-top: $border-default
         padding: 0rem 0.08rem
         height: 0.37rem
         line-height: 0.37rem
+        border-top: $border-default
 
         .operate-fl
             float: left
+            display: flex
 
-            > span
-                display: inline
+            .iconfont
+                width: 0.18rem
+                font-size: 0.18rem
+                vertical-align: middle
+                margin-right: 0.05rem
 
-        .icon-check
-            display: inline
-            color: $primary-color
-            font-size: 0.2rem
-            vertical-align: middle
-            margin-right: 5px
-
-        .icon-uncheck
-            display: inline
-            font-size: 0.2rem
-            vertical-align: middle
-            margin-right: 5px
+                &.icon-check
+                    color: $primary-color
 
         .operate-fr
             float: right
 
-        .edit-address, .delete-address
-            display: inline-block
-            cursor: pointer
-            width: 48px
-            height: 37px
+            .iconfont
+                font-size: 0.16rem
+                vertical-align: middle
+
+            .edit-address, .delete-address
+                display: inline-block
+                cursor: pointer
+                width: 48px
+                height: 37px
 
         .icon-shanchu
             display: inline
@@ -95,19 +93,14 @@
 
 form.address
     .items
-        padding: 0.01rem 0.15rem
+        padding: 0.01rem 0.08rem
         border-radius: 0
         margin-bottom: 1px
         border: none
         background-color: #fff
 
         .key
-            width: 0.85rem
-            color: #030303
-            font-size: 17px
-
-    .val > input
-        font-size: 15px
+            width: 0.65rem
 
     .is-default
         position: relative
@@ -116,8 +109,7 @@ form.address
         .iconfont
             position: absolute
             right: 0.08rem
-            height: 100%
-            font-size: 0.5rem
+            font-size: 0.45rem
             line-height: 0.41rem
 
     .options

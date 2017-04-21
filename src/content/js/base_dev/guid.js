@@ -1,8 +1,11 @@
-// 使用js生成GUID
+/**
+ * 使用js生成GUID
+ *
+ * GUID.NewGuid.ToString()
+ */
 (function() {
 
     //表示全局唯一标识符 (GUID)。
-
     function Guid(g) {
 
         var arr = new Array(); //存放32位数值的数组
@@ -67,20 +70,15 @@
 
         }
 
-        /*
-
-        根据所提供的格式说明符，返回此 Guid 实例值的 String 表示形式。
-
-        N  32 位： xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-        D  由连字符分隔的 32 位数字 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-
-        B  括在大括号中、由连字符分隔的 32 位数字：{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
-
-        P  括在圆括号中、由连字符分隔的 32 位数字：(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
-
-        */
-
+        /**
+         * 根据所提供的格式说明符，返回此 Guid 实例值的 String 表示形式。
+         * @param arr 数组
+         * @param format 格式
+         * N  32 位： xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+         * D  由连字符分隔的 32 位数字 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+         * B  括在大括号中、由连字符分隔的 32 位数字：{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+         * P  括在圆括号中、由连字符分隔的 32 位数字：(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+         */
         function ToStringWithFormat(arr, format) {
 
             switch (format) {
@@ -109,7 +107,6 @@
             }
 
         }
-
     }
 
     //Guid 类的默认实例，其值保证均为零。

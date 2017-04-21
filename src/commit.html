@@ -122,9 +122,16 @@
                     <div class="thumb"><img src="<!--[= $absImg(items[i].thumbnail)]-->"></div>
                     <div class="content">
                         <h3><!--[= items[i].name]--></h3>
+                        <!--[if(items[i].isRegular){]-->
+                        <p class="spec">规格：久食佳10盒一组</p>
+                        <!--[}]-->
                         <div class="buy">
                             <div class="price">￥<!--[= $formatCurrency(items[i].price)]--></div>
+                            <!--[if(items[i].isRegular){]-->
+                            <div class="quantity">数量：10x<!--[= items[i].quantity]--></div>
+                            <!--[}else{]-->
                             <div class="quantity">数量：<!--[= items[i].quantity]--></div>
+                            <!--[}]-->
                         </div>
                     </div>
                 </div>

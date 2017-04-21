@@ -14,7 +14,7 @@
             $('.qrcode-title1').text(data.nickname || '--');
 
             var qr = qrcode(10, 'M');
-            qr.addData(config.SHARE_HOST + '/index.html?referId=' + data.memberId);
+            qr.addData(Config.SHARE_HOST + '/index.html?referId=' + data.memberId);
             qr.make();
             $('.qrcode-img').html(qr.createImgTag(3));
 
@@ -24,7 +24,7 @@
         })
     }
 
-    common.checkLoginStatus(function() { //入口
+    Common.checkLoginStatus(function() { //入口
         getDetail();
         //添加默认分享功能
         WechatCommon.Share.commonShare();

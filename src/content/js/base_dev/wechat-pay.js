@@ -20,7 +20,7 @@
         this._ajaxSend({
             url: '/wechat/pay/parameters',
             data: {
-                orderNumber: orderId
+                number: orderId
             },
             showLoading: true
         }, function(response) {
