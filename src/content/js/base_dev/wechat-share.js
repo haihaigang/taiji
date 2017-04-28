@@ -1,7 +1,16 @@
 /**
  * 微信分享相关功能
- * defaultShare 默认分享
- * commonShare 自定义分享数据
+ * 1.默认分享
+ * WechatCommon.Share.defaultShare()
+ * 2.自定义分享数据
+ * WechatCommon.Share.commonShare(data)
+ * data: {
+ *     shareTitle: '分享标题',
+ *     shareDesc: '分享描述',
+ *     sharePic: '分享图片',
+ *     shareLink: '分享链接',
+ *     afterShareFn: '分享成功后的回调'
+ * }
  **/
 (function(Config, WechatCommon) {
 
@@ -115,7 +124,6 @@
             }
 
             this._initConfig();
-            // WechatCommon.base.initConfig();
 
             var that = this;
 

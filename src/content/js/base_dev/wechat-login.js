@@ -1,9 +1,13 @@
 /**
  * 微信自动登录
  * 说明：
- * 1. 不存在code参数跳转到微信授权页面，
- * 2. 存在则调用接口获取用户信息（一般会实现登录功能）
- * 3. 登录成功后去除code参数再次跳转到当前页
+ * 1. 首先判断用户是否登录，在未登录的时候在自动登录
+ * 2. 然后根据是否存在code参数，确定是否跳转到微信授权页面（获取code）
+ * 3. 其次根据上步获得的code参数调用接口获取用户信息（获取用户，接口服务端实现，一般也会实现登录功能）
+ * 4. 最后调用接口成功后，去除code参数刷新当前页
+ * 
+ * 自动登录
+ * WechatCommon.Login.autoLogin(fn)
  **/
 (function(WechatCommon) {
 
@@ -12,17 +16,23 @@
      */
     var Login = function() {
         this._isLogining = false;
-        this._oAuthUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE&connect_redirect=1#wechat_redirect'; //微信授权跳转地址
+        //微信授权跳转地址
+        this._oAuthUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE&connect_redirect=1#wechat_redirect';
     }
 
     // 继承Base
     Login.prototype = new WechatCommon.Base();
 
-    //自动登录
+    /**
+     * 自动登录
+     * @param fn 登录成功后的回调，一般在这里处理登录后的用户信息存储
+     * @return
+     */
     Login.prototype.login = function(fn) {
         var code = Tools.getQueryValue('code');
 
         if(!Tools.isWeChatBrowser()){
+            // 仅在微信浏览器中才跳转
             return;
         }
 

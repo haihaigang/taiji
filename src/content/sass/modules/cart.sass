@@ -101,23 +101,39 @@
                 position: absolute
                 left: 0
                 top: -0.02rem
+                width: 0.08rem
                 height: 0.1rem
                 background: #fff
-                width: 0.08rem
 
     .cart-buttons
-        padding: 0.08rem
+        padding: 0 0.08rem
 
-        button
-            margin-right: 0.07rem
-            padding: 0.07rem 0.1rem
+        .cart-buttons-item
+            display: flex
+            margin-bottom: 0.08rem
+
+        .cart-buttons-item-img
+            flex: 1
+
+            img
+                display: block
+                max-width: 100%
+
+        .cart-buttons-item-btn
+            width: 0.85rem
             text-align: center
-            color: $primary-color
-            border: 1px solid $primary-color
-            background-color: #fff
-            outline: none
+            align-self: center
 
-            +border-radius(0.04rem)
+            button
+                height: 0.68rem
+                padding: 0.07rem
+                text-align: center
+                color: $primary-color
+                border: 1px solid $primary-color
+                background-color: #fff
+                outline: none
+
+                +border-radius(50%)
 
     .cart-goods-item
         +box-align

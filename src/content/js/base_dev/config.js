@@ -74,10 +74,9 @@
         'PROFIT1': '一级分利',
         'PROFIT2': '二级分利',
         'SALES': '差额收益',
-        'REWARD': '差额收益',
+        'REWARD': '奖励收益',
         'WITHDRAWAL': '提现',
         'WITHDRAWAL_RETURN': '提现退还'
-        , 
     };
 
     window.Config = Config;

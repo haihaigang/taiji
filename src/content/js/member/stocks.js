@@ -152,6 +152,7 @@
         }
 
         $('#pickup-num').data('quantity', num).text(num / 10);
+        $('.pickup-text').text('本次共提货' + num + '件，收取邮费20元');
     }
 
     // 获取数据

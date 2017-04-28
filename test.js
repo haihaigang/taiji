@@ -37,6 +37,10 @@ try {
                             upperCaseFile(op.params, sfile);
                             break;
                         }
+                    case '-r': {
+                        reenameFile(op.params, sfile);
+                        break;
+                    }
                 }
             });
         }

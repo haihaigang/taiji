@@ -84,7 +84,10 @@
         var objIdent = $(this).data('objident'),
             num = 0;
 
-        if ($(this).hasClass('btn-daili')) {
+        if ($(this).hasClass('btn-huiyuan')) {
+            num = 1;
+        }
+        else if ($(this).hasClass('btn-daili')) {
             num = 24;
         } else if ($(this).hasClass('btn-zongdai')) {
             num = 600

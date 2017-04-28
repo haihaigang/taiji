@@ -55,6 +55,7 @@
         <div><a href="?abc=2"><h3>清除缓存</h3></a></div>
     </section>
     <div id="result"></div>
+    <div id="token"></div>
     <script src="../content/js/lib/zepto.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
     <script src="../content/js/base/global.js"></script>
@@ -104,6 +105,7 @@
         Cookie.set('AccessToken', Tools._GET().token)
     }
     document.getElementById('h1').href = '../index.html?t=' + new Date().getTime().toString(32);
+    document.getElementById('token').innerText = Cookie.get('AccessToken');
     </script>
 </body>
 

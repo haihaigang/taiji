@@ -1,11 +1,16 @@
 /**
  * 微信支付相关功能
- * 发起支付 weixinPayOrder
+ * 说明
+ * 1. 调用接口获取预支付单的相关信息（接口主要实现提交信息到微信）
+ * 2. 使用WeixinJSBridge的getBrandWCPayRequest调起微信支付
+ * 
+ * 发起支付
+ * WechatCommon.Pay.weixinPayOrder(orderId, susFn, errorFn)
  **/
 (function(WechatCommon) {
 
     // 支付
-    var Pay = function() {}
+    function Pay() {}
 
     // 继承Base
     Pay.prototype = new WechatCommon.Base();

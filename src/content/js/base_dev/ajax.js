@@ -411,7 +411,7 @@
 
                 if (jqXHR.status == 401) {
                     //若接口提示未登录，自动登录
-                    WechatCommon.Login.login();
+                    WechatCommon.Login.autoLogin();
                     return;
                 }
 

@@ -27,7 +27,7 @@
                 //确保登录后在加载数据
                 fn && fn();
             } else {
-                WechatCommon.Login.login(function(data) {
+                WechatCommon.Login.autoLogin(function(data) {
                     Cookie.set("UserSN", data.memberId);
                     if(data.accessToken){
                         // 过滤会丢失token的登录请求
