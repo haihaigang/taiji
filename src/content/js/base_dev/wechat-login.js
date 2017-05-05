@@ -28,7 +28,7 @@
      * @param fn 登录成功后的回调，一般在这里处理登录后的用户信息存储
      * @return
      */
-    Login.prototype.login = function(fn) {
+    Login.prototype.autoLogin = function(fn) {
         var code = Tools.getQueryValue('code');
 
         if(!Tools.isWeChatBrowser()){

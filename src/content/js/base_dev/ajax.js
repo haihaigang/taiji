@@ -395,6 +395,7 @@
                             response = {};
                         }
                         response.accessToken = jqXHR.getResponseHeader('x-auth-token');
+                        Tools.alert('response x-auth-token ' + jqXHR.getResponseHeader('x-auth-token'))
                     }
                     callback(response);
                 }
@@ -410,8 +411,10 @@
                 logged(options.logtype, textStatus, options.url);
 
                 if (jqXHR.status == 401) {
+                    Cookie.remove('AccessToken');
                     //若接口提示未登录，自动登录
-                    WechatCommon.Login.autoLogin();
+                    // WechatCommon.Login.autoLogin();
+                    Common.checkLoginStatus();
                     return;
                 }
 

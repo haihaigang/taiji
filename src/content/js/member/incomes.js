@@ -50,6 +50,11 @@
             return;
         }
 
+        if(amount > tempData.total){
+            Tools.showToast('提现金额不能大于提现总金额');
+            return;
+        }
+
         $(this).addClass('disabled').text('提现中...');
 
         Ajax.custom({

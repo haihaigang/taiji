@@ -1,7 +1,7 @@
 (function() {
     var container = $('.container'),
         addressId = Tools._GET().addressId,
-        inteBtn//还原按钮的计时器
+        inteBtn //还原按钮的计时器
 
     // 提交订单
     container.on('click', '.cart-total-button', function(e) {
@@ -13,6 +13,16 @@
     // 点击选择配送方式
     container.on('click', '.goods-deliverys a', function(e) {
         e.preventDefault();
+
+        if ($(this).hasClass('active')) {
+            // 当已选中则忽略
+            return;
+        }
+
+        if ($(this).hasClass('disabled')) {
+            // 当已禁用则忽略
+            return;
+        }
 
         getData($(this).data('delivery'));
     });
@@ -33,6 +43,11 @@
             response.deliveryMethod = deliveryMethod;
             renderCart(response);
         }, function(textStatus, data) {
+            if (data.status == 400 && data.message == '购物车没有商品') {
+                // 没有商品的错误显示空数据提示
+                $('#tj-empty').show();
+                return;
+            }
             Tools.showToast(data.message);
         });
     }
@@ -68,9 +83,9 @@
             responseData.address = d;
         }
 
-        for(var i = 0; i < responseData.items.length; i++){
+        for (var i = 0; i < responseData.items.length; i++) {
             var d = responseData.items[i];
-            if(d.type == 'REGULAR'){
+            if (d.type == 'REGULAR') {
                 // 因为普通商品的10盒一起购买，而数量显示／10
                 d.quantity /= 10;
                 d.isRegular = true;
@@ -166,6 +181,8 @@
     function disabledChooseAddress() {
         $('.shipping').attr('href', 'javascript:;');
         $('.shipping-icon .icon-arrow').hide();
+        $('.goods-deliverys a').addClass('disabled');
+        $('.goods-methods a').addClass('disabled');
     }
 
     // 发起支付

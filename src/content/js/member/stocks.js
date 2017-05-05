@@ -152,7 +152,7 @@
         }
 
         $('#pickup-num').data('quantity', num).text(num / 10);
-        $('.pickup-text').text('本次共提货' + num + '件，收取邮费20元');
+        $('.pickup-text').html('本次共提货' + num + '件<br>提货量&lt;240盒 邮费20元<br>240盒&lt;=提货量&lt;6000盒 邮费80元<br>提货量&gt;=6000盒 邮费200元');
     }
 
     // 获取数据

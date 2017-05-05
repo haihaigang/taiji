@@ -415,9 +415,16 @@ i
             &.hidden-show
                 display: block
 
-        &.active i.icon-uncheck:before
-            content: ""
-            color: $secondary-color
+        &.active
+            i.icon-uncheck:before
+                content: ""
+                color: $secondary-color
+        &.disabled
+            i.icon-uncheck:before
+                color: #c7c7c7
+            i
+                &.good-payments-last
+                    color: #c7c7c7
 
         i
             float: left
