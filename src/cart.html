@@ -86,7 +86,9 @@
                             <div class="thumb"><img src="<!--[= $absImg(list[i].thumbnail)]-->" alt=""></div>
                             <div class="content">
                                 <h3><!--[= list[i].name]--></h3>
+                                <!--[if(list[i].isRegular){]-->
                                 <p class="spec">规格：久食佳10盒一组</p>
+                                <!--[}]-->
                                 <div class="price1">￥<!--[= $rbyFormatCurrency(list[i].price)]--></div>
                             </div>
                             <div class="goods-qty" data-limit="99999" data-objident="<!--[= list[i].productId]-->" data-type="<!--[= list[i].type]-->">

@@ -23,6 +23,7 @@
             $('#bank-name').val(tempData.bankName).attr('readonly', true);
             $('#bank-no').val(tempData.bankNumber).attr('readonly', true);
             $('#bank-user').val(tempData.bankFullName).attr('readonly', true);
+            $('#bank-card').val(tempData.idNumber).attr('readonly', true);
         }
 
         $('#bank-money').attr('placeholder', '提现金额，最多¥' + Tools.formatCurrency(tempData.total)).val('');
@@ -43,7 +44,28 @@
             bankNumber = $('#bank-no').val(),
             bankFullName = $('#bank-user').val(),
             amount = $('#bank-money').val(),
+            idNumber = $('#bank-card').val(),
             that = $(this);
+
+        if(!bankName){
+            Tools.showToast('开户行必填');
+            return;
+        }
+
+        if(!bankNumber){
+            Tools.showToast('卡号必填');
+            return;
+        }
+
+        if(!bankFullName){
+            Tools.showToast('用户名必填');
+            return;
+        }
+
+        if(!idNumber){
+            Tools.showToast('身份证号必填');
+            return;
+        }
 
         if(!amount){
             Tools.showToast('提现金额必选大于1');
@@ -63,7 +85,8 @@
                 bankName: bankName,
                 bankNumber: bankNumber,
                 bankFullName: bankFullName,
-                amount: amount
+                amount: amount,
+                idNumber: idNumber
             },
             type: 'POST',
             contentType: 'application/json'
