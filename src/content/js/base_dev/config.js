@@ -70,6 +70,12 @@
         SHARE_PIC: Config.SHARE_HOST + '/content/images/share-coupon.jpg'
     };
 
+    Config.PROMOTION_SHARE_DATA = { //推广分享的分享数据
+        SHARE_TITLE: '我的健康生活，从一杯久食佳开始',
+        SHARE_DESC: '食佳（90+）营养餐从12大类，90多种优质的天然食材中，利用现代分子细胞生物技术，萃取出超浓缩营养物质。其中除了富含人体每日所需的40多种营养素外，还包含大量植物活性物质。',
+        SHARE_PIC: Config.SHARE_HOST + '/content/images/share-promotion.png'
+    };
+
     Config.INCOMES_TYPE = {//收益类型
         'PROFIT1': '一级分利',
         'PROFIT2': '二级分利',

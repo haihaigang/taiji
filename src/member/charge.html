@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-touch-fullscreen" content="yes" />
-    <title>我的收益</title>
+    <title>余额充值</title>
     <!-- build:css ../content/css/taiji.min.css -->
     <link rel="stylesheet" href="../content/css/taiji.css" />
     <!-- endbuild -->
@@ -17,12 +17,12 @@
     <noscript>
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
-    <section class="container incomes" id="tj-detail" style="display: none;">
-        <div class="incomes-header" id="tj-info"></div>
-        <div class="incomes-list" id="tj-list"></div>
+    <section class="container charge" id="tj-detail" style="display: none;">
+        <div class="charge-header" id="tj-info"></div>
+        <div class="charge-list" id="tj-list"></div>
     </section>
 
-    <footer class="incomes-footer">
+    <footer class="charge-footer">
         <div class="options">
             <a class="btn disabled" id="btn-pickup-money-open">提现</a>
         </div>
@@ -55,22 +55,6 @@
     </div>
     <!--//自定义提示框结束-->
 
-    <!-- 提现拒绝理由窗口开始 -->
-    <div class="dialog" id="tj-refuse-dialog">
-        <div class="dialog-content levelup">
-            <div class="levelup-title"></div>
-            <div class="levelup-close">x</div>
-            <div class="levelup-content">
-                <p class="up1">体现失败</p>
-                <p class="up3">xxx</p>
-            </div>
-            <div class="levelup-button">
-                <button>我知道了</button>
-            </div>
-        </div>
-    </div>
-    <!-- //提现拒绝理由窗口结束 -->
-
     <!-- 提现窗口开始 -->
     <div id="sidebar-bg"></div>
     <div class="sidebar bottom" id="pickup-money-page">
@@ -79,7 +63,7 @@
                 <div class="pickup-money-title-title">提现</div>
                 <div class="pickup-money-title-desc">当前最大提现金额：¥<em id="pickup-money-total">0</em></div>
             </div>
-            <div class="pickup-money-desc">本公司根据国家规定按劳务报酬代扣代缴个人所得税及汇款手续费，<a href="incomes-tax.html" style="text-decoration: underline;">具体详情请点击</a></div>
+            <div class="pickup-money-desc">本公司根据国家规定按劳务报酬代扣代缴个人所得税及汇款手续费</div>
             <div class="pickup-money-content">
                 <div class="pickup-money-content-item">
                     <input type="text" placeholder="开户行" id="bank-name">
@@ -102,30 +86,56 @@
     </div>
     <!-- //提现窗口结束 -->
 
+    <!-- 拒绝提现理由窗口开始 -->
+    <div class="dialog" id="tj-refuse-dialog">
+        <div class="dialog-content levelup">
+            <div class="levelup-title"></div>
+            <div class="levelup-close">x</div>
+            <div class="levelup-content">
+                <p class="up1">恭喜你成为</p>
+                <p class="up2" id="level-name">xx会员</p>
+                <p class="up3">将会享受更多权益哦</p>
+            </div>
+            <div class="levelup-button">
+                <button>我知道了</button>
+            </div>
+        </div>
+    </div>
+    <!-- //拒绝提现理由窗口结束 -->
+
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
-        <div class="incomes-list-title">收益明细</div>
+        <div class="charge-list-title">收益明细</div>
         <!--[for(i = 0; i < list.length; i++){]-->
-        <div class="incomes-list-items">
-            <div class="incomes-list-items-content">
+        <div class="charge-list-items">
+            <div class="charge-list-items-content">
                 <h3><!--[= $getIncomesType(list[i].type)]--></h3>
                 <p><!--[= $formatDate(list[i].createdAt)]--></p>
             </div>
-            <div class="incomes-list-items-price"><!--[= $getIncomesFlag(list[i].type)+list[i].amount]--></div>
+            <div class="charge-list-items-price"><!--[= $getIncomesFlag(list[i].type)+list[i].amount]--></div>
         </div>
         <!--[}]-->
         <!--[if(list.length == 0){]-->
-        <div class="incomes-list-items">
-            <div class="incomes-list-items-content">
+        <div class="charge-list-items">
+            <div class="charge-list-items-content">
                 <h3>暂无数据</h3>
             </div>
         </div>
         <!--[}]-->
     </script>
     <script id="tj-info-tmpl" type="text/html">
-        <div class="incomes-header-content">
-            <div class="title">我的收益（元）</div>
+        <div class="charge-header-content">
+            <div class="title">当前余额（元）</div>
             <div class="total"><!--[= $formatCurrency(total)]--></div>
+            <div class="charge-header-form">
+                <div class="charge-header-form-input">
+                    <input type="number" max="10000" maxlength="5">
+                </div>
+                <div class="charge-header-form-button">
+                    <button>充值</button>
+                </div>
+            </div>
+            <div class="desc">提示：每次限充1万元，每日充值限额请咨询各发卡银行。</div>
         </div>
     </script>
     <!--//模版结束-->
@@ -137,7 +147,7 @@
     <script src="../content/js/lib/template.js"></script>
     <!-- endbuild -->
     <script src="../content/js/base/global.js"></script>
-    <script src="../content/js/member/incomes.js"></script>
+    <script src="../content/js/member/charge.js"></script>
 </body>
 
 </html>

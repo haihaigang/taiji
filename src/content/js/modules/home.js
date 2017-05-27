@@ -10,8 +10,18 @@
 
             Ajax.render('#tj-list', 'tj-list-tmpl', data);
             $('.home-banner,.home-banner img').css('height', parseInt($('body').width() / AD_RATIO));
-
             $('.container').show();
+
+            // 在dom显示之后初始化，以便能正确获取dom
+            new Swiper(".swiper-container", {
+                pagination: '.swiper-pagination',
+                wrapperClass: 'swiper-wrapper',
+                slideClass: 'swiper-slide',
+                loop: true,
+                autoplay: 3000,
+                autoplayDisableOnInteraction: false
+            })
+
         });
     }
 

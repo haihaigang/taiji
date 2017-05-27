@@ -27,6 +27,25 @@
         getData($(this).data('delivery'));
     });
 
+    // 点击选择支付方式
+    container.on('click', '.goods-methods a', function(e) {
+        e.preventDefault();
+
+        if ($(this).hasClass('active')) {
+            // 当已选中则忽略
+            return;
+        }
+
+        if ($(this).hasClass('disabled')) {
+            // 当已禁用则忽略
+            return;
+        }
+
+        $('.goods-methods a').removeClass('active');
+        $(this).addClass('active');
+        // getData($(this).data('delivery'));
+    });
+
     // 获取展示的购物车数据
     function getData(deliveryMethod) {
         deliveryMethod = deliveryMethod || 'EXPRESS';
@@ -114,6 +133,13 @@
             return;
         }
 
+        // 判断支付方式
+        var paymentDoms = $('.goods-methods a.active');
+        if (paymentDoms.length == 0) {
+            Tools.showToast('请选择一个支付方式');
+            return;
+        }
+
         // 判断配送方式
         var deliveryDoms = $('.goods-deliverys a.active');
         if (deliveryDoms.length == 0) {
@@ -139,6 +165,7 @@
             url: '/orders',
             data: {
                 addressId: addressId,
+                payment: paymentDoms.data('payment') || 'wxpayjsapi',
                 deliveryMethod: deliveryDoms.data('delivery') || 'EXPRESS' // EXPRESS、INVENTORY
             },
             type: 'POST',

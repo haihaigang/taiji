@@ -6,6 +6,27 @@
         width: 100%
         height: 100%
 
+    .swiper-pagination
+        padding: 0.24rem 0 0.08rem 0
+        line-height: 0.08rem
+        bottom: 0
+        background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.56) 100%)
+        text-align: right
+
+    .swiper-pagination-bullet
+        width: 0.08rem
+        height: 0.08rem
+        background: #fff
+        box-shadow: 0 0 3px 0 rgba(0,0,0,0.27)
+
+    .swiper-pagination-bullet-active
+        background: rgba(255, 255, 255, 0.5)
+
+    .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet
+        margin: 0
+        margin-right: 0.08rem
+
+
 .home-menu
     display: flex
     height: 0.44rem
@@ -73,6 +94,29 @@
             width: 0.22rem
             height: 0.22rem
             margin: 0.11rem auto
+
+.home-quickad
+    height: 0.24rem
+    padding: 0.08rem
+    color: #fff
+    background-color: #c8a565
+
+    .home-quickad-content
+        line-height: 0.24rem
+        overflow-x: auto
+        
+        p
+            white-space: nowrap
+            transition: 0.3s ease-in transform
+            animation: quickadmove 8s linear infinite
+            animation-delay: 1s
+            animation-direction: alternate
+
+@keyframes quickadmove
+    from
+        transform: translateX(0)
+    to
+        transform: translateX(-100%)
 
 .home-list
     padding: 0.16rem 0.16rem 0

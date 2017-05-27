@@ -7,24 +7,39 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-touch-fullscreen" content="yes" />
-    <title>我的收益</title>
+    <title>推广分享</title>
     <!-- build:css ../content/css/taiji.min.css -->
     <link rel="stylesheet" href="../content/css/taiji.css" />
     <!-- endbuild -->
 </head>
 
-<body class="has-footer">
+<body>
     <noscript>
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
-    <section class="container incomes" id="tj-detail" style="display: none;">
-        <div class="incomes-header" id="tj-info"></div>
-        <div class="incomes-list" id="tj-list"></div>
+    <section class="container promotion" id="tj-detail">
+        <div class="promotion-content">
+            <div class="title">久食佳（90+）适合哪些人吃？</div>
+            <div class="content">
+                <h3>我的健康生活，从一杯久食佳开始</h3>
+                <p>久食佳（90+）营养餐从12大类，90多种优质的天然食材中，利用现代分子细胞生物技术，萃取出超浓缩营养物质。其中除了富含人体每日所需的40多种营养素外，还包含大量植物活性物质。</p>
+                <p>久食佳（90+）遵循中医食疗生克理论、现代医学血型与食物拮抗理论、免疫学等理论，进行科学全面的营养配比，剔除食物中的过敏原，让营养吸收更安全、更迅速。</p>
+                <p>久食佳（90+）通过国内外权威机构检测和安全认证，营养均衡、全面，口味适宜，通过纠正人体营养失衡状态，重新启动人体新陈代谢功能，从而帮助预防和改善白领常见的亚健康问题，被认定为白领日常必备的优质营养代餐食品。</p>
+            </div>
+        </div>
     </section>
 
-    <footer class="incomes-footer">
-        <div class="options">
-            <a class="btn disabled" id="btn-pickup-money-open">提现</a>
+    <footer class="promotion-footer">
+        <div class="promotion-footer-content">
+            <div class="avatar">
+                <img src="http://img01.rbyair.com/06/7a/c7/d2b9661e4aa5f330555f2c8addb9565785a.jpg@.webp" alt="">
+            </div>
+            <div class="content">
+                <h3>xxx</h3>
+                <div class="level">d</div>
+            </div>
+            <div class="cart"><i class="iconfont icon-cart"></i></div>
+            <div class="phone"><i class="iconfont icon-phone"></i></div>
         </div>
     </footer>
     
@@ -55,53 +70,6 @@
     </div>
     <!--//自定义提示框结束-->
 
-    <!-- 提现拒绝理由窗口开始 -->
-    <div class="dialog" id="tj-refuse-dialog">
-        <div class="dialog-content levelup">
-            <div class="levelup-title"></div>
-            <div class="levelup-close">x</div>
-            <div class="levelup-content">
-                <p class="up1">体现失败</p>
-                <p class="up3">xxx</p>
-            </div>
-            <div class="levelup-button">
-                <button>我知道了</button>
-            </div>
-        </div>
-    </div>
-    <!-- //提现拒绝理由窗口结束 -->
-
-    <!-- 提现窗口开始 -->
-    <div id="sidebar-bg"></div>
-    <div class="sidebar bottom" id="pickup-money-page">
-        <div class="pickup-money">
-            <div class="pickup-money-title">
-                <div class="pickup-money-title-title">提现</div>
-                <div class="pickup-money-title-desc">当前最大提现金额：¥<em id="pickup-money-total">0</em></div>
-            </div>
-            <div class="pickup-money-desc">本公司根据国家规定按劳务报酬代扣代缴个人所得税及汇款手续费，<a href="incomes-tax.html" style="text-decoration: underline;">具体详情请点击</a></div>
-            <div class="pickup-money-content">
-                <div class="pickup-money-content-item">
-                    <input type="text" placeholder="开户行" id="bank-name">
-                </div>
-                <div class="pickup-money-content-item">
-                    <input type="text" placeholder="卡号" id="bank-no">
-                </div>
-                <div class="pickup-money-content-item">
-                    <input type="text" placeholder="用户名" id="bank-user">
-                </div>
-                <div class="pickup-money-content-item">
-                    <input type="text" placeholder="身份证号" id="bank-card">
-                </div>
-                <div class="pickup-money-content-item">
-                    <input type="text" placeholder="提现金额，最多¥987" id="bank-money">
-                </div>
-            </div>
-            <div class="pickup-money-buttons"><button class="btn btn-pickup-money-sure">提现</button></div>
-        </div>
-    </div>
-    <!-- //提现窗口结束 -->
-
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
         <div class="incomes-list-title">收益明细</div>
@@ -122,12 +90,6 @@
         </div>
         <!--[}]-->
     </script>
-    <script id="tj-info-tmpl" type="text/html">
-        <div class="incomes-header-content">
-            <div class="title">我的收益（元）</div>
-            <div class="total"><!--[= $formatCurrency(total)]--></div>
-        </div>
-    </script>
     <!--//模版结束-->
 
     <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -137,7 +99,7 @@
     <script src="../content/js/lib/template.js"></script>
     <!-- endbuild -->
     <script src="../content/js/base/global.js"></script>
-    <script src="../content/js/member/incomes.js"></script>
+    <script src="../content/js/member/promotion.js"></script>
 </body>
 
 </html>
