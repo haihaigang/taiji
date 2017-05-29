@@ -1,0 +1,148 @@
+.shake-user
+	display: block
+	width: 100%
+	padding: 0.4rem 0 0.2rem
+	text-align: center
+
+	.shake-user-avatar
+		height: 0.58rem
+		width: 0.58rem
+		margin: 0 auto
+		padding: 0.03rem
+		background-color: #fff
+		box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.1)
+
+		+border-radius(100%)
+
+		img
+			display: block
+			max-width: 100%
+			max-height: 100%
+
+			+border-radius(100%)
+
+	.shake-user-nickname
+		padding-top: 0.06rem
+		font-size: 0.14rem
+		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.14)
+
+	.shake-user-level
+		padding-top: 0.06rem
+		text-align: center
+
+		em
+			display: inline-block
+			padding: 0.02rem 0.07rem
+			line-height: 0.12rem
+			font-size: 0.09rem
+			box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.13)
+			border-radius: 0.5rem
+			color: #cfae71
+			background-color: #fff
+
+.shake-shake
+	.shake-shake-ani
+		width: 1.3rem
+		height: 1.3rem
+		margin: 0 auto
+
+		img
+			display: block
+			max-width: 100%
+			max-height: 100%
+
+		&.shake
+			img
+				animation: 0.3s shake cubic-bezier(0.43, -0.29, 0.56, 1.28)
+				animation-iteration-count: infinite
+
+	.shake-shake-desc
+		padding-top: 0.08rem
+		opacity: 0.5
+		font-size: 13px
+		color: #505050
+		text-align: center
+		line-height: 24px
+
+.shake-rule
+	padding: 0.37rem 0.21rem 0
+	color: #505050
+
+	.shake-rule-title
+		margin-bottom: 0.08rem
+		font-size: 0.13rem
+		text-align: center
+
+		span
+			position: relative
+			display: inline-block
+			padding: 0 0.18rem
+
+			&:after, &:before
+				content: '★'
+				position: absolute
+
+			&:before
+				left: 0
+			&:after
+				right: 0
+
+	.shake-rule-content
+		max-height: 2.1rem
+		opacity: 0.6
+		font-size: 0.12rem
+		line-height: 0.25rem
+		overflow-x: auto
+
+		li
+			position: relative
+			padding-left: 0.3rem
+
+			&:before
+				content: '•'
+				position: absolute
+				left: 0.1rem
+
+.shake-footer
+	padding: 0
+
+	.options
+		.btn
+			height: 0.56rem
+			line-height: 0.56rem
+			font-size: 0.15rem
+			+border-radius(0)
+
+	.shake-footer-content
+		position: relative
+		display: flex
+		width: 100%
+		background-color: #c8a565
+
+		.shake-footer-item
+			width: 50%
+			font-size: 0.15rem
+			color: #fff
+			text-align: center
+			line-height: 0.56rem
+
+		&:after
+			content: ''
+			position: absolute
+			left: 50%
+			top: 21%
+			width: 1px
+			height: 57%
+			background-color: rgba(255,255,255,0.46)
+
+@keyframes shake
+	0%
+		transform: rotate(0)
+	25%
+		transform: rotate(30deg)
+	50%
+		transform: rotate(0)
+	75%
+		transform: rotate(-30deg)
+	100%
+		transform: rotate(0)

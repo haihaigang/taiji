@@ -17,9 +17,41 @@
     <noscript>
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
-    <section class="container promotion" id="tj-detail">
+    <section class="container shake" id="tj-detail">
+        <div class="shake-user">
+            <div class="shake-user-avatar">
+                <img src="../content/images/blank.png" alt="">
+            </div>
+            <div class="shake-user-nickname">昵称</div>
+            <div class="shake-user-level"><em>等级</em></div>
+        </div>
+        <div class="shake-shake">
+            <div class="shake-shake-ani"><img src="../content/images/img-shake.png" alt=""></div>
+            <div class="shake-shake-desc">现在～<br/>就摇起来手机</div>
+        </div>
+        <div class="shake-rule">
+            <div class="shake-rule-title"><span>活动规则</span></div>
+            <div class="shake-rule-content">
+                <ul>
+                    <li>用户摇一摇微信反馈成功后弹出成功提示，当日活动次数减一，当前积分增加一（积分单位管理）。</li>
+                    <li>当积分达到活动要求，摇一摇页面不可再摇，显示对换优惠商品按钮。用户点击选择地址跳转支付完成购买优惠商品操作（摇一摇购买优惠商品不受之前是否购买过，或是会员等级限制，任何人都可以购买）。</li>
+                </ul>
+            </div>
+        </div>
     </section>
+    
+    <footer class="shake-footer" id="tj-footer-end">
+        <div class="options">
+            <button class="btn">兑换优惠商品</button>
+        </div>
+    </footer>
 
+    <footer class="shake-footer" id="tj-footer-common" style="display: none;">
+        <div class="shake-footer-content">
+            <div class="shake-footer-item">剩余次数 x 次</div>
+            <div class="shake-footer-item">当前积分 1000</div>
+        </div>
+    </footer>
     
     <!--自定义提示框开始-->
     <div class="toast" id="tj-toast"><span>xxx</span></div>
@@ -47,6 +79,40 @@
         </div>
     </div>
     <!--//自定义提示框结束-->
+
+    <!--游戏结束提示框开始-->
+    <div class="dialog" id="tj-shake-result-dialog">
+        <div class="dialog-content levelup">
+            <div class="levelup-title"></div>
+            <div class="levelup-close">x</div>
+            <div class="levelup-content">
+                <p class="up1">恭喜你获得</p>
+                <p class="up2" id="level-name">10积分</p>
+                <p class="up3">赶紧累计积分兑换礼品吧</p>
+            </div>
+            <div class="levelup-button">
+                <button>好的</button>
+            </div>
+        </div>
+    </div>
+    <!--//游戏结束提示框结束-->
+
+    <!--游戏达到次数限制提示框开始-->
+    <div class="dialog" id="tj-shake-max-dialog">
+        <div class="dialog-content levelup">
+            <div class="levelup-title"></div>
+            <div class="levelup-close">x</div>
+            <div class="levelup-content">
+                <p class="up1">您已经达到今天活动的</p>
+                <p class="up2" id="level-name">次数上限</p>
+                <p class="up3">歇息一下，明天再来吧</p>
+            </div>
+            <div class="levelup-button">
+                <button>好的</button>
+            </div>
+        </div>
+    </div>
+    <!--//游戏达到次数限制提示框结束-->
 
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">

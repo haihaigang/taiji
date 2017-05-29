@@ -317,7 +317,8 @@ module.exports = function(grunt) {
                 },
                 proxies: [{
                     context: '/api',
-                    host: '106.14.239.198',
+                    // host: '106.14.239.198',
+                    host: '127.0.0.1',
                     port: 8080,
                     https: false,
                     changeOrigin: true,
