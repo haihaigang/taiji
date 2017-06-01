@@ -76,13 +76,19 @@
         SHARE_PIC: Config.SHARE_HOST + '/content/images/share-promotion.png'
     };
 
-    Config.INCOMES_TYPE = {//收益类型
+    Config.INCOMES_TYPE = { //收益类型
         'PROFIT1': '一级分利',
         'PROFIT2': '二级分利',
         'SALES': '差额收益',
         'REWARD': '奖励收益',
         'WITHDRAWAL': '提现',
         'WITHDRAWAL_RETURN': '提现退还'
+    };
+
+    Config.NOTIFICATION_TYPE = { //通知类型
+        UPGRADE: 'UPGRADE', //升级
+        QUIT: 'QUIT', //脱离
+        REFUSE: 'REFUSE' //收益提现被拒绝
     };
 
     window.Config = Config;

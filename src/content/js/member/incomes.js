@@ -141,7 +141,7 @@
             var data = response;
 
             for (var i = 0; i < data.length; i++) {
-                if (data[i].type == 'INCOME') {
+                if (data[i].type == Config.NOTIFICATION_TYPE.REFUSE) {
                     $('#tj-refuse-dialog').show();
                     $('#tj-refuse-dialog .up3').text(data[i].extendedValue);
                 }

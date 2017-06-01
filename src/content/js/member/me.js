@@ -41,11 +41,11 @@
             var data = response;
 
             for (var i = 0; i < data.length; i++) {
-                if (data[i].type == 'UPGRADE') {
+                if (data[i].type == Config.NOTIFICATION_TYPE.UPGRADE) {
                     $('#tj-levelup-dialog').show();
                     $('#level-name').text(Config.LEVEL[data[i].extendedValue]);
                 }
-                if (data[i].type == 'QUIT') {
+                if (data[i].type == Config.NOTIFICATION_TYPE.QUIT) {
                     $('#tj-userleave-dialog').show();
                     $('#user-name').text(data[i].extendedValue);
                 }

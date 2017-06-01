@@ -8,17 +8,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-touch-fullscreen" content="yes" />
     <title>我的</title>
-    <link rel="stylesheet" href="../content/css/taiji.css" />
     <style type="text/css">
     .container {
-        padding-top: 100px;
+        font-size: 12px;
     }
     
     .container div {
-        margin: 7px 0;
+        margin: 8px 0;
     }
-    
-    .container h3 {
+
+    .container a{
+        display: block;
+        text-decoration: none;
+        margin: 0;
         padding: 8px;
         text-align: center;
         background-color: #f83c75;
@@ -47,15 +49,15 @@
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
     <section class="container">
-        <div><a href="../index.html" id="h1"><h3>返回首页</h3></a></div>
-        <div><a href="?isdebug=1"><h3>打开调试</h3></a></div>
-        <div><a href="?isdebug=0"><h3>关闭调试</h3></a></div>
-        <div><a href="?abc=3"><h3>模拟登录</h3></a></div>
-        <div><a href="?abc=1"><h3>退出登录</h3></a></div>
-        <div><a href="?abc=2"><h3>清除缓存</h3></a></div>
+        <div><a href="../index.html" id="h1">返回首页</a></div>
+        <div><a href="?isdebug=1">打开调试</a></div>
+        <div><a href="?isdebug=0">关闭调试</a></div>
+        <div><a href="?abc=3">模拟登录</a></div>
+        <div><a href="?abc=1">退出登录</a></div>
+        <div><a href="?abc=2">清除缓存</a></div>
     </section>
     <div id="result"></div>
-    <div id="token"></div>
+    <p id="token"></p>
     <script src="../content/js/lib/zepto.min.js"></script>
     <script src="../content/js/lib/template.js"></script>
     <script src="../content/js/base/global.js"></script>
@@ -110,4 +112,3 @@
 </body>
 
 </html>
-<!--
