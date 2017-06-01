@@ -35,7 +35,7 @@
     // 获取状态信息，获取用户等级提升和用户解绑的提示
     function getStatus() {
         Ajax.custom({
-            url: '/notifications',
+            url: '/members/notifications',
             showLoading: true
         }, function(response) {
             var data = response;

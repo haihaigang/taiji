@@ -19,7 +19,7 @@
         }
 
         // TODO 确认用户是否已输入卡号
-        if(tempData.bankNumber){
+        if (tempData.bankNumber) {
             $('#bank-name').val(tempData.bankName).attr('readonly', true);
             $('#bank-no').val(tempData.bankNumber).attr('readonly', true);
             $('#bank-user').val(tempData.bankFullName).attr('readonly', true);
@@ -47,32 +47,32 @@
             idNumber = $('#bank-card').val(),
             that = $(this);
 
-        if(!bankName){
+        if (!bankName) {
             Tools.showToast('开户行必填');
             return;
         }
 
-        if(!bankNumber){
+        if (!bankNumber) {
             Tools.showToast('卡号必填');
             return;
         }
 
-        if(!bankFullName){
+        if (!bankFullName) {
             Tools.showToast('用户名必填');
             return;
         }
 
-        if(!idNumber){
+        if (!idNumber) {
             Tools.showToast('身份证号必填');
             return;
         }
 
-        if(!amount){
+        if (!amount) {
             Tools.showToast('提现金额必选大于1');
             return;
         }
 
-        if(amount > tempData.total){
+        if (amount > tempData.total) {
             Tools.showToast('提现金额不能大于提现总金额');
             return;
         }
@@ -80,7 +80,7 @@
         $(this).addClass('disabled').text('提现中...');
 
         Ajax.custom({
-            url: '/members/withdrawals',
+            url: '/members/withdrawals/balance',
             data: {
                 bankName: bankName,
                 bankNumber: bankNumber,
@@ -95,17 +95,55 @@
             pickupMoneyPage.closeSidebar();
             getData();
             resetBtn(that);
-        }, function(textStatus, data){
+        }, function(textStatus, data) {
             Tools.showToast(data.message);
             resetBtn(that);
         })
     });
 
+    var payBtnDom;
+
+    //点击充值按钮
+    container.on('click', '.charge-header-form-button button', function(e) {
+        e.preventDefault();
+
+        if ($(this).hasClass('disabled')) {
+            return;
+        }
+
+        var money = $('.charge-header-form-input input').val();
+
+        if (!money) {
+            Tools.showToast('请填写正确的金额');
+            return
+        }
+
+        $(this).addClass('disabled').text('充值中...');
+        payBtnDom = $(this);
+
+        // 定时就还原按钮
+        setTimeout(function() {
+            payBtnDom.text('充值').removeClass('disabled');
+        }, 800)
+
+        Ajax.custom({
+            url: '/members/topups',
+            data: {
+                amount: money
+            },
+            type: 'POST',
+            contentType: 'application/json'
+        }, function(response) {
+            pay(response.topupNumber);
+        }, function(textStatus, data) {
+            Tools.showToast(data.message);
+        });
+    });
 
     // 获取数据
     function getData() {
         Ajax.custom({
-            url: '/members/profits/logs',
+            url: '/members/balance/logs',
             showLoading: true
         }, function(response) {
             var data = response;
@@ -118,7 +156,7 @@
             container.show();
 
             setTimeout(function() {
-                if(data.total > 0){
+                if (data.balance > 0) {
                     btnPickUpMoneyOpenDom.removeClass('disabled')
                 }
             }, 500)
@@ -126,10 +164,22 @@
     }
 
     // 还原提现按钮
-    function resetBtn(btnDom){
-        setTimeout(function(){
+    function resetBtn(btnDom) {
+        setTimeout(function() {
             btnDom.text('提现').removeClass('disabled');
-        },800)
+        }, 800)
+    }
+
+    // 发起支付
+    function pay(orderId) {
+        WechatCommon.Pay.weixinPayOrder(orderId,
+            //支付成功回调
+            function payCallback(data) {
+                getData();
+            },
+            //取消支付回调
+            function errorCallback() {
+            });
     }
 
     Common.checkLoginStatus(function() { //入口

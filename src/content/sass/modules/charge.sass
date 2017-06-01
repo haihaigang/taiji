@@ -21,7 +21,7 @@
 
                 input
                     width: 100%
-                    height: 100%
+                    height: 0.4rem
                     padding: 0.08rem 0.16rem
                     box-sizing: border-box
                     color: #fff
@@ -42,8 +42,11 @@
                     background-color: #fff
                     box-shadow: 0 0 4px 0 rgba(0,0,0,0.20)
                     border-radius: 100px
-                    outlint: none
+                    outline: none
                     border: none
+
+                    &.disabled
+                        background-color: rgba(0, 0, 0, 0.5)
             
         .desc
             color: rgba(255, 255, 255, 0.5)

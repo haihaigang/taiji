@@ -80,7 +80,7 @@
         $(this).addClass('disabled').text('提现中...');
 
         Ajax.custom({
-            url: '/members/withdrawals',
+            url: '/members/withdrawals/profit',
             data: {
                 bankName: bankName,
                 bankNumber: bankNumber,
@@ -132,8 +132,26 @@
         },800)
     }
 
+    // 获取状态信息，获取用户等级提升和用户解绑的提示
+    function getStatus() {
+        Ajax.custom({
+            url: '/members/notifications',
+            showLoading: true
+        }, function(response) {
+            var data = response;
+
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].type == 'INCOME') {
+                    $('#tj-refuse-dialog').show();
+                    $('#tj-refuse-dialog .up3').text(data[i].extendedValue);
+                }
+            }
+        })
+    }
+
     Common.checkLoginStatus(function() { //入口
         getData();
+        getStatus();
         //添加默认分享功能
         WechatCommon.Share.commonShare();
     });

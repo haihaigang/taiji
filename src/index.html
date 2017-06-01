@@ -20,9 +20,7 @@
     <div class="container" style="display: none;">
         <div class="home-banner">
             <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="content/resources/banner.png" alt="" /></div>
-                    <div class="swiper-slide"><img src="content/resources/banner.png" alt="" /></div>
+                <div class="swiper-wrapper" id="tj-ads">
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -39,7 +37,7 @@
                 <img src="content/images/icon-qrcode.png" alt="">
             </a>
         </div>
-        <div class="home-quickad">
+        <div class="home-quickad" style="display: none;">
             <div class="home-quickad-content">
                 <p>此用于卡券接口签名的api_ticket与步骤三中通过config接口注入权限验证配置使用的jsapi_ticket不同</p>
             </div>
@@ -106,6 +104,11 @@
                 </div>
             </div>
         </a>
+        <!--[}]-->
+    </script>
+    <script id="tj-ads-tmpl" type="text/html">
+        <!--[for(i = 0; i < list.length; i++){]-->
+        <div class="swiper-slide"><img src="content/resources/banner.png" alt="" /></div>
         <!--[}]-->
     </script>
     <!--//模版结束-->
