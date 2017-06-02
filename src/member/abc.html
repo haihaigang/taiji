@@ -10,15 +10,17 @@
     <title>我的</title>
     <style type="text/css">
     .container {
+        margin: 21px 0;
         font-size: 12px;
     }
     
     .container div {
         margin: 8px 0;
     }
-
-    .container a{
+    
+    .container a,.container button {
         display: block;
+        width: 100%;
         text-decoration: none;
         margin: 0;
         padding: 8px;
@@ -26,9 +28,22 @@
         background-color: #f83c75;
         color: #fff;
         transition: 200ms;
+        outline: none;
+        border: none;
+        box-sizing: border-box;
     }
+    
     .container h3:hover {
         background-color: rgba(248, 60, 117, 0.3)
+    }
+    
+    .container input {
+        width: 100%;
+        height: 40px;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ececec;
+        border-radius: 0
     }
     
     html {
@@ -40,6 +55,8 @@
     
     body {
         background-color: transparent;
+        max-width: 480px;
+        margin: 0 auto
     }
     </style>
 </head>
@@ -48,13 +65,18 @@
     <noscript>
         <div id="noscript">当前的浏览器不支持JavaScript脚本</div>
     </noscript>
+    <form class="container">
+        <div>
+            <input type="phone" name="phone" placeholder="请输入手机号点击登录">
+            <input type="hidden" name="abc" value="3">
+        </div>
+        <div><button href="?abc=3">点击登录</button></div>
+    </form>
     <section class="container">
         <div><a href="../index.html" id="h1">返回首页</a></div>
         <div><a href="?isdebug=1">打开调试</a></div>
         <div><a href="?isdebug=0">关闭调试</a></div>
-        <div><a href="?abc=3">模拟登录</a></div>
         <div><a href="?abc=1">退出登录</a></div>
-        <div><a href="?abc=2">清除缓存</a></div>
     </section>
     <div id="result"></div>
     <p id="token"></p>
@@ -90,6 +112,7 @@
             result.innerHTML = '清除缓存成功';
         })
     } else if (Tools._GET().abc == 3) {
+        result.innerHTML = '登录中……';
         Ajax.custom({
             url: Config.HOST_API + '/../account/login',
             data: {
@@ -98,12 +121,18 @@
             },
             type: 'POST'
         }, function(response) {
-            Cookie.set("UserSN", response.body.memberId)
-            Cookie.set("AccessToken", response.message)
-            Storage.set("AccessToken", response.message)
+            var data = response.body;
+
+            Cookie.set("UserSN", data.memberId);
+            if (data.accessToken) {
+                // 过滤会丢失token的登录请求
+                Cookie.set("AccessToken", data.accessToken);
+            }
+            result.innerHTML = '登录成功';
+        }, function(){
+            result.innerHTML = '登录失败';
         })
-        result.innerHTML = '登录成功';
-    } else if(Tools._GET().token) {
+    } else if (Tools._GET().token) {
         Cookie.set('AccessToken', Tools._GET().token)
     }
     document.getElementById('h1').href = '../index.html?t=' + new Date().getTime().toString(32);
