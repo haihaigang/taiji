@@ -18,7 +18,8 @@
         margin: 8px 0;
     }
     
-    .container a,.container button {
+    .container a,
+    .container button {
         display: block;
         width: 100%;
         text-decoration: none;
@@ -70,7 +71,9 @@
             <input type="phone" name="phone" placeholder="请输入手机号点击登录">
             <input type="hidden" name="abc" value="3">
         </div>
-        <div><button href="?abc=3">点击登录</button></div>
+        <div>
+            <button href="?abc=3">点击登录</button>
+        </div>
     </form>
     <section class="container">
         <div><a href="../index.html" id="h1">返回首页</a></div>
@@ -112,26 +115,29 @@
             result.innerHTML = '清除缓存成功';
         })
     } else if (Tools._GET().abc == 3) {
-        result.innerHTML = '登录中……';
-        Ajax.custom({
-            url: Config.HOST_API + '/../account/login',
-            data: {
-                phone: '18790270368',
-                password: '123456'
-            },
-            type: 'POST'
-        }, function(response) {
-            var data = response.body;
+        var phone = Tools._GET().phone;
+        if (phone && phone.length == 11) {
+            result.innerHTML = '登录中……';
+            Ajax.custom({
+                url: '/members/signin/phone',
+                data: {
+                    phone: phone
+                },
+                type: 'POST',
+                contentType: 'application/json'
+            }, function(response) {
+                var data = response;
 
-            Cookie.set("UserSN", data.memberId);
-            if (data.accessToken) {
-                // 过滤会丢失token的登录请求
-                Cookie.set("AccessToken", data.accessToken);
-            }
-            result.innerHTML = '登录成功';
-        }, function(){
-            result.innerHTML = '登录失败';
-        })
+                Cookie.set("UserSN", data.memberId);
+                if (data.accessToken) {
+                    // 过滤会丢失token的登录请求
+                    Cookie.set("AccessToken", data.accessToken);
+                }
+                result.innerHTML = '登录成功';
+            }, function() {
+                result.innerHTML = '登录失败';
+            })
+        }
     } else if (Tools._GET().token) {
         Cookie.set('AccessToken', Tools._GET().token)
     }

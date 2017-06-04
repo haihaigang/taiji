@@ -389,7 +389,7 @@
                 delete(that.queue[queueKey]);
 
                 if (typeof callback == 'function') {
-                    if (options.url.indexOf('/members/signin/wechat') != -1) {
+                    if (options.url.indexOf('/members/signin/wechat') != -1 || options.url.indexOf('/members/signin/phone') != -1) {
                         // 自动登录的追加token到response上
                         if (!response) {
                             response = {};
