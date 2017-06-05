@@ -241,11 +241,15 @@
 
     });
 
-    // 模版帮助方法，获取最小值
+    // 模版帮助方法，获取收益类型
     template.helper('$getIncomesType', function(content) {
         return Config.INCOMES_TYPE[content];
     });
 
+    // 模版帮助方法，获取等级类型
+    template.helper('$getLevelName', function(content) {
+        return Config.LEVEL[content];
+    });
 
 
 

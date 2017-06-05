@@ -7,6 +7,17 @@
         $(this).parents('.dialog').hide();
     });
 
+    // 点击遮罩关闭
+    $('#tj-levelup2-dialog').click(function(e){
+        e.preventDefault();
+
+        if($(e.target).hasClass('dialog-content') || $(e.target).parents('.dialog-content').length > 0){
+            return;
+        }
+
+        $(this).hide();
+    })
+
     // 获取个人数据
     function getDetail() {
         Ajax.custom({
@@ -40,10 +51,20 @@
         }, function(response) {
             var data = response;
 
+            // data = [{
+            //     type: 
+            // }]
+
             for (var i = 0; i < data.length; i++) {
                 if (data[i].type == Config.NOTIFICATION_TYPE.UPGRADE) {
-                    $('#tj-levelup-dialog').show();
-                    $('#level-name').text(Config.LEVEL[data[i].extendedValue]);
+                    // $('#tj-levelup-dialog').show();
+                    // $('#level-name').text(Config.LEVEL[data[i].extendedValue]);
+                    
+                    $('#tj-levelup2-dialog').show();
+                    $('#lev-nickname').text(data[i].nickname);
+                    $('#lev-nickname2').text(data[i].nickname);
+                    $('#lev-level-name').text(Config.LEVEL[data[i].extendedValue]);
+                    $('#lev-time').text(Tools.formatDate(data[i].createdAt, 'yyyy年M月d日'));
                 }
                 if (data[i].type == Config.NOTIFICATION_TYPE.QUIT) {
                     $('#tj-userleave-dialog').show();
