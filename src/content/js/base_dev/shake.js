@@ -6,9 +6,16 @@
         shakeInfo = null,
         shakeTimer = 0,
         noshakeNum = 0,
-        option = { ios: 5, android: 3, duration: 700, onShaking: function() {}, onEnd: function() {} },
+        option = {
+            ios: 5,
+            android: 3,
+            duration: 700,
+            onShaking: function() {},
+            onEnd: function() {}
+        },
         os = detect(),
         env = os.ios ? "ios" : "android";
+
     shake.start = function(opt) {
         if (typeof opt == 'function') {
             option.onEnd = opt;
@@ -17,9 +24,14 @@
             for (var i in opt) { option[i] = opt[i]; }
         }
         endLock = false, startLock = false, noshakeNum = 0;
-        shakeInfo = { times: 0, datas: [], history: [] };
+        shakeInfo = {
+            times: 0,
+            datas: [],
+            history: []
+        };
         window.addEventListener('devicemotion', motionDetect, false);
     }
+
     shake.destroy = function() {
         endLock = true;
         unbind();
@@ -27,7 +39,14 @@
     }
 
     function motionDetect(event) {
-        var nowData = { x: event.accelerationIncludingGravity.x, y: event.accelerationIncludingGravity.y, z: event.accelerationIncludingGravity.z, a: event.rotationRate ? event.rotationRate.alpha : 0, b: event.rotationRate ? event.rotationRate.beta : 0, g: event.rotationRate ? event.rotationRate.gamma : 0 },
+        var nowData = {
+                x: event.accelerationIncludingGravity.x,
+                y: event.accelerationIncludingGravity.y,
+                z: event.accelerationIncludingGravity.z,
+                a: event.rotationRate ? event.rotationRate.alpha : 0,
+                b: event.rotationRate ? event.rotationRate.beta : 0,
+                g: event.rotationRate ? event.rotationRate.gamma : 0
+            },
             oldData = shakeInfo.datas[shakeInfo.datas.length - 1] || nowData;
         shakeInfo.datas.push(nowData);
         shakeInfo.datas = shakeInfo.datas.slice(-10);

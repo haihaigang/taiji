@@ -34,6 +34,7 @@ module.exports = function(grunt) {
                     'src/content/js/base_dev/wechat-login.js',
                     'src/content/js/base_dev/wechat-share.js',
                     'src/content/js/base_dev/wechat-pay.js',
+                    'src/content/js/base_dev/shake.js',
                     'src/content/js/base_dev/common.js',
                     'src/content/js/base_dev/html.js'
                 ],
@@ -66,6 +67,7 @@ module.exports = function(grunt) {
                     'src/content/js/base_dev/wechat-login.js',
                     'src/content/js/base_dev/wechat-share.js',
                     'src/content/js/base_dev/wechat-pay.js',
+                    'src/content/js/base_dev/shake.js',
                     'src/content/js/base_dev/common.js',
                     'src/content/js/base_dev/html.js'
                 ],

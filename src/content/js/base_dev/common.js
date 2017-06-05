@@ -29,7 +29,7 @@
             } else {
                 WechatCommon.Login.autoLogin(function(data) {
                     Cookie.set("UserSN", data.memberId);
-                    if(data.accessToken){
+                    if (data.accessToken) {
                         // 过滤会丢失token的登录请求
                         Cookie.set("AccessToken", data.accessToken);
                     }
@@ -246,9 +246,13 @@
  * @return
  */
 (function() {
-    var pid = Tools._GET().referId;
-    if (pid) {
-        sendData(pid);
+    var referId = Tools._GET().referId,
+        newReferId = Tools._GET().newReferId;
+
+    if (newReferId) {
+        sendData(newReferId);
+    } else if (referId) {
+        sendData(referId);
     }
 
     /**
