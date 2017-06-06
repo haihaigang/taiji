@@ -20,10 +20,10 @@
     <section class="container shake" id="tj-detail">
         <div class="shake-user">
             <div class="shake-user-avatar">
-                <img src="../content/images/blank.png" alt="">
+                <img src="../content/images/blank.png" alt="" id="me-avatar">
             </div>
-            <div class="shake-user-nickname">昵称</div>
-            <div class="shake-user-level"><em>等级</em></div>
+            <div class="shake-user-nickname" id="me-name">昵称</div>
+            <div class="shake-user-level"><em id="me-level">等级</em></div>
         </div>
         <div class="shake-shake">
             <div class="shake-shake-ani"><img src="../content/images/img-shake.png" alt=""></div>
@@ -40,7 +40,7 @@
         </div>
     </section>
     
-    <footer class="shake-footer" id="tj-footer-end">
+    <footer class="shake-footer" id="tj-footer-end" style="display: none;">
         <div class="options">
             <button class="btn">兑换优惠商品</button>
         </div>
@@ -48,8 +48,8 @@
 
     <footer class="shake-footer" id="tj-footer-common" style="display: none;">
         <div class="shake-footer-content">
-            <div class="shake-footer-item">剩余次数 x 次</div>
-            <div class="shake-footer-item">当前积分 1000</div>
+            <div class="shake-footer-item">剩余次数 <em id="tj-shake-times">x</em> 次</div>
+            <div class="shake-footer-item">当前积分 <em id="tj-shake-credit">1000</em></div>
         </div>
     </footer>
     
@@ -87,7 +87,7 @@
             <div class="levelup-close">x</div>
             <div class="levelup-content">
                 <p class="up1">恭喜你获得</p>
-                <p class="up2" id="level-name">10积分</p>
+                <p class="up2" id="tj-shake-one-credit">10积分</p>
                 <p class="up3">赶紧累计积分兑换礼品吧</p>
             </div>
             <div class="levelup-button">
