@@ -8,12 +8,10 @@
     });
 
     // 点击兑换商品
-    $('#tj-footer-end .btn').click(function(e){
+    $('#tj-footer-end .btn').click(function(e) {
         e.preventDefault();
         addCart();
     });
-
-    startShake()
 
     /**
      * 获取数据
@@ -32,29 +30,26 @@
             $('#me-name').text(data.nickname || '--');
             $('#me-level').text(Config.LEVEL[data.level]);
 
-            container.show();
-
-            // canRedeem:
-            // level
-            // memberId
-            // nickname
-            // phoneNumber
-            // points
-            // remainingShakes
-
-            if(data.canRedeem){
+            if (data.canRedeem) {
                 // 积分已满足
                 $('#tj-footer-end').show();
-            }else{
+                $('.shake-shake').hide();
+                $('.shake-max').show();
+            } else {
                 $('#tj-shake-times').text(data.remainingShakes);
                 $('#tj-shake-credit').text(data.points);
                 $('#tj-footer-common').show();
 
-                if(data.remainingShakes == 0){
+                if (data.remainingShakes == 0) {
                     // 如果剩余次数为0则弹出提示框
                     $('#tj-shake-max-dialog').show();
+                } else {
+                    // 还可以摇一摇
+                    startShake();
                 }
             }
+
+            container.show();
 
         }, function(textStatus, data) {
             container.show().html(data.message || '服务器异常');
@@ -86,16 +81,18 @@
      * 发起获取积分请求，在摇一摇之后
      * @return {[type]} [description]
      */
-    function sendShake(){
+    function sendShake() {
         Ajax.custom({
             url: '/members/shake',
             type: 'POST'
-        }, function(response){
+        }, function(response) {
             var data = response;
 
             $('#tj-shake-one-credit').text(data.points + '积分');
             $('#tj-shake-result-dialog').show();
-        }, function(textStatus, data){
+            // 更新底部总积分，追加上当前获取的积分
+            $('#tj-shake-credit').text(parseInt($('#tj-shake-credit').text()) + data.points);
+        }, function(textStatus, data) {
             Tools.showToast(data.message || '服务器异常');
         })
     }
@@ -115,7 +112,7 @@
             type: 'POST',
             contentType: 'application/json'
         }, function(response) {
-            location.href = 'cart.html';
+            location.href = '../cart.html';
         }, function(textStatus, data) {
             if (data.exception.indexOf('NotSignupPhoneException') != -1) {
                 // 用户未绑定手机号，提示
@@ -125,8 +122,6 @@
             Tools.showToast(data.message)
         });
     }
-
-    window.sendShake = sendShake;
 
     Common.checkLoginStatus(function() { //入口
         getData();
