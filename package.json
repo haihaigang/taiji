@@ -28,7 +28,8 @@
         "dev2": "grunt server",
         "deploy": "grunt deploy",
         "up": "scp -r dist/* root@106.14.239.198:/mnt/taiji/",
-        "deployup": "grunt deploy && scp -r dist/* root@106.14.239.198:/mnt/taiji/"
+        "deployup": "grunt deploy && scp -r dist/* root@106.14.239.198:/mnt/taiji/",
+        "deployuptest": "grunt deploy && scp -r dist/* root@106.14.60.19:/mnt/taiji/"
     },
     "repository": {
         "url": "http://github.com/haihaigang/taiji.git"
