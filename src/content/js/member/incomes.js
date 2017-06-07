@@ -22,7 +22,7 @@
         if(tempData.bankNumber){
             $('#bank-name').val(tempData.bankName).attr('readonly', true);
             $('#bank-no').val(tempData.bankNumber).attr('readonly', true);
-            $('#bank-user').val(tempData.bankFullName).attr('readonly', true);
+            $('#bank-user').val(tempData.fullName).attr('readonly', true);
             $('#bank-card').val(tempData.idNumber).attr('readonly', true);
         }
 
