@@ -48,7 +48,7 @@
 
             if(data.length > 0){
                 $('.home-quickad').show();
-                $('.home-quickad-content').text(data[0].text);
+                $('.home-quickad-content p').text(data[0].text);
             }
         });
     }

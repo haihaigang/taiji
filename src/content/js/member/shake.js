@@ -90,8 +90,9 @@
 
             $('#tj-shake-one-credit').text(data.points + '积分');
             $('#tj-shake-result-dialog').show();
-            // 更新底部总积分，追加上当前获取的积分
+            // 更新底部总积分和次数，追加上当前获取的积分，次数减一
             $('#tj-shake-credit').text(parseInt($('#tj-shake-credit').text()) + data.points);
+            $('#tj-shake-times').text(parseInt($('#tj-shake-times').text()) - 1);
         }, function(textStatus, data) {
             Tools.showToast(data.message || '服务器异常');
         })
