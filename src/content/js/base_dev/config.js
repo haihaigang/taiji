@@ -11,6 +11,7 @@
         SHARE_HOST: location.protocol + '//' + location.host, //分享链接前缀，完整地址
         DEF_IMG_URL: '../content/images/default.png', //默认图片
         APPID: "wx9c0b5913dd495352", //微信appId，正式
+        APPID: "wx9e46a124a23fffa4", //微信appId，测试
         WHITELISTS: [ //静态资源的白名单
             'rbyair.com',
             'meigooo.com',
@@ -35,7 +36,7 @@
 
     if (Config.IS_DEBUG) {
         //配置测试相关信息
-        Config.APPID = "wx9c0b5913dd495352"; //微信appId，测试
+        Config.APPID = "wx9e46a124a23fffa4"; //微信appId，测试
     }
 
     Config.DETAIL_SHARE_LINK = Config.SHARE_HOST + '/detail.html?id={ID}&cid={CID}'; //商品详情的分享链接
