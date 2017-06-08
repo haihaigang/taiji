@@ -110,12 +110,13 @@
             transition: 0.3s ease-in transform
             animation: quickadmove 8s linear infinite
             animation-delay: 1s
-            animation-direction: alternate
 
 @keyframes quickadmove
-    from
+    0%
         transform: translateX(0)
-    to
+    90%
+        transform: translateX(-100%)
+    100%
         transform: translateX(-100%)
 
 .home-list
