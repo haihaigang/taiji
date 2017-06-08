@@ -105,16 +105,17 @@
         line-height: 0.24rem
         overflow-x: auto
         
-        p
+        .text
+            display: inline-block
             white-space: nowrap
-            transition: 0.3s ease-in transform
-            animation: quickadmove 8s linear infinite
+            transition: 5s linear transform
+            animation: quickadmove 5s linear infinite
             animation-delay: 1s
 
-@keyframes quickadmove
+@keyframes quickadmove_
     0%
         transform: translateX(0)
-    90%
+    80%
         transform: translateX(-100%)
     100%
         transform: translateX(-100%)

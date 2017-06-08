@@ -46,9 +46,15 @@
         }, function(response) {
             var data = response;
 
-            if(data.length > 0){
+            if (data.length > 0) {
+                $('.home-quickad-content .text').text(data[0].text);
                 $('.home-quickad').show();
-                $('.home-quickad-content p').text(data[0].text);
+                var contentWidth = $('.home-quickad-content').width();
+                var textWidth = $('.home-quickad-content .text').width();
+                if(textWidth > contentWidth){
+                    // 内容超过容器才滚动
+                    addStyle(textWidth - contentWidth)
+                }
             }
         });
     }
@@ -66,6 +72,11 @@
             autoplay: 3000,
             autoplayDisableOnInteraction: false
         })
+    }
+
+    function addStyle(w){
+        var tmpl = '@keyframes quickadmove{0% {transform: translateX(0)} 80%{ transform: translateX(-'+w+'px)} 100% {transform: translateX(-'+w+'px)}}'
+        $('body').append('<style>' + tmpl + '</style>')
     }
 
     Common.checkLoginStatus(function() { //入口
