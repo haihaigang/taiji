@@ -4,8 +4,13 @@
 
     // 获取数据
     function getData() {
+        var url = '/members';
+        if (newReferId) {
+            url = '/members/' + newReferId;
+        }
+
         Ajax.custom({
-            url: '/members'
+            url: url
         }, function(response) {
             var data = response;
 
@@ -15,7 +20,7 @@
                 shareLink = Config.SHARE_HOST + '/member/promotion.html';
 
             if (!newReferId) {
-            	// 确保只有第一次分享追加该参数
+                // 确保只有第一次分享追加该参数
                 shareLink += '?newReferId=' + userSn;
             }
 

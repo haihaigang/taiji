@@ -85,7 +85,7 @@
             num = 0;
 
         if ($(this).hasClass('btn-huiyuan')) {
-            num = 1;
+            num = 3;
         }
         else if ($(this).hasClass('btn-daili')) {
             num = 24;
