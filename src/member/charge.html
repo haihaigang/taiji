@@ -7,7 +7,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-touch-fullscreen" content="yes" />
-    <title>余额充值</title>
+    <title>代金券购买</title>
     <!-- build:css ../content/css/taiji.min.css -->
     <link rel="stylesheet" href="../content/css/taiji.css" />
     <!-- endbuild -->
@@ -22,11 +22,11 @@
         <div class="charge-list" id="tj-list"></div>
     </section>
 
-    <footer class="charge-footer">
+    <!-- <footer class="charge-footer">
         <div class="options">
             <a class="btn disabled" id="btn-pickup-money-open">提现</a>
         </div>
-    </footer>
+    </footer> -->
     
     <!--自定义提示框开始-->
     <div class="toast" id="tj-toast"><span>xxx</span></div>
@@ -105,7 +105,7 @@
 
     <!--模版开始-->
     <script id="tj-list-tmpl" type="text/html">
-        <div class="charge-list-title">收益明细</div>
+        <div class="charge-list-title">代金券购买明细</div>
         <!--[for(i = 0; i < list.length; i++){]-->
         <div class="charge-list-items">
             <div class="charge-list-items-content">
@@ -125,17 +125,17 @@
     </script>
     <script id="tj-info-tmpl" type="text/html">
         <div class="charge-header-content">
-            <div class="title">当前余额（元）</div>
+            <div class="title">当前代金券数量（张）</div>
             <div class="total"><!--[= $formatCurrency(balance)]--></div>
             <div class="charge-header-form">
                 <div class="charge-header-form-input">
                     <input type="number" max="10000" maxlength="5">
                 </div>
                 <div class="charge-header-form-button">
-                    <button>充值</button>
+                    <button>购买</button>
                 </div>
             </div>
-            <div class="desc">提示：每次限充1万元，每日充值限额请咨询各发卡银行。</div>
+            <div class="desc">提示：每次购买限制1万张，每日购买限额请咨询各发卡银行。</div>
         </div>
     </script>
     <!--//模版结束-->

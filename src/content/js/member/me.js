@@ -2,7 +2,7 @@
     var container = $('#tj-detail');
 
     // 点击关闭弹窗
-    $('.levelup-close,.levelup-button button').click(function(e) {
+    $('.close,.levelup-close,.levelup-button button').click(function(e) {
         e.preventDefault();
         $(this).parents('.dialog').hide();
     });
@@ -16,7 +16,18 @@
         }
 
         $(this).hide();
-    })
+    });
+
+    // 点击遮罩关闭
+    $('#tj-levelup3-dialog').click(function(e){
+        e.preventDefault();
+
+        if($(e.target).hasClass('dialog-content') || $(e.target).parents('.dialog-content').length > 0){
+            return;
+        }
+
+        $(this).hide();
+    });
 
     // 获取个人数据
     function getDetail() {
@@ -60,11 +71,16 @@
                     // $('#tj-levelup-dialog').show();
                     // $('#level-name').text(Config.LEVEL[data[i].extendedValue]);
                     
-                    $('#tj-levelup2-dialog').show();
-                    $('#lev-nickname').text(data[i].nickname);
-                    $('#lev-nickname2').text(data[i].nickname);
-                    $('#lev-level-name').text(Config.LEVEL[data[i].extendedValue]);
-                    $('#lev-time').text(Tools.formatDate(data[i].createdAt, 'yyyy年M月d日'));
+                    // $('#tj-levelup2-dialog').show();
+                    // $('#lev-nickname').text(data[i].nickname);
+                    // $('#lev-nickname2').text(data[i].nickname);
+                    // $('#lev-level-name').text(Config.LEVEL[data[i].extendedValue]);
+                    // $('#lev-time').text(Tools.formatDate(data[i].createdAt, 'yyyy年M月d日'));
+                    
+                    if(data[i].extendedValue == Config.LEVEL.AGENT){
+                        // 仅在升级到代理提示，20170614修改
+                        $('#tj-levelup3-dialog').show();
+                    }
                 }
                 if (data[i].type == Config.NOTIFICATION_TYPE.QUIT) {
                     $('#tj-userleave-dialog').show();
