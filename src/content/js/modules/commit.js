@@ -67,6 +67,11 @@
                 $('#tj-empty').show();
                 return;
             }
+            if (data.status == 400 && data.message == '请先添加收货地址') {
+                // 没有地址的时候
+                redirectToChoose(true);
+                return;
+            }
             Tools.showToast(data.message);
         });
     }
