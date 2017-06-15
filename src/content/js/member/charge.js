@@ -103,7 +103,7 @@
 
     var payBtnDom;
 
-    //点击充值按钮
+    //点击购买按钮
     container.on('click', '.charge-header-form-button button', function(e) {
         e.preventDefault();
 
@@ -118,12 +118,12 @@
             return
         }
 
-        $(this).addClass('disabled').text('充值中...');
+        $(this).addClass('disabled').text('购买中...');
         payBtnDom = $(this);
 
         // 定时就还原按钮
         setTimeout(function() {
-            payBtnDom.text('充值').removeClass('disabled');
+            payBtnDom.text('购买').removeClass('disabled');
         }, 800)
 
         Ajax.custom({
