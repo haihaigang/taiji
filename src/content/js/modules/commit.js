@@ -185,7 +185,7 @@
             that.removeAttr('data-oid').attr('data-rid', orderId);
             disabledChooseAddress();
 
-            if (payment == 'BLANCE') {
+            if (payment == 'BALANCE') {
                 // 余额支付，在下单成功后直接跳转到
                 location.href = 'success.html';
             } else {
