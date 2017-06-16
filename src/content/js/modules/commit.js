@@ -160,6 +160,8 @@
             targetBtn.text('支付').removeClass('disabled');
         }, 3000);
 
+        var payment = paymentDoms.data('payment') || 'WECHAT'; // WECHAT, BALANCE
+
         if (revOrderId && revOrderId != '0') {
             // 如果已经提交过订单直接发起支付
             pay(revOrderId, payCallback, errorCallback);
@@ -170,7 +172,7 @@
             url: '/orders',
             data: {
                 addressId: addressId,
-                paymentMethod: paymentDoms.data('payment') || 'WECHAT', // WECHAT, BALANCE
+                paymentMethod: payment,
                 deliveryMethod: deliveryDoms.data('delivery') || 'EXPRESS' // EXPRESS、INVENTORY
             },
             type: 'POST',
@@ -182,7 +184,13 @@
 
             that.removeAttr('data-oid').attr('data-rid', orderId);
             disabledChooseAddress();
-            pay(orderId, payCallback, errorCallback);
+
+            if (payment == 'BLANCE') {
+                // 余额支付，在下单成功后直接跳转到
+                location.href = 'success.html';
+            } else {
+                pay(orderId, payCallback, errorCallback);
+            }
         }, function(textStatus, data) {
             that.find('span').text('支付').removeClass('disabled'); //还原支付按钮
             Tools.showToast(data.message || '服务器异常。');
