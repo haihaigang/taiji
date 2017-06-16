@@ -170,7 +170,7 @@
             url: '/orders',
             data: {
                 addressId: addressId,
-                payment: paymentDoms.data('payment') || 'wxpayjsapi',
+                paymentMethod: paymentDoms.data('payment') || 'WECHAT', // WECHAT, BALANCE
                 deliveryMethod: deliveryDoms.data('delivery') || 'EXPRESS' // EXPRESS、INVENTORY
             },
             type: 'POST',

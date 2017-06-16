@@ -109,10 +109,10 @@
         <!--[for(i = 0; i < list.length; i++){]-->
         <div class="charge-list-items">
             <div class="charge-list-items-content">
-                <h3><!--[= $getIncomesType(list[i].type)]--></h3>
+                <h3><!--[= $getChargeType(list[i].type)]--></h3>
                 <p><!--[= $formatDate(list[i].createdAt)]--></p>
             </div>
-            <div class="charge-list-items-price"><!--[= $getIncomesFlag(list[i].type)+list[i].amount]--></div>
+            <div class="charge-list-items-price"><!--[= $getChargeFlag(list[i].type)+list[i].amount]--></div>
         </div>
         <!--[}]-->
         <!--[if(list.length == 0){]-->

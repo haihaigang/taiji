@@ -5,9 +5,9 @@
         tempData;
 
 
-    // 模版帮助方法，获取收益的正负符号
-    template.helper('$getIncomesFlag', function(content) {
-        return 'WITHDRAWAL' === content ? '' : '+';
+    // 模版帮助方法，获取充值的正负符号
+    template.helper('$getChargeFlag', function(content) {
+        return 'TOPUP' === content ? '+' : '';
     });
 
     // 点击提现按钮

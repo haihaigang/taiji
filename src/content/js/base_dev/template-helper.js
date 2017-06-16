@@ -251,6 +251,9 @@
         return Config.LEVEL[content];
     });
 
-
+    // 模版帮助方法，获取充值类型
+    template.helper('$getChargeType', function(content) {
+        return Config.CHARGE_TYPE[content];
+    });
 
 })(window.template);

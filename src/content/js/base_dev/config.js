@@ -92,5 +92,11 @@
         REFUSE: 'REFUSE' //收益提现被拒绝
     };
 
+    Config.CHARGE_TYPE = { //充值类型
+        'TOPUP': '充值',
+        'WITHDRAWAL': '提现',
+        'SHOPPING': '购物',
+    };
+
     window.Config = Config;
 })();
