@@ -77,10 +77,9 @@
                     // $('#lev-level-name').text(Config.LEVEL[data[i].extendedValue]);
                     // $('#lev-time').text(Tools.formatDate(data[i].createdAt, 'yyyy年M月d日'));
                     
-                    if(data[i].extendedValue == Config.LEVEL.AGENT){
-                        // 仅在升级到代理提示，20170614修改
-                        $('#tj-levelup3-dialog').show();
-                    }
+                    $('#tj-levelup3-dialog').show();
+                    $('#l-level').text(Config.LEVEL[data[i].extendedValue]);
+                    $('#l-level2').text(Config.LEVEL[data[i].extendedValue]);
                 }
                 if (data[i].type == Config.NOTIFICATION_TYPE.QUIT) {
                     $('#tj-userleave-dialog').show();
