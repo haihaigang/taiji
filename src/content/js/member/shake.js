@@ -71,7 +71,6 @@
                 $('.shake-shake-ani').removeClass('shake');
                 jdShake.destroy();
                 sendShake();
-                startShake();
                 return false;
             }
         });
@@ -88,11 +87,22 @@
         }, function(response) {
             var data = response;
 
-            $('#tj-shake-one-credit').text(data.points + '积分');
-            $('#tj-shake-result-dialog').show();
+            if(data.points <= 0){
+                // 未中奖
+                $('#tj-shake-no-dialog').show();
+            }else{
+                // 中奖
+                $('#tj-shake-one-credit').text(data.points + '积分');
+                $('#tj-shake-result-dialog').show();
+            }
             // 更新底部总积分和次数，追加上当前获取的积分，次数减一
             $('#tj-shake-credit').text(parseInt($('#tj-shake-credit').text()) + data.points);
             $('#tj-shake-times').text(parseInt($('#tj-shake-times').text()) - 1);
+
+            if($('#tj-shake-times').text() != '0'){
+                // 如果还能摇一摇再次初始化摇一摇动画
+                startShake();
+            }
         }, function(textStatus, data) {
             Tools.showToast(data.message || '服务器异常');
         })
