@@ -29,25 +29,13 @@
                 content = content[0]
             }
 
-            //测试时临时开启的替换
             if (content.indexOf('http://') == 0) {
-                content = content.replace('http://img03.rbyair.com', Config.OSS_HOST);
+                return content;
             }
 
-            if (content.indexOf(Config.OSS_HOST) == 0) {
-                //oss过来的图片
-                if (defaultValue && defaultValue.indexOf('@') == 0) {
-                    //约定传递@开头的字符串拼接到阿里云图片的后面
-                    content = content + defaultValue;
-                }
-
-                if (Webp.getSupport()) {
-                    // 当前客户端支持或者在iosapp的251版本之后默认都开启webp，
-                    content += (content.indexOf('@') != -1 ? '' : '@') + '.webp';
-                }
-                return content;
-            } else if (content.indexOf('http://') == 0) {
-                return content;
+            if(content.length == 36){
+                // 约定36位长度的为图片ID
+                content = '/images/get/' + content;
             }
 
             return Config.HOST_IMAGE + content;

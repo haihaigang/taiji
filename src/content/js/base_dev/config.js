@@ -7,7 +7,7 @@
         PAGE_SIZE: 10, //默认分页大小
         PAGE: 1, //当前第几页，从1开始
         HOST_API: '/wechat', //相对地址
-        HOST_IMAGE: location.protocol + '//' + location.host + '/', //图片地址的前缀，完整地址
+        HOST_IMAGE: '//test.shtjzy.cn:8081', //图片地址的前缀，完整地址
         SHARE_HOST: location.protocol + '//' + location.host, //分享链接前缀，完整地址
         DEF_IMG_URL: '../content/images/default.png', //默认图片
         APPID: "wx9c0b5913dd495352", //微信appId，正式
