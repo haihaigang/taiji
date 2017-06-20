@@ -165,6 +165,7 @@
         for(var i = 0; i < data.items.length; i++){
             var d = data.items[i];
             if(d.type == 'REGULAR'){
+                d.realQuantity = d.quantity;
                 // 因为普通商品的10盒一起购买，而购物车数量显示／10
                 d.quantity /= 10;
                 d.isRegular = true;
