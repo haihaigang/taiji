@@ -84,7 +84,7 @@
         <!--[for(i = 0; i < list.length; i++){]-->
         <div class="stocks-list-items">
             <div class="stocks-list-items-content">
-                <div class="thumb"><img src="<!--[= list[i].thumbnail]-->" alt=""></div>
+                <div class="thumb"><img src="<!--[= $absImg(list[i].thumbnail)]-->" alt=""></div>
                 <div class="content">
                     <h3><!--[= list[i].name]--></h3>
                     <p>库存剩余<em><!--[= list[i].stockQuantity]--></em>件</p>

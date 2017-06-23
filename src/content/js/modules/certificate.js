@@ -15,7 +15,7 @@
             	return;
             }
 
-            $('#cert-name').text(data.nickname || '--');
+            $('#cert-name').text(data.fullName || '--');
             $('#cert-level').text(Config.LEVEL[data.level]);
             $('#cert-phone').text(data.phoneNumber || '--');
             $('.certificate-content').show();
