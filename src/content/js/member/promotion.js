@@ -14,6 +14,11 @@
         }, function(response) {
             var data = response;
 
+            if (!data.phoneNumber) {
+                // 没有电话则添加公司的电话
+                data.phoneNumber = '021-62199925';
+            }
+
             Ajax.render('#tj-promotion', 'tj-promotion-tmpl', data);
 
             var userSn = Cookie.get("UserSN"),
