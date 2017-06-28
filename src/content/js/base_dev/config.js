@@ -7,20 +7,16 @@
         PAGE_SIZE: 10, //默认分页大小
         PAGE: 1, //当前第几页，从1开始
         HOST_API: '/wechat', //相对地址
-        HOST_IMAGE: '//test.shtjzy.cn:8081', //图片地址的前缀，完整地址
+        HOST_IMAGE: '//' + location.hostname + '/:8081', //图片地址的前缀，完整地址
         SHARE_HOST: location.protocol + '//' + location.host, //分享链接前缀，完整地址
         DEF_IMG_URL: '../content/images/default.png', //默认图片
         APPID: "wx9c0b5913dd495352", //微信appId，正式
-        APPID: "wx9e46a124a23fffa4", //微信appId，测试
         WHITELISTS: [ //静态资源的白名单
-            'rbyair.com',
-            'meigooo.com',
-            'meigo.com',
-            'baidu.com',
+            'm.shtjzy.cn',
+            'shtjzy.cn',
             'qq.com',
         ],
         IS_FILTER_ON: true, //是否开启静态资源过滤
-        OSS_HOST: 'http://img01.rbyair.com', //oss的域名
         IS_WEBP_ON: true, //是否开启webp功能
         IS_MOCK_ON: false, //是否开启mock接口
         VERSION: '0.0.1' //版本号
