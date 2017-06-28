@@ -7,7 +7,7 @@
         PAGE_SIZE: 10, //默认分页大小
         PAGE: 1, //当前第几页，从1开始
         HOST_API: '/wechat', //相对地址
-        HOST_IMAGE: '//' + location.hostname + '/:8081', //图片地址的前缀，完整地址
+        HOST_IMAGE: '//' + location.hostname + ':8081', //图片地址的前缀，完整地址
         SHARE_HOST: location.protocol + '//' + location.host, //分享链接前缀，完整地址
         DEF_IMG_URL: '../content/images/default.png', //默认图片
         APPID: "wx9c0b5913dd495352", //微信appId，正式
@@ -30,6 +30,11 @@
         Config.VERSION = VERSION;
     }
 
+    // 约定线上test.shtjzy.cn的域名对应测试环境
+    if (location.hostname == 'test.shtjzy.cn') {
+        Config.IS_DEBUG = true;
+    }
+
     if (Config.IS_DEBUG) {
         //配置测试相关信息
         Config.APPID = "wx9e46a124a23fffa4"; //微信appId，测试
@@ -45,7 +50,8 @@
         DELIVERED: '已完成',
         PAYMENT_DUE: '支付超时',
         CANCELLED: '已取消',
-        RETURNED: '已退货'
+        RETURNED: '已退货',
+        STORE: '加入库存',
     };
 
     Config.LEVEL = { //用户等级
