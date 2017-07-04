@@ -88,8 +88,12 @@
             var data = response;
 
             if (data.points <= 0) {
-                // 未中奖
-                $('#tj-shake-no-dialog').show();
+                // 未中奖，如果最后一次的时候提示已达上限
+                if (parseInt($('#tj-shake-times').text()) == 1) {
+                    $('#tj-shake-max-dialog').show();
+                } else {
+                    $('#tj-shake-no-dialog').show();
+                }
             } else {
                 // 中奖
                 $('#tj-shake-one-credit').text(data.points + '积分');
@@ -97,7 +101,7 @@
             }
             // 更新底部总积分，追加上当前获取的积分
             $('#tj-shake-credit').text(parseInt($('#tj-shake-credit').text()) + data.points);
-            
+
             updateFooterContent();
         }, function(textStatus, data) {
             if (data.message == '没摇中, 明天继续努力') {
