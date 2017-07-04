@@ -26,6 +26,7 @@
         font-weight: bold
 
     .incomes-list-items
+        position: relative
         display: flex
         padding: 0 0.08rem
         border-top: 1px solid #f5f5f5
@@ -36,11 +37,38 @@
             h3
                 margin: 0.08rem 0
 
+                em
+                    margin-left: 0.04rem
+                    padding: 0.03rem 0.08rem
+                    color: #fff
+                    font-size: 0.11rem
+
+                    +border-radius(0.2rem)
+
+                    &.a1
+                        background-color: #c8a565
+
+                    &.a2
+                        background-color: #7647c2
+
+                    &.a3
+                        background-color: #4b4b4b
+
             p
                 margin: 0.08rem 0
                 color: rgba(0, 0, 0, 0.3)
 
+                span
+                    float: right
+
+                    em
+                        margin-left: 0.08rem
+                        color: $primary-color
+
         .incomes-list-items-price
+            position: absolute
+            right: 0.08rem
+            top: 0.03rem
             font-size: 0.21rem
             color: $primary-color
 

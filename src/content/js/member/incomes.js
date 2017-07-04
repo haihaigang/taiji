@@ -10,6 +10,24 @@
         return 'WITHDRAWAL' === content ? '' : '+';
     });
 
+    // 模版帮助方法，获取收益的类型的标签
+    template.helper('$getIncomesTypeFlag', function(content) {
+        switch (content) {
+            case 'PROFIT1':
+            case 'PROFIT2':
+                return '<em class="a1">分利</em>';
+            case 'SALES':
+            case 'REWARD':
+                return '<em class="a1">收益</em>';
+            case 'WITHDRAWAL':
+                return '<em class="a2">提现</em>';
+            case 'WITHDRAWAL_RETURN':
+                return '<em class="a3">退还</em>';
+            default:
+                return '<em>--</em>';
+        }
+    });
+
     // 点击提现按钮
     btnPickUpMoneyOpenDom.click(function(e) {
         e.preventDefault();
@@ -19,7 +37,7 @@
         }
 
         // TODO 确认用户是否已输入卡号
-        if(tempData.bankNumber){
+        if (tempData.bankNumber) {
             $('#bank-name').val(tempData.bankName).attr('readonly', true);
             $('#bank-no').val(tempData.bankNumber).attr('readonly', true);
             $('#bank-user').val(tempData.fullName).attr('readonly', true);
@@ -47,32 +65,32 @@
             idNumber = $('#bank-card').val(),
             that = $(this);
 
-        if(!bankName){
+        if (!bankName) {
             Tools.showToast('开户行必填');
             return;
         }
 
-        if(!bankNumber){
+        if (!bankNumber) {
             Tools.showToast('卡号必填');
             return;
         }
 
-        if(!bankFullName){
+        if (!bankFullName) {
             Tools.showToast('用户名必填');
             return;
         }
 
-        if(!idNumber){
+        if (!idNumber) {
             Tools.showToast('身份证号必填');
             return;
         }
 
-        if(!amount){
+        if (!amount) {
             Tools.showToast('提现金额必选大于1');
             return;
         }
 
-        if(amount > tempData.total){
+        if (amount > tempData.total) {
             Tools.showToast('提现金额不能大于提现总金额');
             return;
         }
@@ -95,7 +113,7 @@
             pickupMoneyPage.closeSidebar();
             getData();
             resetBtn(that);
-        }, function(textStatus, data){
+        }, function(textStatus, data) {
             Tools.showToast(data.message);
             resetBtn(that);
         })
@@ -118,7 +136,7 @@
             container.show();
 
             setTimeout(function() {
-                if(data.total > 0){
+                if (data.total > 0) {
                     btnPickUpMoneyOpenDom.removeClass('disabled')
                 }
             }, 500)
@@ -126,10 +144,10 @@
     }
 
     // 还原提现按钮
-    function resetBtn(btnDom){
-        setTimeout(function(){
+    function resetBtn(btnDom) {
+        setTimeout(function() {
             btnDom.text('提现').removeClass('disabled');
-        },800)
+        }, 800)
     }
 
     // 获取状态信息，获取用户等级提升和用户解绑的提示
