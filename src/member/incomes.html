@@ -108,26 +108,17 @@
         <!--[for(i = 0; i < list.length; i++){]-->
         <div class="incomes-list-items">
             <div class="incomes-list-items-content">
-                <h3><!--[= $getIncomesType(list[i].type)]--><!--[== $getIncomesTypeFlag(list[i].type)]--></h3>
+                <h3><span><!--[= $getIncomesType(list[i].type)]--></span><!--[== $getIncomesTypeFlag(list[i].type)]--></h3>
                 <p><!--[= $formatDate(list[i].createdAt)]-->
                 <!--[if(list[i].type == 'WITHDRAWAL'){]-->
-                <span>个税：500<em>税前：1500</em></span>
+                <span>个税：<!--[= list[i].tax]--><em>税前：<!--[= -list[i].amount]--></em></span>
                 <!--[}]-->
                 </p>
             </div>
-            <div class="incomes-list-items-price"><!--[= $getIncomesFlag(list[i].type)+list[i].amount]--></div>
+            <div class="incomes-list-items-price"><!--[= $getIncomesFlag(list[i])]--></div>
         </div>
         <!--[}]-->
         <!--[if(list.length == 0){]-->
-        <div class="incomes-list-items">
-            <div class="incomes-list-items-content">
-                <h3>TEST<em class="a1">分利</em></h3>
-                <p>2017-06-05 12:23:12
-                <span>个税：500<em>税前：1500</em></span>
-                </p>
-            </div>
-            <div class="incomes-list-items-price">+1908</div>
-        </div>
         <div class="incomes-list-items">
             <div class="incomes-list-items-content">
                 <h3>暂无数据</h3>

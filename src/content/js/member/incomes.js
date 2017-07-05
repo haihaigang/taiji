@@ -6,8 +6,8 @@
 
 
     // 模版帮助方法，获取收益的正负符号
-    template.helper('$getIncomesFlag', function(content) {
-        return 'WITHDRAWAL' === content ? '' : '+';
+    template.helper('$getIncomesFlag', function(data) {
+        return 'WITHDRAWAL' === data.type ? '-' + data.aftertaxAmount : '+' + data.amount;
     });
 
     // 模版帮助方法，获取收益的类型的标签
