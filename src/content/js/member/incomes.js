@@ -90,7 +90,12 @@
             return;
         }
 
-        if (amount > tempData.total) {
+        if (isNaN(amount)){
+            Tools.showToast('提现金额不正确');
+            return;
+        }
+
+        if (parseFloat(amount) > parseFloat(tempData.total)) {
             Tools.showToast('提现金额不能大于提现总金额');
             return;
         }
