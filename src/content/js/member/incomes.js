@@ -107,7 +107,7 @@
             data: {
                 bankName: bankName,
                 bankNumber: bankNumber,
-                bankFullName: bankFullName,
+                fullName: bankFullName,
                 amount: amount,
                 idNumber: idNumber
             },
