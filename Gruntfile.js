@@ -319,13 +319,13 @@ module.exports = function(grunt) {
                 },
                 proxies: [{
                     context: '/api',
-                    // host: '106.14.239.198',
-                    host: '106.14.60.19',
+                    host: 'm.shtjzy.cn',
+                    // host: '106.14.60.19',
                     port: 8080,
                     https: false,
                     changeOrigin: true,
                     headers: {
-                        // host: 'm.meigooo.com'
+                        host: 'm.shtjzy.cn'
                     },
                     rewrite: {
                         '^/api': '',

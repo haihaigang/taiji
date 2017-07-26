@@ -1,5 +1,6 @@
 (function() {
-    var container = $('.container')
+    var container = $('.container'),
+        ONE_GROUP_NUM = 5; //商品5盒一组
 
     // 获取购物车数量
     function getCart() {
@@ -85,12 +86,11 @@
             num = 0;
 
         if ($(this).hasClass('btn-huiyuan')) {
-            num = 3;
-        }
-        else if ($(this).hasClass('btn-daili')) {
-            num = 24;
+            num = 6;
+        } else if ($(this).hasClass('btn-daili')) {
+            num = 48;
         } else if ($(this).hasClass('btn-zongdai')) {
-            num = 600
+            num = 848 / ONE_GROUP_NUM;
         } else {
             return;
         }
@@ -107,7 +107,7 @@
     function quickChangeCart(objIdent, num, type) {
 
         if (type == 'REGULAR') {
-            num *= 10; //普通商品默认要10盒一起购买，优惠券1盒购买
+            num *= ONE_GROUP_NUM; //普通商品按盒一起购买，优惠券1盒购买
         }
 
         Ajax.custom({
@@ -162,13 +162,18 @@
             return;
         }
 
-        for(var i = 0; i < data.items.length; i++){
+
+        for (var i = 0; i < data.items.length; i++) {
             var d = data.items[i];
-            if(d.type == 'REGULAR'){
+            if (d.type == 'REGULAR') {
                 d.realQuantity = d.quantity;
-                // 因为普通商品的10盒一起购买，而购物车数量显示／10
-                d.quantity /= 10;
+                // 因为普通商品按盒购买，购物车数量显示为盒数
+                d.quantity /= ONE_GROUP_NUM;
+                if(d.realQuantity == 848){
+                    d.quantity = 0;
+                }
                 d.isRegular = true;
+                d.ONE_GROUP_NUM = ONE_GROUP_NUM;
             }
         }
 

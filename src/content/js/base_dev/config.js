@@ -54,11 +54,14 @@
         STORE: '加入库存',
     };
 
+// 金卡会员（会员）
+// 钻石会员（代理商）
+// 皇冠会员（总代）
     Config.LEVEL = { //用户等级
         USER: '用户',
-        MEMBER: '会员',
-        AGENT: '代理',
-        GENERAL_AGENT: '总代理'
+        MEMBER: '金卡会员',
+        AGENT: '钻石会员',
+        GENERAL_AGENT: '皇冠会员'
     };
 
     Config.DEFAULT_SHARE_DATA = { //默认分享数据
