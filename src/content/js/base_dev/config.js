@@ -31,7 +31,7 @@
     }
 
     // 约定线上test.shtjzy.cn的域名对应测试环境
-    if (location.hostname == 'm.test.shtjzy.cn') {
+    if (location.hostname == 'test.shtjzy.cn') {
         Config.IS_DEBUG = true;
     }
 
