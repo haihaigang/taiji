@@ -103,5 +103,7 @@
         'SHOPPING': '购物',
     };
 
+    Config.ONE_GROUP_NUM = 5; // 普通商品5盒一组购买
+
     window.Config = Config;
 })();

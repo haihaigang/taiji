@@ -110,9 +110,10 @@
         for (var i = 0; i < responseData.items.length; i++) {
             var d = responseData.items[i];
             if (d.type == 'REGULAR') {
-                // 因为普通商品的10盒一起购买，而数量显示／10
-                d.quantity /= 10;
+                // 因为普通商品的按盒一起购买，显示数量需要计算
+                d.quantity /= Config.ONE_GROUP_NUM;
                 d.isRegular = true;
+                d.ONE_GROUP_NUM = Config.ONE_GROUP_NUM;
             }
         }
 

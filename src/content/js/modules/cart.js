@@ -1,6 +1,5 @@
 (function() {
-    var container = $('.container'),
-        ONE_GROUP_NUM = 5; //商品5盒一组
+    var container = $('.container');
 
     // 获取购物车数量
     function getCart() {
@@ -90,7 +89,7 @@
         } else if ($(this).hasClass('btn-daili')) {
             num = 48;
         } else if ($(this).hasClass('btn-zongdai')) {
-            num = 848 / ONE_GROUP_NUM;
+            num = 848 / Config.ONE_GROUP_NUM;
         } else {
             return;
         }
@@ -107,7 +106,7 @@
     function quickChangeCart(objIdent, num, type) {
 
         if (type == 'REGULAR') {
-            num *= ONE_GROUP_NUM; //普通商品按盒一起购买，优惠券1盒购买
+            num *= Config.ONE_GROUP_NUM; //普通商品按盒一起购买，优惠券1盒购买
         }
 
         Ajax.custom({
@@ -168,12 +167,12 @@
             if (d.type == 'REGULAR') {
                 d.realQuantity = d.quantity;
                 // 因为普通商品按盒购买，购物车数量显示为盒数
-                d.quantity /= ONE_GROUP_NUM;
+                d.quantity /= Config.ONE_GROUP_NUM;
                 if(d.realQuantity == 848){
                     d.quantity = 0;
                 }
                 d.isRegular = true;
-                d.ONE_GROUP_NUM = ONE_GROUP_NUM;
+                d.ONE_GROUP_NUM = Config.ONE_GROUP_NUM;
             }
         }
 
