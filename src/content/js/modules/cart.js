@@ -170,7 +170,7 @@
                 d.realQuantity = d.quantity;
                 // 因为普通商品按盒购买，购物车数量显示为盒数
                 d.quantity /= Config.ONE_GROUP_NUM;
-                if(d.realQuantity == 848){
+                if(d.realQuantity >= 848){
                     d.quantity = 0;
                 }
                 d.isRegular = true;
